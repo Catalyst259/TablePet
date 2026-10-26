@@ -4,13 +4,19 @@
 
 **0.2.2 呼吸优化版**让睡眠时的头部与肩背轻柔起伏：每轮3.6秒，默认240DIP大小下约2.8DIP起伏，前爪保持落地，闭眼表情稳定。使用生图模型制作关键姿态，再以现成RIFE补帧。保留0.2.1的375ms柔和眨眼和“悬停唤醒、点击起身”，其余七个片段不变。移动片段按 **240fps 时间轴**制作，播放器跟随WPF合成器刷新；本机屏幕查询约为120Hz，不能在该屏幕上实际显示240fps。静态姿态不持续高频绘制。
 
-## 运行
+## 安装和运行
 
-推荐双击 `TablePet-0.2.2-Setup.exe`，按中文向导安装。安装程序自带运行环境，默认创建桌面和开始菜单快捷方式，可从 Windows 应用列表卸载，并保留个人设置。详细说明见 [docs/INSTALLATION.md](docs/INSTALLATION.md)。
+适用系统：**Windows 11 x64**。普通使用者直接安装即可，无需 .NET SDK、Node.js 或其他开发环境。
 
-也可解压便携版 `TablePet-win-x64.zip`，保留整个文件夹，双击 `TablePet.exe`。两种发布包均内含 .NET 10 运行时，无需安装开发工具，也无需管理员权限。应用和素材完全本地运行，无联网服务。
+1. 从 [Releases 下载页面](https://github.com/Catalyst259/TablePet/releases/latest) 下载安装包，或直接下载 [TablePet-0.2.2-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.2.2/TablePet-0.2.2-Setup.exe)。
+2. 双击安装包，按中文向导完成安装。默认目录为 `%LocalAppData%\Programs\TablePet`，无需管理员权限，所需 .NET 运行时和动画素材已内置。
+3. 完成页选择启动，或使用桌面、开始菜单中的“草莓猫桌宠”快捷方式。右键猫咪或托盘图标可打开设置和退出。
 
-更新版本前，请先从托盘退出已经运行的旧版本；否则双击新程序只会打开旧实例的设置。
+安装程序默认创建快捷方式，可从 Windows“设置 → 应用 → 安装的应用”卸载。更新时运行新安装包，个人设置会保留。开机启动默认关闭，可在桌宠设置中手动开启。应用和素材完全本地运行，无联网服务。详细说明见 [docs/INSTALLATION.md](docs/INSTALLATION.md)。
+
+安装包尚未配置代码签名证书，Windows 可能显示“未知发布者”。可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 <安装包路径>` 对照同一 Release 的 `.sha256` 文件确认下载完整性。
+
+需要免安装版本时，可按下面的源码构建步骤生成 `dist\TablePet-0.2.2-win-x64.zip`；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
 
 - 移入猫咪身体并停留片刻，只会打断入睡或唤醒睡眠，随后保持趴坐；清醒时悬停只刷新互动时间。
 - 轻点身体才会起身；睡眠中点击先唤醒再起身。悬停唤醒过程中点击，也能在醒来后接上起身。旧的悬停/点击设置自动兼容，无需重置。
@@ -24,7 +30,23 @@
 
 ## 开发和构建
 
-使用 Windows x64 和 .NET SDK **10.0.403**（`global.json` 固定版本，允许补丁滚动）。若没有 SDK，可执行 `powershell -File tools\setup-dotnet.ps1`；脚本仅将微软官方 SDK 下载到项目 `.tools` 下，并校验 SHA-512。
+使用 Windows x64 和 .NET SDK **10.0.403**（`global.json` 固定版本，允许补丁滚动）。所有运行所需的最终 PNG 已保存在 Git 中，克隆后即可构建，无需本机旧的解压目录、源码 ZIP 或生图服务。
+
+```powershell
+git clone https://github.com/Catalyst259/TablePet.git
+cd TablePet
+
+# 没有对应 SDK 时执行；下载微软官方 SDK 到本项目 .tools，并校验 SHA-512
+powershell -NoProfile -ExecutionPolicy Bypass -File tools\setup-dotnet.ps1
+
+# 生成带运行时的便携版本，并运行测试
+powershell -NoProfile -ExecutionPolicy Bypass -File tools\build.ps1 -Test -Publish
+
+# 运行构建结果
+.\dist\TablePet-0.2.2-win-x64\TablePet.exe
+```
+
+其它常用命令：
 
 ```powershell
 # 构建、自动测试
@@ -44,6 +66,29 @@ powershell -File tools\build.ps1 -Launch
 ```
 
 发布结果：`dist\TablePet-0.2.2-win-x64\TablePet.exe`、`dist\TablePet-0.2.2-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失或损坏；该检查不会操作正在运行的桌宠实例。
+
+## 源码备份和本地清理
+
+`v0.2.1`、`v0.2.2` 标签保存对应的原始源码快照，含动画帧、关键姿态、原始生成图、Word 方案、提示词、构建脚本及逐文件 `SOURCE-MANIFEST.sha256`。`main` 在此基础上维护仓库说明。历史源码可随时从 GitHub 标签页下载，或重新导出：
+
+```powershell
+git fetch origin --tags
+git archive --format=zip --output=TablePet-v0.2.1-source.zip v0.2.1
+git archive --format=zip --output=TablePet-v0.2.2-source.zip v0.2.2
+```
+
+确认远端标签完整后，本地 `TablePet-*-source.zip` 和安装包验包产生的 `artifacts/installer-check/*/extracted` 目录可删除。`dist` 中的便携解压目录可在保留对应 ZIP 后删除；`.tools`、`node_modules`、`bin`、`obj` 为可重新安装或构建的本机依赖与缓存，不纳入 Git。当前工作目录中的源码、`assets`、`reference` 和 `.git` 是继续开发使用的文件。
+
+桌宠安装目录 `%LocalAppData%\Programs\TablePet`、个人设置 `%LocalAppData%\DesktopPet` 与这些开发目录独立。清理开发副本时保留它们。
+
+睡眠对比 QA 默认读取旧版解压素材。清理旧目录后，可从标签恢复基准再传给检查脚本：
+
+```powershell
+New-Item -ItemType Directory -Force artifacts | Out-Null
+git archive --format=zip --output=artifacts/qa-v0.2.1.zip v0.2.1
+Expand-Archive artifacts/qa-v0.2.1.zip artifacts/qa-v0.2.1
+node tools/qa-sleep-breathing.cjs assets/strawberry-cat artifacts/qa-v0.2.1/assets/strawberry-cat
+```
 
 ## 结构和依赖
 

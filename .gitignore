@@ -7,3 +7,5 @@ artifacts/
 *.user
 *.suo
 node_modules/
+TablePet-*-source.zip
+TablePet-*-source.zip.sha256

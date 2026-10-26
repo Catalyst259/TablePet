@@ -1,0 +1,3 @@
+# Preserve the bytes of archived source snapshots, UTF-8/BOM scripts and generated assets.
+# Diff detection remains automatic; only newline conversion is disabled.
+* -text
