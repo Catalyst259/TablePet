@@ -44,3 +44,11 @@ Large semantic changes need more generated keys. For example, interpolate open e
 An explicit `engine: "ffmpeg"` diagnostic fallback is retained for comparison. FFmpeg 8.1.1 `minterpolate` was tested on the original assets and produced visible head-decoration ghosts. **It was rejected for final pet animation**. It is not selected automatically, including when RIFE is missing or fails.
 
 Research/smoke evidence is under `artifacts/motion-rife-smoke`: `rise-v2-contact.png` (pale/dark alpha checks), `rise-v2/interpolation-report.json`, and the rejected `ffmpeg-contact.png` comparison.
+
+## 0.2.2 sleeping breath
+
+`node tools/touchup-sleep.cjs` rebuilds only sleeping breathing. The normalized image_gen master and complete recipe are in `assets/strawberry-cat/keyframes-v4/sleep`. It requests 1024 RIFE phases and samples only the first quarter, producing a restrained six-pixel head/shoulder rise on a 512-pixel canvas. The 3.6-second loop retains a 240 Hz timeline and the original sleeping endpoint.
+
+Very small RIFE phases can contain a nonzero neural reconstruction residual. In this case the first inferred phase visibly differed from the exact source, despite both keyframe mapping checks passing. `sleep-endpoint.cjs` uses the existing **FFmpeg 8.1.1** floating-point `premultiply`, `blend`, and `unpremultiply` filters with a smoothstep weight only over phases 1–15; phase 0 stays exact and phase 16 onward remains unchanged. The correction operates on subpixel endpoint displacement, not a dissolve between the complete sleeping and inhaling poses. FFmpeg must be available in PATH for offline rebuilding; the delivered app does not depend on it.
+
+`node tools/qa-sleep-breathing.cjs` checks the original-rest-to-first-inferred-frame transition separately from the repeat boundary, alongside two-cycle 120 Hz sampling, grounded paws, head/decoration displacement, alpha validity and unchanged non-sleep assets. The default comparison source is the preserved 0.2.1 publish folder; its optional second argument can point to an extracted 0.2.1 portable release.

@@ -5,6 +5,7 @@ const crypto=require('node:crypto');
 const sharp=require('sharp');
 const {interpolate}=require('./motion-interpolate.cjs');
 const {smoothBlink}=require('./touchup-blink.cjs');
+const {smoothSleep}=require('./touchup-sleep.cjs');
 const repo=path.resolve(__dirname,'..'), root=path.join(repo,'assets/strawberry-cat');
 const work=path.join(repo,'artifacts/motion-v2'), fps=240;
 const key=(name,i)=>`keyframes-v2/${name}/${String(i).padStart(2,'0')}.png`;
@@ -68,10 +69,11 @@ async function pack(){
     hold:{loop:true,frames:[{file:rise.frames.at(-1).file,durationMs:1000}]},settle
   }};
   await smoothBlink(manifest);
+  await smoothSleep(manifest);
   await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
   await fs.writeFile(path.join(work,'production.json'),JSON.stringify({fps,jobs,clips:Object.fromEntries(Object.entries(manifest.clips).map(([n,c])=>[n,{slots:c.frames.length,durationMs:c.frames.reduce((a,f)=>a+f.durationMs,0)}])),uniquePngs:new Set(Object.values(manifest.clips).flatMap(c=>c.frames.map(f=>f.file))).size},null,2)+'\n');
   await previews(manifest);
-  console.log('Packaged 240 Hz motion assets; original blink poses retained with added in-betweens.');
+  console.log('Packaged 240 Hz motion assets with smooth blink transitions and the refined sleeping breath loop.');
 }
 async function previews(manifest){
   const preview=path.join(root,'previews');await fs.mkdir(preview,{recursive:true});

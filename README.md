@@ -2,11 +2,11 @@
 
 基于提供的草莓灰白猫原型和《Windows 桌面宠物实现方案》，使用 C#、WPF、.NET 10 LTS 和透明 PNG 帧动画。待机为较低趴坐，触碰后由前爪撑起前半身。
 
-**0.2.1 微调版**为原眨眼增加少量过渡帧，保留375ms总时长；互动改为“悬停唤醒、点击起身”，唤醒后保持趴坐，只有明确点击才接上半起身。其余动作保持0.2.0版本。移动片段按 **240fps 时间轴**制作，播放器跟随WPF合成器刷新；本机屏幕查询约为120Hz，不能在该屏幕上实际显示240fps。静态姿态不持续高频绘制。
+**0.2.2 呼吸优化版**让睡眠时的头部与肩背轻柔起伏：每轮3.6秒，默认240DIP大小下约2.8DIP起伏，前爪保持落地，闭眼表情稳定。使用生图模型制作关键姿态，再以现成RIFE补帧。保留0.2.1的375ms柔和眨眼和“悬停唤醒、点击起身”，其余七个片段不变。移动片段按 **240fps 时间轴**制作，播放器跟随WPF合成器刷新；本机屏幕查询约为120Hz，不能在该屏幕上实际显示240fps。静态姿态不持续高频绘制。
 
 ## 运行
 
-推荐双击 `TablePet-0.2.1-Setup.exe`，按中文向导安装。安装程序自带运行环境，默认创建桌面和开始菜单快捷方式，可从 Windows 应用列表卸载，并保留个人设置。详细说明见 [docs/INSTALLATION.md](docs/INSTALLATION.md)。
+推荐双击 `TablePet-0.2.2-Setup.exe`，按中文向导安装。安装程序自带运行环境，默认创建桌面和开始菜单快捷方式，可从 Windows 应用列表卸载，并保留个人设置。详细说明见 [docs/INSTALLATION.md](docs/INSTALLATION.md)。
 
 也可解压便携版 `TablePet-win-x64.zip`，保留整个文件夹，双击 `TablePet.exe`。两种发布包均内含 .NET 10 运行时，无需安装开发工具，也无需管理员权限。应用和素材完全本地运行，无联网服务。
 
@@ -43,7 +43,7 @@ powershell -File tools\package-source.ps1
 powershell -File tools\build.ps1 -Launch
 ```
 
-发布结果：`dist\TablePet-0.2.1-win-x64\TablePet.exe`、`dist\TablePet-0.2.1-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失或损坏；该检查不会操作正在运行的桌宠实例。
+发布结果：`dist\TablePet-0.2.2-win-x64\TablePet.exe`、`dist\TablePet-0.2.2-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失或损坏；该检查不会操作正在运行的桌宠实例。
 
 ## 结构和依赖
 
@@ -65,14 +65,14 @@ powershell -File tools\build.ps1 -Launch
 
 运行时读取 `Assets/strawberry-cat/manifest.json`。画布、锚点、片段列表、帧时长和循环方式独立于用户行为设置。各片段保持统一画布，透明 alpha 用于身体命中检测；窗口的空白点击穿透由 Windows 分层透明实现。AI 生图原始输出、提示词与切图脚本保留在仓库中。
 
-素材已预先生成，构建和运行桌宠不需要Node.js、RIFE模型或联网。当前包含1316张实际使用PNG、2062个帧槽；眨眼在原关键姿态之间新增20张过渡PNG，总时长375ms、闭眼90ms，其余七段保持不变。移动片段使用约240Hz时间轴，慢动作靠近停止点可重复同一帧。
+素材已预先生成，构建和运行桌宠不需要Node.js、RIFE模型或联网。当前包含1216张实际使用PNG、2062个帧槽；睡眠使用257张PNG（256张新增过渡帧与原共同睡姿），组成864槽、3.6秒的无缝循环。眨眼仍为375ms、闭眼90ms。移动片段使用约240Hz时间轴，慢动作靠近停止点可重复同一帧。
 
-关键姿态使用内置image_gen生成，再以现成RIFE 4.6模型补充过渡，Sharp仅负责切图、锚点对齐、透明双底还原和打包。无需自制动画引擎。重建时使用Node.js24，`npm ci`，`node tools/motion-setup-rife.cjs`，再 `npm run assets:prepare`；下载工具/模型只用于素材制作。原图与关键帧已随源码保存，提示词在 `reference/motion-v2-prompts.json` 和 `reference/motion-v2-followup-prompts.json`，流程说明见 [tools/motion-pipeline.md](tools/motion-pipeline.md)。`assets:prepare:v1` 仅供复现旧版，会覆盖当前清单，不用于v2构建。
+关键姿态使用内置image_gen生成，再以现成RIFE 4.6模型补充过渡，Sharp负责切图、锚点对齐、透明双底还原和打包；睡眠最靠近休息姿态的15张帧使用FFmpeg标准浮点alpha合成消除推理接缝。无需自制动画引擎。重建时使用Node.js24，`npm ci`，`node tools/motion-setup-rife.cjs`，并安装[FFmpeg 8.1.1](https://ffmpeg.org/download.html)加入PATH，再 `npm run assets:prepare`。这些工具只用于素材制作，运行与编译桌宠使用已保存PNG即可。原图与关键帧已随源码保存，提示词在 `reference/motion-v2-prompts.json`、`reference/motion-v2-followup-prompts.json` 和 `reference/sleep-v4-prompts.json`，流程说明见 [tools/motion-pipeline.md](tools/motion-pipeline.md)。`assets:prepare:v1` 仅供复现旧版，会覆盖当前清单，不用于当前构建。
 
-直接打开 `assets/strawberry-cat/previews/motion-preview.html` 可选动作、慢放和切换深浅背景；它使用当前PNG时间轴。`blink-touchup.gif` 对比原眨眼和本次补帧，`animation-preview-v2.gif` 保留0.2.0完整动作预览；GIF不能用来测量桌宠实际刷新率。单独重建眨眼可运行 `node tools/touchup-blink.cjs`。
+直接打开 `assets/strawberry-cat/previews/motion-preview.html` 可选动作、慢放和切换深浅背景；它使用当前PNG时间轴。`sleep-breathing.gif` 展示本版呼吸，`sleep-breathing-comparison.gif` 在240px尺寸比较新旧睡眠；`blink-touchup.gif` 保留眨眼对比，`animation-preview-v2.gif` 是较早完整动作预览。GIF仅为50fps预览，不能用来测量桌宠实际刷新率。单独重建睡眠可运行 `node tools/touchup-sleep.cjs`，重建眨眼可运行 `node tools/touchup-blink.cjs`。睡眠源图与关键姿态在 `sources/sleep-v4`、`keyframes-v4/sleep`，完整提示词和候选选择记录在 `reference/sleep-v4-prompts.json`。
 
 ## 验证范围
 
-当前Release的75项自动测试通过，本次微调记录见 [docs/UPDATE-0.2.1.md](docs/UPDATE-0.2.1.md)。0.2.0的逐帧与高帧率缓存测量见 [docs/MOTION-QA.md](docs/MOTION-QA.md) 和 [docs/MOTION-PERFORMANCE.md](docs/MOTION-PERFORMANCE.md)，本轮未修改播放器与缓存。已操作的桌面验证与待验收项见 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。多屏混合DPI、拔屏、真实锁屏/休眠、无开发环境电脑和长时间运行仍需相应环境验证。
+当前Release的75项自动测试通过，本版呼吸优化与验收记录见 [docs/UPDATE-0.2.2.md](docs/UPDATE-0.2.2.md)，眨眼和交互微调记录见 [docs/UPDATE-0.2.1.md](docs/UPDATE-0.2.1.md)。0.2.0的逐帧与高帧率缓存测量见 [docs/MOTION-QA.md](docs/MOTION-QA.md) 和 [docs/MOTION-PERFORMANCE.md](docs/MOTION-PERFORMANCE.md)，本轮未修改播放器与缓存。已操作的桌面验证与待验收项见 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。多屏混合DPI、拔屏、真实锁屏/休眠、无开发环境电脑和长时间运行仍需相应环境验证。
 
 配置说明见 [docs/SETTINGS.md](docs/SETTINGS.md)。动画视觉一致性仍可通过替换素材包继续打磨，无需修改行为控制器。

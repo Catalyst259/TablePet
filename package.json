@@ -1,7 +1,7 @@
 {
   "name": "tablepet-asset-tools",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.2.2",
   "scripts": {
     "assets:prepare": "node tools/build-motion-v2.cjs",
     "assets:prepare:v1": "node tools/prepare-assets.cjs",

@@ -1,0 +1,12 @@
+{
+  "inhaleMaster": "keyframes-v4/sleep/inhale-master.png",
+  "generatedSource": "sources/sleep-v4/inhale-coherent-generated.png",
+  "normalization": { "width": 509, "height": 509, "left": 1, "top": 16, "canvas": 512 },
+  "factor": 1024,
+  "peakPhase": 0.25,
+  "endpointWindow": 16,
+  "endpointCorrection": "FFmpeg float premultiplied-alpha smoothstep composition for phases 1..15; original rest is exact and phases 16 onward remain RIFE output.",
+  "durationMs": 3600,
+  "sampleFps": 240,
+  "selection": "Only the first quarter of the generated inhale is used: about 6 source pixels of head/shoulder rise, about 2.8 DIP at the default 240 DIP display size. Forepaws remain grounded."
+}

@@ -11,7 +11,18 @@ const baselinePath = path.join(repo, 'reference/motion-v2/manifest.json');
 const work = path.join(repo, 'artifacts/blink-touchup');
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 
+function applyBlinkMetadata(manifest) {
+  manifest.version = Math.max(3, Number(manifest.version) || 0);
+  const revision = manifest.motion?.revision;
+  const parts = /^(\d+)\.(\d+)\.(\d+)/.exec(revision || '');
+  const older = parts && Number(parts[1]) === 0 && (Number(parts[2]) < 2 || (Number(parts[2]) === 2 && Number(parts[3]) < 1));
+  manifest.motion = { ...manifest.motion, revision: !revision || older ? '0.2.1' : revision,
+    blinkPreserved: false, blinkKeyPosesPreserved: true, blinkTransitionFramesAdded: 20 };
+}
+
 async function smoothBlink(manifest) {
+  const nonBlinkSnapshot = () => JSON.stringify(Object.fromEntries(Object.entries(manifest.clips).filter(([name]) => name !== 'blink')));
+  const otherClipsBefore = nonBlinkSnapshot();
   await fs.mkdir(path.dirname(baselinePath), { recursive: true });
   try { await fs.access(baselinePath); }
   catch { await fs.writeFile(baselinePath, JSON.stringify(manifest, null, 2) + '\n'); }
@@ -57,9 +68,8 @@ async function smoothBlink(manifest) {
     frames.push({ file: files[index], durationMs: edges[i + 1] - time });
   }
   manifest.clips.blink = { loop: false, frames };
-  manifest.version = 3;
-  manifest.motion = { ...manifest.motion, revision: '0.2.1', blinkPreserved: false, blinkKeyPosesPreserved: true, blinkTransitionFramesAdded: 20 };
-  const otherClipsUnchanged = Object.keys(baseline.clips).filter(n => n !== 'blink').every(n => JSON.stringify(manifest.clips[n]) === JSON.stringify(baseline.clips[n]));
+  applyBlinkMetadata(manifest);
+  const otherClipsUnchanged = nonBlinkSnapshot() === otherClipsBefore;
   if (!otherClipsUnchanged) throw Error('Non-blink clip changed; refusing blink-only update.');
   const report = { checkedAt: new Date().toISOString(), sourceHashes, originalFrameSlots: baseline.clips.blink.frames.length,
     frameSlots: frames.length, uniquePngs: new Set(frames.map(f => f.file)).size, addedPngs: files.filter(f => f.startsWith('frames/v3/')).length,
@@ -105,7 +115,7 @@ async function previews(oldClip, newClip, allFiles) {
     const end = html.indexOf(',images=new Map()', start);
     if (start >= 'const manifest='.length && end > start) {
       const embedded = JSON.parse(html.slice(start, end)); embedded.clips.blink = newClip;
-      embedded.version = 3; embedded.motion = { ...embedded.motion, revision: '0.2.1', blinkPreserved: false, blinkKeyPosesPreserved: true, blinkTransitionFramesAdded: 20 };
+      applyBlinkMetadata(embedded);
       await fs.writeFile(htmlPath, html.slice(0, start) + JSON.stringify(embedded) + html.slice(end));
     }
   }

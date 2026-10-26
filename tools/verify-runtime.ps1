@@ -1,12 +1,18 @@
 ﻿param(
-    [string]$PublishDirectory = 'dist/TablePet-0.2.1-win-x64',
+    [string]$PublishDirectory,
     [switch]$ProbeAppHost,
     [switch]$SkipAssets,
     [int]$Cycles = 1000
 )
 $ErrorActionPreference = 'Stop'
 $workspaceRoot = Split-Path -Parent $PSScriptRoot
-$publishRoot = [IO.Path]::GetFullPath((Join-Path $workspaceRoot $PublishDirectory))
+if ([string]::IsNullOrWhiteSpace($PublishDirectory)) {
+    [xml]$project = Get-Content -LiteralPath (Join-Path $workspaceRoot 'src/TablePet.App/TablePet.App.csproj') -Raw -Encoding UTF8
+    $version = [string]$project.Project.PropertyGroup.Version
+    $PublishDirectory = "dist/TablePet-$version-win-x64"
+}
+$publishRoot = if ([IO.Path]::IsPathRooted($PublishDirectory)) { [IO.Path]::GetFullPath($PublishDirectory) }
+    else { [IO.Path]::GetFullPath((Join-Path $workspaceRoot $PublishDirectory)) }
 $reportRoot = Join-Path $workspaceRoot 'artifacts/runtime-check'
 New-Item -ItemType Directory -Path $reportRoot -Force | Out-Null
 $requiredRuntimeFiles = @('TablePet.exe','TablePet.dll','TablePet.Core.dll','coreclr.dll','hostfxr.dll','hostpolicy.dll','System.Private.CoreLib.dll','PresentationCore.dll','PresentationFramework.dll','WindowsBase.dll')

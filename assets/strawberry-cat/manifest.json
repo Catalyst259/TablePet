@@ -1,6 +1,6 @@
 {
   "id": "strawberry-cat",
-  "version": 3,
+  "version": 4,
   "displayName": "草莓猫",
   "canvas": {
     "width": 512,
@@ -2124,3387 +2124,3387 @@
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00003.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00003.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00003.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00004.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00004.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00004.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00005.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00005.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00005.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00006.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00006.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00006.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00007.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00007.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00008.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00008.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00009.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00009.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00010.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00010.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00011.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00011.png",
+          "file": "frames/v4/sleep-breath-0006.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00012.png",
+          "file": "frames/v4/sleep-breath-0006.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00012.png",
+          "file": "frames/v4/sleep-breath-0006.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00013.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00014.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00014.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00015.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00015.png",
+          "file": "frames/v4/sleep-breath-0008.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00016.png",
+          "file": "frames/v4/sleep-breath-0008.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00017.png",
+          "file": "frames/v4/sleep-breath-0008.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00017.png",
+          "file": "frames/v4/sleep-breath-0009.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00018.png",
+          "file": "frames/v4/sleep-breath-0009.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00019.png",
+          "file": "frames/v4/sleep-breath-0009.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00020.png",
+          "file": "frames/v4/sleep-breath-0010.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00020.png",
+          "file": "frames/v4/sleep-breath-0010.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00021.png",
+          "file": "frames/v4/sleep-breath-0010.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00022.png",
+          "file": "frames/v4/sleep-breath-0011.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00022.png",
+          "file": "frames/v4/sleep-breath-0011.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00023.png",
+          "file": "frames/v4/sleep-breath-0012.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00024.png",
+          "file": "frames/v4/sleep-breath-0012.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00025.png",
+          "file": "frames/v4/sleep-breath-0012.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00026.png",
+          "file": "frames/v4/sleep-breath-0013.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00026.png",
+          "file": "frames/v4/sleep-breath-0013.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00027.png",
+          "file": "frames/v4/sleep-breath-0014.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00028.png",
+          "file": "frames/v4/sleep-breath-0014.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00029.png",
+          "file": "frames/v4/sleep-breath-0014.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00030.png",
+          "file": "frames/v4/sleep-breath-0015.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00031.png",
+          "file": "frames/v4/sleep-breath-0015.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00032.png",
+          "file": "frames/v4/sleep-breath-0016.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00033.png",
+          "file": "frames/v4/sleep-breath-0016.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00033.png",
+          "file": "frames/v4/sleep-breath-0017.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00034.png",
+          "file": "frames/v4/sleep-breath-0017.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00035.png",
+          "file": "frames/v4/sleep-breath-0018.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00036.png",
+          "file": "frames/v4/sleep-breath-0018.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00037.png",
+          "file": "frames/v4/sleep-breath-0019.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00038.png",
+          "file": "frames/v4/sleep-breath-0019.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00039.png",
+          "file": "frames/v4/sleep-breath-0020.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00040.png",
+          "file": "frames/v4/sleep-breath-0020.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00041.png",
+          "file": "frames/v4/sleep-breath-0021.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00042.png",
+          "file": "frames/v4/sleep-breath-0021.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00043.png",
+          "file": "frames/v4/sleep-breath-0022.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00044.png",
+          "file": "frames/v4/sleep-breath-0022.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00045.png",
+          "file": "frames/v4/sleep-breath-0023.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00046.png",
+          "file": "frames/v4/sleep-breath-0023.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00047.png",
+          "file": "frames/v4/sleep-breath-0024.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00049.png",
+          "file": "frames/v4/sleep-breath-0024.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00050.png",
+          "file": "frames/v4/sleep-breath-0025.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00051.png",
+          "file": "frames/v4/sleep-breath-0025.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00052.png",
+          "file": "frames/v4/sleep-breath-0026.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00053.png",
+          "file": "frames/v4/sleep-breath-0027.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00054.png",
+          "file": "frames/v4/sleep-breath-0027.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00055.png",
+          "file": "frames/v4/sleep-breath-0028.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00056.png",
+          "file": "frames/v4/sleep-breath-0028.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00058.png",
+          "file": "frames/v4/sleep-breath-0029.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00059.png",
+          "file": "frames/v4/sleep-breath-0029.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00060.png",
+          "file": "frames/v4/sleep-breath-0030.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00061.png",
+          "file": "frames/v4/sleep-breath-0031.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00062.png",
+          "file": "frames/v4/sleep-breath-0031.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00064.png",
+          "file": "frames/v4/sleep-breath-0032.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00065.png",
+          "file": "frames/v4/sleep-breath-0032.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00066.png",
+          "file": "frames/v4/sleep-breath-0033.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00067.png",
+          "file": "frames/v4/sleep-breath-0034.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00069.png",
+          "file": "frames/v4/sleep-breath-0034.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00070.png",
+          "file": "frames/v4/sleep-breath-0035.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00071.png",
+          "file": "frames/v4/sleep-breath-0036.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00073.png",
+          "file": "frames/v4/sleep-breath-0036.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00074.png",
+          "file": "frames/v4/sleep-breath-0037.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00075.png",
+          "file": "frames/v4/sleep-breath-0038.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00076.png",
+          "file": "frames/v4/sleep-breath-0038.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00078.png",
+          "file": "frames/v4/sleep-breath-0039.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00079.png",
+          "file": "frames/v4/sleep-breath-0040.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00080.png",
+          "file": "frames/v4/sleep-breath-0040.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00082.png",
+          "file": "frames/v4/sleep-breath-0041.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00083.png",
+          "file": "frames/v4/sleep-breath-0042.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00085.png",
+          "file": "frames/v4/sleep-breath-0042.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00086.png",
+          "file": "frames/v4/sleep-breath-0043.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00087.png",
+          "file": "frames/v4/sleep-breath-0044.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00089.png",
+          "file": "frames/v4/sleep-breath-0044.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00090.png",
+          "file": "frames/v4/sleep-breath-0045.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00092.png",
+          "file": "frames/v4/sleep-breath-0046.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00093.png",
+          "file": "frames/v4/sleep-breath-0047.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00095.png",
+          "file": "frames/v4/sleep-breath-0047.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00096.png",
+          "file": "frames/v4/sleep-breath-0048.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00097.png",
+          "file": "frames/v4/sleep-breath-0049.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00099.png",
+          "file": "frames/v4/sleep-breath-0049.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00100.png",
+          "file": "frames/v4/sleep-breath-0050.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00102.png",
+          "file": "frames/v4/sleep-breath-0051.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00103.png",
+          "file": "frames/v4/sleep-breath-0052.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00105.png",
+          "file": "frames/v4/sleep-breath-0052.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00106.png",
+          "file": "frames/v4/sleep-breath-0053.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00108.png",
+          "file": "frames/v4/sleep-breath-0054.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00109.png",
+          "file": "frames/v4/sleep-breath-0055.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00111.png",
+          "file": "frames/v4/sleep-breath-0055.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00112.png",
+          "file": "frames/v4/sleep-breath-0056.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00114.png",
+          "file": "frames/v4/sleep-breath-0057.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00116.png",
+          "file": "frames/v4/sleep-breath-0058.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00117.png",
+          "file": "frames/v4/sleep-breath-0059.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00119.png",
+          "file": "frames/v4/sleep-breath-0059.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00120.png",
+          "file": "frames/v4/sleep-breath-0060.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00122.png",
+          "file": "frames/v4/sleep-breath-0061.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00123.png",
+          "file": "frames/v4/sleep-breath-0062.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00125.png",
+          "file": "frames/v4/sleep-breath-0063.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00127.png",
+          "file": "frames/v4/sleep-breath-0063.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00128.png",
+          "file": "frames/v4/sleep-breath-0064.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00130.png",
+          "file": "frames/v4/sleep-breath-0065.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00132.png",
+          "file": "frames/v4/sleep-breath-0066.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00133.png",
+          "file": "frames/v4/sleep-breath-0067.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00135.png",
+          "file": "frames/v4/sleep-breath-0067.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00136.png",
+          "file": "frames/v4/sleep-breath-0068.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00138.png",
+          "file": "frames/v4/sleep-breath-0069.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00140.png",
+          "file": "frames/v4/sleep-breath-0070.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00141.png",
+          "file": "frames/v4/sleep-breath-0071.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00143.png",
+          "file": "frames/v4/sleep-breath-0072.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00145.png",
+          "file": "frames/v4/sleep-breath-0072.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00146.png",
+          "file": "frames/v4/sleep-breath-0073.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00148.png",
+          "file": "frames/v4/sleep-breath-0074.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00150.png",
+          "file": "frames/v4/sleep-breath-0075.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00152.png",
+          "file": "frames/v4/sleep-breath-0076.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00153.png",
+          "file": "frames/v4/sleep-breath-0077.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00155.png",
+          "file": "frames/v4/sleep-breath-0077.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00157.png",
+          "file": "frames/v4/sleep-breath-0078.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00158.png",
+          "file": "frames/v4/sleep-breath-0079.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00160.png",
+          "file": "frames/v4/sleep-breath-0080.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00162.png",
+          "file": "frames/v4/sleep-breath-0081.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00164.png",
+          "file": "frames/v4/sleep-breath-0082.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00165.png",
+          "file": "frames/v4/sleep-breath-0083.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00167.png",
+          "file": "frames/v4/sleep-breath-0084.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00169.png",
+          "file": "frames/v4/sleep-breath-0084.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00171.png",
+          "file": "frames/v4/sleep-breath-0085.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00172.png",
+          "file": "frames/v4/sleep-breath-0086.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00174.png",
+          "file": "frames/v4/sleep-breath-0087.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00176.png",
+          "file": "frames/v4/sleep-breath-0088.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00178.png",
+          "file": "frames/v4/sleep-breath-0089.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00179.png",
+          "file": "frames/v4/sleep-breath-0090.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00181.png",
+          "file": "frames/v4/sleep-breath-0091.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00183.png",
+          "file": "frames/v4/sleep-breath-0091.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00185.png",
+          "file": "frames/v4/sleep-breath-0092.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00187.png",
+          "file": "frames/v4/sleep-breath-0093.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00188.png",
+          "file": "frames/v4/sleep-breath-0094.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00190.png",
+          "file": "frames/v4/sleep-breath-0095.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00192.png",
+          "file": "frames/v4/sleep-breath-0096.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00194.png",
+          "file": "frames/v4/sleep-breath-0097.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00196.png",
+          "file": "frames/v4/sleep-breath-0098.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00197.png",
+          "file": "frames/v4/sleep-breath-0099.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00199.png",
+          "file": "frames/v4/sleep-breath-0100.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00201.png",
+          "file": "frames/v4/sleep-breath-0100.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00203.png",
+          "file": "frames/v4/sleep-breath-0101.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00205.png",
+          "file": "frames/v4/sleep-breath-0102.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00206.png",
+          "file": "frames/v4/sleep-breath-0103.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00208.png",
+          "file": "frames/v4/sleep-breath-0104.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00210.png",
+          "file": "frames/v4/sleep-breath-0105.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00212.png",
+          "file": "frames/v4/sleep-breath-0106.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00214.png",
+          "file": "frames/v4/sleep-breath-0107.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00216.png",
+          "file": "frames/v4/sleep-breath-0108.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00217.png",
+          "file": "frames/v4/sleep-breath-0109.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00219.png",
+          "file": "frames/v4/sleep-breath-0110.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00221.png",
+          "file": "frames/v4/sleep-breath-0111.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00223.png",
+          "file": "frames/v4/sleep-breath-0112.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00225.png",
+          "file": "frames/v4/sleep-breath-0112.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00227.png",
+          "file": "frames/v4/sleep-breath-0113.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00229.png",
+          "file": "frames/v4/sleep-breath-0114.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00230.png",
+          "file": "frames/v4/sleep-breath-0115.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00232.png",
+          "file": "frames/v4/sleep-breath-0116.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00234.png",
+          "file": "frames/v4/sleep-breath-0117.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00236.png",
+          "file": "frames/v4/sleep-breath-0118.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00238.png",
+          "file": "frames/v4/sleep-breath-0119.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00240.png",
+          "file": "frames/v4/sleep-breath-0120.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00242.png",
+          "file": "frames/v4/sleep-breath-0121.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00243.png",
+          "file": "frames/v4/sleep-breath-0122.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00245.png",
+          "file": "frames/v4/sleep-breath-0123.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00247.png",
+          "file": "frames/v4/sleep-breath-0124.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00249.png",
+          "file": "frames/v4/sleep-breath-0125.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00251.png",
+          "file": "frames/v4/sleep-breath-0125.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00253.png",
+          "file": "frames/v4/sleep-breath-0126.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00255.png",
+          "file": "frames/v4/sleep-breath-0127.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00256.png",
+          "file": "frames/v4/sleep-breath-0128.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00258.png",
+          "file": "frames/v4/sleep-breath-0129.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00260.png",
+          "file": "frames/v4/sleep-breath-0130.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00262.png",
+          "file": "frames/v4/sleep-breath-0131.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00264.png",
+          "file": "frames/v4/sleep-breath-0132.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00266.png",
+          "file": "frames/v4/sleep-breath-0133.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00268.png",
+          "file": "frames/v4/sleep-breath-0134.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00270.png",
+          "file": "frames/v4/sleep-breath-0135.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00271.png",
+          "file": "frames/v4/sleep-breath-0136.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00273.png",
+          "file": "frames/v4/sleep-breath-0137.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00275.png",
+          "file": "frames/v4/sleep-breath-0138.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00277.png",
+          "file": "frames/v4/sleep-breath-0138.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00279.png",
+          "file": "frames/v4/sleep-breath-0139.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00281.png",
+          "file": "frames/v4/sleep-breath-0140.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00283.png",
+          "file": "frames/v4/sleep-breath-0141.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00284.png",
+          "file": "frames/v4/sleep-breath-0142.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00286.png",
+          "file": "frames/v4/sleep-breath-0143.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00288.png",
+          "file": "frames/v4/sleep-breath-0144.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00290.png",
+          "file": "frames/v4/sleep-breath-0145.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00292.png",
+          "file": "frames/v4/sleep-breath-0146.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00294.png",
+          "file": "frames/v4/sleep-breath-0147.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00295.png",
+          "file": "frames/v4/sleep-breath-0148.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00297.png",
+          "file": "frames/v4/sleep-breath-0149.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00299.png",
+          "file": "frames/v4/sleep-breath-0150.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00301.png",
+          "file": "frames/v4/sleep-breath-0150.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00303.png",
+          "file": "frames/v4/sleep-breath-0151.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00305.png",
+          "file": "frames/v4/sleep-breath-0152.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00306.png",
+          "file": "frames/v4/sleep-breath-0153.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00308.png",
+          "file": "frames/v4/sleep-breath-0154.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00310.png",
+          "file": "frames/v4/sleep-breath-0155.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00312.png",
+          "file": "frames/v4/sleep-breath-0156.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00314.png",
+          "file": "frames/v4/sleep-breath-0157.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00316.png",
+          "file": "frames/v4/sleep-breath-0158.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00317.png",
+          "file": "frames/v4/sleep-breath-0159.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00319.png",
+          "file": "frames/v4/sleep-breath-0160.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00321.png",
+          "file": "frames/v4/sleep-breath-0160.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00323.png",
+          "file": "frames/v4/sleep-breath-0161.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00325.png",
+          "file": "frames/v4/sleep-breath-0162.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00326.png",
+          "file": "frames/v4/sleep-breath-0163.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00328.png",
+          "file": "frames/v4/sleep-breath-0164.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00330.png",
+          "file": "frames/v4/sleep-breath-0165.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00332.png",
+          "file": "frames/v4/sleep-breath-0166.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00334.png",
+          "file": "frames/v4/sleep-breath-0167.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00335.png",
+          "file": "frames/v4/sleep-breath-0168.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00337.png",
+          "file": "frames/v4/sleep-breath-0169.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00339.png",
+          "file": "frames/v4/sleep-breath-0169.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00341.png",
+          "file": "frames/v4/sleep-breath-0170.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00342.png",
+          "file": "frames/v4/sleep-breath-0171.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00344.png",
+          "file": "frames/v4/sleep-breath-0172.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00346.png",
+          "file": "frames/v4/sleep-breath-0173.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00348.png",
+          "file": "frames/v4/sleep-breath-0174.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00349.png",
+          "file": "frames/v4/sleep-breath-0175.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00351.png",
+          "file": "frames/v4/sleep-breath-0176.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00353.png",
+          "file": "frames/v4/sleep-breath-0176.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00355.png",
+          "file": "frames/v4/sleep-breath-0177.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00356.png",
+          "file": "frames/v4/sleep-breath-0178.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00358.png",
+          "file": "frames/v4/sleep-breath-0179.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00360.png",
+          "file": "frames/v4/sleep-breath-0180.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00361.png",
+          "file": "frames/v4/sleep-breath-0181.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00363.png",
+          "file": "frames/v4/sleep-breath-0182.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00365.png",
+          "file": "frames/v4/sleep-breath-0182.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00366.png",
+          "file": "frames/v4/sleep-breath-0183.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00368.png",
+          "file": "frames/v4/sleep-breath-0184.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00370.png",
+          "file": "frames/v4/sleep-breath-0185.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00371.png",
+          "file": "frames/v4/sleep-breath-0186.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00373.png",
+          "file": "frames/v4/sleep-breath-0187.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00375.png",
+          "file": "frames/v4/sleep-breath-0187.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00376.png",
+          "file": "frames/v4/sleep-breath-0188.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00378.png",
+          "file": "frames/v4/sleep-breath-0189.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00380.png",
+          "file": "frames/v4/sleep-breath-0190.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00381.png",
+          "file": "frames/v4/sleep-breath-0191.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00383.png",
+          "file": "frames/v4/sleep-breath-0191.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00385.png",
+          "file": "frames/v4/sleep-breath-0192.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00386.png",
+          "file": "frames/v4/sleep-breath-0193.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00388.png",
+          "file": "frames/v4/sleep-breath-0194.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00389.png",
+          "file": "frames/v4/sleep-breath-0195.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00391.png",
+          "file": "frames/v4/sleep-breath-0195.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00393.png",
+          "file": "frames/v4/sleep-breath-0196.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00394.png",
+          "file": "frames/v4/sleep-breath-0197.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00396.png",
+          "file": "frames/v4/sleep-breath-0198.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00397.png",
+          "file": "frames/v4/sleep-breath-0199.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00399.png",
+          "file": "frames/v4/sleep-breath-0199.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00400.png",
+          "file": "frames/v4/sleep-breath-0200.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00402.png",
+          "file": "frames/v4/sleep-breath-0201.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00403.png",
+          "file": "frames/v4/sleep-breath-0202.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00405.png",
+          "file": "frames/v4/sleep-breath-0202.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00406.png",
+          "file": "frames/v4/sleep-breath-0203.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00408.png",
+          "file": "frames/v4/sleep-breath-0204.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00409.png",
+          "file": "frames/v4/sleep-breath-0205.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00411.png",
+          "file": "frames/v4/sleep-breath-0205.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00412.png",
+          "file": "frames/v4/sleep-breath-0206.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00414.png",
+          "file": "frames/v4/sleep-breath-0207.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00415.png",
+          "file": "frames/v4/sleep-breath-0208.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00417.png",
+          "file": "frames/v4/sleep-breath-0208.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00418.png",
+          "file": "frames/v4/sleep-breath-0209.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00420.png",
+          "file": "frames/v4/sleep-breath-0210.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00421.png",
+          "file": "frames/v4/sleep-breath-0211.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00422.png",
+          "file": "frames/v4/sleep-breath-0211.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00424.png",
+          "file": "frames/v4/sleep-breath-0212.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00425.png",
+          "file": "frames/v4/sleep-breath-0213.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00427.png",
+          "file": "frames/v4/sleep-breath-0213.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00428.png",
+          "file": "frames/v4/sleep-breath-0214.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00429.png",
+          "file": "frames/v4/sleep-breath-0215.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00431.png",
+          "file": "frames/v4/sleep-breath-0215.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00432.png",
+          "file": "frames/v4/sleep-breath-0216.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00434.png",
+          "file": "frames/v4/sleep-breath-0217.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00435.png",
+          "file": "frames/v4/sleep-breath-0217.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00436.png",
+          "file": "frames/v4/sleep-breath-0218.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00438.png",
+          "file": "frames/v4/sleep-breath-0219.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00439.png",
+          "file": "frames/v4/sleep-breath-0219.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00440.png",
+          "file": "frames/v4/sleep-breath-0220.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00441.png",
+          "file": "frames/v4/sleep-breath-0221.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00443.png",
+          "file": "frames/v4/sleep-breath-0221.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00444.png",
+          "file": "frames/v4/sleep-breath-0222.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00445.png",
+          "file": "frames/v4/sleep-breath-0223.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00446.png",
+          "file": "frames/v4/sleep-breath-0223.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00448.png",
+          "file": "frames/v4/sleep-breath-0224.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00449.png",
+          "file": "frames/v4/sleep-breath-0224.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00450.png",
+          "file": "frames/v4/sleep-breath-0225.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00451.png",
+          "file": "frames/v4/sleep-breath-0226.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00453.png",
+          "file": "frames/v4/sleep-breath-0226.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00454.png",
+          "file": "frames/v4/sleep-breath-0227.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00455.png",
+          "file": "frames/v4/sleep-breath-0227.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00456.png",
+          "file": "frames/v4/sleep-breath-0228.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00457.png",
+          "file": "frames/v4/sleep-breath-0229.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00458.png",
+          "file": "frames/v4/sleep-breath-0229.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00460.png",
+          "file": "frames/v4/sleep-breath-0230.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00461.png",
+          "file": "frames/v4/sleep-breath-0230.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00462.png",
+          "file": "frames/v4/sleep-breath-0231.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00463.png",
+          "file": "frames/v4/sleep-breath-0231.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00464.png",
+          "file": "frames/v4/sleep-breath-0232.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00465.png",
+          "file": "frames/v4/sleep-breath-0233.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00466.png",
+          "file": "frames/v4/sleep-breath-0233.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00467.png",
+          "file": "frames/v4/sleep-breath-0234.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00468.png",
+          "file": "frames/v4/sleep-breath-0234.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00469.png",
+          "file": "frames/v4/sleep-breath-0235.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00470.png",
+          "file": "frames/v4/sleep-breath-0235.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00471.png",
+          "file": "frames/v4/sleep-breath-0236.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00472.png",
+          "file": "frames/v4/sleep-breath-0236.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00473.png",
+          "file": "frames/v4/sleep-breath-0237.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00474.png",
+          "file": "frames/v4/sleep-breath-0237.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00475.png",
+          "file": "frames/v4/sleep-breath-0238.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00476.png",
+          "file": "frames/v4/sleep-breath-0238.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00477.png",
+          "file": "frames/v4/sleep-breath-0239.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00478.png",
+          "file": "frames/v4/sleep-breath-0239.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00479.png",
+          "file": "frames/v4/sleep-breath-0240.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00480.png",
+          "file": "frames/v4/sleep-breath-0240.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00481.png",
+          "file": "frames/v4/sleep-breath-0240.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00482.png",
+          "file": "frames/v4/sleep-breath-0241.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00483.png",
+          "file": "frames/v4/sleep-breath-0241.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00483.png",
+          "file": "frames/v4/sleep-breath-0242.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00484.png",
+          "file": "frames/v4/sleep-breath-0242.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00485.png",
+          "file": "frames/v4/sleep-breath-0243.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00486.png",
+          "file": "frames/v4/sleep-breath-0243.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00487.png",
+          "file": "frames/v4/sleep-breath-0243.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00488.png",
+          "file": "frames/v4/sleep-breath-0244.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00488.png",
+          "file": "frames/v4/sleep-breath-0244.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00489.png",
+          "file": "frames/v4/sleep-breath-0245.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00490.png",
+          "file": "frames/v4/sleep-breath-0245.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00491.png",
+          "file": "frames/v4/sleep-breath-0245.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00491.png",
+          "file": "frames/v4/sleep-breath-0246.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00492.png",
+          "file": "frames/v4/sleep-breath-0246.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00493.png",
+          "file": "frames/v4/sleep-breath-0246.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00494.png",
+          "file": "frames/v4/sleep-breath-0247.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00494.png",
+          "file": "frames/v4/sleep-breath-0247.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00495.png",
+          "file": "frames/v4/sleep-breath-0247.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00496.png",
+          "file": "frames/v4/sleep-breath-0248.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00496.png",
+          "file": "frames/v4/sleep-breath-0248.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00497.png",
+          "file": "frames/v4/sleep-breath-0248.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00497.png",
+          "file": "frames/v4/sleep-breath-0249.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00498.png",
+          "file": "frames/v4/sleep-breath-0249.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00499.png",
+          "file": "frames/v4/sleep-breath-0249.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00499.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00500.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00500.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00501.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00501.png",
+          "file": "frames/v4/sleep-breath-0251.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00502.png",
+          "file": "frames/v4/sleep-breath-0251.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00503.png",
+          "file": "frames/v4/sleep-breath-0251.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00503.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00503.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00504.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00504.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00505.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00505.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00506.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00506.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00507.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00507.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00507.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00508.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00508.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00508.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00512.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0256.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00511.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00510.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0255.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00509.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00508.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00508.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00508.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00507.png",
+          "file": "frames/v4/sleep-breath-0254.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00507.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00507.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00506.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00506.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00505.png",
+          "file": "frames/v4/sleep-breath-0253.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00505.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00504.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00504.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00503.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00503.png",
+          "file": "frames/v4/sleep-breath-0252.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00503.png",
+          "file": "frames/v4/sleep-breath-0251.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00502.png",
+          "file": "frames/v4/sleep-breath-0251.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00501.png",
+          "file": "frames/v4/sleep-breath-0251.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00501.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00500.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00500.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00499.png",
+          "file": "frames/v4/sleep-breath-0250.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00499.png",
+          "file": "frames/v4/sleep-breath-0249.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00498.png",
+          "file": "frames/v4/sleep-breath-0249.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00497.png",
+          "file": "frames/v4/sleep-breath-0249.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00497.png",
+          "file": "frames/v4/sleep-breath-0248.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00496.png",
+          "file": "frames/v4/sleep-breath-0248.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00496.png",
+          "file": "frames/v4/sleep-breath-0248.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00495.png",
+          "file": "frames/v4/sleep-breath-0247.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00494.png",
+          "file": "frames/v4/sleep-breath-0247.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00494.png",
+          "file": "frames/v4/sleep-breath-0247.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00493.png",
+          "file": "frames/v4/sleep-breath-0246.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00492.png",
+          "file": "frames/v4/sleep-breath-0246.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00491.png",
+          "file": "frames/v4/sleep-breath-0246.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00491.png",
+          "file": "frames/v4/sleep-breath-0245.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00490.png",
+          "file": "frames/v4/sleep-breath-0245.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00489.png",
+          "file": "frames/v4/sleep-breath-0245.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00488.png",
+          "file": "frames/v4/sleep-breath-0244.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00488.png",
+          "file": "frames/v4/sleep-breath-0244.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00487.png",
+          "file": "frames/v4/sleep-breath-0243.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00486.png",
+          "file": "frames/v4/sleep-breath-0243.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00485.png",
+          "file": "frames/v4/sleep-breath-0243.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00484.png",
+          "file": "frames/v4/sleep-breath-0242.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00483.png",
+          "file": "frames/v4/sleep-breath-0242.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00483.png",
+          "file": "frames/v4/sleep-breath-0241.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00482.png",
+          "file": "frames/v4/sleep-breath-0241.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00481.png",
+          "file": "frames/v4/sleep-breath-0240.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00480.png",
+          "file": "frames/v4/sleep-breath-0240.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00479.png",
+          "file": "frames/v4/sleep-breath-0240.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00478.png",
+          "file": "frames/v4/sleep-breath-0239.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00477.png",
+          "file": "frames/v4/sleep-breath-0239.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00476.png",
+          "file": "frames/v4/sleep-breath-0238.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00475.png",
+          "file": "frames/v4/sleep-breath-0238.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00474.png",
+          "file": "frames/v4/sleep-breath-0237.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00473.png",
+          "file": "frames/v4/sleep-breath-0237.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00472.png",
+          "file": "frames/v4/sleep-breath-0236.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00471.png",
+          "file": "frames/v4/sleep-breath-0236.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00470.png",
+          "file": "frames/v4/sleep-breath-0235.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00469.png",
+          "file": "frames/v4/sleep-breath-0235.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00468.png",
+          "file": "frames/v4/sleep-breath-0234.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00467.png",
+          "file": "frames/v4/sleep-breath-0234.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00466.png",
+          "file": "frames/v4/sleep-breath-0233.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00465.png",
+          "file": "frames/v4/sleep-breath-0233.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00464.png",
+          "file": "frames/v4/sleep-breath-0232.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00463.png",
+          "file": "frames/v4/sleep-breath-0231.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00462.png",
+          "file": "frames/v4/sleep-breath-0231.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00461.png",
+          "file": "frames/v4/sleep-breath-0230.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00460.png",
+          "file": "frames/v4/sleep-breath-0230.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00458.png",
+          "file": "frames/v4/sleep-breath-0229.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00457.png",
+          "file": "frames/v4/sleep-breath-0229.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00456.png",
+          "file": "frames/v4/sleep-breath-0228.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00455.png",
+          "file": "frames/v4/sleep-breath-0227.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00454.png",
+          "file": "frames/v4/sleep-breath-0227.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00453.png",
+          "file": "frames/v4/sleep-breath-0226.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00451.png",
+          "file": "frames/v4/sleep-breath-0226.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00450.png",
+          "file": "frames/v4/sleep-breath-0225.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00449.png",
+          "file": "frames/v4/sleep-breath-0224.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00448.png",
+          "file": "frames/v4/sleep-breath-0224.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00446.png",
+          "file": "frames/v4/sleep-breath-0223.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00445.png",
+          "file": "frames/v4/sleep-breath-0223.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00444.png",
+          "file": "frames/v4/sleep-breath-0222.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00443.png",
+          "file": "frames/v4/sleep-breath-0221.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00441.png",
+          "file": "frames/v4/sleep-breath-0221.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00440.png",
+          "file": "frames/v4/sleep-breath-0220.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00439.png",
+          "file": "frames/v4/sleep-breath-0219.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00438.png",
+          "file": "frames/v4/sleep-breath-0219.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00436.png",
+          "file": "frames/v4/sleep-breath-0218.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00435.png",
+          "file": "frames/v4/sleep-breath-0217.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00434.png",
+          "file": "frames/v4/sleep-breath-0217.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00432.png",
+          "file": "frames/v4/sleep-breath-0216.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00431.png",
+          "file": "frames/v4/sleep-breath-0215.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00429.png",
+          "file": "frames/v4/sleep-breath-0215.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00428.png",
+          "file": "frames/v4/sleep-breath-0214.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00427.png",
+          "file": "frames/v4/sleep-breath-0213.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00425.png",
+          "file": "frames/v4/sleep-breath-0213.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00424.png",
+          "file": "frames/v4/sleep-breath-0212.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00422.png",
+          "file": "frames/v4/sleep-breath-0211.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00421.png",
+          "file": "frames/v4/sleep-breath-0211.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00420.png",
+          "file": "frames/v4/sleep-breath-0210.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00418.png",
+          "file": "frames/v4/sleep-breath-0209.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00417.png",
+          "file": "frames/v4/sleep-breath-0208.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00415.png",
+          "file": "frames/v4/sleep-breath-0208.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00414.png",
+          "file": "frames/v4/sleep-breath-0207.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00412.png",
+          "file": "frames/v4/sleep-breath-0206.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00411.png",
+          "file": "frames/v4/sleep-breath-0205.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00409.png",
+          "file": "frames/v4/sleep-breath-0205.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00408.png",
+          "file": "frames/v4/sleep-breath-0204.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00406.png",
+          "file": "frames/v4/sleep-breath-0203.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00405.png",
+          "file": "frames/v4/sleep-breath-0202.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00403.png",
+          "file": "frames/v4/sleep-breath-0202.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00402.png",
+          "file": "frames/v4/sleep-breath-0201.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00400.png",
+          "file": "frames/v4/sleep-breath-0200.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00399.png",
+          "file": "frames/v4/sleep-breath-0199.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00397.png",
+          "file": "frames/v4/sleep-breath-0199.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00396.png",
+          "file": "frames/v4/sleep-breath-0198.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00394.png",
+          "file": "frames/v4/sleep-breath-0197.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00393.png",
+          "file": "frames/v4/sleep-breath-0196.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00391.png",
+          "file": "frames/v4/sleep-breath-0195.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00389.png",
+          "file": "frames/v4/sleep-breath-0195.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00388.png",
+          "file": "frames/v4/sleep-breath-0194.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00386.png",
+          "file": "frames/v4/sleep-breath-0193.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00385.png",
+          "file": "frames/v4/sleep-breath-0192.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00383.png",
+          "file": "frames/v4/sleep-breath-0191.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00381.png",
+          "file": "frames/v4/sleep-breath-0191.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00380.png",
+          "file": "frames/v4/sleep-breath-0190.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00378.png",
+          "file": "frames/v4/sleep-breath-0189.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00376.png",
+          "file": "frames/v4/sleep-breath-0188.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00375.png",
+          "file": "frames/v4/sleep-breath-0187.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00373.png",
+          "file": "frames/v4/sleep-breath-0187.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00371.png",
+          "file": "frames/v4/sleep-breath-0186.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00370.png",
+          "file": "frames/v4/sleep-breath-0185.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00368.png",
+          "file": "frames/v4/sleep-breath-0184.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00366.png",
+          "file": "frames/v4/sleep-breath-0183.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00365.png",
+          "file": "frames/v4/sleep-breath-0182.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00363.png",
+          "file": "frames/v4/sleep-breath-0182.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00361.png",
+          "file": "frames/v4/sleep-breath-0181.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00360.png",
+          "file": "frames/v4/sleep-breath-0180.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00358.png",
+          "file": "frames/v4/sleep-breath-0179.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00356.png",
+          "file": "frames/v4/sleep-breath-0178.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00355.png",
+          "file": "frames/v4/sleep-breath-0177.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00353.png",
+          "file": "frames/v4/sleep-breath-0176.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00351.png",
+          "file": "frames/v4/sleep-breath-0176.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00349.png",
+          "file": "frames/v4/sleep-breath-0175.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00348.png",
+          "file": "frames/v4/sleep-breath-0174.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00346.png",
+          "file": "frames/v4/sleep-breath-0173.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00344.png",
+          "file": "frames/v4/sleep-breath-0172.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00342.png",
+          "file": "frames/v4/sleep-breath-0171.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00341.png",
+          "file": "frames/v4/sleep-breath-0170.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00339.png",
+          "file": "frames/v4/sleep-breath-0169.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00337.png",
+          "file": "frames/v4/sleep-breath-0169.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00335.png",
+          "file": "frames/v4/sleep-breath-0168.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00334.png",
+          "file": "frames/v4/sleep-breath-0167.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00332.png",
+          "file": "frames/v4/sleep-breath-0166.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00330.png",
+          "file": "frames/v4/sleep-breath-0165.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00328.png",
+          "file": "frames/v4/sleep-breath-0164.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00326.png",
+          "file": "frames/v4/sleep-breath-0163.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00325.png",
+          "file": "frames/v4/sleep-breath-0162.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00323.png",
+          "file": "frames/v4/sleep-breath-0161.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00321.png",
+          "file": "frames/v4/sleep-breath-0160.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00319.png",
+          "file": "frames/v4/sleep-breath-0160.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00317.png",
+          "file": "frames/v4/sleep-breath-0159.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00316.png",
+          "file": "frames/v4/sleep-breath-0158.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00314.png",
+          "file": "frames/v4/sleep-breath-0157.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00312.png",
+          "file": "frames/v4/sleep-breath-0156.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00310.png",
+          "file": "frames/v4/sleep-breath-0155.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00308.png",
+          "file": "frames/v4/sleep-breath-0154.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00306.png",
+          "file": "frames/v4/sleep-breath-0153.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00305.png",
+          "file": "frames/v4/sleep-breath-0152.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00303.png",
+          "file": "frames/v4/sleep-breath-0151.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00301.png",
+          "file": "frames/v4/sleep-breath-0150.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00299.png",
+          "file": "frames/v4/sleep-breath-0150.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00297.png",
+          "file": "frames/v4/sleep-breath-0149.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00295.png",
+          "file": "frames/v4/sleep-breath-0148.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00294.png",
+          "file": "frames/v4/sleep-breath-0147.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00292.png",
+          "file": "frames/v4/sleep-breath-0146.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00290.png",
+          "file": "frames/v4/sleep-breath-0145.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00288.png",
+          "file": "frames/v4/sleep-breath-0144.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00286.png",
+          "file": "frames/v4/sleep-breath-0143.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00284.png",
+          "file": "frames/v4/sleep-breath-0142.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00283.png",
+          "file": "frames/v4/sleep-breath-0141.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00281.png",
+          "file": "frames/v4/sleep-breath-0140.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00279.png",
+          "file": "frames/v4/sleep-breath-0139.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00277.png",
+          "file": "frames/v4/sleep-breath-0138.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00275.png",
+          "file": "frames/v4/sleep-breath-0138.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00273.png",
+          "file": "frames/v4/sleep-breath-0137.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00271.png",
+          "file": "frames/v4/sleep-breath-0136.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00270.png",
+          "file": "frames/v4/sleep-breath-0135.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00268.png",
+          "file": "frames/v4/sleep-breath-0134.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00266.png",
+          "file": "frames/v4/sleep-breath-0133.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00264.png",
+          "file": "frames/v4/sleep-breath-0132.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00262.png",
+          "file": "frames/v4/sleep-breath-0131.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00260.png",
+          "file": "frames/v4/sleep-breath-0130.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00258.png",
+          "file": "frames/v4/sleep-breath-0129.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00256.png",
+          "file": "frames/v4/sleep-breath-0128.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00255.png",
+          "file": "frames/v4/sleep-breath-0127.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00253.png",
+          "file": "frames/v4/sleep-breath-0126.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00251.png",
+          "file": "frames/v4/sleep-breath-0125.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00249.png",
+          "file": "frames/v4/sleep-breath-0125.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00247.png",
+          "file": "frames/v4/sleep-breath-0124.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00245.png",
+          "file": "frames/v4/sleep-breath-0123.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00243.png",
+          "file": "frames/v4/sleep-breath-0122.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00242.png",
+          "file": "frames/v4/sleep-breath-0121.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00240.png",
+          "file": "frames/v4/sleep-breath-0120.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00238.png",
+          "file": "frames/v4/sleep-breath-0119.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00236.png",
+          "file": "frames/v4/sleep-breath-0118.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00234.png",
+          "file": "frames/v4/sleep-breath-0117.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00232.png",
+          "file": "frames/v4/sleep-breath-0116.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00230.png",
+          "file": "frames/v4/sleep-breath-0115.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00229.png",
+          "file": "frames/v4/sleep-breath-0114.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00227.png",
+          "file": "frames/v4/sleep-breath-0113.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00225.png",
+          "file": "frames/v4/sleep-breath-0112.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00223.png",
+          "file": "frames/v4/sleep-breath-0112.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00221.png",
+          "file": "frames/v4/sleep-breath-0111.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00219.png",
+          "file": "frames/v4/sleep-breath-0110.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00217.png",
+          "file": "frames/v4/sleep-breath-0109.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00216.png",
+          "file": "frames/v4/sleep-breath-0108.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00214.png",
+          "file": "frames/v4/sleep-breath-0107.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00212.png",
+          "file": "frames/v4/sleep-breath-0106.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00210.png",
+          "file": "frames/v4/sleep-breath-0105.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00208.png",
+          "file": "frames/v4/sleep-breath-0104.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00206.png",
+          "file": "frames/v4/sleep-breath-0103.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00205.png",
+          "file": "frames/v4/sleep-breath-0102.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00203.png",
+          "file": "frames/v4/sleep-breath-0101.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00201.png",
+          "file": "frames/v4/sleep-breath-0100.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00199.png",
+          "file": "frames/v4/sleep-breath-0100.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00197.png",
+          "file": "frames/v4/sleep-breath-0099.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00196.png",
+          "file": "frames/v4/sleep-breath-0098.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00194.png",
+          "file": "frames/v4/sleep-breath-0097.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00192.png",
+          "file": "frames/v4/sleep-breath-0096.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00190.png",
+          "file": "frames/v4/sleep-breath-0095.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00188.png",
+          "file": "frames/v4/sleep-breath-0094.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00187.png",
+          "file": "frames/v4/sleep-breath-0093.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00185.png",
+          "file": "frames/v4/sleep-breath-0092.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00183.png",
+          "file": "frames/v4/sleep-breath-0091.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00181.png",
+          "file": "frames/v4/sleep-breath-0091.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00179.png",
+          "file": "frames/v4/sleep-breath-0090.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00178.png",
+          "file": "frames/v4/sleep-breath-0089.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00176.png",
+          "file": "frames/v4/sleep-breath-0088.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00174.png",
+          "file": "frames/v4/sleep-breath-0087.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00172.png",
+          "file": "frames/v4/sleep-breath-0086.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00171.png",
+          "file": "frames/v4/sleep-breath-0085.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00169.png",
+          "file": "frames/v4/sleep-breath-0084.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00167.png",
+          "file": "frames/v4/sleep-breath-0084.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00165.png",
+          "file": "frames/v4/sleep-breath-0083.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00164.png",
+          "file": "frames/v4/sleep-breath-0082.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00162.png",
+          "file": "frames/v4/sleep-breath-0081.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00160.png",
+          "file": "frames/v4/sleep-breath-0080.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00158.png",
+          "file": "frames/v4/sleep-breath-0079.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00157.png",
+          "file": "frames/v4/sleep-breath-0078.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00155.png",
+          "file": "frames/v4/sleep-breath-0077.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00153.png",
+          "file": "frames/v4/sleep-breath-0077.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00152.png",
+          "file": "frames/v4/sleep-breath-0076.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00150.png",
+          "file": "frames/v4/sleep-breath-0075.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00148.png",
+          "file": "frames/v4/sleep-breath-0074.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00146.png",
+          "file": "frames/v4/sleep-breath-0073.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00145.png",
+          "file": "frames/v4/sleep-breath-0072.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00143.png",
+          "file": "frames/v4/sleep-breath-0072.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00141.png",
+          "file": "frames/v4/sleep-breath-0071.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00140.png",
+          "file": "frames/v4/sleep-breath-0070.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00138.png",
+          "file": "frames/v4/sleep-breath-0069.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00136.png",
+          "file": "frames/v4/sleep-breath-0068.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00135.png",
+          "file": "frames/v4/sleep-breath-0067.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00133.png",
+          "file": "frames/v4/sleep-breath-0067.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00132.png",
+          "file": "frames/v4/sleep-breath-0066.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00130.png",
+          "file": "frames/v4/sleep-breath-0065.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00128.png",
+          "file": "frames/v4/sleep-breath-0064.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00127.png",
+          "file": "frames/v4/sleep-breath-0063.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00125.png",
+          "file": "frames/v4/sleep-breath-0063.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00123.png",
+          "file": "frames/v4/sleep-breath-0062.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00122.png",
+          "file": "frames/v4/sleep-breath-0061.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00120.png",
+          "file": "frames/v4/sleep-breath-0060.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00119.png",
+          "file": "frames/v4/sleep-breath-0059.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00117.png",
+          "file": "frames/v4/sleep-breath-0059.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00116.png",
+          "file": "frames/v4/sleep-breath-0058.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00114.png",
+          "file": "frames/v4/sleep-breath-0057.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00112.png",
+          "file": "frames/v4/sleep-breath-0056.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00111.png",
+          "file": "frames/v4/sleep-breath-0055.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00109.png",
+          "file": "frames/v4/sleep-breath-0055.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00108.png",
+          "file": "frames/v4/sleep-breath-0054.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00106.png",
+          "file": "frames/v4/sleep-breath-0053.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00105.png",
+          "file": "frames/v4/sleep-breath-0052.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00103.png",
+          "file": "frames/v4/sleep-breath-0052.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00102.png",
+          "file": "frames/v4/sleep-breath-0051.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00100.png",
+          "file": "frames/v4/sleep-breath-0050.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00099.png",
+          "file": "frames/v4/sleep-breath-0049.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00097.png",
+          "file": "frames/v4/sleep-breath-0049.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00096.png",
+          "file": "frames/v4/sleep-breath-0048.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00095.png",
+          "file": "frames/v4/sleep-breath-0047.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00093.png",
+          "file": "frames/v4/sleep-breath-0047.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00092.png",
+          "file": "frames/v4/sleep-breath-0046.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00090.png",
+          "file": "frames/v4/sleep-breath-0045.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00089.png",
+          "file": "frames/v4/sleep-breath-0044.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00087.png",
+          "file": "frames/v4/sleep-breath-0044.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00086.png",
+          "file": "frames/v4/sleep-breath-0043.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00085.png",
+          "file": "frames/v4/sleep-breath-0042.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00083.png",
+          "file": "frames/v4/sleep-breath-0042.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00082.png",
+          "file": "frames/v4/sleep-breath-0041.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00080.png",
+          "file": "frames/v4/sleep-breath-0040.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00079.png",
+          "file": "frames/v4/sleep-breath-0040.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00078.png",
+          "file": "frames/v4/sleep-breath-0039.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00076.png",
+          "file": "frames/v4/sleep-breath-0038.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00075.png",
+          "file": "frames/v4/sleep-breath-0038.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00074.png",
+          "file": "frames/v4/sleep-breath-0037.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00073.png",
+          "file": "frames/v4/sleep-breath-0036.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00071.png",
+          "file": "frames/v4/sleep-breath-0036.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00070.png",
+          "file": "frames/v4/sleep-breath-0035.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00069.png",
+          "file": "frames/v4/sleep-breath-0034.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00067.png",
+          "file": "frames/v4/sleep-breath-0034.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00066.png",
+          "file": "frames/v4/sleep-breath-0033.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00065.png",
+          "file": "frames/v4/sleep-breath-0032.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00064.png",
+          "file": "frames/v4/sleep-breath-0032.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00062.png",
+          "file": "frames/v4/sleep-breath-0031.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00061.png",
+          "file": "frames/v4/sleep-breath-0031.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00060.png",
+          "file": "frames/v4/sleep-breath-0030.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00059.png",
+          "file": "frames/v4/sleep-breath-0029.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00058.png",
+          "file": "frames/v4/sleep-breath-0029.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00056.png",
+          "file": "frames/v4/sleep-breath-0028.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00055.png",
+          "file": "frames/v4/sleep-breath-0028.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00054.png",
+          "file": "frames/v4/sleep-breath-0027.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00053.png",
+          "file": "frames/v4/sleep-breath-0027.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00052.png",
+          "file": "frames/v4/sleep-breath-0026.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00051.png",
+          "file": "frames/v4/sleep-breath-0025.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00050.png",
+          "file": "frames/v4/sleep-breath-0025.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00049.png",
+          "file": "frames/v4/sleep-breath-0024.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00047.png",
+          "file": "frames/v4/sleep-breath-0024.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00046.png",
+          "file": "frames/v4/sleep-breath-0023.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00045.png",
+          "file": "frames/v4/sleep-breath-0023.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00044.png",
+          "file": "frames/v4/sleep-breath-0022.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00043.png",
+          "file": "frames/v4/sleep-breath-0022.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00042.png",
+          "file": "frames/v4/sleep-breath-0021.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00041.png",
+          "file": "frames/v4/sleep-breath-0021.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00040.png",
+          "file": "frames/v4/sleep-breath-0020.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00039.png",
+          "file": "frames/v4/sleep-breath-0020.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00038.png",
+          "file": "frames/v4/sleep-breath-0019.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00037.png",
+          "file": "frames/v4/sleep-breath-0019.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00036.png",
+          "file": "frames/v4/sleep-breath-0018.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00035.png",
+          "file": "frames/v4/sleep-breath-0018.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00034.png",
+          "file": "frames/v4/sleep-breath-0017.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00033.png",
+          "file": "frames/v4/sleep-breath-0017.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00033.png",
+          "file": "frames/v4/sleep-breath-0016.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00032.png",
+          "file": "frames/v4/sleep-breath-0016.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00031.png",
+          "file": "frames/v4/sleep-breath-0015.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00030.png",
+          "file": "frames/v4/sleep-breath-0015.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00029.png",
+          "file": "frames/v4/sleep-breath-0014.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00028.png",
+          "file": "frames/v4/sleep-breath-0014.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00027.png",
+          "file": "frames/v4/sleep-breath-0014.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00026.png",
+          "file": "frames/v4/sleep-breath-0013.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00026.png",
+          "file": "frames/v4/sleep-breath-0013.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00025.png",
+          "file": "frames/v4/sleep-breath-0012.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00024.png",
+          "file": "frames/v4/sleep-breath-0012.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00023.png",
+          "file": "frames/v4/sleep-breath-0012.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00022.png",
+          "file": "frames/v4/sleep-breath-0011.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00022.png",
+          "file": "frames/v4/sleep-breath-0011.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00021.png",
+          "file": "frames/v4/sleep-breath-0010.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00020.png",
+          "file": "frames/v4/sleep-breath-0010.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00020.png",
+          "file": "frames/v4/sleep-breath-0010.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00019.png",
+          "file": "frames/v4/sleep-breath-0009.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00018.png",
+          "file": "frames/v4/sleep-breath-0009.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00017.png",
+          "file": "frames/v4/sleep-breath-0009.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00017.png",
+          "file": "frames/v4/sleep-breath-0008.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00016.png",
+          "file": "frames/v4/sleep-breath-0008.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00015.png",
+          "file": "frames/v4/sleep-breath-0008.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00015.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00014.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00014.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00013.png",
+          "file": "frames/v4/sleep-breath-0007.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00012.png",
+          "file": "frames/v4/sleep-breath-0006.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00012.png",
+          "file": "frames/v4/sleep-breath-0006.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00011.png",
+          "file": "frames/v4/sleep-breath-0006.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00011.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00010.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00010.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00009.png",
+          "file": "frames/v4/sleep-breath-0005.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00009.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00008.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00008.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00007.png",
+          "file": "frames/v4/sleep-breath-0004.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00007.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00006.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00006.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00006.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00005.png",
+          "file": "frames/v4/sleep-breath-0003.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00005.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00005.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00004.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00004.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00004.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00003.png",
+          "file": "frames/v4/sleep-breath-0002.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00003.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00003.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00002.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 5
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v4/sleep-breath-0001.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 4
         },
         {
-          "file": "frames/v2/breath-00001.png",
+          "file": "frames/v2/fall_asleep-00768.png",
           "durationMs": 5
         },
         {
@@ -8307,12 +8307,19 @@
     }
   },
   "motion": {
-    "revision": "0.2.1",
+    "revision": "0.2.2",
     "sampleFps": 240,
     "display": "native WPF composition refresh",
     "interpolation": "RIFE 4.6 temporal TTA; RGBA dual matte",
     "blinkPreserved": false,
     "blinkKeyPosesPreserved": true,
-    "blinkTransitionFramesAdded": 20
+    "blinkTransitionFramesAdded": 20,
+    "sleepBreathing": {
+      "cycleMs": 3600,
+      "peakPhase": 0.25,
+      "keyframeSource": "built-in image_gen",
+      "interpolation": "RIFE 4.6 temporal TTA; RGBA dual matte",
+      "endpointCorrection": "FFmpeg float premultiplied-alpha smoothstep composition for phases 1..15; original rest is exact and phases 16 onward remain RIFE output."
+    }
   }
 }
