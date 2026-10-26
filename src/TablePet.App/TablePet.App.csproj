@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon Condition="Exists('../../assets/strawberry-cat/tray.ico')">../../assets/strawberry-cat/tray.ico</ApplicationIcon>
+    <AssemblyName>TablePet</AssemblyName>
+    <RootNamespace>TablePet.App</RootNamespace>
+    <Version>0.2.1</Version>
+    <Product>草莓猫桌宠</Product>
+    <!-- WPF owns PerMonitorV2 via app.manifest; WinForms is used only for NotifyIcon. -->
+    <NoWarn>$(NoWarn);WFO0003</NoWarn>
+    <Description>本地运行的草莓猫 Windows 桌面宠物</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../TablePet.Core/TablePet.Core.csproj" />
+    <Content Include="../../assets/strawberry-cat/frames/**" Link="Assets/strawberry-cat/frames/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="../../assets/strawberry-cat/*.json;../../assets/strawberry-cat/*.png;../../assets/strawberry-cat/*.ico" Link="Assets/strawberry-cat/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

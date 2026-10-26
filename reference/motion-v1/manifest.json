@@ -1,0 +1,217 @@
+{
+  "id": "strawberry-cat",
+  "version": 1,
+  "displayName": "草莓猫",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "anchor": {
+    "x": 232,
+    "y": 478
+  },
+  "hitRegion": {
+    "x": 64,
+    "y": 240,
+    "width": 416,
+    "height": 238
+  },
+  "clips": {
+    "idle": {
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 1000
+        }
+      ]
+    },
+    "blink": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 50
+        },
+        {
+          "file": "frames/blink-01.png",
+          "durationMs": 60
+        },
+        {
+          "file": "frames/blink-02.png",
+          "durationMs": 45
+        },
+        {
+          "file": "frames/blink-03.png",
+          "durationMs": 90
+        },
+        {
+          "file": "frames/blink-04.png",
+          "durationMs": 60
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 70
+        }
+      ]
+    },
+    "fall_asleep": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 120
+        },
+        {
+          "file": "frames/fall_asleep-01.png",
+          "durationMs": 170
+        },
+        {
+          "file": "frames/fall_asleep-02.png",
+          "durationMs": 180
+        },
+        {
+          "file": "frames/fall_asleep-03.png",
+          "durationMs": 190
+        },
+        {
+          "file": "frames/fall_asleep-04.png",
+          "durationMs": 240
+        },
+        {
+          "file": "frames/sleep_loop-00.png",
+          "durationMs": 240
+        }
+      ]
+    },
+    "sleep_loop": {
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/sleep_loop-00.png",
+          "durationMs": 450
+        },
+        {
+          "file": "frames/sleep_loop-01.png",
+          "durationMs": 500
+        },
+        {
+          "file": "frames/sleep_loop-02.png",
+          "durationMs": 500
+        },
+        {
+          "file": "frames/sleep_loop-03.png",
+          "durationMs": 550
+        },
+        {
+          "file": "frames/sleep_loop-02.png",
+          "durationMs": 450
+        },
+        {
+          "file": "frames/sleep_loop-01.png",
+          "durationMs": 500
+        },
+        {
+          "file": "frames/sleep_loop-00.png",
+          "durationMs": 450
+        }
+      ]
+    },
+    "wake": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/sleep_loop-00.png",
+          "durationMs": 160
+        },
+        {
+          "file": "frames/fall_asleep-04.png",
+          "durationMs": 160
+        },
+        {
+          "file": "frames/fall_asleep-03.png",
+          "durationMs": 140
+        },
+        {
+          "file": "frames/fall_asleep-02.png",
+          "durationMs": 120
+        },
+        {
+          "file": "frames/fall_asleep-01.png",
+          "durationMs": 100
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 100
+        }
+      ]
+    },
+    "rise": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 80
+        },
+        {
+          "file": "frames/rise-01.png",
+          "durationMs": 100
+        },
+        {
+          "file": "frames/rise-02.png",
+          "durationMs": 110
+        },
+        {
+          "file": "frames/rise-03.png",
+          "durationMs": 120
+        },
+        {
+          "file": "frames/rise-04.png",
+          "durationMs": 120
+        },
+        {
+          "file": "frames/rise-05.png",
+          "durationMs": 150
+        }
+      ]
+    },
+    "hold": {
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/rise-05.png",
+          "durationMs": 1000
+        }
+      ]
+    },
+    "settle": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/rise-05.png",
+          "durationMs": 120
+        },
+        {
+          "file": "frames/rise-04.png",
+          "durationMs": 120
+        },
+        {
+          "file": "frames/rise-03.png",
+          "durationMs": 130
+        },
+        {
+          "file": "frames/rise-02.png",
+          "durationMs": 130
+        },
+        {
+          "file": "frames/rise-01.png",
+          "durationMs": 130
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 120
+        }
+      ]
+    }
+  }
+}

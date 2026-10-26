@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TablePet.App/TablePet.App.csproj" />
+    <Project Path="src/TablePet.Core/TablePet.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TablePet.App.Tests/TablePet.App.Tests.csproj" />
+    <Project Path="tests/TablePet.Core.Tests/TablePet.Core.Tests.csproj" />
+  </Folder>
+</Solution>
