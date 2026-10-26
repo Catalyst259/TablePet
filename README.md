@@ -73,19 +73,21 @@ powershell -File tools\build.ps1 -Launch
 
 ```powershell
 git fetch origin --tags
-git archive --format=zip --output=TablePet-v0.2.1-source.zip v0.2.1
-git archive --format=zip --output=TablePet-v0.2.2-source.zip v0.2.2
+git -c core.autocrlf=false archive --format=zip --output=TablePet-v0.2.1-source.zip v0.2.1
+git -c core.autocrlf=false archive --format=zip --output=TablePet-v0.2.2-source.zip v0.2.2
 ```
 
 确认远端标签完整后，本地 `TablePet-*-source.zip` 和安装包验包产生的 `artifacts/installer-check/*/extracted` 目录可删除。`dist` 中的便携解压目录可在保留对应 ZIP 后删除；`.tools`、`node_modules`、`bin`、`obj` 为可重新安装或构建的本机依赖与缓存，不纳入 Git。当前工作目录中的源码、`assets`、`reference` 和 `.git` 是继续开发使用的文件。
 
 桌宠安装目录 `%LocalAppData%\Programs\TablePet`、个人设置 `%LocalAppData%\DesktopPet` 与这些开发目录独立。清理开发副本时保留它们。
 
+导出历史版本时显式关闭 `core.autocrlf`，可避免 Windows Git 自动改写文本换行，确保文件内容与原始 `SOURCE-MANIFEST.sha256` 一致。
+
 睡眠对比 QA 默认读取旧版解压素材。清理旧目录后，可从标签恢复基准再传给检查脚本：
 
 ```powershell
 New-Item -ItemType Directory -Force artifacts | Out-Null
-git archive --format=zip --output=artifacts/qa-v0.2.1.zip v0.2.1
+git -c core.autocrlf=false archive --format=zip --output=artifacts/qa-v0.2.1.zip v0.2.1
 Expand-Archive artifacts/qa-v0.2.1.zip artifacts/qa-v0.2.1
 node tools/qa-sleep-breathing.cjs assets/strawberry-cat artifacts/qa-v0.2.1/assets/strawberry-cat
 ```
