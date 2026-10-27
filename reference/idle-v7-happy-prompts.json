@@ -1,0 +1,30 @@
+{
+  "generator": "built-in image_gen",
+  "references": [
+    "reference/idle-v7/eyelid-shape-reference.jpg",
+    "reference/idle-v7/eyelid-weight-reference.png"
+  ],
+  "entries": [
+    {
+      "id": "happy-peak-v1",
+      "prompt": "Use case: precise-object-edit.\nImage 1 is the exact character and composition EDIT TARGET. Image 2 is ONLY a reference for the anatomy and taper of a closed cat eyelid. Image 3 is ONLY a reference for substantial eyelid stroke weight. Preserve the grey-and-white strawberry kitten identity and cartoon art style from image 1; do not borrow image 2's realism, hat, tongue, paws, text or background.\nCreate a gentle contented eye-smile key pose with coordinated small upper-body relaxation. NO head tilt or sideways roll: keep the original head angle and gaze orientation. Both eyes completely shut. Critical eyelid design: for EACH eye, the inner nasal end is the thick, softly rounded end; the line tapers smoothly toward the OUTER ear-side end, finishing in a thin fine point. The outer endpoint is a little HIGHER than the inner endpoint, a difference of only about 3–4 pixels on a 512-pixel canvas. On the picture-left eye the thick end is on the RIGHT, the thin raised end on the LEFT; on the picture-right eye the thick end is on the LEFT, the thin raised end on the RIGHT. It is one asymmetric shallow feline curve, thickest near the nose, not a symmetric crescent, not an upside-down U, not a band thickest in the middle. Stroke thickness near the inner end roughly 9–10 pixels on a 512 canvas, tapering to 1 pixel outward. No white highlights inside closed eyes, no extra brows or lashes.\nLet the cheeks lift softly and the head/ears/strawberry/cream/cone settle together downward by about 3 pixels on the 512 canvas, with a small relaxed shoulder settling (about 1 percent). Maintain exactly the original small closed cat mouth, allowing it to follow the head, no grin, tongue or new mouth. Front paws remain identically planted at the original location and height, body remains low crouching, tail stays at rest. Do not shrink/enlarge the entire character or move the paws. The head decoration follows the head as attached objects. Full character, same square framing, clean real transparent background, no ground shadow, no text, one pose only.",
+      "source": "assets/strawberry-cat/sources/idle-v7/happy-peak-v1.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-9ea4411f-2f70-475c-8578-6d70d47da020.png",
+      "selection": "selected: nasal ends thick, outer tips thin, no added head roll"
+    },
+    {
+      "id": "happy-middle-v1",
+      "prompt": "Edit target is image 1, the original resting strawberry kitten. Image 2 is the final gentle closed-eye expression reference, not a target to duplicate.\nCreate one halfway preparation keyframe for a warm eye-smile, with the same body and head orientation. NO head tilt, no sideways roll. Both eyes about 55 percent open, lower eyelids lifted softly and upper eyelids relaxed; preserve natural large black pupils and cyan iris, progressively hide them behind the lids rather than compressing the eyeballs. The open aperture has soft friendly curves, no flat sleepy or angry eyelids, no eyebrows or extra lashes. Eye contours are moving toward image 2's tapered inner-thick outer-fine lines.\nA tiny coordinated breath: head, ears, strawberry/cream/cone rise together about 3 pixels at 512 scale, shoulder/chest gently lift about 1 percent, cheeks rise subtly. The two paws stay planted at image 1's exact positions and ground line, low crouching body, tail stays at rest. Preserve original tiny mouth, nose and character shape. Do not move the entire sprite or zoom. The head decoration follows the head together. Same composition and drawing style as image 1, full character on square genuinely transparent canvas, no text or shadow.",
+      "source": "assets/strawberry-cat/sources/idle-v7/happy-middle-v1.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-c0dbaed3-9ae8-453d-aee2-3a93f2454710.png",
+      "selection": "rejected: lashes and extra inner iris slivers"
+    },
+    {
+      "id": "happy-middle-v2",
+      "prompt": "Make a small cleanup edit to this exact image. Preserve the entire image, expression, body pose, head position, all decorations, mouth, paws, scale, and transparent canvas. Correct ONLY these eye artifacts: remove the sharp outward/downward-pointing lash spikes at the OUTER corner of each eye, replacing them with a smooth rounded eye rim with no lashes. Also remove the tiny extra cyan blue sliver at each INNER nose-side corner; retain the main original cyan iris crescent on the OUTER ear-side edge only. Keep both pupils their current size, keep the white catchlights round, keep the friendly half-open aperture and raised lower eyelids. No new brows, creases, eye highlights or changes anywhere else. Do not enlarge, reposition, zoom or crop the character.",
+      "source": "assets/strawberry-cat/sources/idle-v7/happy-middle-v2.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-2769051e-0fe4-48b8-acc5-aeada8666378.png",
+      "selection": "selected: cleaned eyelid rim; full upper-body preparation pose"
+    }
+  ]
+}

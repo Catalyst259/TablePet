@@ -1,0 +1,57 @@
+{
+  "tool": "built-in image_gen",
+  "iterations": [
+    {
+      "name": "yawn",
+      "ref": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\frames\\blink-03.png",
+      "prompt": "Use case: precise-object-edit. Asset: one registered transparent keyframe for an existing Windows desktop pet animation.\nEDIT TARGET: the provided exact sleeping-eye gray and white strawberry kitten drawing. Preserve its chibi identity, warm dark brown linework, watercolor-like flat pastel fur, both ears, strawberry with green leaves, cream and waffle cone, pink cheeks, tail, tucked paws and proportions. This is an expression-only animation edit, NOT a redesign.\nCreate the peak of a sweet relaxed YAWN while the kitten remains lying low on both forepaws. Both eyes are comfortably closed, a very soft tiny upward squeeze at the inner eyelids, never looking straight at the viewer. The small mouth beneath the pink nose opens into a softly rounded vertical oval, about 30 pixels wide and 36 pixels high relative to the 512x512 target. A small soft pink tongue at the bottom, dark warm brown mouth interior. No human teeth, no fangs, no aggressive shout, no huge mouth. The nose stays exactly registered. The muzzle and cheeks gently lift only 1-2 pixels with the yawn; do not move the whole head or decorations.\nCritical invariants: keep the EXACT 512x512 composition, scale, position, generous transparent top margin, head silhouette, strawberry/waffle coordinates, paw toes and ground baseline (bottom about y=478), and tail outline unchanged. Only change the eyes/muzzle area to a tender yawning expression. Do not add limbs, eyebrows, symbols, hearts, words, drool, shadow, accessories or background. True transparent RGBA. Entire original cat remains visible with same margins. Return ONE complete full-body sprite, no sheet, no panels.",
+      "output": "assets/strawberry-cat/sources/idle-v5/yawn-peak-v1.png"
+    },
+    {
+      "name": "happy",
+      "ref": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\frames\\fall_asleep-00.png",
+      "prompt": "Use case: precise-object-edit. Asset: one registered transparent animation keyframe for an existing desktop pet. The supplied PNG is the EXACT EDIT TARGET.\nPreserve this very same low crouching gray-and-white strawberry kitten, all current linework, pastel colors, proportions, ears, white cream, strawberry, waffle, paws and tail. Create a cute quiet CONTENTED SMILE expression: both eyes become gently closed upward-curving happy crescents (like subtle smiling kitten eyes, NOT downward sleepy lids), tiny relaxed cat smile under its original pink nose, cheeks slightly lifted. Mouth stays small and almost closed, a little rounded 'w' smile, no big grin and no human teeth. The expression should feel warm, tender and naturally catlike.\nKeep the whole head silhouette, ears, decorations, nose center, both paws, chest and tail at EXACT original size and position. No full-body deformation or head bob. Body remains lying low, paws planted at original baseline. Same square composition and transparent margins as the input (512x512 reference, paws bottom near y478). All motion will be built around this peak using generated intermediate poses. No blush hearts, sparkles, text, extra eyelashes, new eyebrows, props, background or shadow.\nReturn one full-body sprite with genuinely transparent RGBA background. Only the facial expression changes; identity and registration fidelity are the priority.",
+      "output": "assets/strawberry-cat/sources/idle-v5/happy-peak-v1.png"
+    },
+    {
+      "name": "wink",
+      "ref": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\frames\\fall_asleep-00.png",
+      "prompt": "Use case: precise-object-edit. One exact registered transparent animation keyframe for an existing desktop pet; supplied image is the edit target.\nKeep the EXACT provided gray and white chibi strawberry kitten illustration, same scale, position, soft colors, thick warm dark outline, strawberry/cream/waffle, ears, muzzle, chest, tucked front paws and right-side tail. Modify ONLY its facial expression into a gentle playful wink. The eye on the VIEWER'S LEFT closes into a small soft cheerful upward curved lid, while the VIEWER'S RIGHT blue-black eye stays the same size and same original position, with its upper lid relaxed very slightly (not wide or startled). Mouth becomes a tiny pleased asymmetrical cat smile, pink nose remains unchanged. No eyebrow lift, no human-like expression or eyelashes, no tongue.\nThe wink must be sweet and restrained. Keep the head facing exactly the original direction, no tilt or pose change. Preserve head silhouette, paw toes, tail and decoration geometry exactly; body stays in the original low resting pose. Same 512x512 reference composition and margins, paw baseline near y478. Do not rescale or crop the cat, do not add text/hearts/sparkles/shadows/background or anything new. Output ONE whole-cat sprite on a true transparent RGBA background. This is a targeted expression edit, not a re-illustration.",
+      "output": "assets/strawberry-cat/sources/idle-v5/wink-peak-v1.png"
+    },
+    {
+      "name": "happy-peak-v2",
+      "ref": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\sources\\idle-v5\\happy-peak-v1.png",
+      "prompt": "Precise expression-only edit of the EXACT attached transparent cat sprite. Change ONLY the two closed eye shapes: remove their white highlights entirely and replace the thick filled black crescent shapes with simple delicate dark-brown curved closed eyelid LINES. Each lid is a gentle rounded upside-down U, a cheerful soft smile eye, approximately 5 pixels stroke width on a 512px version of this image (12px on the supplied 1280px canvas), about 65px wide by 14px tall on a 512px version. Smooth rounded ends, NO sharp eyelash points, NO solid filled wedges, NO white dots, NO eyebrows. Keep the existing cute tiny cat mouth smile. Everything else—nose, cheeks, fur, body, paw toes, tail, silhouette, decorations, colors, canvas size, registration, all transparent margins—MUST be unchanged. This will be one animation keyframe and only the eyelids need correcting to be naturally soft. Return one complete sprite on genuine transparent RGBA background. Do not zoom or reposition.",
+      "output": "assets/strawberry-cat/sources/idle-v5/happy-peak-v2.png"
+    },
+    {
+      "name": "wink-peak-v2",
+      "ref": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\sources\\idle-v5\\wink-peak-v1.png",
+      "prompt": "Precise local edit of this EXACT transparent cat sprite. ONLY correct the closed eye on the VIEWER'S LEFT: replace its thick black filled crescent with one delicate simple dark-brown closed-eyelid stroke, a smooth rounded upside-down U, approximately 5px thick, 65px wide and 14px tall relative to a 512px version. Remove the white glint/dot completely from this closed eye. No eyelashes or pointed corners, no solid filled wedge. The open blue eye on the viewer's right, mouth smile, nose, cheeks, fur, ears, strawberry/cream/waffle, body, paws, tail, silhouette, positions, scale, all colors and transparent margins must stay EXACTLY unchanged. This is a restrained friendly wink, not a redesign. Return the same one whole-cat sprite on genuine transparent RGBA background; same canvas and registration, no added marks.",
+      "output": "assets/strawberry-cat/sources/idle-v5/wink-peak-v2.png"
+    },
+    {
+      "name": "yawn-middle-v1",
+      "ref": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\sources\\idle-v5\\yawn-peak-v1.png",
+      "prompt": "Precise object edit for the MIDDLE KEYFRAME of the provided kitten's yawn. The supplied transparent full-cat yawn sprite is the exact edit target. Change ONLY the open mouth to a halfway-open relaxed yawning mouth: keep the upper lip fixed just under the same pink nose, narrow the oval mouth width to 70% of current width and reduce its height to 45% of current height, bringing the lower lip upward. Preserve the rounded warm brown outline and dark mouth interior; the soft pink tongue is still visible as a tiny rounded sliver at the bottom. All other elements MUST remain identical: closed eyelids and their delicate squeeze, pink nose, cheeks, gray and white fur, ears, exact head/body silhouette, strawberry/cream/waffle, tail, both paws, scale and placement and colors. Do not change face proportions or move the nose. Same original square canvas and transparent margins. No added features, no teeth, no text. This is one small halfway-yawn expression keyframe between mouth closed and the supplied peak. Output ONE whole-cat sprite with true RGBA transparency.",
+      "output": "assets/strawberry-cat/sources/idle-v5/yawn-middle-v1.png"
+    },
+    {
+      "name": "yawn-start-v1",
+      "ref": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\sources\\idle-v5\\yawn-middle-v1.png",
+      "prompt": "Exact local edit to create the very START of this kitten's yawn. Preserve the provided image pixel registration and all artwork except the open mouth. Make the mouth only a VERY TINY opening just beneath its unchanged pink nose: a small softly rounded dark oval about 35 pixels wide and 20 pixels high on this 1280 by 1280 image. The current mouth is far too open for this early keyframe. Shrink it dramatically, raising the lower lip to just below the nose. Its tongue is almost invisible, only a 3 pixel soft pink lower edge. Keep ALL other artwork unchanged including closed eyelids and their little squeeze, cheeks, white face fur, head silhouette, decorations, both paws, tail, lines and colors. Do not move the nose or face. True transparent RGBA, same square canvas with original margins, no new marks. Return one complete full-body kitten sprite.",
+      "output": "assets/strawberry-cat/sources/idle-v5/yawn-start-v1.png"
+    }
+  ],
+  "selection": {
+    "yawn": [
+      "yawn-start-v1.png",
+      "yawn-middle-v1.png",
+      "yawn-peak-v1.png"
+    ],
+    "happy": "happy-peak-v2.png",
+    "wink": "wink-peak-v2.png",
+    "notes": "Replace thick filled closed-eye crescents with soft line-only lids. Preserve original body via registered model-drawn facial patches. Intermediate eye poses reuse approved blink keys; RIFE provides temporal interpolation."
+  }
+}

@@ -30,6 +30,14 @@ if ($Publish) {
     $docsDirectory = Join-Path $publishDirectory 'docs'
     New-Item -ItemType Directory -Path $docsDirectory -Force | Out-Null
     Get-ChildItem -LiteralPath docs -Filter '*.md' | Copy-Item -Destination $docsDirectory -Force
+    Copy-Item -LiteralPath tools/launch-preview.cmd -Destination (Join-Path $publishDirectory 'Start-Preview.cmd') -Force
+    Copy-Item -LiteralPath tools/launch-preview.ps1 -Destination (Join-Path $publishDirectory 'Start-Preview.ps1') -Force
+    $previewDirectory = Join-Path $publishDirectory 'Assets/strawberry-cat/previews'
+    New-Item -ItemType Directory -Path $previewDirectory -Force | Out-Null
+    foreach ($previewName in @('idle-actions-preview.html', "idle-actions-preview-$version.html", 'idle-actions.gif')) {
+        $previewSource = Join-Path $workspaceRoot "assets/strawberry-cat/previews/$previewName"
+        if (Test-Path -LiteralPath $previewSource) { Copy-Item -LiteralPath $previewSource -Destination $previewDirectory -Force }
+    }
     Compress-Archive -Path (Join-Path $publishDirectory '*') -DestinationPath $packagePath -Force
     Copy-Item -LiteralPath $packagePath -Destination (Join-Path $workspaceRoot 'dist/TablePet-win-x64.zip') -Force
     $checksum = (Get-FileHash -LiteralPath $packagePath -Algorithm SHA256).Hash.ToLowerInvariant()

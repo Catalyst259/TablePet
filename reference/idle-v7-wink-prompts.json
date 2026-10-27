@@ -1,0 +1,70 @@
+{
+  "generator": "built-in image_gen",
+  "scope": "Wink key poses for local preview v7. Source artwork only; parent handles alignment and interpolation.",
+  "candidates": [
+    {
+      "name": "wink-peak-v1",
+      "prompt": "Use case: precise-object-edit.\nImage 1 is the EXACT EDIT TARGET: the original grey-and-white strawberry desktop kitten. Image 2 is ONLY an eyelid anatomy/line-shape reference; do not borrow its hat, fur, style, tongue, hand gesture or background.\nCreate one held WINK key pose. Close the eye on the LEFT SIDE OF IMAGE 1, using a single naturally asymmetric eyelid stroke like the closed eye in image 2. Essential direction: the RIGHT end of this closed stroke, nearest the nose, is visibly thick and softly rounded; it steadily tapers toward the LEFT outer corner near the ear, ending in a fine pointed tip. The outer LEFT tip is slightly higher than the inner RIGHT end, by about 5 pixels on a 512-pixel canvas. Use a relaxed shallow curve, not a symmetric crescent, not thickest at center, not a high arch, not two thin endpoints. No eye highlights inside the closed eye, no separate eyelash, no eyebrow, no wrinkle.\nThe RIGHT-SIDE open eye responds tenderly with about 15–20 percent less vertical opening, while its pupil keeps its original size, gaze and highlights; the eyelids gently conceal it. No frozen full-open stare and no tired straight half-lid.\nAdd a restrained whole gesture: gently tilt only the head about 2–3 degrees toward the closed-eye side, with ears, forehead, nose, cheeks, strawberry/cream/cone all following as one coherent head. A little shoulder compression supports the tilt. The two front paws stay planted in exactly their original places and at the same ground baseline. The kitten stays in its original low resting posture, tail essentially still. Do not translate, enlarge, shrink or rotate the entire cutout. Preserve the original tiny cat mouth, or at most its extremely subtle relaxed asymmetry; no open mouth, tongue, grin or extra smile lines.\nFaithfully preserve the original character, face proportions, illustration medium, fur palette, outline weight, all body parts and decorations. Same square canvas, composition, margins and scale as image 1, full character visible, clean true transparent background. One cat, one pose, no text.",
+      "inputs": [
+        "assets/strawberry-cat/frames/fall_asleep-00.png",
+        "C:/Users/33776/Desktop/参考图.jpg"
+      ],
+      "status": "selected for middle-pose generation: inner end thicker and rounded, outer end tapered/higher; final registration and animation review pending",
+      "source": "C:/Users/33776/.codex/generated_images/01a17e2c-acff-7781-aa5c-7f87c0ebc81d/exec-4fb833c7-6261-4371-bb8d-9d52b64b651e.png",
+      "output": "assets/strawberry-cat/sources/idle-v7/wink-peak-v1.png"
+    },
+    {
+      "name": "wink-peak-v2",
+      "prompt": "Precise local correction to image 1, this exact strawberry kitten wink pose. Change ONLY the closed eyelid on the LEFT SIDE of the image. Preserve the entire head/body gesture, the open eye, mouth, nose, all fur, paws, decorations, composition, scale and transparency exactly.\nThe current closed eyelid has the correct thickness direction: inner RIGHT end next to the nose is thick, outer LEFT end toward the ear tapers thin. Keep that direction. Make the line more restrained: lower its far LEFT outer tip slightly so it is only about 8–10 pixels higher than the inner RIGHT end on a 512px canvas (about 20–25 pixels on this source). Use one smoothly flowing asymmetric shallow curve, not a symmetric crescent and not a long diagonal slash. The thick inner end should be softly rounded and approximately 8 pixels thick at 512px, tapering continuously to a 1-pixel fine outer tip; reduce any swollen blob at the nose end. No hook, eyelash, eyebrow, crease or pupil. Do not alter the overall eye position or shorten its width appreciably. Warm natural feline wink, not eyeliner makeup. One cat, exact same pose and square canvas, true transparent background.",
+      "inputs": [
+        "assets/strawberry-cat/sources/idle-v7/wink-peak-v1.png"
+      ],
+      "source": "C:/Users/33776/.codex/generated_images/01a17e2c-acff-7781-aa5c-7f87c0ebc81d/exec-82675057-25e1-4f85-aefe-824addd3fa1e.png",
+      "output": "assets/strawberry-cat/sources/idle-v7/wink-peak-v2.png",
+      "status": "rejected: source character enlarged and slope not sufficiently reduced"
+    },
+    {
+      "name": "wink-peak-v3",
+      "prompt": "Edit this exact kitten image with one tiny local adjustment. The LEFT-SIDE closed eyelid already has the desired thick inner end near the nose and tapered thin outer end toward the ear. Keep its outer thin LEFT tip exactly where it is. Raise only its thick inner RIGHT end (the end closest to the nose) upward by about 20 pixels on this 1254px image, so the overall eyelid has a gentler slope. Smoothly connect the ends as one shallow asymmetric curve; keep the inner end thick and softly rounded, steadily tapering toward the thin outer tip. Do NOT turn it into a symmetric crescent or make the middle the thickest point. This change is inside the closed-eye area only.\nEverything else MUST remain as in this image: same open eye, same nose and tiny mouth, same subtle head gesture, same ears, fruit, cream and cone, same paws, body and tail. Keep the exact character scale, square framing and transparent margins; do not zoom or crop. Keep true alpha transparency. One kitten, no text.",
+      "inputs": [
+        "assets/strawberry-cat/sources/idle-v7/wink-peak-v1.png"
+      ],
+      "source": "C:/Users/33776/.codex/generated_images/01a17e2c-acff-7781-aa5c-7f87c0ebc81d/exec-0e061e7d-4cfd-4d23-a523-6b4f4fe9543e.png",
+      "output": "assets/strawberry-cat/sources/idle-v7/wink-peak-v3.png",
+      "status": "alternative not selected: inner end raised but curve became more arched and thicker; v1 has more relaxed flow"
+    },
+    {
+      "name": "wink-middle-v1",
+      "prompt": "Use case: precise-object-edit. Create one intermediate animation key pose.\nImage 1 is the EXACT EDIT TARGET and original neutral pose. Image 2 is the wink END-POSE reference. Produce a natural halfway pose between them.\nThe LEFT-SIDE eye is about 55 percent closed, with a smoothly curved narrowing almond-shaped opening. Let the upper eyelid gently lower and the lower eyelid lift a little, naturally occluding the original black pupil and cyan iris. Do not shrink, slide or flatten the pupil into a new eye; keep its original size, gaze and highlight proportions visible only through the opening. The upper lid should approach the end pose's thick inner-right corner near the nose and tapered outer-left tip near the ear. No hard horizontal tired eyelid, no eyebrow or fur wrinkle above it.\nThe RIGHT-SIDE eye shows only half the subtle response of image 2: about 90 percent of original vertical opening, relaxed and gentle, without changing pupil position.\nThe whole head gesture is halfway from image 1 to image 2: a very small coherent head inclination with the ears, cheeks, nose, strawberry, cream and cone following together, supported by a tiny shoulder shift. Both front paws stay planted in their exact original positions at the same ground baseline. Keep low resting body, tail almost still, original tiny mouth with no added grin, no tongue or extra mouth lines.\nKeep image 1's exact character identity, illustration style, body proportions, composition, square canvas scale and transparent margins. No zoom, cropping, whole-cutout rotation, or lifting the paws. One complete kitten, one pose, true alpha transparency, no text.",
+      "inputs": [
+        "assets/strawberry-cat/frames/fall_asleep-00.png",
+        "assets/strawberry-cat/sources/idle-v7/wink-peak-v1.png"
+      ],
+      "source": "C:/Users/33776/.codex/generated_images/01a17e2c-acff-7781-aa5c-7f87c0ebc81d/exec-efce51c2-eea3-4c21-b1a2-a192cc958764.png",
+      "output": "assets/strawberry-cat/sources/idle-v7/wink-middle-v1.png",
+      "status": "needs correction: outward eyelash spike at left outer eye; other eye responds and half pose is otherwise usable"
+    },
+    {
+      "name": "wink-middle-v2",
+      "prompt": "Make ONE tiny local correction to this exact image. Remove the sharp outward-pointing black eyelash/horn at the OUTER LEFT corner of the partially closed eye on the LEFT SIDE of the picture. The outer corner must be a smooth, clean, rounded eye contour, with no separate projecting eyelash spike or hook. Replace that small spike with the adjacent grey fur and connect the remaining upper lid smoothly to the existing eye boundary. Keep the visible blue iris, pupil, white highlights, eye aperture and both eyelids in their current positions. Do not change the rest of the expression.\nEverything else is exactly unchanged: open eye, mouth, nose, subtle head gesture, cheeks, ears, strawberry, cream, cone, paws, body, tail, frame scale, square composition and transparent margins. Do not zoom, crop, enlarge or reposition the kitten. Real transparent background.",
+      "inputs": [
+        "assets/strawberry-cat/sources/idle-v7/wink-middle-v1.png"
+      ],
+      "source": "C:/Users/33776/.codex/generated_images/01a17e2c-acff-7781-aa5c-7f87c0ebc81d/exec-06f46a84-4beb-4802-8268-5021eaaa6f93.png",
+      "output": "assets/strawberry-cat/sources/idle-v7/wink-middle-v2.png",
+      "status": "selected for registration: removed outward eyelash spike; smooth half-closed aperture and subtle companion-eye response; full animation not yet reviewed"
+    }
+  ],
+  "selected": [
+    "wink-peak-v1",
+    "wink-middle-v2"
+  ],
+  "review": {
+    "method": "Static full-character source image inspection, with 512px sampled black-stroke thickness for peak v1.",
+    "peakStrokeThickness": "Outer x125 about2px; toward inner x185 about13px, taper direction correct; outer corner above inner.",
+    "caveats": [
+      "Source model output retains small pose/scale differences; register against planted paws, not the nose, so intended head movement survives.",
+      "Selection is only for key-pose artwork. Parent must inspect registered composition and complete interpolation before acceptance."
+    ]
+  }
+}

@@ -43,12 +43,13 @@
           <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="100"/><ColumnDefinition Width="72"/></Grid.ColumnDefinitions>
           <Grid.RowDefinitions><RowDefinition Height="46"/><RowDefinition Height="46"/><RowDefinition Height="46"/><RowDefinition Height="46"/><RowDefinition Height="46"/><RowDefinition Height="46"/></Grid.RowDefinitions>
           <TextBlock Text="多久后入睡" VerticalAlignment="Center"/><TextBox x:Name="SleepSeconds" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
-          <TextBlock Text="眨眼间隔 · 最短" Grid.Row="1" VerticalAlignment="Center"/><TextBox x:Name="BlinkMin" Grid.Row="1" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Row="1" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
-          <TextBlock Text="眨眼间隔 · 最长" Grid.Row="2" VerticalAlignment="Center"/><TextBox x:Name="BlinkMax" Grid.Row="2" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Row="2" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
+          <TextBlock Text="待机动作间隔 · 最短" Grid.Row="1" VerticalAlignment="Center"/><TextBox x:Name="BlinkMin" Grid.Row="1" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Row="1" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
+          <TextBlock Text="待机动作间隔 · 最长" Grid.Row="2" VerticalAlignment="Center"/><TextBox x:Name="BlinkMax" Grid.Row="2" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Row="2" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
           <TextBlock Text="起身后停留" Grid.Row="3" VerticalAlignment="Center"/><TextBox x:Name="HoldSeconds" Grid.Row="3" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Row="3" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
           <TextBlock Text="两次动作之间的休息" Grid.Row="4" VerticalAlignment="Center"/><TextBox x:Name="CooldownSeconds" Grid.Row="4" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Row="4" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
           <TextBlock Text="悬停多久后唤醒" Grid.Row="5" VerticalAlignment="Center"/><TextBox x:Name="HoverMs" Grid.Row="5" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="毫秒" Grid.Row="5" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
         </Grid>
+        <TextBlock Text="随机播放眨眼或小表情；有多种动作时避免连续重复。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,9,0,0"/>
         <TextBlock Text="桌面显示" FontSize="18" FontWeight="SemiBold" Margin="0,24,0,12"/>
         <DockPanel><TextBlock Text="猫咪大小"/><TextBlock x:Name="SizeLabel" HorizontalAlignment="Right"/></DockPanel>
         <Slider x:Name="PetSize" Minimum="120" Maximum="480" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="Size_Changed" Margin="0,10,0,10"/>

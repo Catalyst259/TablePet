@@ -9,7 +9,7 @@
     <ApplicationIcon Condition="Exists('../../assets/strawberry-cat/tray.ico')">../../assets/strawberry-cat/tray.ico</ApplicationIcon>
     <AssemblyName>TablePet</AssemblyName>
     <RootNamespace>TablePet.App</RootNamespace>
-    <Version>0.2.2</Version>
+    <Version>0.3.0</Version>
     <Product>草莓猫桌宠</Product>
     <!-- WPF owns PerMonitorV2 via app.manifest; WinForms is used only for NotifyIcon. -->
     <NoWarn>$(NoWarn);WFO0003</NoWarn>

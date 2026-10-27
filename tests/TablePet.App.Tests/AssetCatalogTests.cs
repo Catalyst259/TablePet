@@ -107,6 +107,78 @@ public sealed class AssetCatalogTests
     }
 
     [Fact]
+    public void OldManifestDefaultsToBlinkWithoutRequiringNewExpressionClips()
+    {
+        using var directory = new TestDirectory();
+        File.WriteAllText(directory.FilePath("frame.png"), "manifest fixture");
+        File.WriteAllText(directory.FilePath("manifest.json"), CreateManifest(RequiredClips, "frame.png"));
+        var catalog = new AssetCatalog(directory.Root);
+        Assert.False(catalog.IsFallback);
+        Assert.False(catalog.HasOptionalActionFallback);
+        Assert.Equal("blink", Assert.Single(catalog.IdleActions).Clip);
+    }
+
+    [Theory]
+    [InlineData("valid")]
+    [InlineData("missing-frame")]
+    [InlineData("empty-frames")]
+    [InlineData("zero-duration")]
+    [InlineData("path-traversal")]
+    [InlineData("looping")]
+    [InlineData("wrong-endpoint")]
+    public void OptionalExpressionDefectsPreserveWorkingCoreClipsAndOtherExpressions(string defect)
+    {
+        using var directory = new TestDirectory();
+        File.WriteAllText(directory.FilePath("frame.png"), "manifest fixture");
+        File.WriteAllText(directory.FilePath("expression.png"), "manifest fixture");
+        var clips = RequiredClips.ToDictionary(name => name, name => (object)new
+        {
+            frames = new[] { new { file = "frame.png", durationMs = 100 } }
+        });
+        clips["happy"] = new { frames = new[] { new { file = "frame.png", durationMs = 100 }, new { file = "frame.png", durationMs = 100 } } };
+        var middle = defect switch { "missing-frame" => "absent.png", "path-traversal" => "../outside.png", _ => "expression.png" };
+        clips["yawn"] = new
+        {
+            loop = defect == "looping",
+            frames = defect == "empty-frames" ? [] : new[]
+            {
+                new { file = "frame.png", durationMs = 100 },
+                new { file = middle, durationMs = defect == "zero-duration" ? 0 : 100 },
+                new { file = defect == "wrong-endpoint" ? "expression.png" : "frame.png", durationMs = 100 }
+            }
+        };
+        File.WriteAllText(directory.FilePath("manifest.json"), JsonSerializer.Serialize(new
+        {
+            canvas = new { width = 512, height = 512 }, clips,
+            idleActions = new[] { new { clip = "blink", weight = 4 }, new { clip = "yawn", weight = 1 }, new { clip = "happy", weight = 2 } }
+        }));
+        var catalog = new AssetCatalog(directory.Root);
+        Assert.False(catalog.IsFallback);
+        Assert.Equal(defect != "valid", catalog.HasOptionalActionFallback);
+        Assert.All(RequiredClips, name => Assert.True(catalog.Clips.ContainsKey(name)));
+        Assert.Equal(defect == "valid" ? new[] { "blink", "yawn", "happy" } : new[] { "blink", "happy" },
+            catalog.IdleActions.Select(action => action.Clip));
+        Assert.Equal(4, catalog.IdleActions[0].Weight);
+        Assert.Equal(2, catalog.IdleActions[^1].Weight);
+    }
+
+    [Theory]
+    [InlineData("null")]
+    [InlineData("{}")]
+    [InlineData("[null, 42, {\"clip\":\"blink\",\"weight\":\"bad\"}, {\"clip\":\"missing\",\"weight\":1}]")]
+    public void MalformedOptionalActionListFallsBackToBlinkWithoutChangingThePack(string actionJson)
+    {
+        using var directory = new TestDirectory();
+        File.WriteAllText(directory.FilePath("frame.png"), "manifest fixture");
+        var basic = CreateManifest(RequiredClips, "frame.png");
+        File.WriteAllText(directory.FilePath("manifest.json"), basic[..^1] + ",\"idleActions\":" + actionJson + "}");
+        var catalog = new AssetCatalog(directory.Root);
+        Assert.False(catalog.IsFallback);
+        Assert.True(catalog.HasOptionalActionFallback);
+        Assert.Equal("blink", Assert.Single(catalog.IdleActions).Clip);
+    }
+
+    [Fact]
     public void DenseAnimationEvictsOldFramesWithinBudgetAndPreservesAlphaHitTesting()
     {
         using var directory = new TestDirectory();
@@ -141,6 +213,64 @@ public sealed class AssetCatalogTests
             Assert.True(SpinWait.SpinUntil(() => catalog.CachedFrameCount >= 4, TimeSpan.FromSeconds(5)));
             var misses = catalog.SynchronousCacheMisses;
             Assert.True(catalog.Image(frames[3]).IsFrozen);
+            Assert.Equal(misses, catalog.SynchronousCacheMisses);
+            Assert.InRange(catalog.CachedBytes, 1, catalog.CacheBudgetBytes);
+            catalog.StopPrefetch();
+        });
+    }
+
+    [Fact]
+    public void RepeatedOpeningSlotsStillWarmTheFirstThreeDifferentPoses()
+    {
+        using var directory = new TestDirectory();
+        Sta.Run(() =>
+        {
+            var frames = WriteDensePack(directory, 24);
+            var repeatedStart = Enumerable.Repeat(frames[0], 10).Concat(frames.Skip(1)).ToArray();
+            File.WriteAllText(directory.FilePath("manifest.json"), JsonSerializer.Serialize(new
+            {
+                canvas = new { width = 512, height = 512 },
+                clips = RequiredClips.ToDictionary(name => name, name => new
+                {
+                    frames = repeatedStart.Select(file => new { file, durationMs = 4 }).ToArray()
+                })
+            }));
+            var catalog = new AssetCatalog(directory.Root, 16L * 1024 * 1024);
+            catalog.CacheForSize(240, 1.5);
+            var misses = catalog.SynchronousCacheMisses;
+            foreach (var file in frames.Take(3)) Assert.True(catalog.Image(file).IsFrozen);
+            Assert.Equal(misses, catalog.SynchronousCacheMisses);
+            Assert.InRange(catalog.CachedBytes, 1, catalog.CacheBudgetBytes);
+        });
+    }
+
+    [Fact]
+    public void FittingExpressionPreparesItsReopeningBeyondALongHoldWithinTheSameBudget()
+    {
+        using var directory = new TestDirectory();
+        Sta.Run(() =>
+        {
+            var frames = WriteDensePack(directory, 24);
+            var clips = RequiredClips.ToDictionary(name => name, name => (object)new
+            {
+                frames = frames.Select(file => new { file, durationMs = 4 }).ToArray()
+            });
+            var expression = frames.Take(3).Concat(Enumerable.Repeat(frames[3], 150))
+                .Concat(frames.Skip(4).Take(4)).Append(frames[0]);
+            clips["wink"] = new { frames = expression.Select(file => new { file, durationMs = 4 }).ToArray() };
+            File.WriteAllText(directory.FilePath("manifest.json"), JsonSerializer.Serialize(new
+            {
+                canvas = new { width = 512, height = 512 }, clips
+            }));
+            var catalog = new AssetCatalog(directory.Root, 16L * 1024 * 1024);
+            catalog.CacheForSize(240, 1.5);
+            catalog.Image(frames[3]);
+            catalog.PreparePlayback(catalog.Clips["wink"], 3);
+            Assert.True(SpinWait.SpinUntil(() => catalog.Hit(frames[7], .5, .5), TimeSpan.FromSeconds(5)),
+                "The last reopening pose should be prepared during the 600ms closed-eye hold.");
+            foreach (var unrelated in frames.Skip(10)) catalog.Image(unrelated);
+            var misses = catalog.SynchronousCacheMisses;
+            foreach (var file in frames.Take(8)) Assert.True(catalog.Image(file).IsFrozen);
             Assert.Equal(misses, catalog.SynchronousCacheMisses);
             Assert.InRange(catalog.CachedBytes, 1, catalog.CacheBudgetBytes);
             catalog.StopPrefetch();

@@ -1,6 +1,6 @@
 {
   "id": "strawberry-cat",
-  "version": 4,
+  "version": 7,
   "displayName": "草莓猫",
   "canvas": {
     "width": 512,
@@ -8304,10 +8304,5588 @@
           "durationMs": 4
         }
       ]
+    },
+    "yawn": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00002.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00003.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00004.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00004.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00005.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00006.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00007.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00008.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00008.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00009.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00010.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00012.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00013.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00014.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00015.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00016.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00017.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00019.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00020.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00022.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00023.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00024.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00026.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00028.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00029.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00031.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00032.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00034.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00036.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00037.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00039.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00041.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00043.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00045.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00046.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00048.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00050.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00052.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00054.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00056.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00058.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00060.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00062.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00064.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00066.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00068.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00070.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00072.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00074.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00077.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00079.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00081.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00083.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00085.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00087.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00089.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00091.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00094.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00096.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00098.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00100.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00102.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00104.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00106.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00109.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00111.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00113.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00115.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00117.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00119.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00121.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00123.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00125.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00127.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00129.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00131.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00133.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00135.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00137.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00139.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00141.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00143.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00145.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00147.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00149.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00151.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00152.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00154.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00156.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00158.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00159.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00161.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00162.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00164.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00166.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00167.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00169.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00170.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00171.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00173.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00174.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00175.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00177.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00178.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00179.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00180.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00181.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00182.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00183.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00184.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00185.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00186.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00187.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00187.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00188.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00189.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00189.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00190.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00190.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00191.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00191.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00191.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00196.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00196.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00196.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00196.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00196.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00197.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00197.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00197.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00197.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00198.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00198.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00198.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00199.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00199.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00199.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00199.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00200.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00200.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00200.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00201.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00201.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00201.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00202.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00202.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00202.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00203.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00203.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00203.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00204.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00204.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00205.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00205.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00205.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00206.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00206.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00206.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00207.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00207.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00208.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00208.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00209.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00209.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00209.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00210.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00210.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00211.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00211.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00212.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00212.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00213.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00213.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00213.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00214.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00214.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00215.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00215.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00216.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00216.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00217.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00217.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00218.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00218.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00219.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00219.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00220.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00220.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00221.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00221.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00222.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00223.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00223.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00224.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00224.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00225.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00225.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00226.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00226.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00227.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00228.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00228.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00229.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00229.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00230.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00230.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00231.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00232.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00232.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00233.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00233.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00234.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00235.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00235.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00236.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00236.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00237.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00238.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00238.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00239.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00240.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00240.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00241.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00241.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00242.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00243.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00243.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00244.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00245.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00245.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00246.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00247.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00247.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00248.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00249.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00249.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00250.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00251.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00251.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00252.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00253.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00253.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00254.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00255.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00255.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00256.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00257.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00257.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00258.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00259.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00259.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00260.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00261.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00261.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00262.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00263.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00263.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00264.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00265.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00266.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00266.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00267.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00268.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00268.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00269.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00270.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00270.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00271.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00272.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00273.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00273.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00274.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00275.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00275.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00276.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00277.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00278.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00278.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00279.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00280.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00280.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00281.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00282.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00283.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00283.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00284.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00285.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00285.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00286.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00287.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00288.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00288.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00289.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00290.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00290.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00291.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00292.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00293.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00293.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00294.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00295.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00295.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00296.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00297.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00298.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00298.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00299.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00300.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00300.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00301.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00302.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00302.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00303.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00304.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00305.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00305.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00306.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00307.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00307.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00308.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00309.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00310.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00310.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00311.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00312.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00312.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00313.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00314.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00314.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00315.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00316.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00316.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00317.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00318.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00318.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00319.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00320.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00321.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00321.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00322.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00323.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00323.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00324.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00325.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00325.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00326.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00327.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00327.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00328.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00329.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00329.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00330.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00330.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00331.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00332.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00332.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00333.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00334.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00334.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00335.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00336.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00336.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00337.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00337.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00338.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00339.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00339.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00340.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00341.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00341.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00342.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00342.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00343.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00344.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00344.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00345.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00345.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00346.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00347.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00347.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00348.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00348.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00349.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00349.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00350.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00351.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00351.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00352.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00352.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00353.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00353.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00354.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00354.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00355.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00355.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00356.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00356.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00357.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00357.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00358.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00358.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00359.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00359.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00360.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00360.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00361.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00361.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00362.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00362.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00363.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00363.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00364.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00364.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00365.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00365.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00366.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00366.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00366.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00367.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00367.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00368.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00368.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00369.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00369.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00369.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00370.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00370.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00371.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00371.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00371.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00372.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00372.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00372.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00373.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00373.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00374.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00374.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00374.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00375.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00375.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00375.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00376.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00376.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00376.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00376.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00377.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00377.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00377.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00378.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00378.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00378.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00378.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00379.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00379.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00379.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00379.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00380.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00380.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00380.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00380.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00384.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00383.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00382.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00381.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00380.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00380.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00380.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00379.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00379.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00379.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00378.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00378.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00377.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00377.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00376.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00376.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00375.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00375.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00374.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00374.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00373.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00373.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00372.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00372.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00371.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00371.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00370.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00369.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00369.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00368.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00367.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00367.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00366.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00365.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00365.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00364.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00363.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00363.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00362.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00361.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00361.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00360.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00359.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00358.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00357.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00357.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00356.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00355.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00354.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00353.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00353.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00352.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00351.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00350.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00349.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00348.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00347.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00347.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00346.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00345.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00344.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00343.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00342.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00341.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00340.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00339.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00338.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00337.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00336.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00335.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00334.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00334.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00333.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00332.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00331.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00330.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00329.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00328.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00327.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00326.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00325.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00324.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00323.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00321.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00320.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00319.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00318.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00317.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00316.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00315.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00314.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00313.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00312.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00311.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00310.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00309.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00308.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00307.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00306.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00305.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00303.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00302.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00301.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00300.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00299.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00298.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00297.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00296.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00295.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00294.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00293.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00292.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00290.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00289.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00288.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00287.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00286.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00285.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00284.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00283.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00282.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00281.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00280.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00278.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00277.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00276.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00275.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00274.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00273.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00272.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00271.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00270.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00269.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00268.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00267.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00266.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00264.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00263.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00262.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00261.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00260.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00259.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00258.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00257.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00256.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00255.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00254.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00253.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00252.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00251.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00250.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00249.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00248.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00247.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00246.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00245.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00244.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00243.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00242.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00241.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00240.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00239.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00238.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00237.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00236.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00235.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00234.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00233.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00233.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00232.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00231.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00230.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00229.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00228.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00227.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00226.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00225.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00225.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00224.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00223.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00222.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00221.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00221.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00220.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00219.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00218.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00217.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00217.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00216.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00215.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00214.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00214.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00213.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00212.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00212.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00211.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00210.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00209.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00209.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00208.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00208.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00207.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00206.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00206.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00205.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00205.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00204.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00203.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00203.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00202.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00202.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00201.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00201.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00200.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00200.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00199.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00199.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00199.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00198.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00198.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00197.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00197.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00197.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00196.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00196.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00195.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00194.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00193.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00192.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00191.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00191.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00191.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00190.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00190.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00189.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00188.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00188.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00187.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00186.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00185.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00184.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00183.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00182.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00180.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00179.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00178.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00177.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00175.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00174.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00172.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00171.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00169.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00167.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00166.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00164.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00162.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00160.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00158.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00157.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00155.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00153.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00151.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00149.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00147.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00145.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00142.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00140.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00138.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00136.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00134.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00131.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00129.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00127.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00125.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00122.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00120.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00118.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00115.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00113.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00111.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00108.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00106.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00103.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00101.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00099.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00096.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00094.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00091.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00089.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00087.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00084.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00082.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00079.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00077.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00075.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00072.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00070.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00068.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00065.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00063.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00061.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00059.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00056.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00054.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00052.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00050.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00048.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00046.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00044.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00042.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00040.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00038.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00036.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00034.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00032.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00030.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00028.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00027.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00025.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00023.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00022.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00020.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00018.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00017.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00016.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00014.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00013.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00012.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00010.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00009.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00008.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00007.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00006.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00005.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00005.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00004.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00003.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/yawn-364b36c9f0a6-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        }
+      ]
+    },
+    "wink": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00003.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00004.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00005.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00006.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00007.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00008.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00009.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00010.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00012.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00013.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00014.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00016.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00017.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00019.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00021.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00023.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00024.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00026.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00028.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00030.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00032.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00034.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00036.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00038.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00040.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00042.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00044.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00046.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00048.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00051.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00053.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00055.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00057.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00059.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00062.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00064.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00066.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00068.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00071.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00073.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00075.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00077.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00079.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00081.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00084.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00086.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00088.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00090.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00092.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00094.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00096.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00098.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00100.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00102.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00103.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00105.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00107.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00109.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00110.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00112.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00113.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00115.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00116.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00118.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00119.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00120.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00121.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00122.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00123.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00124.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00125.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00126.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00126.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00127.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00127.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00128.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00127.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00127.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00127.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00126.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00126.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00125.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00125.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00124.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00123.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00122.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00122.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00121.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00120.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00119.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00118.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00117.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00116.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00114.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00113.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00112.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00111.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00109.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00108.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00107.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00105.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00104.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00102.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00101.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00099.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00098.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00096.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00095.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00093.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00091.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00090.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00088.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00086.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00084.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00083.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00081.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00079.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00077.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00076.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00074.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00072.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00070.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00068.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00066.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00065.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00063.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00061.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00059.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00057.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00056.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00054.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00052.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00050.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00048.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00047.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00045.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00043.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00041.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00040.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00038.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00036.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00035.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00033.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00031.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00030.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00028.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00027.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00025.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00024.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00022.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00021.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00020.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00018.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00017.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00016.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00014.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00013.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00012.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00011.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00010.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00009.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00008.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00007.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00006.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00005.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00005.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00004.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00003.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00003.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00002.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/v7/wink-8c4322f00690-00001.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        }
+      ]
     }
   },
   "motion": {
-    "revision": "0.2.2",
+    "revision": "0.3.0",
     "sampleFps": 240,
     "display": "native WPF composition refresh",
     "interpolation": "RIFE 4.6 temporal TTA; RGBA dual matte",
@@ -8320,6 +13898,42 @@
       "keyframeSource": "built-in image_gen",
       "interpolation": "RIFE 4.6 temporal TTA; RGBA dual matte",
       "endpointCorrection": "FFmpeg float premultiplied-alpha smoothstep composition for phases 1..15; original rest is exact and phases 16 onward remain RIFE output."
+    },
+    "idleExpressions": {
+      "generator": "built-in image_gen",
+      "interpolation": "RIFE 4.6 temporal TTA; complete RGBA dual-matte poses",
+      "registration": "Grounded front-paw registration; complete head, ears, decoration and shoulders remain free to move. No nose registration or facial cutout.",
+      "endpointCorrection": "FFmpeg floating-point premultiplied-alpha smoothstep only at three inferred phases beside each exact key",
+      "clips": {
+        "yawn": {
+          "durationMs": 4400,
+          "peakAtMs": 2480,
+          "uniquePngs": 342,
+          "frameSlots": 1056,
+          "revision": "v7"
+        },
+        "wink": {
+          "durationMs": 1400,
+          "peakAtMs": 650,
+          "uniquePngs": 112,
+          "frameSlots": 336,
+          "revision": "v7"
+        }
+      }
     }
-  }
+  },
+  "idleActions": [
+    {
+      "clip": "blink",
+      "weight": 4
+    },
+    {
+      "clip": "yawn",
+      "weight": 1
+    },
+    {
+      "clip": "wink",
+      "weight": 1
+    }
+  ]
 }

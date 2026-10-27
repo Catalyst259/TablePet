@@ -1,0 +1,624 @@
+{
+  "createdAt": "2026-10-27T17:44:53.518Z",
+  "revision": "0.3.0-preview.3",
+  "base": "frames/fall_asleep-00.png",
+  "baseline": {
+    "protectedClips": [
+      "idle",
+      "blink",
+      "fall_asleep",
+      "sleep_loop",
+      "wake",
+      "rise",
+      "hold",
+      "settle"
+    ],
+    "protectedPngs": 1216,
+    "manifestSHA256": "19bac52010f9808fd0d0ce701645c2ecbb1306e472c2671e9be594cbdc8bbcfc"
+  },
+  "method": "Complete model-drawn RGBA poses, Sharp canvas normalization and integer registration using front-paw pixels only. No facial matte, nose alignment, drawn eye lines or pose deformation.",
+  "requiresVisualReview": true,
+  "contact": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\keyframes-v7\\candidate-contact.png",
+  "results": [
+    {
+      "id": "yawn-half",
+      "action": "yawn",
+      "label": "yawn-half",
+      "source": "keyframes-v5/shared/half-eyes.png",
+      "sourceSHA256": "d89c58c30b4d1674fdb91a54754b55e9bb433fff0f6e2c25ec5059f4617ef7ae",
+      "sourceSize": {
+        "width": 512,
+        "height": 512
+      },
+      "crop": null,
+      "output": "keyframes-v7/yawn/yawn-half.png",
+      "outputSHA256": "bcd036b758ea3536ca91a10b91756c10b969cfd2fdcdebeaa7f828f0f49254f0",
+      "bounds": {
+        "left": 63,
+        "top": 134,
+        "right": 477,
+        "bottom": 477,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 159015
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": 0,
+          "dy": 0,
+          "residual": 0.0114657267865824
+        },
+        "appliedTranslation": {
+          "x": 0,
+          "y": 0
+        },
+        "pawResidual": 0.0114657267865824,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1143,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "yawn-low",
+      "action": "yawn",
+      "label": "yawn-low",
+      "source": "keyframes-v5/shared/low-eyes.png",
+      "sourceSHA256": "2786a595e41d00a4bac319f35f19a2f41c153b8fd4620c795ee8e95968076050",
+      "sourceSize": {
+        "width": 512,
+        "height": 512
+      },
+      "crop": null,
+      "output": "keyframes-v7/yawn/yawn-low.png",
+      "outputSHA256": "095063524f92d3c0358453831bd016bbfa1a5d9fe555aafaff86212a272225f0",
+      "bounds": {
+        "left": 63,
+        "top": 134,
+        "right": 477,
+        "bottom": 477,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 159015
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": 0,
+          "dy": 0,
+          "residual": 0.0114657267865824
+        },
+        "appliedTranslation": {
+          "x": 0,
+          "y": 0
+        },
+        "pawResidual": 0.0114657267865824,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1143,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "yawn-closed",
+      "action": "yawn",
+      "label": "yawn-closed",
+      "source": "keyframes-v5/shared/closed-eyes.png",
+      "sourceSHA256": "56320fc749a2142e2284c2342d95de5c72443176461bbe86f6ad9f235c8e2f50",
+      "sourceSize": {
+        "width": 512,
+        "height": 512
+      },
+      "crop": null,
+      "output": "keyframes-v7/yawn/yawn-closed.png",
+      "outputSHA256": "b4770fd06171b684bc360c3321428adaf41260b1c1702917514e139c49f126ee",
+      "bounds": {
+        "left": 63,
+        "top": 134,
+        "right": 477,
+        "bottom": 477,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 159015
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": 0,
+          "dy": 0,
+          "residual": 0.0114657267865824
+        },
+        "appliedTranslation": {
+          "x": 0,
+          "y": 0
+        },
+        "pawResidual": 0.0114657267865824,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1143,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "yawn-start",
+      "action": "yawn",
+      "label": "yawn-start",
+      "source": "keyframes-v5/yawn/yawn-start-v1.png",
+      "sourceSHA256": "dc6341859a2ecb05ada72193feb32433b763592934d3d0e750b9812c4f0056a0",
+      "sourceSize": {
+        "width": 512,
+        "height": 512
+      },
+      "crop": null,
+      "output": "keyframes-v7/yawn/yawn-start.png",
+      "outputSHA256": "c099e6091c9c17010a83c71de5286476aae9c95714b3052d79eaefed119ebeff",
+      "bounds": {
+        "left": 63,
+        "top": 134,
+        "right": 477,
+        "bottom": 477,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 159015
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": 0,
+          "dy": 0,
+          "residual": 0.0114657267865824
+        },
+        "appliedTranslation": {
+          "x": 0,
+          "y": 0
+        },
+        "pawResidual": 0.0114657267865824,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1143,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "yawn-middle",
+      "action": "yawn",
+      "label": "yawn-middle",
+      "source": "sources/idle-v7/yawn-middle-v1.png",
+      "sourceSHA256": "3e1ca743f3e6f9c66d550b6c4ac75443e896b1c5a35bb5fdefc66f1c2457b2c6",
+      "sourceSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "crop": null,
+      "output": "keyframes-v7/yawn/yawn-middle.png",
+      "outputSHA256": "a5f67a7998ce389a91f24179b80f962a08da7ca80a46820ea329fd7cbc2c0165",
+      "bounds": {
+        "left": 68,
+        "top": 133,
+        "right": 474,
+        "bottom": 479,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 161705
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": -4,
+          "dy": 19,
+          "residual": 12.169417031275287
+        },
+        "appliedTranslation": {
+          "x": -4,
+          "y": 19
+        },
+        "pawResidual": 12.169417031275287,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1474,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "yawn-peak",
+      "action": "yawn",
+      "label": "yawn-peak",
+      "source": "sources/idle-v7/yawn-peak-v1.png",
+      "sourceSHA256": "a8ea2d675be99e62c2c0a7928e89fe79ad19de1082098dd271a5ce34e03f6372",
+      "sourceSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "crop": null,
+      "output": "keyframes-v7/yawn/yawn-peak.png",
+      "outputSHA256": "ab135423c3edd6d02405af6454ea15d7135713e8d0e52f24826475a95a7d3d09",
+      "bounds": {
+        "left": 65,
+        "top": 126,
+        "right": 478,
+        "bottom": 478,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 157478
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": -1,
+          "dy": 14,
+          "residual": 10.757153216658514
+        },
+        "appliedTranslation": {
+          "x": -1,
+          "y": 14
+        },
+        "pawResidual": 10.757153216658514,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1602,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "happy-middle",
+      "action": "happy",
+      "label": "happy-middle",
+      "source": "sources/idle-v7/happy-middle-v2.png",
+      "sourceSHA256": "b70657f7d0d70adbda5ec3b6c7201cf22c627c9f7d6e3f7d1646aa2dae760368",
+      "sourceSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "crop": null,
+      "output": "keyframes-v7/happy/happy-middle.png",
+      "outputSHA256": "049f696cdedbc826e685709ee251da3ec9b74167102c1b3c8bee68fe84b26ac6",
+      "bounds": {
+        "left": 62,
+        "top": 137,
+        "right": 482,
+        "bottom": 478,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 158347
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": 0,
+          "dy": 15,
+          "residual": 10.975258872143502
+        },
+        "appliedTranslation": {
+          "x": 0,
+          "y": 15
+        },
+        "pawResidual": 10.975258872143502,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1540,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "happy-peak",
+      "action": "happy",
+      "label": "happy-peak",
+      "source": "sources/idle-v7/happy-peak-v1.png",
+      "sourceSHA256": "5c8bd00a5a585253b82453588a06ccf5c37eea1888efa74f76cdafb429fc077f",
+      "sourceSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "crop": null,
+      "output": "keyframes-v7/happy/happy-peak.png",
+      "outputSHA256": "b24cd152d6e1e87409a73d3b30127ea665695a048be1e65657b065495cfe8164",
+      "bounds": {
+        "left": 61,
+        "top": 135,
+        "right": 487,
+        "bottom": 478,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 156849
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": 0,
+          "dy": 4,
+          "residual": 11.642401960784202
+        },
+        "appliedTranslation": {
+          "x": 0,
+          "y": 4
+        },
+        "pawResidual": 11.642401960784202,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1630,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "wink-middle",
+      "action": "wink",
+      "label": "wink-middle",
+      "source": "sources/idle-v7/wink-middle-v2.png",
+      "sourceSHA256": "9a56dde4d27e55a51ee59e5df2e6427bba0048e678cf837fb8f9474fda9e54cd",
+      "sourceSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "crop": null,
+      "output": "keyframes-v7/wink/wink-middle.png",
+      "outputSHA256": "a2c96bb728e0314ea419b92f06bb2133abf9be3de7adb0b0ea490cb26e1f31f4",
+      "bounds": {
+        "left": 59,
+        "top": 128,
+        "right": 484,
+        "bottom": 479,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 154716
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": -3,
+          "dy": 8,
+          "residual": 12.95199927078231
+        },
+        "appliedTranslation": {
+          "x": -3,
+          "y": 8
+        },
+        "pawResidual": 12.95199927078231,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1584,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    },
+    {
+      "id": "wink-peak",
+      "action": "wink",
+      "label": "wink-peak",
+      "source": "sources/idle-v7/wink-peak-v1.png",
+      "sourceSHA256": "af6d693cfa419ce3ed0ee2cfee2b0c50517d2a314b1f7ea5d56c84ef140c7b34",
+      "sourceSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "crop": null,
+      "output": "keyframes-v7/wink/wink-peak.png",
+      "outputSHA256": "5d933dbba47aad7cf2816f74b9742e373cf6571d08954ba551ca0d8dc969db4c",
+      "bounds": {
+        "left": 60,
+        "top": 133,
+        "right": 479,
+        "bottom": 478,
+        "maximumEdgeAlpha": 0,
+        "transparentPixels": 157671
+      },
+      "registration": {
+        "basis": "grounded front paws only; never nose/head",
+        "regions": [
+          {
+            "x": 102,
+            "y": 436,
+            "width": 108,
+            "height": 43
+          },
+          {
+            "x": 214,
+            "y": 436,
+            "width": 112,
+            "height": 43
+          }
+        ],
+        "scale": 1,
+        "proposedTranslation": {
+          "dx": 0,
+          "dy": 0,
+          "residual": 8.59867647058806
+        },
+        "appliedTranslation": {
+          "x": 0,
+          "y": 0
+        },
+        "pawResidual": 8.59867647058806,
+        "manualTranslation": false
+      },
+      "transparentNoiseCleanup": {
+        "alphaThreshold": 3,
+        "removedNonzeroAlphaPixels": 1532,
+        "maximumRemovedAlpha": 3,
+        "method": "Same alpha <= 3 transparency cutoff as existing dual-matte RIFE pipeline; no visible contour cropping."
+      },
+      "completeRgbaPose": true,
+      "faceMaskUsed": false,
+      "poseWarpUsed": false
+    }
+  ]
+}

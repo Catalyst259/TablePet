@@ -1,0 +1,483 @@
+{
+  "createdAt": "2026-10-27T13:53:56.799Z",
+  "base": "frames/fall_asleep-00.png",
+  "baseSHA256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e",
+  "faceMaskBounds": {
+    "left": 83,
+    "top": 273,
+    "right": 380,
+    "bottom": 425
+  },
+  "method": "Existing model-drawn face artwork registered by nose; Sharp resize/translate and feathered face-only composite on exact approved idle body.",
+  "requiresVisualApprovalBeforeInterpolation": true,
+  "results": [
+    {
+      "source": "frames/blink-01.png",
+      "output": "keyframes-v5/shared/half-eyes.png",
+      "mask": {
+        "name": "eyes",
+        "featherSigma": 3,
+        "editedPixels": 36683,
+        "preservedPixels": 225461,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 380,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "Prepared half eyes",
+      "sourceSHA256": "2bb99fa7d31ec47c7a2f4f3ab799162a8fabe7a4241ffbddd2bfb835299f5513",
+      "sourceSize": 512,
+      "nose": {
+        "x": 230.4584096259482,
+        "y": 353.366466126079,
+        "weight": 7646
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 1,
+        "top": -5,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "d89c58c30b4d1674fdb91a54754b55e9bb433fff0f6e2c25ec5059f4617ef7ae"
+    },
+    {
+      "source": "frames/blink-02.png",
+      "output": "keyframes-v5/shared/low-eyes.png",
+      "mask": {
+        "name": "eyes",
+        "featherSigma": 3,
+        "editedPixels": 36683,
+        "preservedPixels": 225461,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 380,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "Prepared low eyes",
+      "sourceSHA256": "bc4afa4bd39d5deb3cf3968c1341013f1042f2d5eb411908dc29e3a602cfabc0",
+      "sourceSize": 512,
+      "nose": {
+        "x": 230.59520674216486,
+        "y": 355.50684751119303,
+        "weight": 7594
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 1,
+        "top": -7,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "2786a595e41d00a4bac319f35f19a2f41c153b8fd4620c795ee8e95968076050"
+    },
+    {
+      "source": "frames/blink-03.png",
+      "output": "keyframes-v5/shared/closed-eyes.png",
+      "mask": {
+        "name": "eyes",
+        "featherSigma": 3,
+        "editedPixels": 36683,
+        "preservedPixels": 225461,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 380,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "Prepared closed eyes",
+      "sourceSHA256": "94ea75789d4bcb85d450543503dca954e7d6cb7660d6148c5e9f2cd3f09593a4",
+      "sourceSize": 512,
+      "nose": {
+        "x": 230.89217594394705,
+        "y": 354.72466588815365,
+        "weight": 7707
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 1,
+        "top": -6,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "56320fc749a2142e2284c2342d95de5c72443176461bbe86f6ad9f235c8e2f50"
+    },
+    {
+      "source": "frames/blink-01.png",
+      "output": "keyframes-v5/shared/half-wink.png",
+      "mask": {
+        "name": "left-eye",
+        "featherSigma": 3,
+        "editedPixels": 17071,
+        "preservedPixels": 245073,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 226,
+          "bottom": 406
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "Prepared half wink",
+      "sourceSHA256": "2bb99fa7d31ec47c7a2f4f3ab799162a8fabe7a4241ffbddd2bfb835299f5513",
+      "sourceSize": 512,
+      "nose": {
+        "x": 230.4584096259482,
+        "y": 353.366466126079,
+        "weight": 7646
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 1,
+        "top": -5,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "76f39ffd241267c47f9df0b5a345f41c04aa82ea01a75f20213d66184ddf1894"
+    },
+    {
+      "source": "frames/blink-02.png",
+      "output": "keyframes-v5/shared/low-wink.png",
+      "mask": {
+        "name": "left-eye",
+        "featherSigma": 3,
+        "editedPixels": 17071,
+        "preservedPixels": 245073,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 226,
+          "bottom": 406
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "Prepared low wink",
+      "sourceSHA256": "bc4afa4bd39d5deb3cf3968c1341013f1042f2d5eb411908dc29e3a602cfabc0",
+      "sourceSize": 512,
+      "nose": {
+        "x": 230.59520674216486,
+        "y": 355.50684751119303,
+        "weight": 7594
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 1,
+        "top": -7,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "7c416343d5e1e2db737c6724a7993224a7d2755033be12466eade62b3d83e911"
+    },
+    {
+      "source": "sources/idle-v5/happy-peak-v1.png",
+      "output": "keyframes-v5/happy/happy-peak-v1.png",
+      "mask": {
+        "name": "face",
+        "featherSigma": 3,
+        "editedPixels": 36683,
+        "preservedPixels": 225461,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 380,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "happy-peak-v1",
+      "sourceSHA256": "804989428a49b45c18cf2f77f56f7a2bc7e017fe4cee2ac9443d2ed0a11018cc",
+      "sourceSize": 1254,
+      "nose": {
+        "x": 231.46030769230768,
+        "y": 348.5365128205128,
+        "weight": 9750
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 0,
+        "top": 0,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "dbc615ab0767a998d89f3b329d3e3e8d2faaebbc4f1d2cc32ccad7d222a2ee4f"
+    },
+    {
+      "source": "sources/idle-v5/happy-peak-v2.png",
+      "output": "keyframes-v5/happy/happy-peak-v2.png",
+      "mask": {
+        "name": "face",
+        "featherSigma": 3,
+        "editedPixels": 36683,
+        "preservedPixels": 225461,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 380,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "happy-peak-v2",
+      "sourceSHA256": "278162dd79d6cd04070081067c91895a4fd8cb39aeba227e1f4c1ece513ca13e",
+      "sourceSize": 1254,
+      "nose": {
+        "x": 231.47363913208983,
+        "y": 348.49438523030074,
+        "weight": 10508
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 0,
+        "top": 0,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "8f4d28460194e5bb5b496b2bbca0651a3a2b7b0dbd6533742bd0612b1b170c02"
+    },
+    {
+      "source": "sources/idle-v5/wink-peak-v1.png",
+      "output": "keyframes-v5/wink/wink-peak-v1.png",
+      "mask": {
+        "name": "wink",
+        "featherSigma": 3,
+        "editedPixels": 36683,
+        "preservedPixels": 225461,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 380,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "wink-peak-v1",
+      "sourceSHA256": "347c34b7696943908643ad9c4a8288ba889bcecbcfbf7f811feaa8e9e09a1320",
+      "sourceSize": 1254,
+      "nose": {
+        "x": 231.48936170212767,
+        "y": 348.4144581311435,
+        "weight": 8037
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 0,
+        "top": 0,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "6bb904a914b583d426b628158a539942f7944220165fdef48e6fdfa30d9a83eb"
+    },
+    {
+      "source": "sources/idle-v5/wink-peak-v2.png",
+      "output": "keyframes-v5/wink/wink-peak-v2.png",
+      "mask": {
+        "name": "wink",
+        "featherSigma": 3,
+        "editedPixels": 36683,
+        "preservedPixels": 225461,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 85,
+          "top": 273,
+          "right": 380,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "wink-peak-v2",
+      "sourceSHA256": "4d5a9628c1cb777e1c80dc1851df460a516cfda2b4ccd1af0e75dd66730fb694",
+      "sourceSize": 1254,
+      "nose": {
+        "x": 231.41293993119874,
+        "y": 348.3960042339243,
+        "weight": 7558
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 0,
+        "top": 0,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "e6ca75a32b4f73179ebf54ac82694576a01a765af61bbd7c7d86fc85f9d6f1c5"
+    },
+    {
+      "source": "sources/idle-v5/yawn-middle-v1.png",
+      "output": "keyframes-v5/yawn/yawn-middle-v1.png",
+      "mask": {
+        "name": "yawn",
+        "featherSigma": 3,
+        "editedPixels": 27646,
+        "preservedPixels": 234498,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 83,
+          "top": 276,
+          "right": 364,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "yawn-middle-v1",
+      "sourceSHA256": "4179e2a7fccf3e716fc2435a40839c119c0351b48c1710d720d5e54185f24053",
+      "sourceSize": 1254,
+      "nose": {
+        "x": 231.74831309041835,
+        "y": 334.17833044148836,
+        "weight": 10374
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 0,
+        "top": 14,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "c3bd5cd3427af4f87a80ec5f29287e4dba4fe7b05576a8036747c40a19370e9a"
+    },
+    {
+      "source": "sources/idle-v5/yawn-peak-v1.png",
+      "output": "keyframes-v5/yawn/yawn-peak-v1.png",
+      "mask": {
+        "name": "yawn",
+        "featherSigma": 3,
+        "editedPixels": 27646,
+        "preservedPixels": 234498,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 83,
+          "top": 276,
+          "right": 364,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "yawn-peak-v1",
+      "sourceSHA256": "3c2b3533d5c17093a5fa16f8b105da54688166c88d95349f96cb30a7e3448ed3",
+      "sourceSize": 1254,
+      "nose": {
+        "x": 231.68153537909944,
+        "y": 333.7724348834757,
+        "weight": 9483
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 0,
+        "top": 15,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "3b86f9195b02623ea7ab1e0ddfe952a9d1bdcce114a0351f8be597d3946192a9"
+    },
+    {
+      "source": "sources/idle-v5/yawn-start-v1.png",
+      "output": "keyframes-v5/yawn/yawn-start-v1.png",
+      "mask": {
+        "name": "yawn",
+        "featherSigma": 3,
+        "editedPixels": 27646,
+        "preservedPixels": 234498,
+        "outsideDifferences": 0,
+        "leftInnerEarDifferences": 0,
+        "bounds": {
+          "left": 83,
+          "top": 276,
+          "right": 364,
+          "bottom": 425
+        },
+        "contourInsetPixels": 9
+      },
+      "label": "yawn-start-v1",
+      "sourceSHA256": "7b136ed3a33f43e7322518ac192c3c0e6296a2ce1129e76b8a987dd51c693845",
+      "sourceSize": 1254,
+      "nose": {
+        "x": 231.57538891104906,
+        "y": 334.1396090945353,
+        "weight": 10028
+      },
+      "targetNose": {
+        "x": 231.7440360272639,
+        "y": 348.55939629990263,
+        "weight": 8216
+      },
+      "normalization": {
+        "resizedCanvas": 512,
+        "left": 0,
+        "top": 14,
+        "interpolation": "Sharp Lanczos3; integer translation"
+      },
+      "outputSHA256": "dc6341859a2ecb05ada72193feb32433b763592934d3d0e750b9812c4f0056a0"
+    }
+  ]
+}

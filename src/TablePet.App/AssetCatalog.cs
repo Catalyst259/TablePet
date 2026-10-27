@@ -12,11 +12,13 @@ namespace TablePet.App;
 /// <summary>Frozen WPF images in a bounded cache, with background look-ahead for dense animations.</summary>
 public sealed class AssetCatalog
 {
+    private static readonly string[] RequiredClips = ["idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle"];
     private readonly string _root;
     private readonly object _cacheLock = new();
     private readonly Dictionary<string, LinkedListNode<CacheEntry>> _cache = new();
     private readonly LinkedList<CacheEntry> _leastRecentlyUsed = new();
     private readonly HashSet<string> _entryFrames = new();
+    private readonly Dictionary<string, ClipFrameIndex> _clipFrameIndices = new();
     private HashSet<string> _playbackFrames = new();
     private Queue<string> _lookAhead = new();
     private int _generation, _workerGeneration = -1, _decodedHeight;
@@ -27,9 +29,11 @@ public sealed class AssetCatalog
     public int CachedFrameCount { get { lock (_cacheLock) return _cache.Count; } }
     public long SynchronousCacheMisses => Interlocked.Read(ref _synchronousCacheMisses);
     public IReadOnlyDictionary<string, AnimationClip> Clips { get; private set; } = null!;
+    public IReadOnlyList<IdleAction> IdleActions { get; private set; } = [new("blink", 4)];
     public double CanvasWidth { get; private set; } = 512;
     public double CanvasHeight { get; private set; } = 512;
     public bool IsFallback { get; private set; }
+    public bool HasOptionalActionFallback { get; private set; }
     public bool HasFrameFallback => _hasFrameFallback;
     private (double X, double Y, double Width, double Height)? _hitRegion;
     public AssetCatalog(string root, long cacheBudgetBytes = 128L * 1024 * 1024)
@@ -57,18 +61,43 @@ public sealed class AssetCatalog
             var clips = new Dictionary<string, AnimationClip>();
             foreach (var property in manifest.GetProperty("clips").EnumerateObject())
             {
-                var frames = property.Value.GetProperty("frames").EnumerateArray().Select(f =>
-                    new AnimationFrame(f.GetProperty("file").GetString()!, f.GetProperty("durationMs").GetInt32())).ToArray();
-                foreach (var frame in frames)
-                    if (!File.Exists(Resolve(frame.File))) throw new FileNotFoundException(frame.File);
-                var clip = new AnimationClip(property.Name, frames,
-                    property.Value.TryGetProperty("loop", out var loop) && loop.GetBoolean());
-                clip.EnsureValid();
-                clips.Add(property.Name, clip);
+                try
+                {
+                    var frames = property.Value.GetProperty("frames").EnumerateArray().Select(f =>
+                        new AnimationFrame(f.GetProperty("file").GetString()!, f.GetProperty("durationMs").GetInt32())).ToArray();
+                    foreach (var frame in frames)
+                        if (!File.Exists(Resolve(frame.File))) throw new FileNotFoundException(frame.File);
+                    var clip = new AnimationClip(property.Name, frames,
+                        property.Value.TryGetProperty("loop", out var loop) && loop.GetBoolean());
+                    clip.EnsureValid();
+                    clips.Add(property.Name, clip);
+                }
+                catch (Exception error) when (!RequiredClips.Contains(property.Name))
+                {
+                    // An optional expression must not disable the pack's working basic actions.
+                    HasOptionalActionFallback = true;
+                    ErrorLogger.Write($"可选待机动作无法加载，已跳过：{property.Name}", error);
+                }
             }
-            foreach (var required in new[] { "idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle" })
+            foreach (var required in RequiredClips)
                 if (!clips.ContainsKey(required)) throw new InvalidDataException($"Missing clip: {required}");
             Clips = clips;
+            var requested = new List<IdleAction>();
+            if (manifest.TryGetProperty("idleActions", out var actions))
+            {
+                if (actions.ValueKind != JsonValueKind.Array) HasOptionalActionFallback = true;
+                else
+                    foreach (var action in actions.EnumerateArray())
+                    {
+                        if (action.ValueKind == JsonValueKind.Object
+                            && action.TryGetProperty("clip", out var name) && name.ValueKind == JsonValueKind.String
+                            && (!action.TryGetProperty("weight", out var weight) || weight.ValueKind == JsonValueKind.Number && weight.TryGetInt32(out _)))
+                            requested.Add(new IdleAction(name.GetString()!, weight.ValueKind == JsonValueKind.Undefined ? 1 : weight.GetInt32()));
+                        else HasOptionalActionFallback = true;
+                    }
+            }
+            IdleActions = IdleAction.Available(Clips, requested);
+            HasOptionalActionFallback |= requested.Any(action => !IdleActions.Contains(action));
         }
         catch (Exception error)
         {
@@ -76,12 +105,22 @@ public sealed class AssetCatalog
             IsFallback = true;
             _hitRegion = null;
             CanvasWidth = 1208; CanvasHeight = 1255;
-            Clips = new[] { "idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle" }
+            Clips = RequiredClips
                 .ToDictionary(n => n, n => new AnimationClip(n, [new("fallback.png", 300)], n == "sleep_loop"));
         }
-        // Three entry frames give the background decoder time to start even at 240 Hz.
+        // An eased opening can repeat one image across several timeline slots.
+        // Warm three different poses so those repeats do not exhaust the head start.
+        var distinctFrames = Clips.Values.ToDictionary(clip => clip.Name, clip => clip.Frames
+            .Select((frame, index) => (frame.File, Index: index)).DistinctBy(item => item.File).ToArray());
+        foreach (var frames in distinctFrames.Values)
+            foreach (var frame in frames.Take(3)) _entryFrames.Add(frame.File);
         foreach (var clip in Clips.Values)
-            foreach (var frame in clip.Frames.Take(3)) _entryFrames.Add(frame.File);
+        {
+            var frames = distinctFrames[clip.Name];
+            _clipFrameIndices.Add(clip.Name, new ClipFrameIndex(clip.Frames,
+                frames.Select(frame => frame.File).ToArray(), frames.Select(frame => frame.Index).ToArray(),
+                _entryFrames.Count + frames.Count(frame => !_entryFrames.Contains(frame.File))));
+        }
     }
 
     private string Resolve(string file)
@@ -122,15 +161,35 @@ public sealed class AssetCatalog
             var protectedFrames = new HashSet<string> { clip.Frames[currentIndex].File };
             var duration = 0;
             var frameBytes = Math.Max(1L, (long)Math.Ceiling(_decodedHeight * CanvasWidth / CanvasHeight) * _decodedHeight * 5);
-            var lookAheadCount = (int)Math.Clamp(CacheBudgetBytes / frameBytes - _entryFrames.Count - 2, 1, 64);
-            for (var offset = 1; offset <= lookAheadCount && duration < 250; offset++)
+            if (_clipFrameIndices.TryGetValue(clip.Name, out var complete)
+                && ReferenceEquals(clip.Frames, complete.Source)
+                && complete.WorkingSetFrames <= CacheBudgetBytes / frameBytes)
             {
-                var index = currentIndex + offset;
-                if (index >= clip.Frames.Count && !clip.Loop) break;
-                var frame = clip.Frames[index % clip.Frames.Count];
-                duration += frame.DurationMs;
-                protectedFrames.Add(frame.File);
-                if (!_cache.ContainsKey(frame.File)) upcoming.Add(frame.File);
+                // Compact clips fit alongside all entry poses. Queue their distinct
+                // images beyond long holds too, and retain them through reopening.
+                // This index belongs only to fixed catalog clips; temporary return
+                // clips use the bounded look-ahead below and are never retained.
+                protectedFrames.UnionWith(complete.Files);
+                var next = Array.BinarySearch(complete.FirstIndices, currentIndex);
+                next = next >= 0 ? next + 1 : ~next;
+                for (var offset = 0; offset < complete.Files.Length; offset++)
+                {
+                    var file = complete.Files[(next + offset) % complete.Files.Length];
+                    if (!_cache.ContainsKey(file)) upcoming.Add(file);
+                }
+            }
+            else
+            {
+                var lookAheadCount = (int)Math.Clamp(CacheBudgetBytes / frameBytes - _entryFrames.Count - 2, 1, 64);
+                for (var offset = 1; offset <= lookAheadCount && duration < 250; offset++)
+                {
+                    var index = currentIndex + offset;
+                    if (index >= clip.Frames.Count && !clip.Loop) break;
+                    var frame = clip.Frames[index % clip.Frames.Count];
+                    duration += frame.DurationMs;
+                    protectedFrames.Add(frame.File);
+                    if (!_cache.ContainsKey(frame.File)) upcoming.Add(frame.File);
+                }
             }
             _playbackFrames = protectedFrames;
             _lookAhead = new Queue<string>(upcoming.Distinct());
@@ -268,4 +327,5 @@ public sealed class AssetCatalog
     }
     private sealed record CachedFrame(BitmapSource Image, byte[] Alpha);
     private sealed record CacheEntry(string File, CachedFrame Frame, long Bytes);
+    private sealed record ClipFrameIndex(IReadOnlyList<AnimationFrame> Source, string[] Files, int[] FirstIndices, int WorkingSetFrames);
 }

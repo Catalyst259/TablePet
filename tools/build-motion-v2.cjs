@@ -70,6 +70,8 @@ async function pack(){
   }};
   await smoothBlink(manifest);
   await smoothSleep(manifest);
+  // Keep the locally reviewed idle expressions in full offline rebuilds as well.
+  await require('./build-idle-v7.cjs').buildIdleExpressions(manifest);
   await fs.writeFile(path.join(root,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
   await fs.writeFile(path.join(work,'production.json'),JSON.stringify({fps,jobs,clips:Object.fromEntries(Object.entries(manifest.clips).map(([n,c])=>[n,{slots:c.frames.length,durationMs:c.frames.reduce((a,f)=>a+f.durationMs,0)}])),uniquePngs:new Set(Object.values(manifest.clips).flatMap(c=>c.frames.map(f=>f.file))).size},null,2)+'\n');
   await previews(manifest);

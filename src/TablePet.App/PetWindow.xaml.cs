@@ -33,7 +33,7 @@ public partial class PetWindow : Window
         InitializeComponent();
         _settings = settings; _assets = assets; _applied = settings.Current;
         var clock = new StopwatchClock();
-        _behavior = new BehaviorController(clock, assets.Clips, settings.Current);
+        _behavior = new BehaviorController(clock, assets.Clips, settings.Current, idleActions: assets.IdleActions);
         _behavior.StateChanged += state => ErrorLogger.Write($"状态：{state}");
         _interaction = new InteractionService(clock, settings.Current,
             SystemParameters.MinimumHorizontalDragDistance, SystemParameters.MinimumVerticalDragDistance);

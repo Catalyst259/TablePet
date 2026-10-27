@@ -2,6 +2,8 @@
 
 基于提供的草莓灰白猫原型和《Windows 桌面宠物实现方案》，使用 C#、WPF、.NET 10 LTS 和透明 PNG 帧动画。待机为较低趴坐，触碰后由前爪撑起前半身。
 
+**冻结版本：0.3.0。** 待机动作只保留眨眼、打哈欠和轻眨单眼，已移除眯眼笑。保留你确认的 v3 眨眼、4.4 秒哈欠起伏及 1.4 秒单眼动作，PNG 和时间轴不变。可打开 [冻结版动作预览](assets/strawberry-cat/previews/idle-actions-preview-0.3.0.html)；冻结范围、构建和验收说明见 [0.3.0 版本说明](docs/UPDATE-0.3.0.md)。本次为源码提交，公开安装包仍为下面的 0.2.2；构建当前源码可获得 0.3.0。
+
 **0.2.2 呼吸优化版**让睡眠时的头部与肩背轻柔起伏：每轮3.6秒，默认240DIP大小下约2.8DIP起伏，前爪保持落地，闭眼表情稳定。使用生图模型制作关键姿态，再以现成RIFE补帧。保留0.2.1的375ms柔和眨眼和“悬停唤醒、点击起身”，其余七个片段不变。移动片段按 **240fps 时间轴**制作，播放器跟随WPF合成器刷新；本机屏幕查询约为120Hz，不能在该屏幕上实际显示240fps。静态姿态不持续高频绘制。
 
 ## 安装和运行
@@ -16,12 +18,12 @@
 
 安装包尚未配置代码签名证书，Windows 可能显示“未知发布者”。可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 <安装包路径>` 对照同一 Release 的 `.sha256` 文件确认下载完整性。
 
-需要免安装版本时，可按下面的源码构建步骤生成 `dist\TablePet-0.2.2-win-x64.zip`；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
+需要免安装版本时，可按下面的源码构建步骤生成当前工作区的 `dist\TablePet-0.3.0-win-x64.zip`；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。本轮冻结版便携目录附带 `Start-Preview.cmd`，双击可正常退出旧实例并启动新版。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
 
 - 移入猫咪身体并停留片刻，只会打断入睡或唤醒睡眠，随后保持趴坐；清醒时悬停只刷新互动时间。
 - 轻点身体才会起身；睡眠中点击先唤醒再起身。悬停唤醒过程中点击，也能在醒来后接上起身。旧的悬停/点击设置自动兼容，无需重置。
 - 按住身体拖动以移动位置。静止悬停只触发一次。
-- 默认 3–8 秒眨眼，无互动 60 秒后入睡。睡眠或入睡时，悬停或明确点击可唤醒。
+- 默认每隔 3–8 秒随机播放一个待机动作（眨眼、打哈欠、轻眨单眼），无互动 60 秒后入睡。睡眠或入睡时，悬停或明确点击可唤醒。
 - 右键猫咪打开菜单；系统托盘提供隐藏/显示、设置、暂停自动动作、置顶、鼠标穿透、恢复位置、退出。
 - 再次双击程序会打开已运行实例的设置，不会产生第二只猫。`TablePet.exe --settings` 也可打开设置，`TablePet.exe --quit` 可正常退出。
 - 鼠标穿透后，通过系统托盘恢复。关闭设置不会退出宠物。自启动默认关闭，需在设置中手动开启。
@@ -43,7 +45,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools\setup-dotnet.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File tools\build.ps1 -Test -Publish
 
 # 运行构建结果
-.\dist\TablePet-0.2.2-win-x64\TablePet.exe
+.\dist\TablePet-0.3.0-win-x64\TablePet.exe
 ```
 
 其它常用命令：
@@ -65,7 +67,7 @@ powershell -File tools\package-source.ps1
 powershell -File tools\build.ps1 -Launch
 ```
 
-发布结果：`dist\TablePet-0.2.2-win-x64\TablePet.exe`、`dist\TablePet-0.2.2-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失或损坏；该检查不会操作正在运行的桌宠实例。
+构建脚本的发布结果：`dist\TablePet-0.3.0-win-x64\TablePet.exe`、`dist\TablePet-0.3.0-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。本轮冻结源码并交付便携目录，不额外生成源码 ZIP。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失、损坏或可选动作回退；该检查不会操作正在运行的桌宠实例。
 
 ## 源码备份和本地清理
 
@@ -112,7 +114,7 @@ node tools/qa-sleep-breathing.cjs assets/strawberry-cat artifacts/qa-v0.2.1/asse
 
 运行时读取 `Assets/strawberry-cat/manifest.json`。画布、锚点、片段列表、帧时长和循环方式独立于用户行为设置。各片段保持统一画布，透明 alpha 用于身体命中检测；窗口的空白点击穿透由 Windows 分层透明实现。AI 生图原始输出、提示词与切图脚本保留在仓库中。
 
-素材已预先生成，构建和运行桌宠不需要Node.js、RIFE模型或联网。当前包含1216张实际使用PNG、2062个帧槽；睡眠使用257张PNG（256张新增过渡帧与原共同睡姿），组成864槽、3.6秒的无缝循环。眨眼仍为375ms、闭眼90ms。移动片段使用约240Hz时间轴，慢动作靠近停止点可重复同一帧。
+素材已预先生成，构建和运行桌宠不需要Node.js、RIFE模型或联网。当前包含1668张实际使用PNG、3454个帧槽；新增哈欠和单眼动作共增加452张PNG、1392个帧槽。睡眠仍使用257张PNG，组成864槽、3.6秒的无缝循环。眨眼仍为375ms、闭眼90ms。移动片段使用约240Hz时间轴，慢动作靠近停止点可重复同一帧。
 
 关键姿态使用内置image_gen生成，再以现成RIFE 4.6模型补充过渡，Sharp负责切图、锚点对齐、透明双底还原和打包；睡眠最靠近休息姿态的15张帧使用FFmpeg标准浮点alpha合成消除推理接缝。无需自制动画引擎。重建时使用Node.js24，`npm ci`，`node tools/motion-setup-rife.cjs`，并安装[FFmpeg 8.1.1](https://ffmpeg.org/download.html)加入PATH，再 `npm run assets:prepare`。这些工具只用于素材制作，运行与编译桌宠使用已保存PNG即可。原图与关键帧已随源码保存，提示词在 `reference/motion-v2-prompts.json`、`reference/motion-v2-followup-prompts.json` 和 `reference/sleep-v4-prompts.json`，流程说明见 [tools/motion-pipeline.md](tools/motion-pipeline.md)。`assets:prepare:v1` 仅供复现旧版，会覆盖当前清单，不用于当前构建。
 
@@ -120,6 +122,6 @@ node tools/qa-sleep-breathing.cjs assets/strawberry-cat artifacts/qa-v0.2.1/asse
 
 ## 验证范围
 
-当前Release的75项自动测试通过，本版呼吸优化与验收记录见 [docs/UPDATE-0.2.2.md](docs/UPDATE-0.2.2.md)，眨眼和交互微调记录见 [docs/UPDATE-0.2.1.md](docs/UPDATE-0.2.1.md)。0.2.0的逐帧与高帧率缓存测量见 [docs/MOTION-QA.md](docs/MOTION-QA.md) 和 [docs/MOTION-PERFORMANCE.md](docs/MOTION-PERFORMANCE.md)，本轮未修改播放器与缓存。已操作的桌面验证与待验收项见 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。多屏混合DPI、拔屏、真实锁屏/休眠、无开发环境电脑和长时间运行仍需相应环境验证。
+当前Release的75项自动测试通过，本版呼吸优化与验收记录见 [docs/UPDATE-0.2.2.md](docs/UPDATE-0.2.2.md)，眨眼和交互微调记录见 [docs/UPDATE-0.2.1.md](docs/UPDATE-0.2.1.md)。0.2.0的逐帧与高帧率缓存测量见 [docs/MOTION-QA.md](docs/MOTION-QA.md) 和 [docs/MOTION-PERFORMANCE.md](docs/MOTION-PERFORMANCE.md)，0.3.0 新增待机动作调度与缓存预读，107 项单元测试通过；冻结检查见 [0.3.0 版本说明](docs/UPDATE-0.3.0.md)。已操作的桌面验证与待验收项见 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。多屏混合DPI、拔屏、真实锁屏/休眠、无开发环境电脑和长时间运行仍需相应环境验证。
 
 配置说明见 [docs/SETTINGS.md](docs/SETTINGS.md)。动画视觉一致性仍可通过替换素材包继续打磨，无需修改行为控制器。

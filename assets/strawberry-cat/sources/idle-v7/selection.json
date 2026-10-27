@@ -1,0 +1,113 @@
+{
+  "factor": 64,
+  "keys": [
+    {
+      "id": "yawn-half",
+      "action": "yawn",
+      "source": "keyframes-v5/shared/half-eyes.png"
+    },
+    {
+      "id": "yawn-low",
+      "action": "yawn",
+      "source": "keyframes-v5/shared/low-eyes.png"
+    },
+    {
+      "id": "yawn-closed",
+      "action": "yawn",
+      "source": "keyframes-v5/shared/closed-eyes.png"
+    },
+    {
+      "id": "yawn-start",
+      "action": "yawn",
+      "source": "keyframes-v5/yawn/yawn-start-v1.png"
+    },
+    {
+      "id": "yawn-middle",
+      "action": "yawn",
+      "source": "sources/idle-v7/yawn-middle-v1.png"
+    },
+    {
+      "id": "yawn-peak",
+      "action": "yawn",
+      "source": "sources/idle-v7/yawn-peak-v1.png"
+    },
+    {
+      "id": "wink-middle",
+      "action": "wink",
+      "source": "sources/idle-v7/wink-middle-v2.png"
+    },
+    {
+      "id": "wink-peak",
+      "action": "wink",
+      "source": "sources/idle-v7/wink-peak-v1.png"
+    }
+  ],
+  "clips": {
+    "yawn": {
+      "keys": [
+        "idle",
+        "yawn-half",
+        "yawn-low",
+        "yawn-closed",
+        "yawn-start",
+        "yawn-middle",
+        "yawn-peak"
+      ],
+      "durationMs": 4400,
+      "peakAtMs": 2480,
+      "knots": [
+        [
+          0,
+          0
+        ],
+        [
+          560,
+          3
+        ],
+        [
+          2240,
+          6
+        ],
+        [
+          2800,
+          6
+        ],
+        [
+          3900,
+          3
+        ],
+        [
+          4400,
+          0
+        ]
+      ]
+    },
+    "wink": {
+      "keys": [
+        "idle",
+        "wink-middle",
+        "wink-peak"
+      ],
+      "durationMs": 1400,
+      "peakAtMs": 650,
+      "knots": [
+        [
+          0,
+          0
+        ],
+        [
+          360,
+          2
+        ],
+        [
+          960,
+          2
+        ],
+        [
+          1400,
+          0
+        ]
+      ]
+    }
+  }
+}

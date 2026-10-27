@@ -1,0 +1,106 @@
+{
+  "sampleFps": 240,
+  "factor": 64,
+  "endpointWindow": 4,
+  "recipes": {
+    "yawn": {
+      "keys": [
+        "frames/fall_asleep-00.png",
+        "keyframes-v5/shared/half-eyes.png",
+        "keyframes-v5/shared/low-eyes.png",
+        "keyframes-v5/shared/closed-eyes.png",
+        "keyframes-v5/yawn/yawn-start-v1.png",
+        "keyframes-v5/yawn/yawn-middle-v1.png",
+        "keyframes-v5/yawn/yawn-peak-v1.png"
+      ],
+      "mask": "production",
+      "durationMs": 4400,
+      "peakAtMs": 2480,
+      "knots": [
+        [
+          0,
+          0
+        ],
+        [
+          560,
+          3
+        ],
+        [
+          2240,
+          6
+        ],
+        [
+          2800,
+          6
+        ],
+        [
+          3900,
+          3
+        ],
+        [
+          4400,
+          0
+        ]
+      ]
+    },
+    "happy": {
+      "keys": [
+        "frames/fall_asleep-00.png",
+        "keyframes-v6/happy/happy-quarter-v2.png",
+        "keyframes-v6/happy/happy-half-v2.png",
+        "keyframes-v6/happy/happy-peak-v1.png"
+      ],
+      "mask": "eyes-v6",
+      "frameDirectory": "frames/v6",
+      "durationMs": 1500,
+      "peakAtMs": 700,
+      "knots": [
+        [
+          0,
+          0
+        ],
+        [
+          380,
+          3
+        ],
+        [
+          1030,
+          3
+        ],
+        [
+          1500,
+          0
+        ]
+      ]
+    },
+    "wink": {
+      "keys": [
+        "frames/fall_asleep-00.png",
+        "keyframes-v6/wink/wink-half-v2.png",
+        "keyframes-v6/wink/wink-peak-v3.png"
+      ],
+      "mask": "eyes-v6",
+      "frameDirectory": "frames/v6",
+      "durationMs": 1060,
+      "peakAtMs": 450,
+      "knots": [
+        [
+          0,
+          0
+        ],
+        [
+          180,
+          2
+        ],
+        [
+          780,
+          2
+        ],
+        [
+          1060,
+          0
+        ]
+      ]
+    }
+  }
+}

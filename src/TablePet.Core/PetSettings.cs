@@ -13,6 +13,7 @@ public sealed record PetSettings
 {
     public int SchemaVersion { get; init; } = 1;
     public bool AutoSleep { get; init; } = true;
+    // Keep these JSON names for compatibility; they now schedule all idle expressions.
     public int BlinkMinMs { get; init; } = 3000;
     public int BlinkMaxMs { get; init; } = 8000;
     public int SleepAfterMs { get; init; } = 60000;
@@ -33,7 +34,7 @@ public sealed record PetSettings
         if (SchemaVersion != 1) errors.Add("不支持此设置版本。");
         // Bounds prevent overflow and accidentally scheduling multi-year intervals.
         if (BlinkMinMs is < 1 or > 86400000 || BlinkMaxMs is < 1 or > 86400000 || BlinkMinMs > BlinkMaxMs)
-            errors.Add("眨眼间隔须为 1 至 86400000 毫秒，且最小值不大于最大值。");
+            errors.Add("待机动作间隔须为 1 至 86400000 毫秒，且最小值不大于最大值。");
         if (SleepAfterMs is < 1 or > 604800000) errors.Add("入睡时间须为 1 至 604800000 毫秒。");
         if (!Enum.IsDefined(TriggerMode)) errors.Add("请选择悬停或点击触碰模式。");
         if (HoverDwellMs is < 1 or > 10000) errors.Add("悬停时间须为 1 至 10000 毫秒。");

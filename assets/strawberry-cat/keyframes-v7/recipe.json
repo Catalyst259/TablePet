@@ -1,0 +1,90 @@
+{
+  "sampleFps": 240,
+  "endpointWindow": 4,
+  "recipes": {
+    "yawn": {
+      "ids": [
+        "idle",
+        "yawn-half",
+        "yawn-low",
+        "yawn-closed",
+        "yawn-start",
+        "yawn-middle",
+        "yawn-peak"
+      ],
+      "keys": [
+        "frames/fall_asleep-00.png",
+        "keyframes-v7/yawn/yawn-half.png",
+        "keyframes-v7/yawn/yawn-low.png",
+        "keyframes-v7/yawn/yawn-closed.png",
+        "keyframes-v7/yawn/yawn-start.png",
+        "keyframes-v7/yawn/yawn-middle.png",
+        "keyframes-v7/yawn/yawn-peak.png"
+      ],
+      "durationMs": 4400,
+      "knots": [
+        [
+          0,
+          0
+        ],
+        [
+          560,
+          3
+        ],
+        [
+          2240,
+          6
+        ],
+        [
+          2800,
+          6
+        ],
+        [
+          3900,
+          3
+        ],
+        [
+          4400,
+          0
+        ]
+      ],
+      "factor": 64,
+      "peakIndex": 6,
+      "peakAtMs": 2480
+    },
+    "wink": {
+      "ids": [
+        "idle",
+        "wink-middle",
+        "wink-peak"
+      ],
+      "keys": [
+        "frames/fall_asleep-00.png",
+        "keyframes-v7/wink/wink-middle.png",
+        "keyframes-v7/wink/wink-peak.png"
+      ],
+      "durationMs": 1400,
+      "knots": [
+        [
+          0,
+          0
+        ],
+        [
+          360,
+          2
+        ],
+        [
+          960,
+          2
+        ],
+        [
+          1400,
+          0
+        ]
+      ],
+      "factor": 64,
+      "peakIndex": 2,
+      "peakAtMs": 650
+    }
+  }
+}

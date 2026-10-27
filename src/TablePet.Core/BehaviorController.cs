@@ -9,6 +9,7 @@ public sealed class BehaviorController
     private readonly IClock _clock;
     private readonly IReadOnlyDictionary<string, AnimationClip> _clips;
     private readonly Func<int, int, int> _randomBetween;
+    private string? _lastIdleAction;
     private long _expectedToken;
     private PetState _expectedState;
     private string _expectedClip = "";
@@ -18,11 +19,12 @@ public sealed class BehaviorController
     private long? _reactionEndedAt;
     private PetState _suspendedState;
     private bool _inputBusy;
-    private bool _reactionAfterBlink;
+    private bool _reactionAfterIdleAction;
     private bool _reactionAfterWake;
 
     public BehaviorController(IClock clock, IReadOnlyDictionary<string, AnimationClip> clips,
-        PetSettings? settings = null, Func<int, int, int>? randomBetween = null)
+        PetSettings? settings = null, Func<int, int, int>? randomBetween = null,
+        IEnumerable<IdleAction>? idleActions = null)
     {
         _clock = clock;
         _clips = clips;
@@ -34,6 +36,7 @@ public sealed class BehaviorController
             if (!clips.TryGetValue(name, out var clip)) throw new ArgumentException($"Missing animation: {name}", nameof(clips));
             clip.EnsureValid();
         }
+        IdleActions = IdleAction.Available(clips, idleActions);
         Player = new AnimationPlayer(clock);
         Player.Completed += HandleAnimationCompleted;
         LastPetInteraction = _sleepOrigin = clock.NowMilliseconds;
@@ -50,6 +53,9 @@ public sealed class BehaviorController
     public bool AutomaticActionsPaused { get; private set; }
     public long LastPetInteraction { get; private set; }
     public long NextBlinkAt { get; private set; }
+    // The stored BlinkMinMs/BlinkMaxMs settings continue to control this shared cadence.
+    public long NextIdleActionAt => NextBlinkAt;
+    public IReadOnlyList<IdleAction> IdleActions { get; }
     public long SleepDeadline => Math.Max(LastPetInteraction, _sleepOrigin) + Settings.SleepAfterMs;
     public long ReactionCooldownUntil { get; private set; }
 
@@ -70,7 +76,7 @@ public sealed class BehaviorController
             SetState(PetState.FallAsleep);
             Play("fall_asleep");
         }
-        else if (now >= NextBlinkAt) Play("blink");
+        else if (now >= NextIdleActionAt) PlayNextIdleAction();
     }
 
     /// <summary>Hover wakes into the resting pose without starting a reaction.</summary>
@@ -108,16 +114,21 @@ public sealed class BehaviorController
         }
         else if (react && State == PetState.Idle && _clock.NowMilliseconds >= ReactionCooldownUntil)
         {
-            // A touch must not pop closed blink eyes straight to the open-eyed rise pose.
-            if (Player.CurrentClip?.Name == "blink") _reactionAfterBlink = true;
-            else BeginReaction();
+            if (Player.CurrentClip?.Name == "idle") BeginReaction();
+            else if (!_reactionAfterIdleAction)
+            {
+                // Keep the short blink intact. Longer expressions return through their
+                // existing frames so a click never pops an open mouth into the rise pose.
+                _reactionAfterIdleAction = true;
+                if (Player.CurrentClip?.Name != "blink" && !ReturnLoopToStart("idle_to_react")) BeginReaction();
+            }
         }
     }
 
     public void BeginDrag()
     {
         if (IsSuspended || IsDragging) return;
-        _reactionAfterBlink = false;
+        _reactionAfterIdleAction = false;
         _reactionAfterWake = false;
         IsDragging = true;
         _dragStartedAt = _clock.NowMilliseconds;
@@ -143,7 +154,7 @@ public sealed class BehaviorController
         IsSuspended = suspended;
         if (suspended)
         {
-            _reactionAfterBlink = false;
+            _reactionAfterIdleAction = false;
             _reactionAfterWake = false;
             _suspendedState = State;
             IsDragging = false;
@@ -201,7 +212,7 @@ public sealed class BehaviorController
         switch (State)
         {
             case PetState.Idle:
-                if (_reactionAfterBlink) BeginReaction();
+                if (_reactionAfterIdleAction) BeginReaction();
                 else EnterIdle();
                 break;
             case PetState.FallAsleep:
@@ -247,7 +258,7 @@ public sealed class BehaviorController
                 delay = Math.Min(delay, Math.Max(0, _holdStartedAt + Settings.HoldMs - now));
             if (State == PetState.Idle && Player.CurrentClip?.Name == "idle" && !AutomaticActionsPaused)
             {
-                delay = Math.Min(delay, Math.Max(0, NextBlinkAt - now));
+                delay = Math.Min(delay, Math.Max(0, NextIdleActionAt - now));
                 if (Settings.AutoSleep && !_inputBusy) delay = Math.Min(delay, Math.Max(0, SleepDeadline - now));
             }
             return delay;
@@ -256,7 +267,7 @@ public sealed class BehaviorController
 
     private void BeginReaction()
     {
-        _reactionAfterBlink = false;
+        _reactionAfterIdleAction = false;
         _reactionAfterWake = false;
         SetState(PetState.React);
         ReactionPhase = ReactionPhase.Rise;
@@ -265,7 +276,7 @@ public sealed class BehaviorController
 
     private void EnterIdle()
     {
-        _reactionAfterBlink = false;
+        _reactionAfterIdleAction = false;
         _reactionAfterWake = false;
         ReactionPhase = ReactionPhase.None;
         SetState(PetState.Idle);
@@ -290,7 +301,7 @@ public sealed class BehaviorController
     }
 
     /// <summary>
-    /// A loop can be interrupted at any breathing phase. Reuse its shortest path back to
+    /// A loop or idle expression can be interrupted at any phase. Reuse its shortest path back to
     /// the shared base pose, keeping the first visible frame exact and the response brief.
     /// </summary>
     private bool ReturnLoopToStart(string name)
@@ -298,13 +309,19 @@ public sealed class BehaviorController
         var clip = Player.CurrentClip!;
         var baseFile = clip.Frames[0].File;
         if (Player.CurrentFrame!.File == baseFile) return false;
+        var omitExpressionHolds = name == "idle_to_react";
         AnimationFrame[] Path(int step)
         {
             var path = new List<AnimationFrame> { clip.Frames[Player.FrameIndex] };
             for (var offset = 1; offset <= clip.Frames.Count; offset++)
             {
                 var index = (Player.FrameIndex + step * offset + clip.Frames.Count) % clip.Frames.Count;
-                path.Add(clip.Frames[index]);
+                // A deliberate expression hold must not consume most of the brief
+                // click response. Keep one sample per consecutive visible pose;
+                // the source animation and the sleep/standing return paths keep
+                // their original timing.
+                if (!omitExpressionHolds || clip.Frames[index].File != path[^1].File)
+                    path.Add(clip.Frames[index]);
                 if (clip.Frames[index].File == baseFile) break;
             }
             return path.ToArray();
@@ -327,4 +344,23 @@ public sealed class BehaviorController
     }
 
     private void ScheduleBlink() => NextBlinkAt = _clock.NowMilliseconds + _randomBetween(Settings.BlinkMinMs, Settings.BlinkMaxMs);
+
+    private void PlayNextIdleAction()
+    {
+        var choices = IdleActions.Count == 1 ? IdleActions : IdleActions.Where(a => a.Clip != _lastIdleAction).ToArray();
+        var selected = choices[0];
+        if (choices.Count > 1)
+        {
+            var ticket = _randomBetween(1, choices.Sum(a => a.Weight));
+            foreach (var choice in choices)
+            {
+                ticket -= choice.Weight;
+                if (ticket > 0) continue;
+                selected = choice;
+                break;
+            }
+        }
+        _lastIdleAction = selected.Clip;
+        Play(selected.Clip, loop: false);
+    }
 }

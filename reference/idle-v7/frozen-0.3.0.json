@@ -1,0 +1,78 @@
+{
+  "version": "0.3.0",
+  "previousApprovedArtwork": "0.3.0-preview.3",
+  "manifestSHA256": "447600831753e9e67842981211b17a213bd854cc4696611badf9ad487cf9cbb1",
+  "idleActions": [
+    {
+      "clip": "blink",
+      "weight": 4
+    },
+    {
+      "clip": "yawn",
+      "weight": 1
+    },
+    {
+      "clip": "wink",
+      "weight": 1
+    }
+  ],
+  "removedAction": "happy",
+  "retainedClipsExactlyMatchApprovedVersion": true,
+  "approvedPngHashesVerified": 1668,
+  "clips": {
+    "idle": {
+      "timelineSHA256": "50845cf52951e22cf0473831a6a71ae822b6a92cf336340e195d0635adbbeb9c",
+      "slots": 1,
+      "durationMs": 1000
+    },
+    "blink": {
+      "timelineSHA256": "b286b0e4ccfe23a212caccb3c64fd7593fe7ca569b39e57c3debcf12942044b6",
+      "slots": 92,
+      "durationMs": 375
+    },
+    "fall_asleep": {
+      "timelineSHA256": "073dfcf76e5f7fe77d03199b74d5542b1c3a5ddd91271b4a4f2c154cd30dba70",
+      "slots": 420,
+      "durationMs": 1750
+    },
+    "sleep_loop": {
+      "timelineSHA256": "01273b95d7850652f930fac79476a67a66f25602ebf44e913946eec288d98d0f",
+      "slots": 864,
+      "durationMs": 3600
+    },
+    "wake": {
+      "timelineSHA256": "ab87875aeacda6eadebb83fb98ba034171364e23f47fbd8fad3960b1656bffa6",
+      "slots": 252,
+      "durationMs": 1050
+    },
+    "rise": {
+      "timelineSHA256": "59c511283419281313980785e431c8d8bb26bdcc1b11853f39f4fff6361fdb3d",
+      "slots": 192,
+      "durationMs": 800
+    },
+    "hold": {
+      "timelineSHA256": "c623f5c854e6d1668a5207aa17b311a57d90765557adac810f2afd47cd228bac",
+      "slots": 1,
+      "durationMs": 1000
+    },
+    "settle": {
+      "timelineSHA256": "4fcc349fa7eac85ed5d435554048d852571ba3ab548d197baba98202931b3dcf",
+      "slots": 240,
+      "durationMs": 1000
+    },
+    "yawn": {
+      "timelineSHA256": "47189bd20ede3ef9c45394f023eefc5dc1ed13cf221ec284cac296c1bb616b02",
+      "slots": 1056,
+      "durationMs": 4400
+    },
+    "wink": {
+      "timelineSHA256": "17f839a4a9379dbfd9cf41bf2efaaab00c3cd71511e1f50c49c036290179ee4e",
+      "slots": 336,
+      "durationMs": 1400
+    }
+  },
+  "pngInventorySHA256": "b070889faeacb157eba35a103aa5f7f34d8f7e6add1e609ed298a44b6aedab0a",
+  "pngInventoryHashMethod": "SHA-256 of sorted relative-path + space + encoded PNG SHA-256 + LF entries; UTF-8",
+  "recipeSHA256": "d2ef6f6d03a7b5635f10f36f661e7ede52bf539228c3dedae46b62be3a1e721f",
+  "selectionSHA256": "c6cb93037a9566651978db80350cdaddaf941c360165fc966b209eb1fd136f22"
+}

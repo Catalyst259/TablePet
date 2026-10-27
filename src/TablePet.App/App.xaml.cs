@@ -22,7 +22,7 @@ public partial class App : System.Windows.Application
                 var check = new AssetCatalog(Path.Combine(AppContext.BaseDirectory, "Assets", "strawberry-cat"));
                 check.CacheForSize(240, 1.5);
                 foreach (var file in check.Clips.Values.SelectMany(c => c.Frames).Select(f => f.File).Distinct()) check.Image(file);
-                Shutdown(check.IsFallback || check.HasFrameFallback ? 2 : 0);
+                Shutdown(check.IsFallback || check.HasFrameFallback || check.HasOptionalActionFallback ? 2 : 0);
             }
             catch (Exception error) { ErrorLogger.Write("素材自检失败。", error); Shutdown(2); }
             return;

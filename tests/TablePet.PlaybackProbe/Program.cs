@@ -42,7 +42,8 @@ internal static class Program
             maxCache = Math.Max(maxCache, catalog.CachedBytes);
             rendered++;
         };
-        foreach (var name in new[] { "rise", "hold", "settle", "fall_asleep", "sleep_loop", "wake", "blink" })
+        foreach (var name in new[] { "rise", "hold", "settle", "fall_asleep", "sleep_loop", "wake" }
+            .Concat(catalog.IdleActions.Select(action => action.Clip)))
         {
             fetchTimes.Clear(); actualIntervals.Clear(); rendered = 0;
             var beforeMisses = catalog.SynchronousCacheMisses;
@@ -88,7 +89,7 @@ internal static class Program
         catalog.StopPrefetch();
         Console.WriteLine(JsonSerializer.Serialize(new
         {
-            passed = !catalog.IsFallback && !catalog.HasFrameFallback && maxCache <= catalog.CacheBudgetBytes,
+            passed = !catalog.IsFallback && !catalog.HasFrameFallback && !catalog.HasOptionalActionFallback && maxCache <= catalog.CacheBudgetBytes,
             requestedSampleHz = hz,
             measurementUsesActiveWait = true,
             heightDip = height,
@@ -100,7 +101,7 @@ internal static class Program
             clips = results,
             limitation = "Headless timing/decoding probe only. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
         }, new JsonSerializerOptions { WriteIndented = true }));
-        return catalog.IsFallback || catalog.HasFrameFallback || maxCache > catalog.CacheBudgetBytes ? 2 : 0;
+        return catalog.IsFallback || catalog.HasFrameFallback || catalog.HasOptionalActionFallback || maxCache > catalog.CacheBudgetBytes ? 2 : 0;
     }
 
     private static double Percentile(List<double> values, double percentile)

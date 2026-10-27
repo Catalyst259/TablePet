@@ -2,7 +2,8 @@
     [string]$PublishDirectory,
     [switch]$ProbeAppHost,
     [switch]$SkipAssets,
-    [int]$Cycles = 1000
+    [int]$Cycles = 1000,
+    [string]$ExpectedIdleActions = ''
 )
 $ErrorActionPreference = 'Stop'
 $workspaceRoot = Split-Path -Parent $PSScriptRoot
@@ -98,8 +99,15 @@ internal static class Program
         var root = Path.GetFullPath(args[0]);
         var report = Path.GetFullPath(args[1]);
         var cycles = int.Parse(args[2]);
+        Check(cycles > 0, "At least one behavior cycle is requested");
         var catalog = new AssetCatalog(root);
         Check(!catalog.IsFallback, "Final manifest loads without fallback");
+        Check(!catalog.HasOptionalActionFallback, "All declared optional expressions are available without fallback");
+        var idleNames = catalog.IdleActions.Select(action => action.Clip).ToHashSet();
+        Check(idleNames.Contains("blink"), "Blink remains in the random idle choices");
+        if (args.Length > 3 && !string.IsNullOrWhiteSpace(args[3]))
+            Check(idleNames.SetEquals(args[3].Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)),
+                "Available idle expressions match the requested acceptance set");
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "manifest.json")));
         var metadata = manifest.RootElement;
         Check(!string.IsNullOrWhiteSpace(metadata.GetProperty("id").GetString()), "Character id is present");
@@ -132,6 +140,15 @@ internal static class Program
         void Same(string a, string b, string label) => Check(checksums[a] == checksums[b], label);
         foreach (var clip in new[] { "blink", "fall_asleep", "rise" }) Same(First("idle"), First(clip), "Shared idle start " + clip);
         foreach (var clip in new[] { "blink", "wake", "settle" }) Same(First("idle"), Last(clip), "Shared idle end " + clip);
+        foreach (var action in catalog.IdleActions)
+        {
+            var clip = catalog.Clips[action.Clip];
+            Same(First("idle"), First(action.Clip), "Shared idle expression start " + action.Clip);
+            Same(First("idle"), Last(action.Clip), "Shared idle expression end " + action.Clip);
+            Check(!clip.Loop, "Idle expression is a one-shot " + action.Clip);
+            Check(clip.Frames.Any(frame => checksums[frame.File] != checksums[First("idle")]),
+                "Idle expression contains a visibly different decoded pose " + action.Clip);
+        }
         Same(Last("fall_asleep"), First("sleep_loop"), "Fall asleep to sleep boundary");
         Same(First("sleep_loop"), First("wake"), "Sleep to wake boundary");
         Same(Last("rise"), First("hold"), "Rise to hold boundary");
@@ -148,11 +165,29 @@ internal static class Program
             }
         }
         catalog.CacheForSize(240, 1.5);
+        Check(!catalog.HasFrameFallback, "All real frames decode without an image fallback");
+        var started = Stopwatch.StartNew();
+        var idleAcceptance = VerifyIdleActions(catalog, checksums);
         var clock = new FakeClock();
         var settings = new PetSettings { SleepAfterMs = 60000, BlinkMinMs = 3000, BlinkMaxMs = 3000, CooldownMs = 30, HoldMs = 100 };
-        var controller = new BehaviorController(clock, catalog.Clips, settings, (a, b) => a);
+        var random = new Random(20261027);
+        var controller = new BehaviorController(clock, catalog.Clips, settings, (a, b) => random.Next(a, b + 1), catalog.IdleActions);
         var observed = new HashSet<string>();
-        void Tick() { controller.Tick(); observed.Add(controller.Player.CurrentClip!.Name); }
+        var idleSelectionCounts = idleNames.ToDictionary(name => name, _ => 0);
+        string? previousIdle = null;
+        long observedToken = -1;
+        void Tick()
+        {
+            controller.Tick();
+            var name = controller.Player.CurrentClip!.Name;
+            observed.Add(name);
+            if (observedToken == controller.Player.Token) return;
+            observedToken = controller.Player.Token;
+            if (!idleSelectionCounts.ContainsKey(name)) return;
+            if (idleNames.Count > 1) Check(name != previousIdle, "Random idle expression does not immediately repeat");
+            idleSelectionCounts[name]++;
+            previousIdle = name;
+        }
         void Until(Func<bool> done, long limit = 120000)
         {
             var deadline = clock.NowMilliseconds + limit;
@@ -163,7 +198,6 @@ internal static class Program
             }
             if (!done()) throw new InvalidOperationException("State transition exceeded deadline: " + controller.State);
         }
-        var started = Stopwatch.StartNew();
         for (var cycle = 0; cycle < cycles; cycle++)
         {
             Until(() => controller.State == PetState.FallAsleep);
@@ -198,11 +232,14 @@ internal static class Program
             controller.Touch();
             Check(controller.State == PetState.Idle, "Cooldown touch does not queue replay");
         }
+        foreach (var action in idleNames)
+            Check(idleSelectionCounts[action] > 0, "Seeded automatic cycles selected real idle expression " + action);
         File.WriteAllText(report, JsonSerializer.Serialize(new {
             passed = true, manifest = Path.Combine(root, "manifest.json"), clips = catalog.Clips.Count,
             uniquePngs = files.Length, checkedSizes = new[] { 120, 240, 480 },
             decodedDpiScales = new[] { 100, 125, 150, 200 }, cycles,
             nativeBitmapHeightCap = catalog.CanvasHeight,
+            idleActions = catalog.IdleActions, idleSelectionCounts, idleAcceptance,
             observedClips = observed.Order().ToArray(), checkCount = Checks.Count,
             elapsedMilliseconds = started.ElapsedMilliseconds,
             note = "DPI values above verify bitmap decoding only, not monitor movement. Clock cycles are accelerated, not real-time desktop residency."
@@ -210,6 +247,144 @@ internal static class Program
         Console.WriteLine($"PASS: {catalog.Clips.Count} clips, {files.Length} PNGs, {cycles} real-asset behavior cycles, {Checks.Count} assertions.");
         return 0;
     }
+
+    private static IReadOnlyList<object> VerifyIdleActions(AssetCatalog catalog, Dictionary<string, string> checksums)
+    {
+        var reports = new List<object>();
+        var rest = catalog.Clips["idle"].Frames[0].File;
+        foreach (var action in catalog.IdleActions)
+        {
+            var clip = catalog.Clips[action.Clip];
+            var ticket = 1;
+            foreach (var choice in catalog.IdleActions)
+            {
+                if (choice.Clip == action.Clip) break;
+                ticket += choice.Weight;
+            }
+            (FakeClock Clock, BehaviorController Pet) Start(bool autoSleep = false, int? sleepAfter = null)
+            {
+                var clock = new FakeClock();
+                var settings = new PetSettings { AutoSleep = autoSleep, BlinkMinMs = 100, BlinkMaxMs = 100,
+                    SleepAfterMs = sleepAfter ?? 60000, HoldMs = 100, CooldownMs = 30 };
+                var pet = new BehaviorController(clock, catalog.Clips, settings,
+                    (min, max) => min == max ? min : Math.Clamp(ticket, min, max), catalog.IdleActions);
+                Step(clock, pet, 99);
+                Check(pet.Player.CurrentClip!.Name == "idle", "Expression waits for its automatic deadline " + action.Clip);
+                Step(clock, pet, 1);
+                Check(pet.Player.CurrentClip!.Name == action.Clip, "Random ticket automatically starts real expression " + action.Clip);
+                Check(pet.LastPetInteraction == 0, "Automatic expression is not user interaction " + action.Clip);
+                return (clock, pet);
+            }
+            void SampleVisiblePose(FakeClock clock, BehaviorController pet)
+            {
+                var starts = new List<(int Index, long Start)>();
+                long elapsed = 0;
+                for (var i = 0; i < clip.Frames.Count; i++)
+                {
+                    if (checksums[clip.Frames[i].File] != checksums[rest]) starts.Add((i, elapsed));
+                    elapsed += clip.Frames[i].DurationMs;
+                }
+                var target = starts.MinBy(item => Math.Abs(item.Start - clip.DurationMs / 2d));
+                Step(clock, pet, target.Start + clip.Frames[target.Index].DurationMs / 2);
+                Check(checksums[pet.Player.CurrentFrame!.File] != checksums[rest], "Exercise a non-rest expression pose " + action.Clip);
+            }
+
+            var (clickClock, clicked) = Start();
+            SampleVisiblePose(clickClock, clicked);
+            var visible = clicked.Player.CurrentFrame!.File;
+            var originalToken = clicked.Player.Token;
+            clicked.Click();
+            Check(clicked.Player.CurrentFrame!.File == visible, "Click preserves exact currently displayed expression frame " + action.Clip);
+            var returnToken = clicked.Player.Token;
+            var returnClip = clicked.Player.CurrentClip!;
+            if (action.Clip == "blink") Check(returnToken == originalToken, "Click lets the existing blink finish");
+            else
+            {
+                Check(returnClip.Name == "idle_to_react" && !returnClip.Loop, "Long expression starts a one-shot return " + action.Clip);
+                Check(returnClip.DurationMs <= 240, "Click return stays responsive " + action.Clip);
+                Check(checksums[returnClip.Frames[^1].File] == checksums[rest], "Click return reaches the shared resting pose " + action.Clip);
+            }
+            clicked.Click(); clicked.Hover();
+            clicked.HandleAnimationCompleted(new AnimationCompleted(returnToken == originalToken ? originalToken - 1 : originalToken, action.Clip));
+            Check(clicked.Player.Token == returnToken && clicked.State == PetState.Idle,
+                "Repeated input and stale completion cannot restart or skip the return " + action.Clip);
+            UntilState(clickClock, clicked, () => clicked.State == PetState.React, clip.DurationMs + 1000);
+            Check(clicked.ReactionPhase == ReactionPhase.Rise && clicked.Player.CurrentClip!.Name == "rise",
+                "Explicit click connects expression to rise " + action.Clip);
+
+            var (hoverClock, hovered) = Start();
+            SampleVisiblePose(hoverClock, hovered);
+            var hoverToken = hovered.Player.Token;
+            hovered.Hover();
+            Check(hovered.Player.Token == hoverToken && hovered.Player.CurrentClip!.Name == action.Clip,
+                "Hover leaves the current expression uninterrupted " + action.Clip);
+            Check(hovered.LastPetInteraction == hoverClock.NowMilliseconds, "Hover refreshes interaction time " + action.Clip);
+            UntilState(hoverClock, hovered, () => hovered.Player.CurrentClip!.Name == "idle", clip.DurationMs + 1000);
+            Check(hovered.State == PetState.Idle && hovered.ReactionPhase == ReactionPhase.None, "Hover never queues rise " + action.Clip);
+
+            var (pauseClock, paused) = Start();
+            SampleVisiblePose(pauseClock, paused);
+            paused.SetAutomaticActionsPaused(true);
+            UntilState(pauseClock, paused, () => paused.Player.CurrentClip!.Name == "idle", clip.DurationMs + 1000);
+            Step(pauseClock, paused, 100000);
+            Check(paused.Player.CurrentClip!.Name == "idle" && paused.NextUpdateInMs == long.MaxValue,
+                "Automatic pause allows a natural finish then suppresses future expressions " + action.Clip);
+            paused.Click();
+            Check(paused.State == PetState.React, "Automatic pause still permits explicit clicks " + action.Clip);
+
+            var (dragClock, dragged) = Start();
+            SampleVisiblePose(dragClock, dragged);
+            var held = dragged.Player.CurrentFrame!.File;
+            var elapsedBeforeDrag = dragged.Player.ElapsedMs;
+            dragged.BeginDrag(); Step(dragClock, dragged, 10000);
+            Check(dragged.Player.CurrentFrame!.File == held && dragged.Player.ElapsedMs == elapsedBeforeDrag,
+                "Dragging freezes the real expression frame and elapsed time " + action.Clip);
+            dragged.EndDrag();
+            UntilState(dragClock, dragged, () => dragged.Player.CurrentClip!.Name == "idle", clip.DurationMs + 1000);
+            Check(dragged.State == PetState.Idle && dragged.ReactionPhase == ReactionPhase.None, "Drag release does not trigger rise " + action.Clip);
+
+            var (suspendClock, suspended) = Start();
+            SampleVisiblePose(suspendClock, suspended);
+            suspended.Click();
+            var pendingToken = suspended.Player.Token;
+            var pendingName = suspended.Player.CurrentClip!.Name;
+            suspended.SetSuspended(true); Step(suspendClock, suspended, 10000); suspended.SetSuspended(false);
+            suspended.HandleAnimationCompleted(new AnimationCompleted(pendingToken, pendingName));
+            Check(suspended.State == PetState.Idle && suspended.Player.CurrentClip!.Name == "idle" && suspended.ReactionPhase == ReactionPhase.None,
+                "Suspending cancels a queued expression click and stale return callback " + action.Clip);
+
+            var sleepAfter = checked(100 + (int)Math.Max(1, clip.DurationMs / 2));
+            var (sleepClock, sleepy) = Start(autoSleep: true, sleepAfter: sleepAfter);
+            Step(sleepClock, sleepy, sleepAfter - sleepClock.NowMilliseconds);
+            Check(sleepy.State == PetState.Idle && sleepy.Player.CurrentClip!.Name == action.Clip,
+                "Sleep waits for the expression's shared endpoint " + action.Clip);
+            Check(sleepy.LastPetInteraction == 0 && sleepy.SleepDeadline == sleepAfter,
+                "Expressions do not postpone the existing sleep deadline " + action.Clip);
+            UntilState(sleepClock, sleepy, () => sleepy.State == PetState.FallAsleep, clip.DurationMs + 1000);
+            Check(sleepClock.NowMilliseconds >= 100 + clip.DurationMs && sleepy.Player.CurrentClip!.Name == "fall_asleep",
+                "Overdue sleep begins as soon as the real expression finishes " + action.Clip);
+            reports.Add(new { clip = action.Clip, weight = action.Weight, durationMs = clip.DurationMs,
+                uniquePngs = clip.Frames.Select(frame => frame.File).Distinct().Count(),
+                automaticSelection = true, click = true, hover = true, automaticPause = true,
+                drag = true, suspension = true, sleepDeadline = true });
+        }
+        return reports;
+    }
+
+    private static void Step(FakeClock clock, BehaviorController controller, long milliseconds)
+    {
+        clock.NowMilliseconds += milliseconds;
+        controller.Tick();
+    }
+
+    private static void UntilState(FakeClock clock, BehaviorController controller, Func<bool> done, long limit)
+    {
+        var deadline = clock.NowMilliseconds + limit;
+        while (!done() && clock.NowMilliseconds < deadline)
+            Step(clock, controller, Math.Clamp(controller.NextUpdateInMs, 1, 200));
+        Check(done(), "Real-asset transition completes before its deadline: " + controller.Player.CurrentClip!.Name);
+    }
+
     private static void Check(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); Checks.Add(message); }
     private sealed class FakeClock : IClock { public long NowMilliseconds { get; set; } }
 }
@@ -217,7 +392,7 @@ internal static class Program
     $dotnet = Join-Path $workspaceRoot '.tools/dotnet/dotnet.exe'
     if (!(Test-Path -LiteralPath $dotnet)) { $dotnet = (Get-Command dotnet -ErrorAction Stop).Source }
     $assetReport = Join-Path $reportRoot 'asset-runtime.json'
-    & $dotnet run --project (Join-Path $scratch 'RuntimeVerification.csproj') -c Release -- $publishedAssets $assetReport $Cycles
+    & $dotnet run --project (Join-Path $scratch 'RuntimeVerification.csproj') -c Release -- $publishedAssets $assetReport $Cycles $ExpectedIdleActions
     if ($LASTEXITCODE -ne 0) { throw 'Real-asset runtime checks failed.' }
     $summary.assets = Get-Content -LiteralPath $assetReport -Raw -Encoding UTF8 | ConvertFrom-Json
 }

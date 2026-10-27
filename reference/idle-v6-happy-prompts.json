@@ -1,0 +1,47 @@
+{
+  "generator": "built-in image_gen",
+  "entries": [
+    {
+      "id": "happy-half-v1",
+      "prompt": "Use case: precise-object-edit.\nAsset type: a key pose for a gentle desktop kitten facial animation.\nInput Image 1 is the exact EDIT TARGET and identity/pose reference. Edit ONLY the two eyes. Keep the original tiny cat mouth and pink nose EXACTLY as they are.\nMake the kitten look quietly content, affectionate and relaxed: both large eyes gently almost closed in a soft feline slow-eye-smile. The upper eyelids relax downward AND lower eyelids lift a little; the eyelid contour is shallow, soft and almost horizontal, gently rounded, NOT steep arches, NOT ^ ^, NOT upside-down U shapes. Leave a very thin soft glimpse of the original dark/blue eye under the lid if this helps the relaxed expression. No flat heavy angry lids and no sad/slanted tired expression. No exaggerated grin, extra cheek lines, eyebrows or wrinkles. Preserve the kitten's mild head tilt and correct eye perspective.\nThis is a subtle restful eye-smile, not a human winking emoji. Keep every other detail fixed: identical low crouch, paws, tail, ears, head silhouette, fur texture, strawberry, cream and cone, framing and scale. Transparent background, full same character and square canvas, no labels or shadows. Production-quality clean anti-aliased linework faithful to the reference. Only one cat, one pose.",
+      "source": "sources/idle-v6/happy-half-v1.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-e5e054c9-f243-4270-ae98-3340b434324e.png",
+      "status": "rejected: extra lashes; superseded by half-v2"
+    },
+    {
+      "id": "happy-near-v1",
+      "prompt": "Use case: precise-object-edit.\nEdit target image 1 is the same grey-and-white desktop kitten in a gentle eye-smile. Make a single targeted correction: the eyes must be MUCH closer to closed, and remove all eyelash/corner ticks. Reduce each eye opening to a very thin crescent/slit, at most 8 percent of the original open eye height, with almost no pupil showing. The eye rims should meet as one shallow, gentle, nearly horizontal curve with arc height less than one tenth its width. This is a calm affectionate slow eye smile, no ^ shapes, no semicircle arches, no suspicious sideways glance, no thick black eyebrow shapes. The upper lid relaxes down and the lower lid rises softly, following the same eye width, placement and mild head tilt as this reference. Preserve the original small cat mouth and nose exactly. Change ONLY the eyelids and exposed eye aperture, nothing else. No eyelashes, brows, creases, extra mouth, new cheek lines. Keep identical body, paws, tail, ears, head shape, fur, strawberry/cream/cone, scale, framing and transparent background. One cat one pose.",
+      "source": "sources/idle-v6/happy-near-v1.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-087df64f-0d09-4a01-b21b-6876215547d6.png",
+      "status": "rejected: squeezed highlights; not used for interpolation"
+    },
+    {
+      "id": "happy-peak-v1",
+      "prompt": "Edit this exact kitten picture. Close both eyes completely into two THIN, shallow, softly curved eyelid lines. Remove all the black eyeball area and all white eye highlights: fully shut eyes contain no eye highlights. Each eyelid should be a relaxed nearly horizontal soft smile curve, not a tall arch, no ^ corners, no lashes or brows. The line thickness should match the small mouth, not a thick black band. Keep the eyes in the exact same locations and width. The expression should feel gently content and peaceful. Keep the original little cat mouth, nose, entire body, fur, decorative fruit, cream and cone, framing, size and background exactly unchanged. Transparent background. One pose, square canvas.",
+      "status": "selected",
+      "source": "sources/idle-v6/happy-peak-v1.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-54b2c929-d6ea-4871-8a0b-6637cbc50e6e.png"
+    },
+    {
+      "id": "happy-quarter-v1",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET: exact approved desktop kitten with fully open eyes. Image 2 is a SUPPORTING expression-direction reference only, showing a later eye-smile.\nCreate one early animation key pose between them: the kitten is just BEGINNING a gentle contented squint. Keep both eyes still about 75 percent open. The lower lids rise gently a little with a soft round curve, the upper lids relax down a little. Natural tender gaze. This is only one quarter of a slow eye-smile, NOT half-closed sleepy eyes and NOT sharp straight upper eyelids. Keep the pupils the same size and placement as image 1; conceal their lower edge with the eyelids instead of shrinking or distorting them. No eyebrows, eyelashes, extra lines, new smile or changes to the mouth. Preserve image 1's pink nose, little mouth, head position, slight head tilt, entire body silhouette, fur colors, paw positions, tail, strawberry/cream/cone, frame composition and scale exactly. Transparent background, one kitten, one pose on the same square canvas.",
+      "status": "rejected: extra lashes; superseded by quarter-v2",
+      "source": "sources/idle-v6/happy-quarter-v1.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-df65eefd-b73f-4009-bac1-0700a80fcaa9.png"
+    },
+    {
+      "id": "happy-quarter-v2",
+      "prompt": "Make one precise correction to this exact image: remove the little outward-pointing eyelash spikes at the outer corner of each eye. The kitten has no eyelashes. Smooth those tiny corners into the existing rounded eye contour and restore the same adjacent grey fur. Keep the current eye aperture, pupil shape, iris blue, highlights, all eyelid positions and the entire rest of this image exactly the same. Do not redraw or enlarge the eyes. Do not change expression, pose, framing or scale. Keep true transparent background.",
+      "status": "selected",
+      "source": "sources/idle-v6/happy-quarter-v2.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-01fd7514-875b-43a2-b974-0d596fcd3451.png"
+    },
+    {
+      "id": "happy-half-v2",
+      "prompt": "Make one precise correction to this exact image: remove the little outward-pointing eyelash spikes at the outer corner of each eye. The kitten has no eyelashes. Smooth those tiny corners into the existing rounded eye contour and restore the same adjacent grey fur. Keep the current half-open eye aperture, pupil shape, iris blue, highlights, all eyelid positions and the entire rest of this image exactly the same. Do not redraw or enlarge the eyes. Do not change expression, pose, framing or scale. Keep true transparent background.",
+      "status": "selected",
+      "source": "sources/idle-v6/happy-half-v2.png",
+      "originalPath": "C:/Users/33776/.codex/generated_images/01a177f1-a2e8-7631-810b-757b36732929/exec-71a6adec-9013-41d1-b59a-90a8f256e8e6.png"
+    }
+  ]
+}

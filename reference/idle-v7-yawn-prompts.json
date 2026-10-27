@@ -1,0 +1,57 @@
+{
+  "generator": "built-in image_gen",
+  "scope": "Yawn whole-body breathing keys only; approved facial expression and 4400ms timing retained",
+  "candidates": [
+    {
+      "name": "yawn-peak-v1",
+      "status": "candidate-needs-ground-registration",
+      "editTarget": "assets/strawberry-cat/keyframes-v5/yawn/yawn-peak-v1.png",
+      "supportingReference": "assets/strawberry-cat/frames/fall_asleep-00.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: one transparent PNG key pose for this exact desktop kitten's yawn animation.\nImage 1 is the EDIT TARGET: the approved kitten at the peak of a yawn. Image 2 is a supporting fixed-paw / body-scale reference.\nKeep Image 1's approved facial expression exactly: the softly closed eyes, tiny central pink nose, open oval yawn mouth and pink tongue. Do not redesign its eyes or mouth.\nAdd a small believable whole-body inhalation accompanying the yawn. Lift the head, both ears, strawberry, cream and cone together by only about 6 pixels in the original 512-pixel canvas (roughly 1.2% of the canvas height). Slightly lift the chin and let the upper chest and shoulder fur expand upward with the breath, about 1–2% in height. The kitten remains lying low on its belly, with exactly the same two front paws planted in exactly the same places and the same paw bottom baseline. Keep its body width, tail position and overall scale unchanged. No sitting up, standing, stretching paws, floating, head tilt or rotation. The motion is an understated inhale, not a pose change.\nPreserve the exact illustration style, fur colors, line thickness, head identity and all decorative details. Preserve the square canvas and the same full-character framing, with all tips completely inside the canvas. Transparent background, no shadow, text, guides or grid. One complete kitten, one pose.",
+      "source": "C:/Users/33776/.codex/generated_images/01a17e34-088f-7a03-8310-1a63ecdf0184/exec-e51c3595-5291-4628-b87d-c6011d9832df.png",
+      "output": "assets/strawberry-cat/sources/idle-v7/yawn-peak-v1.png",
+      "visualReview": "Yawn face retained, upper chest more lifted. Generated whole character shifted upward; needs paw registration before judging relative head movement. No standing or head tilt.",
+      "normalizationNotes": {
+        "canvas": 512,
+        "referenceAlphaTop": 134,
+        "referencePawBottom": 477,
+        "generatedAlphaTop": 112,
+        "generatedPawBottom": 463,
+        "suggestedGroundTranslationY": 14,
+        "groundRegisteredDecorationLiftPx": 8
+      }
+    },
+    {
+      "name": "yawn-middle-v1",
+      "status": "candidate-needs-ground-registration",
+      "editTarget": "assets/strawberry-cat/keyframes-v5/yawn/yawn-middle-v1.png",
+      "supportingReference": "assets/strawberry-cat/sources/idle-v7/yawn-peak-v1.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: one middle key pose in the same kitten's gentle yawn animation.\nImage 1 is the EDIT TARGET: the already approved HALF-OPEN YAWN facial expression on the original resting body. Image 2 is a supporting reference showing the final inhaled yawn pose; use only its motion direction, not its larger mouth opening.\nKeep image 1's exact softly closed eyes, tiny pink nose and smaller half-open oval yawn mouth with tongue. Keep the same kitten identity, proportions, fur and thick clean illustration outlines.\nAdd ONLY HALF the subtle inhalation shown by image 2: head, ears, strawberry, cream and cone rise together about 3–4 pixels on the original 512-pixel canvas. The chin lifts a little, upper chest and shoulders gently rise with the breath, halfway toward the supporting pose. The cat is still low on its belly, with the exact same two front paws planted on the SAME baseline and x positions as image 1. Keep the tail in its original position and keep the same body width. No new neck, no sitting up, no standing, no paw motion, no sideways head tilt or rotation, no full-character translation or zoom.\nPreserve image 1's square canvas, object scale, full-body framing and ground-contact position. Only the upper body's small inhalation should move. True transparent background; no text, panels, arrows or ground shadow. One complete character, one pose.",
+      "source": "C:/Users/33776/.codex/generated_images/01a17e34-088f-7a03-8310-1a63ecdf0184/exec-1ab36398-07c9-4f7c-bd27-7a52dc9d798f.png",
+      "output": "assets/strawberry-cat/sources/idle-v7/yawn-middle-v1.png",
+      "attempts": [
+        {
+          "attempt": 1,
+          "result": "connection failed, no image produced"
+        },
+        {
+          "attempt": 2,
+          "result": "generated"
+        }
+      ],
+      "visualReview": "Approved smaller yawn mouth preserved, still low on belly, no sideways tilt. Generated canvas position differs; relative breath amplitude must be judged after paw registration.",
+      "normalizationNotes": {
+        "canvas": 512,
+        "referenceAlphaTop": 134,
+        "referencePawBottom": 477,
+        "generatedAlphaTop": 114,
+        "generatedPawBottom": 459,
+        "suggestedGroundTranslationY": 18,
+        "groundRegisteredDecorationLiftPx": 2,
+        "referenceLeft": 64,
+        "generatedLeft": 72
+      }
+    }
+  ],
+  "review": "Two model-generated inhalation poses are ready for ground registration. Peak raises the decoration/head about 8px after paw-bottom alignment, middle about 2px. Both preserve the approved closed-eye yawn design and stay low on the belly. Root must inspect registered body/paw joins and final RIFE motion before treating these as approved runtime keys."
+}
