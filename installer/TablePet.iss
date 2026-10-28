@@ -1,6 +1,6 @@
 ﻿; Build with tools/build-installer.ps1. The payload must be a versioned publish folder.
 #ifndef AppVersion
-  #define AppVersion "0.2.2"
+  #define AppVersion "0.3.1"
 #endif
 #ifndef PublishDir
   #define PublishDir SourcePath + "..\dist\TablePet-" + AppVersion + "-win-x64"

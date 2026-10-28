@@ -1,7 +1,7 @@
 namespace TablePet.Core;
 
 public enum PetState { Idle, FallAsleep, Sleep, Wake, React }
-public enum ReactionPhase { None, Rise, Hold, Settle }
+public enum ReactionPhase { None, Rise, Hold, Settle, Wink }
 
 /// <summary>The sole owner of behavior state. All calls are made on the application's UI thread.</summary>
 public sealed class BehaviorController
@@ -9,6 +9,7 @@ public sealed class BehaviorController
     private readonly IClock _clock;
     private readonly IReadOnlyDictionary<string, AnimationClip> _clips;
     private readonly Func<int, int, int> _randomBetween;
+    private readonly bool _canWink;
     private string? _lastIdleAction;
     private long _expectedToken;
     private PetState _expectedState;
@@ -36,6 +37,10 @@ public sealed class BehaviorController
             if (!clips.TryGetValue(name, out var clip)) throw new ArgumentException($"Missing animation: {name}", nameof(clips));
             clip.EnsureValid();
         }
+        var restingFrame = clips["idle"].Frames[0].File;
+        _canWink = clips.TryGetValue("wink", out var wink) && wink.Name == "wink" && !wink.Loop
+            && wink.Frames.Count >= 2 && wink.Frames.All(f => !string.IsNullOrWhiteSpace(f.File) && f.DurationMs > 0)
+            && wink.Frames[0].File == restingFrame && wink.Frames[^1].File == restingFrame;
         IdleActions = IdleAction.Available(clips, idleActions);
         Player = new AnimationPlayer(clock);
         Player.Completed += HandleAnimationCompleted;
@@ -240,9 +245,10 @@ public sealed class BehaviorController
                     Play("settle");
                     break;
                 }
-                _reactionEndedAt = _clock.NowMilliseconds;
-                ReactionCooldownUntil = _clock.NowMilliseconds + Settings.CooldownMs;
-                EnterIdle();
+                EndReaction();
+                break;
+            case PetState.React when ReactionPhase == ReactionPhase.Wink:
+                EndReaction();
                 break;
         }
     }
@@ -270,8 +276,16 @@ public sealed class BehaviorController
         _reactionAfterIdleAction = false;
         _reactionAfterWake = false;
         SetState(PetState.React);
-        ReactionPhase = ReactionPhase.Rise;
-        Play("rise");
+        var wink = _canWink && _randomBetween(0, 1) == 1;
+        ReactionPhase = wink ? ReactionPhase.Wink : ReactionPhase.Rise;
+        Play(wink ? "wink" : "rise");
+    }
+
+    private void EndReaction()
+    {
+        _reactionEndedAt = _clock.NowMilliseconds;
+        ReactionCooldownUntil = _clock.NowMilliseconds + Settings.CooldownMs;
+        EnterIdle();
     }
 
     private void EnterIdle()

@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "version": "0.3.1",
+  "frozenDate": "2026-10-29",
+  "manifest": {
+    "path": "assets/strawberry-cat/manifest.json",
+    "sha256": "dd5c23dab9b58cdd80bdfd1250515654776bd9dcc0d6fbf2e4cd01388e52dc77",
+    "revision": "0.3.1"
+  },
+  "idleActions": [
+    {
+      "clip": "blink",
+      "weight": 4
+    },
+    {
+      "clip": "yawn",
+      "weight": 1
+    }
+  ],
+  "clickReactions": {
+    "choices": [
+      "rise",
+      "wink"
+    ],
+    "selection": "equal probability; rise includes hold/settle",
+    "wink": {
+      "revision": "v9-fluid-click",
+      "durationMs": 1500,
+      "peakHoldMs": 350,
+      "closingMs": 440,
+      "openingMs": 330,
+      "frameSlots": 367,
+      "uniquePngs": 277,
+      "interpolationFactor": 128,
+      "endpointWindow": 12,
+      "endpointMode": "residual",
+      "refinementDivisions": 8,
+      "motionSpacing": "wink-eye",
+      "gaze": "V9 unchanged",
+      "recipe": "reference/idle-v9-fluid-selection.json"
+    }
+  },
+  "statistics": {
+    "clips": 10,
+    "frameSlots": 3485,
+    "uniquePngs": 1833
+  },
+  "pngAggregate": {
+    "sha256": "3286b3839e5853b233c2a5e276d31aeb4ab7c9600c29800f89a1435f328427fb",
+    "method": "SHA-256 of sorted asset-relative path + NUL + lowercase PNG SHA-256 + LF, using UTF-8."
+  },
+  "clips": {
+    "blink": {
+      "timelineSHA256": "b286b0e4ccfe23a212caccb3c64fd7593fe7ca569b39e57c3debcf12942044b6",
+      "loop": false,
+      "durationMs": 375,
+      "slots": 92,
+      "uniquePngs": 25
+    },
+    "fall_asleep": {
+      "timelineSHA256": "073dfcf76e5f7fe77d03199b74d5542b1c3a5ddd91271b4a4f2c154cd30dba70",
+      "loop": false,
+      "durationMs": 1750,
+      "slots": 420,
+      "uniquePngs": 411
+    },
+    "hold": {
+      "timelineSHA256": "c623f5c854e6d1668a5207aa17b311a57d90765557adac810f2afd47cd228bac",
+      "loop": true,
+      "durationMs": 1000,
+      "slots": 1,
+      "uniquePngs": 1
+    },
+    "idle": {
+      "timelineSHA256": "50845cf52951e22cf0473831a6a71ae822b6a92cf336340e195d0635adbbeb9c",
+      "loop": true,
+      "durationMs": 1000,
+      "slots": 1,
+      "uniquePngs": 1
+    },
+    "rise": {
+      "timelineSHA256": "59c511283419281313980785e431c8d8bb26bdcc1b11853f39f4fff6361fdb3d",
+      "loop": false,
+      "durationMs": 800,
+      "slots": 192,
+      "uniquePngs": 187
+    },
+    "settle": {
+      "timelineSHA256": "4fcc349fa7eac85ed5d435554048d852571ba3ab548d197baba98202931b3dcf",
+      "loop": false,
+      "durationMs": 1000,
+      "slots": 240,
+      "uniquePngs": 237
+    },
+    "sleep_loop": {
+      "timelineSHA256": "01273b95d7850652f930fac79476a67a66f25602ebf44e913946eec288d98d0f",
+      "loop": true,
+      "durationMs": 3600,
+      "slots": 864,
+      "uniquePngs": 257
+    },
+    "wake": {
+      "timelineSHA256": "ab87875aeacda6eadebb83fb98ba034171364e23f47fbd8fad3960b1656bffa6",
+      "loop": false,
+      "durationMs": 1050,
+      "slots": 252,
+      "uniquePngs": 249
+    },
+    "wink": {
+      "timelineSHA256": "62ca37f65420a9b0e3810ee1cb25d7f21d537aa7114423d312ec07093126feb5",
+      "loop": false,
+      "durationMs": 1500,
+      "slots": 367,
+      "uniquePngs": 277
+    },
+    "yawn": {
+      "timelineSHA256": "47189bd20ede3ef9c45394f023eefc5dc1ed13cf221ec284cac296c1bb616b02",
+      "loop": false,
+      "durationMs": 4400,
+      "slots": 1056,
+      "uniquePngs": 342
+    }
+  },
+  "approvedV9Keys": [
+    {
+      "id": "idle",
+      "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+    },
+    {
+      "id": "prepare",
+      "sha256": "eb5e3b9fe01b47c10688435b54a6a5d9ccd3bcca37686c5080a37f92dc2e3e17"
+    },
+    {
+      "id": "half",
+      "sha256": "90d70059c638d9437bb716309b7a9a40cfd366a9d5f29081ac88f6c77410b80a"
+    },
+    {
+      "id": "low",
+      "sha256": "0e371bff35248eaad3b91010b92d1e6c47a3978075515c56a0e9cc07911d7647"
+    },
+    {
+      "id": "peak",
+      "sha256": "0bb9954687fd55c4e2ff25ab79d55ca920e213866b7b3239683d7f0f6bec9533"
+    },
+    {
+      "id": "reopening",
+      "sha256": "5759814443e4d1283b193e31df424d6ecb0693a8acab6d3731170bf59dc2e5cb"
+    },
+    {
+      "id": "linger",
+      "sha256": "7ddd1949d53fb0ca5141c0720f25ace89acacd783db72b3be5043953cf352901"
+    },
+    {
+      "id": "relax",
+      "sha256": "77a8463e3970ad22f76fb24f621ddb5f12a5f8dca6b2ab7d7d4253120cdbe8d3"
+    }
+  ],
+  "winkKeyTimings": [
+    {
+      "timeMs": 0,
+      "id": "idle",
+      "file": "frames/fall_asleep-00.png",
+      "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+    },
+    {
+      "timeMs": 140,
+      "id": "prepare",
+      "file": "frames/wink-v9-fluid/eb5e3b9fe01b47c10688435b54a6a5d9ccd3bcca37686c5080a37f92dc2e3e17.png",
+      "sha256": "eb5e3b9fe01b47c10688435b54a6a5d9ccd3bcca37686c5080a37f92dc2e3e17"
+    },
+    {
+      "timeMs": 245,
+      "id": "half",
+      "file": "frames/wink-v9-fluid/90d70059c638d9437bb716309b7a9a40cfd366a9d5f29081ac88f6c77410b80a.png",
+      "sha256": "90d70059c638d9437bb716309b7a9a40cfd366a9d5f29081ac88f6c77410b80a"
+    },
+    {
+      "timeMs": 335,
+      "id": "low",
+      "file": "frames/wink-v9-fluid/0e371bff35248eaad3b91010b92d1e6c47a3978075515c56a0e9cc07911d7647.png",
+      "sha256": "0e371bff35248eaad3b91010b92d1e6c47a3978075515c56a0e9cc07911d7647"
+    },
+    {
+      "timeMs": 440,
+      "id": "peak",
+      "file": "frames/wink-v9-fluid/0bb9954687fd55c4e2ff25ab79d55ca920e213866b7b3239683d7f0f6bec9533.png",
+      "sha256": "0bb9954687fd55c4e2ff25ab79d55ca920e213866b7b3239683d7f0f6bec9533"
+    },
+    {
+      "timeMs": 790,
+      "id": "peak",
+      "file": "frames/wink-v9-fluid/0bb9954687fd55c4e2ff25ab79d55ca920e213866b7b3239683d7f0f6bec9533.png",
+      "sha256": "0bb9954687fd55c4e2ff25ab79d55ca920e213866b7b3239683d7f0f6bec9533"
+    },
+    {
+      "timeMs": 900,
+      "id": "reopening",
+      "file": "frames/wink-v9-fluid/5759814443e4d1283b193e31df424d6ecb0693a8acab6d3731170bf59dc2e5cb.png",
+      "sha256": "5759814443e4d1283b193e31df424d6ecb0693a8acab6d3731170bf59dc2e5cb"
+    },
+    {
+      "timeMs": 1120,
+      "id": "linger",
+      "file": "frames/wink-v9-fluid/7ddd1949d53fb0ca5141c0720f25ace89acacd783db72b3be5043953cf352901.png",
+      "sha256": "7ddd1949d53fb0ca5141c0720f25ace89acacd783db72b3be5043953cf352901"
+    },
+    {
+      "timeMs": 1290,
+      "id": "relax",
+      "file": "frames/wink-v9-fluid/77a8463e3970ad22f76fb24f621ddb5f12a5f8dca6b2ab7d7d4253120cdbe8d3.png",
+      "sha256": "77a8463e3970ad22f76fb24f621ddb5f12a5f8dca6b2ab7d7d4253120cdbe8d3"
+    },
+    {
+      "timeMs": 1500,
+      "id": "idle",
+      "file": "frames/fall_asleep-00.png",
+      "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+    }
+  ],
+  "preservedEndpoints": {
+    "file": "frames/fall_asleep-00.png",
+    "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+  },
+  "inputs": [
+    {
+      "path": "src/TablePet.App/TablePet.App.csproj",
+      "sha256": "2675cbf54dd24b90f4685ff70eb5f118827fa96f27838174721d6e9cc816ded5"
+    },
+    {
+      "path": "reference/idle-v9-approved-keys.json",
+      "sha256": "3f22b4bd9471f8c6cb4b1a6c90669d69c6e68cb9f13ddeb5845661190bd47890"
+    },
+    {
+      "path": "reference/idle-v9-fluid-selection.json",
+      "sha256": "7a7b469b025e28ae45c63e959f3d3676bd5d57de67ad255f08b303c726c4ba20"
+    },
+    {
+      "path": "tools/build-wink-candidate.cjs",
+      "sha256": "da775014ba92d628a207b9ca740debad31cf864533a183cb3b67c8bb0e491223"
+    },
+    {
+      "path": "tools/wink-endpoint.cjs",
+      "sha256": "4dcc4fcf4a750fcadd9a266eabc6a07e7de29276192b6510558fe82868c6ee2a"
+    },
+    {
+      "path": "tools/motion-interpolate.cjs",
+      "sha256": "bdb47c89b4010d50ce4c5483f5d763851648df4e4be34066ec533d717987a326"
+    },
+    {
+      "path": "tools/install-wink-v9-smooth.cjs",
+      "sha256": "571dda4129499fd281fab996b6aa013bbf4bd6b6e797eb922e0e1cccad550246"
+    }
+  ],
+  "verificationScope": "Runtime manifest, clip timelines, referenced PNG bytes, approved V9 keys, source version and rebuild inputs only. Build, installer and local upgrade results are recorded separately."
+}

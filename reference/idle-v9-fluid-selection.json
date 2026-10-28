@@ -1,0 +1,132 @@
+{
+  "name": "fluid-click",
+  "outputGroup": "wink-v9",
+  "version": 9,
+  "label": "V9 连贯过渡 · 轻微提速",
+  "timing": "pchip",
+  "factor": 128,
+  "endpointWindow": 12,
+  "sampleFps": 240,
+  "keys": [
+    {
+      "id": "prepare",
+      "source": "assets/strawberry-cat/sources/idle-v9/wink-prepare-v2.png",
+      "scale": 0.985,
+      "translation": {
+        "x": -2,
+        "y": 8
+      }
+    },
+    {
+      "id": "half",
+      "source": "assets/strawberry-cat/sources/idle-v9/wink-half-v1.png",
+      "scale": 0.98,
+      "translation": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    {
+      "id": "low",
+      "source": "assets/strawberry-cat/sources/idle-v9/wink-low-v1.png",
+      "scale": 0.96,
+      "translation": {
+        "x": -1,
+        "y": 9
+      }
+    },
+    {
+      "id": "peak",
+      "source": "assets/strawberry-cat/sources/idle-v9/wink-peak-registered.png",
+      "translation": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "reopening",
+      "source": "assets/strawberry-cat/sources/idle-v9/reopening-v2.png",
+      "scale": 0.9,
+      "translation": {
+        "x": 1,
+        "y": 19
+      }
+    },
+    {
+      "id": "linger",
+      "source": "assets/strawberry-cat/sources/idle-v9/linger-v1.png",
+      "scale": 1,
+      "translation": {
+        "x": -1,
+        "y": 1
+      }
+    },
+    {
+      "id": "relax",
+      "source": "assets/strawberry-cat/sources/idle-v9/relax-v2.png",
+      "scale": 1,
+      "translation": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "keysOrder": [
+    "idle",
+    "prepare",
+    "half",
+    "low",
+    "peak",
+    "reopening",
+    "linger",
+    "relax",
+    "idle"
+  ],
+  "peakIndex": 4,
+  "knots": [
+    [
+      0,
+      0
+    ],
+    [
+      140,
+      1
+    ],
+    [
+      245,
+      2
+    ],
+    [
+      335,
+      3
+    ],
+    [
+      440,
+      4
+    ],
+    [
+      790,
+      4
+    ],
+    [
+      900,
+      5
+    ],
+    [
+      1120,
+      6
+    ],
+    [
+      1290,
+      7
+    ],
+    [
+      1500,
+      8
+    ]
+  ],
+  "intent": "V9 poses and gaze unchanged. Local transition subdivision, residual correction and eyelid-distance sampling. Closure 440ms, peak hold 350ms, reopening 330ms, expression recovery 380ms.",
+  "endpointMode": "residual",
+  "refinementDivisions": 8,
+  "motionSpacing": "wink-eye"
+}

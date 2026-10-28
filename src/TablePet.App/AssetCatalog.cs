@@ -76,7 +76,7 @@ public sealed class AssetCatalog
                 {
                     // An optional expression must not disable the pack's working basic actions.
                     HasOptionalActionFallback = true;
-                    ErrorLogger.Write($"可选待机动作无法加载，已跳过：{property.Name}", error);
+                    ErrorLogger.Write($"可选动作无法加载，已跳过：{property.Name}", error);
                 }
             }
             foreach (var required in RequiredClips)
@@ -97,7 +97,10 @@ public sealed class AssetCatalog
                     }
             }
             IdleActions = IdleAction.Available(Clips, requested);
-            HasOptionalActionFallback |= requested.Any(action => !IdleActions.Contains(action));
+            // These legacy entries are intentionally retired from the idle pool,
+            // rather than broken assets. Wink remains available as a click reaction.
+            HasOptionalActionFallback |= requested.Any(action => action.Clip is not ("happy" or "wink")
+                && !IdleActions.Contains(action));
         }
         catch (Exception error)
         {

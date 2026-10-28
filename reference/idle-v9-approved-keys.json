@@ -1,0 +1,41 @@
+{
+  "revision": "V9 stable-gaze",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "keys": [
+    {
+      "id": "idle",
+      "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+    },
+    {
+      "id": "prepare",
+      "sha256": "eb5e3b9fe01b47c10688435b54a6a5d9ccd3bcca37686c5080a37f92dc2e3e17"
+    },
+    {
+      "id": "half",
+      "sha256": "90d70059c638d9437bb716309b7a9a40cfd366a9d5f29081ac88f6c77410b80a"
+    },
+    {
+      "id": "low",
+      "sha256": "0e371bff35248eaad3b91010b92d1e6c47a3978075515c56a0e9cc07911d7647"
+    },
+    {
+      "id": "peak",
+      "sha256": "0bb9954687fd55c4e2ff25ab79d55ca920e213866b7b3239683d7f0f6bec9533"
+    },
+    {
+      "id": "reopening",
+      "sha256": "5759814443e4d1283b193e31df424d6ecb0693a8acab6d3731170bf59dc2e5cb"
+    },
+    {
+      "id": "linger",
+      "sha256": "7ddd1949d53fb0ca5141c0720f25ace89acacd783db72b3be5043953cf352901"
+    },
+    {
+      "id": "relax",
+      "sha256": "77a8463e3970ad22f76fb24f621ddb5f12a5f8dca6b2ab7d7d4253120cdbe8d3"
+    }
+  ]
+}

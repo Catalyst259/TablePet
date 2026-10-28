@@ -53,11 +53,21 @@ Very small RIFE phases can contain a nonzero neural reconstruction residual. In 
 
 `node tools/qa-sleep-breathing.cjs` checks the original-rest-to-first-inferred-frame transition separately from the repeat boundary, alongside two-cycle 120 Hz sampling, grounded paws, head/decoration displacement, alpha validity and unchanged non-sleep assets. The default comparison source is the preserved 0.2.1 publish folder; its optional second argument can point to an extracted 0.2.1 portable release.
 
-## 0.3.0 frozen actions (current workflow)
+## 0.3.1 V9 click reaction (current workflow)
+
+The frozen runtime has automatic **blink/yawn** (4:1), and equal-probability **rise/wink** click reactions. The 1500 ms Wink uses the exact V9 artwork: 440 ms closing, 350 ms held expression, 330 ms reopening and 380 ms recovery. No new gaze motion is authored. Its recipe is `reference/idle-v9-fluid-selection.json`; approved normalized-key hashes are in `reference/idle-v9-approved-keys.json`.
+
+`npm run assets:idle` stages a Wink candidate from the saved V9 sources. The two-pass RIFE pipeline subdivides each original pose interval into eight smaller intervals; `wink-endpoint.cjs` removes endpoint residual without fading out real motion. Monotone timing is sampled by measured eyelid travel. `npm run assets:idle:install` imports the staged result after checking the original keys and idle endpoints, and verifies that all other clips remain unchanged. This rebuild needs the offline RIFE tool, Node/sharp and FFmpeg; compiling or running the saved release needs none of them.
+
+`npm run assets:idle:check` verifies `reference/releases/frozen-0.3.1.json`. `npm run assets:idle:preview` regenerates the standalone manifest-driven preview, with idle and click actions in separate groups. Its HTML and referenced runtime PNGs work without a server. The `artifacts` directory contains disposable inference/diagnostic caches only; no historical cache is required to begin rebuilding.
+
+The older `assets:prepare` and v7 builder commands below reconstruct historical releases and are not the 0.3.1 publication pipeline. To reproduce the frozen app, use `tools/build.ps1 -Test -Publish` with the committed runtime PNGs.
+
+## 0.3.0 frozen actions (archived workflow)
 
 The approved idle pool is now **blink, yawn, wink**, with weights 4:1:1. The active manifest has no happy clip or happy metadata. The v7 builder and source selection only accept yawn/wink and explicitly remove a stale happy clip when packing. Their approved PNGs, key poses and timings remain unchanged from preview.3; the ordinary blink is unchanged as well. QA checks this three-action pool and the stable `0.3.0` revision.
 
-`npm run assets:idle`, `assets:idle:check` and `assets:idle:preview` are the current entry points. `keyframes-v7/recipe.json` holds the active two generated-action recipes; `recipe-preview.3.json` preserves the previous three-action recipe as history. Earlier candidate artwork and preview snapshots, including happy, are kept only as production history and are not active playback entries.
+At that freeze, `assets:idle`, `assets:idle:check` and `assets:idle:preview` selected the v7 workflow. `keyframes-v7/recipe.json` preserves those two generated-action recipes; `recipe-preview.3.json` preserves the previous three-action recipe as history. Earlier candidate artwork and preview snapshots, including happy, are kept only as production history and are not active playback entries.
 
 ## 0.3.0-preview.3 complete idle gestures (archived design)
 

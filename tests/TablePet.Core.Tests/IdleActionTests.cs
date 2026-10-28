@@ -22,7 +22,7 @@ public sealed class IdleActionTests
 
     private static BehaviorController Create(FakeClock clock, int ticket = 5, PetSettings? settings = null) =>
         new(clock, Pack(), settings ?? new PetSettings { BlinkMinMs = 100, BlinkMaxMs = 100 },
-            (min, max) => min == max ? min : Math.Min(ticket, max), Choices);
+            (min, max) => min == 0 ? 0 : min == max ? min : Math.Min(ticket, max), Choices);
 
     private static void Advance(FakeClock clock, BehaviorController controller, long milliseconds)
     {
@@ -34,9 +34,7 @@ public sealed class IdleActionTests
     [InlineData(1, "blink")]
     [InlineData(4, "blink")]
     [InlineData(5, "yawn")]
-    [InlineData(6, "happy")]
-    [InlineData(7, "wink")]
-    public void RandomTicketSelectsEveryExpressionIncludingWeightedBlink(int ticket, string expected)
+    public void RandomTicketSelectsOnlyBlinkOrYawnIncludingWeightedBlink(int ticket, string expected)
     {
         var clock = new FakeClock();
         var controller = Create(clock, ticket);
@@ -48,7 +46,7 @@ public sealed class IdleActionTests
     }
 
     [Fact]
-    public void RepeatedIdleDeadlinesChooseAllActionsWithoutImmediateRepetition()
+    public void LegacyChoicesScheduleOnlyBlinkAndYawnWithoutImmediateRepetition()
     {
         var clock = new FakeClock();
         var random = new Random(42);
@@ -68,7 +66,7 @@ public sealed class IdleActionTests
             Assert.Equal("idle", controller.Player.CurrentClip!.Name);
             Assert.Equal(clock.NowMilliseconds + 100, controller.NextIdleActionAt);
         }
-        Assert.Equal(Choices.Select(a => a.Clip).Order(), played.Order());
+        Assert.Equal(new[] { "blink", "yawn" }, played.Order());
         Assert.Equal(0, controller.LastPetInteraction);
     }
 
@@ -104,14 +102,11 @@ public sealed class IdleActionTests
         Assert.Equal(new[] { "blink", "yawn" }, available.Select(a => a.Clip));
     }
 
-    [Theory]
-    [InlineData(5)]
-    [InlineData(6)]
-    [InlineData(7)]
-    public void ClickReturnsFromTheVisibleExpressionThenRisesOnlyOnce(int ticket)
+    [Fact]
+    public void ClickReturnsFromTheVisibleYawnThenRisesOnlyOnce()
     {
         var clock = new FakeClock();
-        var controller = Create(clock, ticket);
+        var controller = Create(clock);
         Advance(clock, controller, 100);
         var expression = controller.Player.CurrentClip!;
         var oldToken = controller.Player.Token;
@@ -147,11 +142,11 @@ public sealed class IdleActionTests
             .Concat(Enumerable.Range(1, 18).Select(i => new AnimationFrame($"opening-{i}.png", 4)))
             .Append(new AnimationFrame("rest.png", 4)).ToArray();
         var sourceSnapshot = sourceFrames.ToArray();
-        clips["wink"] = new("wink", sourceFrames);
+        clips["yawn"] = new("yawn", sourceFrames);
         var clock = new FakeClock();
         var controller = new BehaviorController(clock, clips,
             new PetSettings { AutoSleep = false, BlinkMinMs = 100, BlinkMaxMs = 100 },
-            (min, max) => min == max ? min : 7, Choices);
+            (min, max) => min == 0 ? 0 : max, Choices);
         Advance(clock, controller, 100);
         Advance(clock, controller, 84 + holdElapsed);
         Assert.Equal("closed.png", controller.Player.CurrentFrame!.File);
@@ -167,7 +162,7 @@ public sealed class IdleActionTests
         Assert.NotEqual("closed.png", controller.Player.CurrentFrame!.File);
         Advance(clock, controller, returning.DurationMs - returning.Frames[0].DurationMs);
         Assert.Equal("rise", controller.Player.CurrentClip!.Name);
-        Assert.Equal(sourceSnapshot, clips["wink"].Frames);
+        Assert.Equal(sourceSnapshot, clips["yawn"].Frames);
     }
 
     [Fact]

@@ -34,7 +34,7 @@ if ($Publish) {
     Copy-Item -LiteralPath tools/launch-preview.ps1 -Destination (Join-Path $publishDirectory 'Start-Preview.ps1') -Force
     $previewDirectory = Join-Path $publishDirectory 'Assets/strawberry-cat/previews'
     New-Item -ItemType Directory -Path $previewDirectory -Force | Out-Null
-    foreach ($previewName in @('idle-actions-preview.html', "idle-actions-preview-$version.html", 'idle-actions.gif')) {
+    foreach ($previewName in @('actions-preview.html', "actions-preview-$version.html", 'idle-actions-preview.html')) {
         $previewSource = Join-Path $workspaceRoot "assets/strawberry-cat/previews/$previewName"
         if (Test-Path -LiteralPath $previewSource) { Copy-Item -LiteralPath $previewSource -Destination $previewDirectory -Force }
     }

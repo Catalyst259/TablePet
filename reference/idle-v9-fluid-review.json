@@ -1,0 +1,49 @@
+{
+  "createdAt": "2026-10-29T00:04:46.4666194+08:00",
+  "candidate": "artifacts/wink-v9/fluid-click",
+  "selection": "reference/idle-v9-fluid-selection.json",
+  "sourceKeysExactV9": true,
+  "otherClipsUnchanged": true,
+  "sourceGenerationUsed": false,
+  "timing": {
+    "revision": "v9-fluid-click",
+    "durationMs": 1500,
+    "peakHoldMs": 350,
+    "closingMs": 440,
+    "openingMs": 330,
+    "frameSlots": 367,
+    "uniquePngs": 277,
+    "interpolationFactor": 128,
+    "endpointWindow": 12,
+    "endpointMode": "residual",
+    "refinementDivisions": 8,
+    "motionSpacing": "wink-eye",
+    "gaze": "V9 unchanged",
+    "recipe": "reference/idle-v9-fluid-selection.json"
+  },
+  "assetQaPassed": true,
+  "publishedAssetCheckExitCode": 0,
+  "headlessPlaybackPassed": true,
+  "winkPlayback": {
+    "clip": "wink",
+    "frames": 367,
+    "durationMs": 1500,
+    "elapsedMs": 1500.0165,
+    "samples": 180,
+    "sampledHz": 119.99868001451985,
+    "displayedFrameChanges": 181,
+    "synchronousCacheMisses": 0,
+    "fetchP95Ms": 0.0418,
+    "fetchMaxMs": 0.1243,
+    "sampleIntervalP95Ms": 8.3346,
+    "cachedFrames": 102,
+    "cachedMiB": 127.5
+  },
+  "preview": "dist/TablePet-v9-fluid-preview/Start-Preview.cmd",
+  "installedInstanceSwitched": false,
+  "notes": [
+    "Opening shape travel is about 1:2 across its two pose intervals; timing is now 110ms/220ms.",
+    "Retains all original V9 keys, the 350ms peak hold, click reactions and idle action pool.",
+    "Pixel continuity and headless timing checks do not certify aesthetic naturalness or actual presentation FPS."
+  ]
+}

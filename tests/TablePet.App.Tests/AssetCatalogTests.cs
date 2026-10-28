@@ -2,6 +2,7 @@ using System.IO;
 using System.Text.Json;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using TablePet.Core;
 using Xunit;
 
 namespace TablePet.App.Tests;
@@ -156,10 +157,44 @@ public sealed class AssetCatalogTests
         Assert.False(catalog.IsFallback);
         Assert.Equal(defect != "valid", catalog.HasOptionalActionFallback);
         Assert.All(RequiredClips, name => Assert.True(catalog.Clips.ContainsKey(name)));
-        Assert.Equal(defect == "valid" ? new[] { "blink", "yawn", "happy" } : new[] { "blink", "happy" },
+        Assert.Equal(defect == "valid" ? new[] { "blink", "yawn" } : new[] { "blink" },
             catalog.IdleActions.Select(action => action.Clip));
         Assert.Equal(4, catalog.IdleActions[0].Weight);
-        Assert.Equal(2, catalog.IdleActions[^1].Weight);
+        Assert.Equal(defect == "valid" ? 1 : 4, catalog.IdleActions[^1].Weight);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void WinkIsAvailableToClicksButNeverScheduledFromLegacyIdleEntries(bool legacyIdleEntry)
+    {
+        using var directory = new TestDirectory();
+        File.WriteAllText(directory.FilePath("frame.png"), "manifest fixture");
+        File.WriteAllText(directory.FilePath("wink.png"), "manifest fixture");
+        var clips = RequiredClips.ToDictionary(name => name, name => (object)new
+        {
+            frames = new[] { new { file = "frame.png", durationMs = 100 } }
+        });
+        clips["wink"] = new { frames = new[]
+        {
+            new { file = "frame.png", durationMs = 100 },
+            new { file = "wink.png", durationMs = 350 },
+            new { file = "frame.png", durationMs = 100 }
+        } };
+        File.WriteAllText(directory.FilePath("manifest.json"), JsonSerializer.Serialize(new
+        {
+            canvas = new { width = 512, height = 512 }, clips,
+            idleActions = legacyIdleEntry ? new[] { new { clip = "wink", weight = 1 } } : []
+        }));
+        var catalog = new AssetCatalog(directory.Root);
+        Assert.False(catalog.IsFallback);
+        Assert.False(catalog.HasOptionalActionFallback);
+        Assert.Equal("blink", Assert.Single(catalog.IdleActions).Clip);
+        var behavior = new BehaviorController(new StopwatchClock(), catalog.Clips,
+            randomBetween: (_, max) => max, idleActions: catalog.IdleActions);
+        behavior.Click();
+        Assert.Equal(ReactionPhase.Wink, behavior.ReactionPhase);
+        Assert.Equal("wink", behavior.Player.CurrentClip!.Name);
     }
 
     [Theory]

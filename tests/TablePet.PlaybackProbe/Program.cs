@@ -43,7 +43,8 @@ internal static class Program
             rendered++;
         };
         foreach (var name in new[] { "rise", "hold", "settle", "fall_asleep", "sleep_loop", "wake" }
-            .Concat(catalog.IdleActions.Select(action => action.Clip)))
+            .Concat(catalog.Clips.ContainsKey("wink") ? new[] { "wink" } : [])
+            .Concat(catalog.IdleActions.Select(action => action.Clip)).Distinct())
         {
             fetchTimes.Clear(); actualIntervals.Clear(); rendered = 0;
             var beforeMisses = catalog.SynchronousCacheMisses;

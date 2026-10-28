@@ -36,7 +36,7 @@
         <TextBlock Text="互动与休息" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
         <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="210"/></Grid.ColumnDefinitions>
           <TextBlock Text="互动方式" VerticalAlignment="Center"/>
-          <TextBlock Grid.Column="1" Text="悬停唤醒 · 点击起身" Padding="10,7" Foreground="#8D7785" VerticalAlignment="Center"/>
+          <TextBlock Grid.Column="1" Text="悬停唤醒 · 点击互动" Padding="10,7" Foreground="#8D7785" VerticalAlignment="Center"/>
         </Grid>
         <CheckBox x:Name="AutoSleep" Content="一段时间没有互动后自动入睡" Click="Option_Changed"/>
         <Grid x:Name="TimingGrid" Margin="0,7,0,0">
@@ -49,7 +49,7 @@
           <TextBlock Text="两次动作之间的休息" Grid.Row="4" VerticalAlignment="Center"/><TextBox x:Name="CooldownSeconds" Grid.Row="4" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="秒" Grid.Row="4" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
           <TextBlock Text="悬停多久后唤醒" Grid.Row="5" VerticalAlignment="Center"/><TextBox x:Name="HoverMs" Grid.Row="5" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="毫秒" Grid.Row="5" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
         </Grid>
-        <TextBlock Text="随机播放眨眼或小表情；有多种动作时避免连续重复。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,9,0,0"/>
+        <TextBlock Text="待机只播放眨眼和打哈欠；点击随机起身或单眼眨。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,9,0,0"/>
         <TextBlock Text="桌面显示" FontSize="18" FontWeight="SemiBold" Margin="0,24,0,12"/>
         <DockPanel><TextBlock Text="猫咪大小"/><TextBlock x:Name="SizeLabel" HorizontalAlignment="Right"/></DockPanel>
         <Slider x:Name="PetSize" Minimum="120" Maximum="480" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="Size_Changed" Margin="0,10,0,10"/>

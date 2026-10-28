@@ -1,0 +1,43 @@
+{
+  "candidate": "artifacts/wink-v9/fluid-click",
+  "updated": "assets/strawberry-cat/manifest.json",
+  "otherClipsUnchanged": true,
+  "before": {
+    "timelinesSHA256": "6e95fd6f6effd9c4ecf3badd183739848f68a4e0ab87ad14e589a9864b0f1509",
+    "pngAggregateSHA256": "98133e734fe8e205ec560b531616ddb47ab9cc1037d8e3e2e430f9b5a1912486",
+    "pngCount": 1557
+  },
+  "after": {
+    "timelinesSHA256": "6e95fd6f6effd9c4ecf3badd183739848f68a4e0ab87ad14e589a9864b0f1509",
+    "pngAggregateSHA256": "98133e734fe8e205ec560b531616ddb47ab9cc1037d8e3e2e430f9b5a1912486",
+    "pngCount": 1557
+  },
+  "idleActions": [
+    {
+      "clip": "blink",
+      "weight": 4
+    },
+    {
+      "clip": "yawn",
+      "weight": 1
+    }
+  ],
+  "wink": {
+    "revision": "v9-fluid-click",
+    "durationMs": 1500,
+    "peakHoldMs": 350,
+    "closingMs": 440,
+    "openingMs": 330,
+    "frameSlots": 367,
+    "uniquePngs": 277,
+    "interpolationFactor": 128,
+    "endpointWindow": 12,
+    "endpointMode": "residual",
+    "refinementDivisions": 8,
+    "motionSpacing": "wink-eye",
+    "gaze": "V9 unchanged",
+    "recipe": "reference/idle-v9-fluid-selection.json"
+  },
+  "sourceKeysExactV9": true,
+  "sourceGenerationUsed": false
+}

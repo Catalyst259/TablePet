@@ -1,14 +1,15 @@
 {
   "name": "tablepet-asset-tools",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.3.1",
   "scripts": {
     "assets:prepare": "node tools/build-motion-v2.cjs",
     "assets:prepare:v1": "node tools/prepare-assets.cjs",
     "assets:check": "node tools/qa-motion-assets.cjs",
-    "assets:idle": "node tools/build-idle-v7.cjs",
-    "assets:idle:check": "node tools/qa-idle-v7.cjs",
-    "assets:idle:preview": "node tools/preview-idle-v5.cjs"
+    "assets:idle": "node tools/build-wink-candidate.cjs --selection reference/idle-v9-fluid-selection.json",
+    "assets:idle:install": "node tools/install-wink-v9-smooth.cjs --selection reference/idle-v9-fluid-selection.json",
+    "assets:idle:check": "node tools/freeze-release.cjs --verify",
+    "assets:idle:preview": "node tools/preview-actions.cjs 0.3.1"
   },
   "devDependencies": {
     "sharp": "0.35.5"
