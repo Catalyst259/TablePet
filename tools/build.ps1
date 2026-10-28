@@ -26,6 +26,36 @@ if ($Publish) {
     $packagePath = Join-Path $workspaceRoot "dist/TablePet-$version-win-x64.zip"
     & $dotnet publish src/TablePet.App/TablePet.App.csproj -c Release -r win-x64 --self-contained true -o $publishDirectory -p:PublishSingleFile=false
     if ($LASTEXITCODE -ne 0) { throw '发布失败。' }
+    # Historical and local candidate PNGs remain in the source workspace, but
+    # the distributable needs only the frames referenced by its own manifest.
+    $assetRoot = [IO.Path]::GetFullPath((Join-Path $publishDirectory 'Assets/strawberry-cat'))
+    $frameRoot = [IO.Path]::GetFullPath((Join-Path $assetRoot 'frames'))
+    $publishPrefix = [IO.Path]::GetFullPath($publishDirectory).TrimEnd('\') + '\'
+    $distPrefix = [IO.Path]::GetFullPath((Join-Path $workspaceRoot 'dist')).TrimEnd('\') + '\'
+    if (!$publishPrefix.StartsWith($distPrefix, [StringComparison]::OrdinalIgnoreCase) -or
+        !$frameRoot.StartsWith($publishPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+        throw '发布素材目录不在当前工作区 dist 中。'
+    }
+    $framePrefix = $frameRoot.TrimEnd('\') + '\'
+    $packManifest = Get-Content -LiteralPath (Join-Path $assetRoot 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+    $referenced = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
+    foreach ($frame in $packManifest.clips.PSObject.Properties.Value.frames) {
+        $framePath = [IO.Path]::GetFullPath((Join-Path $assetRoot $frame.file))
+        if (!$framePath.StartsWith($framePrefix, [StringComparison]::OrdinalIgnoreCase) -or !(Test-Path -LiteralPath $framePath -PathType Leaf)) {
+            throw "发布素材路径无效或缺失：$($frame.file)"
+        }
+        $null = $referenced.Add($framePath)
+    }
+    $omittedFrames = 0
+    foreach ($file in Get-ChildItem -LiteralPath $frameRoot -Filter '*.png' -File -Recurse) {
+        $resolvedFrame = [IO.Path]::GetFullPath($file.FullName)
+        if (!$resolvedFrame.StartsWith($framePrefix, [StringComparison]::OrdinalIgnoreCase)) { throw '发布清理路径超出素材目录。' }
+        if (!$referenced.Contains($resolvedFrame)) {
+            Remove-Item -LiteralPath $resolvedFrame
+            $omittedFrames++
+        }
+    }
+    Write-Host "运行素材：$($referenced.Count) 张 PNG；未打包历史候选：$omittedFrames 张。"
     Copy-Item -LiteralPath README.md -Destination (Join-Path $publishDirectory 'README.md') -Force
     $docsDirectory = Join-Path $publishDirectory 'docs'
     New-Item -ItemType Directory -Path $docsDirectory -Force | Out-Null
