@@ -16,9 +16,9 @@
 
 适用系统：**Windows 11 x64**。普通使用者直接安装即可，无需 .NET SDK、Node.js 或其他开发环境。
 
-下面的公开安装包链接对应已发布的 **0.3.1**。**0.3.2 当前为源码冻结版本**，可按开发和构建步骤生成；本次源码冻结不代表已上传新的 GitHub Release 或安装器。
+当前发布版本为 **0.3.2 · 120Hz**，安装包和免安装包见 [0.3.2 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.2)。两种包均内置 .NET 运行时，支持保留现有个人设置。
 
-1. 从 [Releases 下载页面](https://github.com/Catalyst259/TablePet/releases/latest) 下载安装包，或直接下载 [TablePet-0.3.1-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.3.1/TablePet-0.3.1-Setup.exe)。
+1. 从 [Releases 下载页面](https://github.com/Catalyst259/TablePet/releases/latest) 下载安装包，或直接下载 [TablePet-0.3.2-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.3.2/TablePet-0.3.2-Setup.exe)。
 2. 双击安装包，按中文向导完成安装。默认目录为 `%LocalAppData%\Programs\TablePet`，无需管理员权限，所需 .NET 运行时和动画素材已内置。
 3. 完成页选择启动，或使用桌面、开始菜单中的“草莓猫桌宠”快捷方式。右键猫咪或托盘图标可打开设置和退出。
 
@@ -26,7 +26,9 @@
 
 安装包尚未配置代码签名证书，Windows 可能显示“未知发布者”。可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 <安装包路径>` 对照同一 Release 的 `.sha256` 文件确认下载完整性。
 
-需要免安装版本时，从 [0.3.1 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.1) 下载 `TablePet-0.3.1-win-x64.zip`，或按下面步骤自行构建；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。便携目录附带 `Start-Preview.cmd`，双击可正常退出旧实例并启动新版。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
+需要免安装版本时，从 [0.3.2 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.2) 下载 `TablePet-0.3.2-win-x64.zip`，或按下面步骤自行构建；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。便携目录附带 `Start-Preview.cmd`，双击可正常退出旧实例并启动新版。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
+
+0.3.2 安装器已通过静态解包、1774 个载荷文件逐文件 SHA-256 比对，以及解包程序的全部素材解码检查。本次未执行真实安装、覆盖升级或卸载；发布校验摘要见 `reference/releases/distribution-0.3.2.json`，下载文件的验证记录随 Release 提供。
 
 - 移入猫咪身体并停留片刻，只会打断入睡或唤醒睡眠，随后保持趴坐；清醒时悬停只刷新互动时间。
 - 轻点身体随机触发起身或 Wink；睡眠中点击先唤醒再播放其中一种。悬停唤醒过程中点击，也能在醒来后接上点击动作。动作进行中不叠加或排队，完成后共用互动冷却。旧的悬停/点击设置自动兼容，无需重置。
@@ -80,7 +82,7 @@ npm run assets:120hz:check
 npm run assets:freeze:check
 ```
 
-构建脚本的发布结果：`dist\TablePet-0.3.2-win-x64\TablePet.exe`、`dist\TablePet-0.3.2-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。另行执行安装器脚本时输出 `dist\TablePet-0.3.2-Setup.exe`，源码打包脚本输出 `dist\TablePet-0.3.2-source.zip`。这些路径说明本地构建产物，不表示已上传公开下载。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失、损坏或可选动作回退；该检查不会操作正在运行的桌宠实例。
+构建脚本的发布结果：`dist\TablePet-0.3.2-win-x64\TablePet.exe`、`dist\TablePet-0.3.2-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。另行执行安装器脚本时输出 `dist\TablePet-0.3.2-Setup.exe`，源码打包脚本输出 `dist\TablePet-0.3.2-source.zip`。这些脚本在本地生成文件；公开下载使用上方 Release 链接。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失、损坏或可选动作回退；该检查不会操作正在运行的桌宠实例。
 
 ## 源码备份和本地清理
 

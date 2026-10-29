@@ -2,7 +2,11 @@
 
 2026 年 10 月 30 日，用户在实际桌面体验 120Hz 测试版后确认“基本没有问题”，据此冻结本版。动画从此前确认的 240Hz 清单中取样，保留原画质、动作总时长和首尾姿态。本版同时包含已确认的连贯小幅双击喵叫与睡眠 Z 动画。
 
-本记录对应源码冻结，Git 标签为 `v0.3.2`。公开安装包仍可从 [0.3.1 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.1) 获取；本次冻结不表示已发布 0.3.2 GitHub Release 或安装器。
+Git 标签为 `v0.3.2`，对应提交 `e5d50cae691cfcd8ce353d59b719c5c1709f7e19`。源码冻结后，基于该提交构建的安装包和免安装包于 2026 年 10 月 30 日发布至 [0.3.2 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.2)，并设为当前最新版本。
+
+- 安装包：[TablePet-0.3.2-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.3.2/TablePet-0.3.2-Setup.exe)，支持原位升级并保留个人设置。
+- 免安装包：[TablePet-0.3.2-win-x64.zip](https://github.com/Catalyst259/TablePet/releases/download/v0.3.2/TablePet-0.3.2-win-x64.zip)，完整解压后运行 `TablePet.exe`。
+- 两种包均适用于 Windows 11 x64，内置 .NET 运行时；SHA-256 校验文件与发布验证记录随 Release 提供。
 
 ## 素材与体积
 
@@ -68,12 +72,22 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1 -Test -Publi
 
 ## 验证范围
 
+### 源码冻结阶段
+
 120Hz 测试版已经逐动作验证名称、总时长、循环标志、首尾路径、静态单帧和逐槽取样规则；1275 张 PNG 与原版逐文件 SHA-256 一致，测试目录没有遗漏或多余动画帧。测试版 `TablePet.exe --check-assets` 在隔离外部 .NET 路径后退出码为 0，实际解码没有素材回退；启动后由用户确认观感。
 
 当前源码执行 `tools/build.ps1 -Test`，构建零警告、零错误；187 项测试全部通过（Core 136、App 51），包含新增的 120Hz 时间边界参数检查。重采样复现和冻结指纹检查均通过。
 
 0.3.2 自包含发布目录通过 `tools/verify-runtime.ps1 -ProbeAppHost -Cycles 1000 -ExpectedIdleActions blink,yawn`：程序在隔离外部 .NET 路径后完成全部素材解码，退出码为 0；1275 张 PNG、11 个片段、1000 次加速行为循环共 50318 项断言通过。循环覆盖入睡、呼吸、唤醒、起身/保持/蹲下、拖动与冷却，以及眨眼/哈欠的点击、悬停、暂停和挂起。检查固定起身分支，Wink 与 Meow 的行为由单元测试覆盖；全部动作 PNG 均已实际解码。
 
-本轮修正验证脚本中独立点击选择与待机随机票混用的问题，使要求起身的测试明确选择起身，不修改应用行为。不同尺寸及 DPI 参数验证的是位图解码，不代表真实跨屏测试；加速循环不代表长时间驻留。安装器和真实升级未在本轮执行。检查摘要见 `reference/releases/verification-0.3.2.json`。
+冻结阶段修正验证脚本中独立点击选择与待机随机票混用的问题，使要求起身的测试明确选择起身，不修改应用行为。不同尺寸及 DPI 参数验证的是位图解码，不代表真实跨屏测试；加速循环不代表长时间驻留。该阶段未执行安装器验证或真实升级，原始检查摘要保留在 `reference/releases/verification-0.3.2.json`。
+
+### 安装包发布阶段
+
+随后从 `v0.3.2` 冻结提交构建的程序产品版本为 `0.3.2+e5d50cae691cfcd8ce353d59b719c5c1709f7e19`。安装器大小为 279,793,659 字节（约 266.8 MiB），SHA-256 为 `0d94bec31348d998ad91aa19f3892dc4b9b197dfdd9c60edcd1be6ea3db20c92`。
+
+安装器通过静态完整性测试和解包，1774 个载荷文件与发布目录逐文件 SHA-256 一致。解包后的程序实际加载 1275 张 PNG、1907 个时间槽，`--check-assets` 退出码为 0，没有素材解码回退。发布后的 5 个远端附件已核对文件大小和 SHA-256，与本地产物一致。发布记录保存在 `reference/releases/distribution-0.3.2.json`，下载文件的验证摘要为 Release 附件 `TablePet-0.3.2-verification.json`；源码冻结指纹和原冻结验证记录保持不变。
+
+此阶段没有执行安装程序，因此不把静态验包结果视为真实安装、覆盖升级或卸载流程已经验收。
 
 多屏混合 DPI、另一台干净 Windows 电脑、实际显示帧率和长时间运行仍按 [验收记录](ACCEPTANCE.md) 的相应范围处理。
