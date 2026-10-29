@@ -24,6 +24,7 @@ public sealed class PlatformService : IDisposable
     private const long WsExTransparent = 0x00000020;
     private const uint SwpNoSize = 0x0001, SwpNoMove = 0x0002, SwpNoZOrder = 0x0004;
     private const uint SwpNoActivate = 0x0010, SwpFrameChanged = 0x0020;
+    private const uint SwpNoOwnerZOrder = 0x0200;
     private readonly Window _window;
     private HwndSource? _source;
     private nint _handle;
@@ -61,13 +62,64 @@ public sealed class PlatformService : IDisposable
         SetExtendedStyle(style | WsExNoActivate | WsExToolWindow);
     }
 
-    private void SetExtendedStyle(long style)
+    private void SetExtendedStyle(long style) => SetExtendedStyle(_handle, style);
+
+    private static void SetExtendedStyle(nint handle, long style)
     {
         Marshal.SetLastPInvokeError(0);
-        var previous = SetWindowLongPtr(_handle, GwlExStyle, new nint(style));
+        var previous = SetWindowLongPtr(handle, GwlExStyle, new nint(style));
         if (previous == 0 && Marshal.GetLastPInvokeError() != 0) throw new Win32Exception();
-        if (!SetWindowPos(_handle, 0, 0, 0, 0, 0,
+        if (!SetWindowPos(handle, 0, 0, 0, 0, 0,
             SwpNoSize | SwpNoMove | SwpNoZOrder | SwpNoActivate | SwpFrameChanged))
+            throw new Win32Exception();
+    }
+
+    /// <summary>Visible decoration pixels must also pass input to other applications underneath.</summary>
+    public static void ConfigureDecorationWindow(Window decoration)
+    {
+        decoration.Dispatcher.VerifyAccess();
+        var handle = new WindowInteropHelper(decoration).EnsureHandle();
+        var style = GetWindowLongPtr(handle, GwlExStyle).ToInt64();
+        SetExtendedStyle(handle, style | WsExTransparent | WsExNoActivate | WsExToolWindow);
+    }
+
+    /// <summary>Showing an owned WPF window must not raise an occluded pet in the desktop stack.</summary>
+    public static void ShowDecorationWindow(Window owner, Window decoration)
+    {
+        owner.Dispatcher.VerifyAccess();
+        var ownerHandle = new WindowInteropHelper(owner).Handle;
+        var decorationHandle = new WindowInteropHelper(decoration).Handle;
+        var aboveOwner = GetWindow(ownerHandle, 3); // GW_HWNDPREV, before HWND creation or Show.
+        if (aboveOwner != 0 && aboveOwner == decorationHandle) aboveOwner = GetWindow(aboveOwner, 3);
+        new WindowInteropHelper(decoration).EnsureHandle();
+        AlignDecorationWindow(owner, decoration);
+        decoration.Show();
+        decorationHandle = new WindowInteropHelper(decoration).Handle;
+        // WPF Show can raise the whole owner group even with ShowActivated=false.
+        // Restore it synchronously before rendering, then put only the decoration
+        // directly above its owner. A foreign window may close during Show.
+        if (aboveOwner != 0 && !IsWindow(aboveOwner)) return;
+        const uint flags = SwpNoSize | SwpNoMove | SwpNoActivate | SwpNoOwnerZOrder;
+        if (!SetWindowPos(ownerHandle, aboveOwner, 0, 0, 0, 0, flags) ||
+            !SetWindowPos(decorationHandle, aboveOwner, 0, 0, 0, 0, flags))
+            throw new Win32Exception();
+    }
+
+    /// <summary>Align an owned overlay in physical coordinates, including on monitors with different DPI.</summary>
+    public static void AlignDecorationWindow(Window owner, Window decoration)
+    {
+        owner.Dispatcher.VerifyAccess();
+        decoration.Dispatcher.VerifyAccess();
+        var ownerHandle = new WindowInteropHelper(owner).Handle;
+        var decorationHandle = new WindowInteropHelper(decoration).Handle;
+        if (ownerHandle == 0 || decorationHandle == 0) return;
+        if (decoration.Topmost != owner.Topmost) decoration.Topmost = owner.Topmost;
+        if (!GetWindowRect(ownerHandle, out var bounds)) throw new Win32Exception();
+        if (!GetWindowRect(decorationHandle, out var current)) throw new Win32Exception();
+        if (bounds.Left == current.Left && bounds.Top == current.Top &&
+            bounds.Right == current.Right && bounds.Bottom == current.Bottom) return;
+        if (!SetWindowPos(decorationHandle, 0, bounds.Left, bounds.Top,
+            bounds.Right - bounds.Left, bounds.Bottom - bounds.Top, SwpNoZOrder | SwpNoActivate))
             throw new Win32Exception();
     }
 
@@ -262,6 +314,11 @@ public sealed class PlatformService : IDisposable
     private static extern nint WindowFromPoint(NativePoint point);
     [DllImport("user32.dll")]
     private static extern nint GetAncestor(nint window, uint flags);
+    [DllImport("user32.dll")]
+    private static extern nint GetWindow(nint window, uint command);
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool IsWindow(nint window);
     [DllImport("user32.dll")]
     private static extern short GetAsyncKeyState(int virtualKey);
     [DllImport("user32.dll")]

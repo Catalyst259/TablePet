@@ -19,6 +19,7 @@ public partial class PetWindow : Window
     private readonly DispatcherTimer _timer;
     private TrayService? _tray;
     private SettingsWindow? _settingsWindow;
+    private SleepIndicatorWindow? _sleepIndicator;
     private bool _ready, _closing, _hidden, _systemPaused, _autoPaused, _pointerHeld, _menuOpen;
     private bool _renderingSubscribed;
     private TimeSpan? _lastRenderingTime;
@@ -54,8 +55,10 @@ public partial class PetWindow : Window
         _settings.Changed += ApplySettings;
         _settings.SaveFailed += message => Dispatcher.BeginInvoke(new Action(() => _tray?.ShowMessage(message)));
         _platform.SuspensionChanged += paused => { _systemPaused = paused; UpdateSuspension(); };
-        _platform.DpiChanged += () => { ResizeAssets(); if (!_behavior.IsDragging) _platform.KeepVisible(); ResetBaseline(); };
+        _platform.DpiChanged += () => { ResizeAssets(); if (!_behavior.IsDragging) _platform.KeepVisible(); _sleepIndicator?.SyncBounds(); ResetBaseline(); };
         _platform.DisplayChanged += () => { ResetBaseline(); SavePosition(); };
+        LocationChanged += (_, _) => _sleepIndicator?.SyncBounds();
+        SizeChanged += (_, _) => _sleepIndicator?.SyncBounds();
         Closing += (_, e) => { if (!_closing) { e.Cancel = true; ToggleVisible(); } };
     }
 
@@ -109,12 +112,29 @@ public partial class PetWindow : Window
     }
     private void UpdateRenderingSubscription()
     {
-        var needed = _ready && !_closing && !_hidden && !_systemPaused && _behavior.Player.NeedsContinuousRendering;
+        UpdateSleepIndicator();
+        // A static fallback sleep pose still has moving Zs. Dragging pauses the same
+        // player clock, so both the body and decoration freeze together.
+        var needed = _ready && !_closing && !_hidden && !_systemPaused &&
+            (_behavior.Player.NeedsContinuousRendering || (IsSleepIndicatorActive && !_behavior.Player.IsPaused));
         if (needed == _renderingSubscribed) return;
         _renderingSubscribed = needed;
         _lastRenderingTime = null;
         if (needed) CompositionTarget.Rendering += OnRendering;
         else { CompositionTarget.Rendering -= OnRendering; _assets.StopPrefetch(); }
+    }
+    private bool IsSleepIndicatorActive => _behavior.State == PetState.Sleep &&
+        _behavior.Player.CurrentClip?.Name == "sleep_loop";
+
+    private void UpdateSleepIndicator()
+    {
+        if (!_ready || _closing || _hidden || _systemPaused || !IsVisible || !IsSleepIndicatorActive)
+        {
+            _sleepIndicator?.Hide();
+            return;
+        }
+        _sleepIndicator ??= new SleepIndicatorWindow(this);
+        _sleepIndicator.Update(_behavior.Player.ElapsedMs);
     }
     private Point PointerDip(Point physical)
     {
@@ -205,7 +225,7 @@ public partial class PetWindow : Window
             _interaction.ApplySettings(settings, dip.X, dip.Y, Hit(pointer));
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { _platform.KeepVisible(); ResetBaseline(); }));
         }
-        _applied = settings; UpdateTray();
+        _applied = settings; _sleepIndicator?.SyncBounds(); UpdateTray();
     }
     private void SavePosition()
     { if (_ready) _settings.Update(_settings.Current with { Position = _platform.CapturePlacement() }); }
@@ -216,6 +236,7 @@ public partial class PetWindow : Window
         _hidden = !_hidden;
         UpdateSuspension();
         if (_hidden) Hide(); else { Show(); _platform.KeepVisible(); ResetBaseline(); }
+        UpdateSleepIndicator();
         UpdateTray();
     }
     private void UpdateSuspension()
@@ -259,6 +280,7 @@ public partial class PetWindow : Window
     {
         if (_closing) return;
         _closing = true; _timer.Stop(); UpdateRenderingSubscription(); EndPointer(cancel: true); SavePosition();
+        _sleepIndicator?.Close(); _sleepIndicator = null;
         _settingsWindow?.Close(); _settings.Changed -= ApplySettings;
         _settings.Dispose(); _tray?.Dispose(); _platform.Dispose();
         Close(); System.Windows.Application.Current.Shutdown();
