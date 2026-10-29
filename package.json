@@ -1,7 +1,7 @@
 {
   "name": "tablepet-asset-tools",
   "private": true,
-  "version": "0.3.1",
+  "version": "0.3.2",
   "scripts": {
     "assets:prepare": "node tools/build-motion-v2.cjs",
     "assets:prepare:v1": "node tools/prepare-assets.cjs",
@@ -9,10 +9,13 @@
     "assets:idle": "node tools/build-wink-candidate.cjs --selection reference/idle-v9-fluid-selection.json",
     "assets:idle:install": "node tools/install-wink-v9-smooth.cjs --selection reference/idle-v9-fluid-selection.json",
     "assets:idle:check": "node tools/freeze-release.cjs --verify",
-    "assets:idle:preview": "node tools/preview-actions.cjs 0.3.1",
+    "assets:idle:preview": "node tools/preview-actions.cjs 0.3.2",
     "assets:meow": "node tools/build-meow.cjs --selection reference/meow-v3-selection.json",
     "assets:meow:install": "node tools/build-meow.cjs --selection reference/meow-v3-selection.json --install",
-    "assets:meow:check": "node tools/build-meow.cjs --self-test"
+    "assets:meow:check": "node tools/build-meow.cjs --self-test",
+    "assets:120hz": "node tools/resample-motion-120hz.cjs --write",
+    "assets:120hz:check": "node tools/resample-motion-120hz.cjs --verify",
+    "assets:freeze:check": "node tools/freeze-release.cjs --verify"
   },
   "devDependencies": {
     "sharp": "0.35.5"

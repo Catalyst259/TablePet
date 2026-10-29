@@ -2,7 +2,7 @@
 // node tools/preview-actions.cjs [version]
 const fs = require('node:fs/promises');
 const path = require('node:path');
-const version = process.argv[2] || '0.3.1';
+const version = process.argv[2] || '0.3.2';
 if (!/^\d+\.\d+\.\d+$/.test(version)) throw new Error('Supply a numeric release version.');
 const assetRoot = path.resolve(__dirname, '../assets/strawberry-cat');
 

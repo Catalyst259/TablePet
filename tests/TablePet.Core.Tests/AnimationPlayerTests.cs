@@ -78,11 +78,13 @@ public sealed class AnimationPlayerTests
         Assert.Equal(2, player.Token);
     }
 
-    [Fact]
-    public void Dense240FpsTimelineUsesExactExclusiveBoundariesAcrossLongLoops()
+    [Theory]
+    [InlineData(120)]
+    [InlineData(240)]
+    public void DenseTimelineUsesExactExclusiveBoundariesAcrossLongLoops(int sampleHz)
     {
-        var frames = Enumerable.Range(0, 240).Select(i => new AnimationFrame($"{i}.png",
-            (int)Math.Round((i + 1) * 1000d / 240) - (int)Math.Round(i * 1000d / 240))).ToArray();
+        var frames = Enumerable.Range(0, sampleHz).Select(i => new AnimationFrame($"{i}.png",
+            (int)Math.Round((i + 1) * 1000d / sampleHz) - (int)Math.Round(i * 1000d / sampleHz))).ToArray();
         var clock = new FakeClock();
         var player = new AnimationPlayer(clock);
         player.Play(new AnimationClip("dense", frames, true));

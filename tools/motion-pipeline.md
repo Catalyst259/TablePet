@@ -2,6 +2,18 @@
 
 `motion-interpolate.cjs` uses the existing **RIFE 4.6 / ncnn Vulkan** model. It does not implement an optical-flow model or generate poses. The desktop app only consumes the resulting PNG files; it does not need a GPU model, Node.js, or network access.
 
+## Current 0.3.2 runtime sampling
+
+The approved runtime baseline is now **120 Hz**, accepted by the user on 2026-10-30. It has 11 clips, 1907 time slots and 1275 referenced PNGs (234,383,197 bytes). The existing 512×512 RGBA artwork, clip durations, loop flags and exact first/last poses are retained. The approved small continuous Meow and sleep Z behavior are included in this baseline.
+
+`reference/motion-120hz/source-manifest-240hz.json` preserves the complete source timeline. `npm run assets:120hz` runs `resample-motion-120hz.cjs --write` to reproduce the runtime manifest. `npm run assets:120hz:check` verifies that result without writing; `npm run assets:freeze:check` checks `reference/releases/frozen-0.3.2.json`. These commands use repository files and do not require a previous local preview, an inference cache or new image generation.
+
+Sampling boundaries are integer milliseconds obtained with `round(n * 1000 / 120)`. Each slot selects the source frame at its boundary; the last slot retains the source's exact final pose. Consecutive slots that select the same PNG remain separate because interaction return paths consume slot durations. Static `idle` and `hold` clips remain single frames, avoiding continuous rendering of unchanged poses. Selected PNGs are reused byte for byte.
+
+The authoring recipes below still generate the original dense 240 Hz timelines. They are production history and source-generation tools, not a direct replacement for the frozen 120 Hz manifest. After changing source artwork or motion, review and update the sampling source before producing and freezing another runtime baseline. Running a historical generator over the current manifest invalidates the current freeze until it is restored or deliberately revised.
+
+The 120 Hz label describes stored motion sampling, not measured desktop presentation FPS. WPF continues to render at composition refresh. See [0.3.2 release notes](../docs/UPDATE-0.3.2.md) for the reviewed scope and size comparison.
+
 ## Dependencies
 
 - Node.js 22.15+ / 24 (the setup script uses built-in ZIP CRC32 support).
@@ -61,13 +73,13 @@ The builder registers complete poses at the paws and retains the dual-matte RIFE
 
 After visual review, `npm run assets:meow:install` imports only the new clip. The WPF speech bubble is separate from these PNGs, appears at 180–300 ms and fades at 1100–1400 ms. The cue contract is a non-looping 1400 ms `meow` clip. Prompts and source images are preserved; building/running the desktop pet needs no image generation or interpolation tools.
 
-## 0.3.1 V9 click reaction (frozen workflow)
+## 0.3.1 V9 click reaction (archived frozen workflow)
 
 The frozen runtime has automatic **blink/yawn** (4:1), and equal-probability **rise/wink** click reactions. The 1500 ms Wink uses the exact V9 artwork: 440 ms closing, 350 ms held expression, 330 ms reopening and 380 ms recovery. No new gaze motion is authored. Its recipe is `reference/idle-v9-fluid-selection.json`; approved normalized-key hashes are in `reference/idle-v9-approved-keys.json`.
 
 `npm run assets:idle` stages a Wink candidate from the saved V9 sources. The two-pass RIFE pipeline subdivides each original pose interval into eight smaller intervals; `wink-endpoint.cjs` removes endpoint residual without fading out real motion. Monotone timing is sampled by measured eyelid travel. `npm run assets:idle:install` imports the staged result after checking the original keys and idle endpoints, and verifies that all other clips remain unchanged. This rebuild needs the offline RIFE tool, Node/sharp and FFmpeg; compiling or running the saved release needs none of them.
 
-`npm run assets:idle:check` verifies `reference/releases/frozen-0.3.1.json`. `npm run assets:idle:preview` regenerates the standalone manifest-driven preview, with idle and click actions in separate groups. Its HTML and referenced runtime PNGs work without a server. The `artifacts` directory contains disposable inference/diagnostic caches only; no historical cache is required to begin rebuilding.
+At that freeze, `npm run assets:idle:check` verified `reference/releases/frozen-0.3.1.json`, and `npm run assets:idle:preview` regenerated the standalone manifest-driven preview, with idle and click actions in separate groups. The current commands target the current source version. The historical HTML and referenced runtime PNGs work without a server. The `artifacts` directory contains disposable inference/diagnostic caches only; no historical cache is required to begin rebuilding.
 
 The older `assets:prepare` and v7 builder commands below reconstruct historical releases and are not the 0.3.1 publication pipeline. To reproduce the frozen app, use `tools/build.ps1 -Test -Publish` with the committed runtime PNGs.
 

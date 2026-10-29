@@ -1,4 +1,4 @@
-// Freeze the approved 0.3.1 runtime inputs without changing any artwork.
+// Freeze approved runtime inputs without changing any artwork.
 // node tools/freeze-release.cjs --write [version]
 // node tools/freeze-release.cjs --verify [version]
 // Verification is read-only; redirect its JSON output to artifacts if desired.
@@ -42,7 +42,7 @@ function fileAt(clip, timeMs) {
   return clip.frames.at(-1).file;
 }
 
-async function collect(version) {
+async function collectLegacy(version) {
   const projectBytes = await safeRead(repo, projectPath);
   const sourceVersion = /<Version>([^<]+)<\/Version>/.exec(projectBytes.toString('utf8'))?.[1];
   assert(/^\d+\.\d+\.\d+$/.test(sourceVersion || ''), 'Project must declare a numeric release version.');
@@ -124,6 +124,13 @@ async function collect(version) {
   };
 }
 
+async function collect(version) {
+  const projectBytes = await safeRead(repo, projectPath);
+  version ??= /<Version>([^<]+)<\/Version>/.exec(projectBytes.toString('utf8'))?.[1];
+  if (version === '0.3.2') return require('./freeze-120hz-release.cjs').collect(version);
+  return collectLegacy(version);
+}
+
 function differences(expected, actual, prefix = '') {
   if (expected === actual) return [];
   if (!expected || !actual || typeof expected !== 'object' || typeof actual !== 'object' || Array.isArray(expected) !== Array.isArray(actual)) return [prefix || '(root)'];
@@ -144,7 +151,7 @@ async function main(args) {
     const changed = differences(frozen, snapshot);
     assert(changed.length === 0, 'Frozen inputs differ: ' + changed.slice(0, 20).join(', ') + (changed.length > 20 ? ` (and ${changed.length - 20} more)` : ''));
   }
-  return { passed: true, mode: args[0].slice(2), version: snapshot.version, record: relative, frozenDate: snapshot.frozenDate, statistics: snapshot.statistics, manifestSHA256: snapshot.manifest.sha256, pngAggregateSHA256: snapshot.pngAggregate.sha256, approvedV9Keys: snapshot.approvedV9Keys.length, scope: snapshot.verificationScope };
+  return { passed: true, mode: args[0].slice(2), version: snapshot.version, record: relative, frozenDate: snapshot.frozenDate, statistics: snapshot.statistics, manifestSHA256: snapshot.manifest.sha256, pngAggregateSHA256: snapshot.pngAggregate.sha256, ...(snapshot.approvedV9Keys ? { approvedV9Keys: snapshot.approvedV9Keys.length } : { sampleFps: snapshot.sampleFps, sourceManifestSHA256: snapshot.sourceManifest.sha256 }), scope: snapshot.verificationScope };
 }
 
 module.exports = { collect, differences, fileAt };

@@ -171,7 +171,9 @@ internal static class Program
         var clock = new FakeClock();
         var settings = new PetSettings { SleepAfterMs = 60000, BlinkMinMs = 3000, BlinkMaxMs = 3000, CooldownMs = 30, HoldMs = 100 };
         var random = new Random(20261027);
-        var controller = new BehaviorController(clock, catalog.Clips, settings, (a, b) => random.Next(a, b + 1), catalog.IdleActions);
+        // These cycles exercise rise/hold/settle; keep click selection separate from idle randomness.
+        var controller = new BehaviorController(clock, catalog.Clips, settings,
+            (a, b) => a == 0 && b == 1 ? 0 : random.Next(a, b + 1), catalog.IdleActions);
         var observed = new HashSet<string>();
         var idleSelectionCounts = idleNames.ToDictionary(name => name, _ => 0);
         string? previousIdle = null;
@@ -267,7 +269,8 @@ internal static class Program
                 var settings = new PetSettings { AutoSleep = autoSleep, BlinkMinMs = 100, BlinkMaxMs = 100,
                     SleepAfterMs = sleepAfter ?? 60000, HoldMs = 100, CooldownMs = 30 };
                 var pet = new BehaviorController(clock, catalog.Clips, settings,
-                    (min, max) => min == max ? min : Math.Clamp(ticket, min, max), catalog.IdleActions);
+                    // An idle-expression ticket must not also choose the independent Wink reaction.
+                    (min, max) => min == 0 && max == 1 ? 0 : min == max ? min : Math.Clamp(ticket, min, max), catalog.IdleActions);
                 Step(clock, pet, 99);
                 Check(pet.Player.CurrentClip!.Name == "idle", "Expression waits for its automatic deadline " + action.Clip);
                 Step(clock, pet, 1);

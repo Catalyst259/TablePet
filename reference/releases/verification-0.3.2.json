@@ -1,0 +1,66 @@
+{
+  "version": "0.3.2",
+  "date": "2026-10-30",
+  "visualApproval": {
+    "approved": true,
+    "samplingHz": 120,
+    "scope": "User reviewed the independent desktop preview before source promotion."
+  },
+  "build": {
+    "configuration": "Release",
+    "runtime": "win-x64",
+    "selfContained": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "unitTests": {
+    "core": 136,
+    "app": 51,
+    "total": 187,
+    "failed": 0
+  },
+  "freeze": {
+    "record": "reference/releases/frozen-0.3.2.json",
+    "manifestSHA256": "8c8dd9b4c1e604f5d604b661da3a1904e39d9c1680c3a240953b8fa407c6beba",
+    "pngAggregateSHA256": "fb5a6739ff4184bfa051d0cba29dbf5a5af60ba2ae2d71e2c80ed14d7158186c",
+    "deterministicResamplingPassed": true,
+    "frozenInputsPassed": true
+  },
+  "runtime": {
+    "command": "powershell -File tools/verify-runtime.ps1 -PublishDirectory dist/TablePet-0.3.2-win-x64 -ProbeAppHost -Cycles 1000 -ExpectedIdleActions blink,yawn",
+    "isolatedAppHostAssetCheckExitCode": 0,
+    "clips": 11,
+    "uniquePngs": 1275,
+    "cycles": 1000,
+    "assertions": 50318,
+    "checkedSizes": [
+      120,
+      240,
+      480
+    ],
+    "decodedDpiScales": [
+      100,
+      125,
+      150,
+      200
+    ],
+    "cycleReactionBranch": "rise/hold/settle",
+    "observedClips": [
+      "blink",
+      "fall_asleep",
+      "hold",
+      "idle",
+      "return_to_idle",
+      "rise",
+      "settle",
+      "sleep_loop",
+      "wake",
+      "yawn"
+    ]
+  },
+  "limitations": [
+    "Wink and Meow behavior is covered by unit tests; all PNGs are decoded by the runtime check.",
+    "Accelerated behavior cycles and decode sizes do not establish real monitor FPS, cross-monitor behavior, or long-term stability.",
+    "Installer creation, installation, upgrade, and GitHub Release publication were not performed in this freeze."
+  ]
+}

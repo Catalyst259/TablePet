@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 2,
+  "version": "0.3.2",
+  "frozenDate": "2026-10-30",
+  "sampleFps": 120,
+  "manifest": {
+    "path": "assets/strawberry-cat/manifest.json",
+    "sha256": "8c8dd9b4c1e604f5d604b661da3a1904e39d9c1680c3a240953b8fa407c6beba",
+    "revision": "0.3.2"
+  },
+  "sourceManifest": {
+    "path": "reference/motion-120hz/source-manifest-240hz.json",
+    "sha256": "6c567e7e3c7b76ec2bf759fb406d3d00a9db53aa154e2ef59bf27032d9739ba2",
+    "sampleFps": 240
+  },
+  "sampling": {
+    "sourceManifest": "reference/motion-120hz/source-manifest-240hz.json",
+    "sourceManifestSha256": "6c567e7e3c7b76ec2bf759fb406d3d00a9db53aa154e2ef59bf27032d9739ba2",
+    "sourceFps": 240,
+    "targetFps": 120,
+    "method": "Original-time frame selection at rounded 120 Hz boundaries; original first/last pose retained; repeated slots kept; static clips unchanged.",
+    "originalPngBytesPreserved": true,
+    "visualApproval": {
+      "status": "approved",
+      "date": "2026-10-30",
+      "reviewer": "user"
+    }
+  },
+  "idleActions": [
+    {
+      "clip": "blink",
+      "weight": 4
+    },
+    {
+      "clip": "yawn",
+      "weight": 1
+    }
+  ],
+  "clickReactions": {
+    "choices": [
+      "rise",
+      "wink"
+    ],
+    "selection": "equal probability; rise includes hold/settle",
+    "wink": {
+      "revision": "v9-fluid-click",
+      "durationMs": 1500,
+      "peakHoldMs": 350,
+      "closingMs": 440,
+      "openingMs": 330,
+      "frameSlots": 180,
+      "uniquePngs": 137,
+      "interpolationFactor": 128,
+      "endpointWindow": 12,
+      "endpointMode": "residual",
+      "refinementDivisions": 8,
+      "motionSpacing": "wink-eye",
+      "gaze": "V9 unchanged",
+      "recipe": "reference/idle-v9-fluid-selection.json"
+    }
+  },
+  "statistics": {
+    "clips": 11,
+    "frameSlots": 1907,
+    "uniquePngs": 1275
+  },
+  "clipsSHA256": "0a644763b1732fe6cfbe827f8574fb91f759ec9fb15e46f5b5b5239f00b9ba92",
+  "clips": {
+    "idle": {
+      "loop": true,
+      "durationMs": 1000,
+      "slots": 1,
+      "uniquePngs": 1,
+      "timelineSHA256": "50845cf52951e22cf0473831a6a71ae822b6a92cf336340e195d0635adbbeb9c",
+      "firstFrame": "frames/fall_asleep-00.png",
+      "lastFrame": "frames/fall_asleep-00.png"
+    },
+    "blink": {
+      "loop": false,
+      "durationMs": 375,
+      "slots": 45,
+      "uniquePngs": 25,
+      "timelineSHA256": "51f771b02eb2a05f87505bc28d365233b4a452cf2f437e7bdb40702da6a45268",
+      "firstFrame": "frames/fall_asleep-00.png",
+      "lastFrame": "frames/fall_asleep-00.png"
+    },
+    "fall_asleep": {
+      "loop": false,
+      "durationMs": 1750,
+      "slots": 210,
+      "uniquePngs": 208,
+      "timelineSHA256": "88deb8bdb8bc6ed8b6d8de38772e16b6e43c9c6a031b8b7baae06b237b11cdf0",
+      "firstFrame": "frames/fall_asleep-00.png",
+      "lastFrame": "frames/v2/fall_asleep-00768.png"
+    },
+    "sleep_loop": {
+      "loop": true,
+      "durationMs": 3600,
+      "slots": 432,
+      "uniquePngs": 257,
+      "timelineSHA256": "93dc8a49ef7f2a9bd68ae8e7b2c3676a204ea1173a2979d65733c85b75d6e8ae",
+      "firstFrame": "frames/v2/fall_asleep-00768.png",
+      "lastFrame": "frames/v2/fall_asleep-00768.png"
+    },
+    "wake": {
+      "loop": false,
+      "durationMs": 1050,
+      "slots": 126,
+      "uniquePngs": 126,
+      "timelineSHA256": "af689e70fad7db19850fe63315a2b33554add2db4f2f1f3cbbd6f92a7d24be86",
+      "firstFrame": "frames/v2/fall_asleep-00768.png",
+      "lastFrame": "frames/fall_asleep-00.png"
+    },
+    "rise": {
+      "loop": false,
+      "durationMs": 800,
+      "slots": 96,
+      "uniquePngs": 95,
+      "timelineSHA256": "08d5c35a6f6b0dab5e2be480ff5f97fcdfb15bf6a92f37a198fc039f94f4a9e9",
+      "firstFrame": "frames/fall_asleep-00.png",
+      "lastFrame": "frames/v2/rise-00896.png"
+    },
+    "hold": {
+      "loop": true,
+      "durationMs": 1000,
+      "slots": 1,
+      "uniquePngs": 1,
+      "timelineSHA256": "c623f5c854e6d1668a5207aa17b311a57d90765557adac810f2afd47cd228bac",
+      "firstFrame": "frames/v2/rise-00896.png",
+      "lastFrame": "frames/v2/rise-00896.png"
+    },
+    "settle": {
+      "loop": false,
+      "durationMs": 1000,
+      "slots": 120,
+      "uniquePngs": 120,
+      "timelineSHA256": "df24ef83e9a6e37a72acfda2b697c4cd95575bb1edf8ac651387578cc6f95c92",
+      "firstFrame": "frames/v2/rise-00896.png",
+      "lastFrame": "frames/fall_asleep-00.png"
+    },
+    "yawn": {
+      "loop": false,
+      "durationMs": 4400,
+      "slots": 528,
+      "uniquePngs": 270,
+      "timelineSHA256": "aa0d18ce945900e8577da091fa6ad5880c0efeb9beb69fc56809f1bb7692e82e",
+      "firstFrame": "frames/fall_asleep-00.png",
+      "lastFrame": "frames/fall_asleep-00.png"
+    },
+    "wink": {
+      "loop": false,
+      "durationMs": 1500,
+      "slots": 180,
+      "uniquePngs": 137,
+      "timelineSHA256": "3c57505a0047adc927a6b417f1633b89612f60d4f45225510785b5412f481df0",
+      "firstFrame": "frames/fall_asleep-00.png",
+      "lastFrame": "frames/fall_asleep-00.png"
+    },
+    "meow": {
+      "loop": false,
+      "durationMs": 1400,
+      "slots": 168,
+      "uniquePngs": 85,
+      "timelineSHA256": "aee4be74fc7dc307b034287609c7e81b0768bd37cccebfd6fe5c8f0b2e2399db",
+      "firstFrame": "frames/fall_asleep-00.png",
+      "lastFrame": "frames/fall_asleep-00.png"
+    }
+  },
+  "pngAggregate": {
+    "sha256": "fb5a6739ff4184bfa051d0cba29dbf5a5af60ba2ae2d71e2c80ed14d7158186c",
+    "method": "SHA-256 of sorted asset-relative path + NUL + lowercase PNG SHA-256 + LF, using UTF-8.",
+    "uniquePngs": 1275,
+    "bytes": 234383197
+  },
+  "sourcePngAggregate": {
+    "sha256": "544c20a896cb42053ca76897d4e9e73802df527310cd4f8a720ff87c92c4b995",
+    "method": "SHA-256 of sorted asset-relative path + NUL + lowercase PNG SHA-256 + LF, using UTF-8.",
+    "uniquePngs": 2030,
+    "bytes": 375044673
+  },
+  "supportAssets": [
+    {
+      "path": "assets/strawberry-cat/fallback.png",
+      "sha256": "3edd6f98d0ef5d7ec5121f59e241302cad4e8ee5b205cf3052621244f440f9ee",
+      "bytes": 1288875
+    },
+    {
+      "path": "assets/strawberry-cat/tray.ico",
+      "sha256": "0c64952e32a606cafeb419d37622b94121e6cf1341df639b206b304566e2c3dc",
+      "bytes": 123558
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/TablePet.App/TablePet.App.csproj",
+      "sha256": "c0d87ab0c03c203ae48173abf81a649a1e036ad3d210e9cce821e316b4c2e94d"
+    },
+    {
+      "path": "reference/motion-120hz/source-manifest-240hz.json",
+      "sha256": "6c567e7e3c7b76ec2bf759fb406d3d00a9db53aa154e2ef59bf27032d9739ba2"
+    },
+    {
+      "path": "tools/resample-motion-120hz.cjs",
+      "sha256": "549b9f75cc1ccf4885db5f93390556741550f039a3b0e2ea50ccf80dc0d1b143"
+    },
+    {
+      "path": "tools/freeze-release.cjs",
+      "sha256": "4471cd0ad4cf6b75e5d63029e08be7bcd750b3d0c4699c3d8242e0a7e75f1777"
+    },
+    {
+      "path": "tools/freeze-120hz-release.cjs",
+      "sha256": "fac175af0aa86a6174c9958c3e54d1bb7c4c017f9e3869db487c2ab4b4b2473b"
+    }
+  ],
+  "verificationScope": "Approved 120 Hz runtime manifest, all 11 clip timelines including meow, original durations/loop/endpoints, idle/click metadata, 1275 runtime PNG bytes, fallback/tray, the 240 Hz source manifest and its 2030 PNG bytes, source version and resampling/freeze tools. Historical authoring candidates, build, installer and local upgrade results are outside this freeze."
+}
