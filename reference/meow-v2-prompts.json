@@ -1,0 +1,29 @@
+{
+  "tool": "built-in image_gen",
+  "useCase": "precise-object-edit",
+  "transparentBackground": true,
+  "originalReference": "assets/strawberry-cat/frames/fall_asleep-00.png",
+  "userCorrection": "Body and paws stay in place. Only head gently lifts. Both eyes fully closed with blissful enjoyment; mouth slightly opens for 喵, then restore.",
+  "calls": [
+    {
+      "output": "peak-high-rejected.png",
+      "prompt": "Use case: precise-object-edit. Edit target: the attached original strawberry-cat desktop sprite. Create exactly ONE full-body transparent animation keyframe. IMPORTANT expression: BOTH eyes are COMPLETELY CLOSED, no visible irises, pupils, eye whites or eye highlights at all. Each closed eye is a gently smiling upward curved dark-chocolate eyelid arc, an adorable blissful contented expression, like the cat is enjoying affection with eyes closed. Both cheeks softly happy. Mouth just slightly open in a tiny rounded meow shape, dark chocolate outline and pale pink inside, no big yawn, no protruding tongue, no teeth. IMPORTANT pose: the CAT'S BODY AND FRONT PAWS STAY GROUNDED, at the EXACT original pixel locations. Only the HEAD lifts very slightly upward by approximately 10 pixels on the reference 512x512 canvas (2% of canvas height); subtly raise chin, face, ears, and strawberry/cream/waffle together as a coherent head, with a tiny natural upward nod. No sideways tilt, no body jump, no floating paws, no whole-character translation, no scaling or squashing the whole body. Keep tail and lower body stationary. Preserve character identity, original fluffy grey-white fur contour, paw shape, strawberry and waffle design, original chocolate outlines and colors. The head lift is delicate, not a standing-up pose. Same square framing and same size as reference with the same transparent margin above. Genuine transparent background, no ground shadow, no text, no bubble, no extra objects. Result is the blissful closed-eye MEOW PEAK pose for a gentle head-lift animation.",
+      "decision": "Rejected as too much head lift"
+    },
+    {
+      "output": "peak.png",
+      "prompt": "Use case: precise-object-edit. The FIRST attached image is the full original strawberry-cat sprite and is the EDIT TARGET. The SECOND image is only a facial-expression reference: borrow its completely closed happy curved eyes and small open meow mouth, but DO NOT borrow its tall posture or lifted neck. Generate one transparent full-body frame by editing image1. BOTH eyes completely closed into relaxed happy upward arcs, no blue iris/pupil/highlight visible. Tiny open mouth with pink interior and chocolate outline, blissful contented smile. The overall pose must stay extremely close to image1: same compact low crouching body, paws exactly fixed in place, same outline proportions, same tail, no extra visible neck or chest. A VERY SMALL upward nod of the head, about SIX pixels in the original512 canvas (1%of height), chin lifted delicately; head and strawberry decoration barely shift upward, not the body. The original strawberry top is around y134/512; aim around y128/512, NOT y100. The mouth is around y360; aim around y354, not y320. Keep head size unchanged, do not inflate face or extend neck. Preserve original paw locations and lowerbody pixel positions. No wholecat translation, jumping, floating paws, bodystretch, standingup or sideways tilt. Same framing and transparency as image1; no background, shadow, text, speechbubble or accessories. User explicitly wants only a very gentle head lift and eyes fullyclosed in bliss.",
+      "decision": "Intermediate reference only"
+    },
+    {
+      "output": "peak-lift.png",
+      "prompt": "Use case: precise-object-edit. Edit this existing transparent strawberry-cat sprite, changing ONLY the head position very slightly. Keep its EXACT completely closed blissful curved eyes and small open meowing mouth. Keep paws, lower white fur, body and tail EXACTLY as in this input at the same positions. Lift only the whole head (face, ears, strawberry, cream and waffle together) upward a TINY amount: about8 pixels on a512px canvas, or20px on this1254px source. Do not change the head size, mouth shape, linework, colors or eye expression. No body translation, no floating paws, no added neck, no new chest fur, no rotation sideways. The small movement should come from a very subtle natural head raise with the chin slightly higher. Preserve framing and genuine transparency. One cat only. No text, bubble, background or shadows. It must look almost identical to the input; this is a tiny positional adjustment to the head only.",
+      "decision": "Interpolation control pose; amplitude reduced by sampling 45% from closed-eye prepare"
+    },
+    {
+      "output": "prepare.png",
+      "prompt": "Use case: precise-object-edit. Edit the original strawberry-cat transparent full-body sprite. ONLY change BOTH eyes and mouth expression: close both eyes COMPLETELY into gentle happy curved eyelid arcs, no iris/pupil/white/highlight visible at all, expressing relaxed bliss and enjoyment. Keep mouth CLOSED, a tiny soft contented smile, not open. Preserve everything else pixel-aligned as closely as possible: same ORIGINAL low resting pose, no head lift yet, no neck stretch, unchanged head size, face/nose locations, strawberry/cream/waffle, ears, body outline, paws planted at exact original positions, tail in same place. This is the closed-eyes preparation pose immediately BEFORE a tiny head raise and a meow. Keep original grey-white fur colors, chocolate outlines, shading, transparent square canvas and all framing. No translation, no jumping, no newshadow, no text or bubble. Exactly one cat, genuine transparent background.",
+      "decision": "Fully closed-eye resting preparation; reused for recovery"
+    }
+  ]
+}

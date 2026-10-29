@@ -22,6 +22,7 @@ public sealed class PlatformService : IDisposable
     private const long WsExNoActivate = 0x08000000;
     private const long WsExToolWindow = 0x00000080;
     private const long WsExTransparent = 0x00000020;
+    private const long WsExTopmost = 0x00000008;
     private const uint SwpNoSize = 0x0001, SwpNoMove = 0x0002, SwpNoZOrder = 0x0004;
     private const uint SwpNoActivate = 0x0010, SwpFrameChanged = 0x0020;
     private const uint SwpNoOwnerZOrder = 0x0200;
@@ -114,12 +115,25 @@ public sealed class PlatformService : IDisposable
         var decorationHandle = new WindowInteropHelper(decoration).Handle;
         if (ownerHandle == 0 || decorationHandle == 0) return;
         if (decoration.Topmost != owner.Topmost) decoration.Topmost = owner.Topmost;
+        // WPF's owner/owned-window Z-order updates can promote just the owned
+        // HWND while the owner's Topmost property is already true. Compare the
+        // actual native flags too, so the requested setting reaches both HWNDs.
+        SyncNativeTopmost(ownerHandle, owner.Topmost);
+        SyncNativeTopmost(decorationHandle, owner.Topmost);
         if (!GetWindowRect(ownerHandle, out var bounds)) throw new Win32Exception();
         if (!GetWindowRect(decorationHandle, out var current)) throw new Win32Exception();
         if (bounds.Left == current.Left && bounds.Top == current.Top &&
             bounds.Right == current.Right && bounds.Bottom == current.Bottom) return;
         if (!SetWindowPos(decorationHandle, 0, bounds.Left, bounds.Top,
             bounds.Right - bounds.Left, bounds.Bottom - bounds.Top, SwpNoZOrder | SwpNoActivate))
+            throw new Win32Exception();
+    }
+
+    private static void SyncNativeTopmost(nint handle, bool topmost)
+    {
+        if (((GetWindowLongPtr(handle, GwlExStyle).ToInt64() & WsExTopmost) != 0) == topmost) return;
+        if (!SetWindowPos(handle, new nint(topmost ? -1 : -2), 0, 0, 0, 0,
+            SwpNoSize | SwpNoMove | SwpNoActivate | SwpNoOwnerZOrder))
             throw new Win32Exception();
     }
 

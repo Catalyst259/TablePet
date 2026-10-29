@@ -1,0 +1,22 @@
+{
+  "name": "continuous-small",
+  "revision": "meow-v3",
+  "playbackMode": "out-and-back",
+  "frameSampling": "premultiplied-linear",
+  "blendWeightSteps": 256,
+  "factor": 128,
+  "sampleFps": 240,
+  "endpointWindow": 12,
+  "knots": [[0, 0], [240, 1], [700, 1.35], [1160, 1], [1400, 0]],
+  "bounceKnots": [[0, 0], [1400, 0]],
+  "cacheReuse": {
+    "directory": "artifacts/meow-v2/meow-v2/inference-1e545d2ba93673ee",
+    "pngAggregateSHA256": "b7773fbb5ec0d880fbb68dc342f0ee3fd1fcad835e1a9f5d675b8110262114a3"
+  },
+  "keys": [
+    { "id": "prepare", "source": "assets/strawberry-cat/sources/meow-v2/prepare.png" },
+    { "id": "peak", "source": "assets/strawberry-cat/sources/meow-v2/peak-lift.png" },
+    { "id": "recovery", "source": "assets/strawberry-cat/sources/meow-v2/prepare.png" }
+  ],
+  "intent": "Approved continuous small head motion: original meow-v2 artwork, grounded paws, 460 ms ascent/descent, no peak hold. Adjacent endpoint-corrected dense RIFE poses blend in premultiplied RGBA and bake to a 240 Hz timeline; no runtime renderer change. Cache reuse is optional and content-verified; missing cache is regenerated from the original v2 source artwork."
+}

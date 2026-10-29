@@ -53,7 +53,15 @@ Very small RIFE phases can contain a nonzero neural reconstruction residual. In 
 
 `node tools/qa-sleep-breathing.cjs` checks the original-rest-to-first-inferred-frame transition separately from the repeat boundary, alongside two-cycle 120 Hz sampling, grounded paws, head/decoration displacement, alpha validity and unchanged non-sleep assets. The default comparison source is the preserved 0.2.1 publish folder; its optional second argument can point to an extracted 0.2.1 portable release.
 
-## 0.3.1 V9 click reaction (current workflow)
+## Meow development increment
+
+`npm run assets:meow` stages the approved continuous, smaller 1400 ms double-click meow using `reference/meow-v3-selection.json` and the unchanged transparent artwork in `sources/meow-v2`. Both eyes retain the original fully closed happy arcs. The PCHIP phase knots are `[[0,0],[240,1],[700,1.35],[1160,1],[1400,0]]`: head ascent and descent each span 460 ms, with no fixed peak plateau. The peak uses 35% of the preparation-to-raised-head interval, reducing crown displacement from about 12 to 9 source pixels. The smaller pose also slightly reduces mouth opening.
+
+The builder registers complete poses at the paws and retains the dual-matte RIFE/endpoint-residual process. Fractional phases blend adjacent dense poses in premultiplied RGBA and are baked onto the 240 Hz timeline, matching the approved HTML prototype without a new runtime blending layer. The desktop player continues to consume ordinary PNG frames. Whole-body translation stays zero, both endpoints byte-match the original idle PNG, and the other clips and PNG hashes are protected. Earlier v1/v2 playback candidates and Wink-eye sketches are local historical experiments, not dependencies of the active selection.
+
+After visual review, `npm run assets:meow:install` imports only the new clip. The WPF speech bubble is separate from these PNGs, appears at 180–300 ms and fades at 1100–1400 ms. The cue contract is a non-looping 1400 ms `meow` clip. Prompts and source images are preserved; building/running the desktop pet needs no image generation or interpolation tools.
+
+## 0.3.1 V9 click reaction (frozen workflow)
 
 The frozen runtime has automatic **blink/yawn** (4:1), and equal-probability **rise/wink** click reactions. The 1500 ms Wink uses the exact V9 artwork: 440 ms closing, 350 ms held expression, 330 ms reopening and 380 ms recovery. No new gaze motion is authored. Its recipe is `reference/idle-v9-fluid-selection.json`; approved normalized-key hashes are in `reference/idle-v9-approved-keys.json`.
 

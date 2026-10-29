@@ -122,6 +122,50 @@ public sealed class AssetCatalogTests
     [Theory]
     [InlineData("valid")]
     [InlineData("missing-frame")]
+    [InlineData("looping")]
+    [InlineData("wrong-start")]
+    [InlineData("wrong-end")]
+    public void MeowIsOptionalAndRejectsBrokenOrUnjoinableReactions(string defect)
+    {
+        using var directory = new TestDirectory();
+        File.WriteAllText(directory.FilePath("frame.png"), "manifest fixture");
+        File.WriteAllText(directory.FilePath("meow.png"), "manifest fixture");
+        var clips = RequiredClips.ToDictionary(name => name, name => (object)new
+        {
+            frames = new[] { new { file = "frame.png", durationMs = 100 } }
+        });
+        clips["meow"] = new
+        {
+            loop = defect == "looping",
+            frames = new[]
+            {
+                new { file = defect == "wrong-start" ? "meow.png" : "frame.png", durationMs = 180 },
+                new { file = defect == "missing-frame" ? "absent.png" : "meow.png", durationMs = 920 },
+                new { file = defect == "wrong-end" ? "meow.png" : "frame.png", durationMs = 300 }
+            }
+        };
+        File.WriteAllText(directory.FilePath("manifest.json"), JsonSerializer.Serialize(new
+        {
+            canvas = new { width = 512, height = 512 }, clips
+        }));
+        var catalog = new AssetCatalog(directory.Root);
+        Assert.False(catalog.IsFallback);
+        Assert.Equal(defect != "valid", catalog.HasOptionalActionFallback);
+        Assert.Equal(defect == "valid", catalog.Clips.ContainsKey("meow"));
+        Assert.All(RequiredClips, name => Assert.True(catalog.Clips.ContainsKey(name)));
+        Assert.Equal("blink", Assert.Single(catalog.IdleActions).Clip);
+        if (defect == "valid")
+        {
+            var behavior = new BehaviorController(new StopwatchClock(), catalog.Clips);
+            behavior.DoubleClick();
+            Assert.Equal(ReactionPhase.Meow, behavior.ReactionPhase);
+            Assert.Equal("meow", behavior.Player.CurrentClip!.Name);
+        }
+    }
+
+    [Theory]
+    [InlineData("valid")]
+    [InlineData("missing-frame")]
     [InlineData("empty-frames")]
     [InlineData("zero-duration")]
     [InlineData("path-traversal")]
@@ -245,7 +289,7 @@ public sealed class AssetCatalogTests
             var catalog = new AssetCatalog(directory.Root, 16L * 1024 * 1024);
             catalog.CacheForSize(512, 1);
             catalog.PreparePlayback(catalog.Clips["rise"], 0);
-            Assert.True(SpinWait.SpinUntil(() => catalog.CachedFrameCount >= 4, TimeSpan.FromSeconds(5)));
+            Assert.True(SpinWait.SpinUntil(() => catalog.Hit(frames[3], .5, .5), TimeSpan.FromSeconds(5)));
             var misses = catalog.SynchronousCacheMisses;
             Assert.True(catalog.Image(frames[3]).IsFrozen);
             Assert.Equal(misses, catalog.SynchronousCacheMisses);

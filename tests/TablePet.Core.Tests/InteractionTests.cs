@@ -68,9 +68,13 @@ public sealed class InteractionTests
         clock.Advance(120);
         Assert.Equal(InteractionSignal.Hover, input.Tick());
         input.PointerDown(10, 10, true);
-        Assert.Equal(InteractionSignal.Click, input.PointerUp(10, 10, true));
+        Assert.Equal(InteractionSignal.None, input.PointerUp(10, 10, true));
+        clock.Advance(500);
+        Assert.Equal(InteractionSignal.Click, input.Tick());
         input.PointerDown(10, 10, true);
-        Assert.Equal(InteractionSignal.Click, input.PointerUp(10, 10, true, allowWake: true));
+        Assert.Equal(InteractionSignal.None, input.PointerUp(10, 10, true, allowWake: true));
+        clock.Advance(500);
+        Assert.Equal(InteractionSignal.Click, input.Tick());
         clock.Advance(1000);
         Assert.Equal(InteractionSignal.None, input.Tick());
     }
@@ -85,7 +89,9 @@ public sealed class InteractionTests
         input.PointerDown(10, 10, true);
         Assert.Equal(InteractionSignal.None, input.PointerUp(11, 10, false));
         input.PointerDown(10, 10, true);
-        Assert.Equal(InteractionSignal.Click, input.PointerUp(11, 10, true));
+        Assert.Equal(InteractionSignal.None, input.PointerUp(11, 10, true));
+        clock.Advance(500);
+        Assert.Equal(InteractionSignal.Click, input.Tick());
     }
 
     [Fact]

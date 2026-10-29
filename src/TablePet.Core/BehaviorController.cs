@@ -1,7 +1,7 @@
 namespace TablePet.Core;
 
 public enum PetState { Idle, FallAsleep, Sleep, Wake, React }
-public enum ReactionPhase { None, Rise, Hold, Settle, Wink }
+public enum ReactionPhase { None, Rise, Hold, Settle, Wink, Meow }
 
 /// <summary>The sole owner of behavior state. All calls are made on the application's UI thread.</summary>
 public sealed class BehaviorController
@@ -10,6 +10,7 @@ public sealed class BehaviorController
     private readonly IReadOnlyDictionary<string, AnimationClip> _clips;
     private readonly Func<int, int, int> _randomBetween;
     private readonly bool _canWink;
+    private readonly bool _canMeow;
     private string? _lastIdleAction;
     private long _expectedToken;
     private PetState _expectedState;
@@ -20,8 +21,9 @@ public sealed class BehaviorController
     private long? _reactionEndedAt;
     private PetState _suspendedState;
     private bool _inputBusy;
-    private bool _reactionAfterIdleAction;
-    private bool _reactionAfterWake;
+    private ReactionKind _reactionAfterIdleAction;
+    private ReactionKind _reactionAfterWake;
+    private enum ReactionKind { None, Click, Meow }
 
     public BehaviorController(IClock clock, IReadOnlyDictionary<string, AnimationClip> clips,
         PetSettings? settings = null, Func<int, int, int>? randomBetween = null,
@@ -38,9 +40,11 @@ public sealed class BehaviorController
             clip.EnsureValid();
         }
         var restingFrame = clips["idle"].Frames[0].File;
-        _canWink = clips.TryGetValue("wink", out var wink) && wink.Name == "wink" && !wink.Loop
-            && wink.Frames.Count >= 2 && wink.Frames.All(f => !string.IsNullOrWhiteSpace(f.File) && f.DurationMs > 0)
-            && wink.Frames[0].File == restingFrame && wink.Frames[^1].File == restingFrame;
+        bool SafeReaction(string name) => clips.TryGetValue(name, out var clip) && clip.Name == name && !clip.Loop
+            && clip.Frames.Count >= 2 && clip.Frames.All(f => !string.IsNullOrWhiteSpace(f.File) && f.DurationMs > 0)
+            && clip.Frames[0].File == restingFrame && clip.Frames[^1].File == restingFrame;
+        _canWink = SafeReaction("wink");
+        _canMeow = SafeReaction("meow");
         IdleActions = IdleAction.Available(clips, idleActions);
         Player = new AnimationPlayer(clock);
         Player.Completed += HandleAnimationCompleted;
@@ -74,9 +78,9 @@ public sealed class BehaviorController
             ReactionPhase = ReactionPhase.Settle;
             if (!ReturnLoopToStart("hold_to_settle")) Play("settle");
         }
-        if (State != PetState.Idle || Player.CurrentClip?.Name != "idle" || AutomaticActionsPaused) return;
+        if (State != PetState.Idle || Player.CurrentClip?.Name != "idle" || AutomaticActionsPaused || _inputBusy) return;
         // Sleep wins when both deadlines fall on the same timer dispatch.
-        if (Settings.AutoSleep && !_inputBusy && now >= SleepDeadline)
+        if (Settings.AutoSleep && now >= SleepDeadline)
         {
             SetState(PetState.FallAsleep);
             Play("fall_asleep");
@@ -85,21 +89,24 @@ public sealed class BehaviorController
     }
 
     /// <summary>Hover wakes into the resting pose without starting a reaction.</summary>
-    public void Hover() => Interact(react: false);
+    public void Hover() => Interact(ReactionKind.None);
 
     /// <summary>An explicit click wakes if needed, then starts a reaction.</summary>
-    public void Click() => Interact(react: true);
+    public void Click() => Interact(ReactionKind.Click);
+
+    /// <summary>A double click wakes if needed, then performs one meow.</summary>
+    public void DoubleClick() => Interact(ReactionKind.Meow);
 
     // Retained for existing hosts and runtime probes; a touch means an explicit click.
     public void Touch() => Click();
 
-    private void Interact(bool react)
+    private void Interact(ReactionKind reaction)
     {
         if (IsSuspended || IsDragging) return;
         LastPetInteraction = _clock.NowMilliseconds;
         if (State == PetState.FallAsleep)
         {
-            _reactionAfterWake = react;
+            _reactionAfterWake = reaction;
             SetState(PetState.Wake);
             // Do not sample a later frame here: return from exactly the frame the user saw.
             _expectedToken = Player.ReverseToStart();
@@ -108,33 +115,35 @@ public sealed class BehaviorController
         }
         else if (State == PetState.Sleep)
         {
-            _reactionAfterWake = react;
+            _reactionAfterWake = reaction;
             SetState(PetState.Wake);
             if (!ReturnLoopToStart("sleep_to_wake")) Play("wake");
         }
         else if (State == PetState.Wake)
         {
-            // A later click may upgrade a hover wake; another hover cannot cancel it.
-            _reactionAfterWake |= react;
+            // Explicit input may upgrade a hover wake. Meow takes precedence over
+            // a pending ordinary click, and later hover/click input cannot erase it.
+            if (reaction > _reactionAfterWake) _reactionAfterWake = reaction;
         }
-        else if (react && State == PetState.Idle && _clock.NowMilliseconds >= ReactionCooldownUntil)
+        else if (reaction != ReactionKind.None && State == PetState.Idle && _clock.NowMilliseconds >= ReactionCooldownUntil)
         {
-            if (Player.CurrentClip?.Name == "idle") BeginReaction();
-            else if (!_reactionAfterIdleAction)
+            if (Player.CurrentClip?.Name == "idle") BeginReaction(reaction);
+            else if (_reactionAfterIdleAction == ReactionKind.None)
             {
                 // Keep the short blink intact. Longer expressions return through their
                 // existing frames so a click never pops an open mouth into the rise pose.
-                _reactionAfterIdleAction = true;
-                if (Player.CurrentClip?.Name != "blink" && !ReturnLoopToStart("idle_to_react")) BeginReaction();
+                _reactionAfterIdleAction = reaction;
+                if (Player.CurrentClip?.Name != "blink" && !ReturnLoopToStart("idle_to_react")) BeginReaction(reaction);
             }
+            else if (reaction > _reactionAfterIdleAction) _reactionAfterIdleAction = reaction;
         }
     }
 
     public void BeginDrag()
     {
         if (IsSuspended || IsDragging) return;
-        _reactionAfterIdleAction = false;
-        _reactionAfterWake = false;
+        _reactionAfterIdleAction = ReactionKind.None;
+        _reactionAfterWake = ReactionKind.None;
         IsDragging = true;
         _dragStartedAt = _clock.NowMilliseconds;
         Player.Pause();
@@ -159,8 +168,8 @@ public sealed class BehaviorController
         IsSuspended = suspended;
         if (suspended)
         {
-            _reactionAfterIdleAction = false;
-            _reactionAfterWake = false;
+            _reactionAfterIdleAction = ReactionKind.None;
+            _reactionAfterWake = ReactionKind.None;
             _suspendedState = State;
             IsDragging = false;
             _inputBusy = false;
@@ -178,7 +187,7 @@ public sealed class BehaviorController
         else EnterIdle();
     }
 
-    /// <summary>Menu, settings, or a held mouse button suppress sleep. Closing starts a fresh quiet period.</summary>
+    /// <summary>Menu, settings, and pending gestures suppress new automatic actions. Closing starts a fresh quiet period.</summary>
     public void SetInputBusy(bool busy)
     {
         if (_inputBusy == busy) return;
@@ -217,7 +226,7 @@ public sealed class BehaviorController
         switch (State)
         {
             case PetState.Idle:
-                if (_reactionAfterIdleAction) BeginReaction();
+                if (_reactionAfterIdleAction != ReactionKind.None) BeginReaction(_reactionAfterIdleAction);
                 else EnterIdle();
                 break;
             case PetState.FallAsleep:
@@ -226,7 +235,7 @@ public sealed class BehaviorController
                 break;
             case PetState.Wake:
                 if (completion.ClipName == "sleep_to_wake") Play("wake");
-                else if (_reactionAfterWake) BeginReaction();
+                else if (_reactionAfterWake != ReactionKind.None) BeginReaction(_reactionAfterWake);
                 else
                 {
                     // Start a full quiet period once the hover wake is visibly complete.
@@ -248,6 +257,7 @@ public sealed class BehaviorController
                 EndReaction();
                 break;
             case PetState.React when ReactionPhase == ReactionPhase.Wink:
+            case PetState.React when ReactionPhase == ReactionPhase.Meow:
                 EndReaction();
                 break;
         }
@@ -262,20 +272,26 @@ public sealed class BehaviorController
             var now = _clock.NowMilliseconds;
             if (State == PetState.React && ReactionPhase == ReactionPhase.Hold)
                 delay = Math.Min(delay, Math.Max(0, _holdStartedAt + Settings.HoldMs - now));
-            if (State == PetState.Idle && Player.CurrentClip?.Name == "idle" && !AutomaticActionsPaused)
+            if (State == PetState.Idle && Player.CurrentClip?.Name == "idle" && !AutomaticActionsPaused && !_inputBusy)
             {
                 delay = Math.Min(delay, Math.Max(0, NextIdleActionAt - now));
-                if (Settings.AutoSleep && !_inputBusy) delay = Math.Min(delay, Math.Max(0, SleepDeadline - now));
+                if (Settings.AutoSleep) delay = Math.Min(delay, Math.Max(0, SleepDeadline - now));
             }
             return delay;
         }
     }
 
-    private void BeginReaction()
+    private void BeginReaction(ReactionKind reaction)
     {
-        _reactionAfterIdleAction = false;
-        _reactionAfterWake = false;
+        _reactionAfterIdleAction = ReactionKind.None;
+        _reactionAfterWake = ReactionKind.None;
         SetState(PetState.React);
+        if (reaction == ReactionKind.Meow && _canMeow)
+        {
+            ReactionPhase = ReactionPhase.Meow;
+            Play("meow");
+            return;
+        }
         var wink = _canWink && _randomBetween(0, 1) == 1;
         ReactionPhase = wink ? ReactionPhase.Wink : ReactionPhase.Rise;
         Play(wink ? "wink" : "rise");
@@ -290,8 +306,8 @@ public sealed class BehaviorController
 
     private void EnterIdle()
     {
-        _reactionAfterIdleAction = false;
-        _reactionAfterWake = false;
+        _reactionAfterIdleAction = ReactionKind.None;
+        _reactionAfterWake = ReactionKind.None;
         ReactionPhase = ReactionPhase.None;
         SetState(PetState.Idle);
         Play("idle", loop: true);

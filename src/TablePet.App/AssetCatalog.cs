@@ -14,6 +14,7 @@ public sealed class AssetCatalog
 {
     private static readonly string[] RequiredClips = ["idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle"];
     private readonly string _root;
+    private readonly Func<string, int, CachedFrame> _decode;
     private readonly object _cacheLock = new();
     private readonly Dictionary<string, LinkedListNode<CacheEntry>> _cache = new();
     private readonly LinkedList<CacheEntry> _leastRecentlyUsed = new();
@@ -22,6 +23,8 @@ public sealed class AssetCatalog
     private HashSet<string> _playbackFrames = new();
     private Queue<string> _lookAhead = new();
     private int _generation, _workerGeneration = -1, _decodedHeight;
+    private int _workerCount;
+    private readonly HashSet<string> _inFlight = new();
     private long _cachedBytes, _synchronousCacheMisses;
     private volatile bool _hasFrameFallback;
     public long CacheBudgetBytes { get; }
@@ -37,9 +40,13 @@ public sealed class AssetCatalog
     public bool HasFrameFallback => _hasFrameFallback;
     private (double X, double Y, double Width, double Height)? _hitRegion;
     public AssetCatalog(string root, long cacheBudgetBytes = 128L * 1024 * 1024)
+        : this(root, cacheBudgetBytes, Decode) { }
+
+    internal AssetCatalog(string root, long cacheBudgetBytes, Func<string, int, CachedFrame> decode)
     {
         if (cacheBudgetBytes < 8L * 1024 * 1024) throw new ArgumentOutOfRangeException(nameof(cacheBudgetBytes));
         _root = root;
+        _decode = decode;
         CacheBudgetBytes = cacheBudgetBytes;
         try
         {
@@ -81,6 +88,15 @@ public sealed class AssetCatalog
             }
             foreach (var required in RequiredClips)
                 if (!clips.ContainsKey(required)) throw new InvalidDataException($"Missing clip: {required}");
+            // Meow is optional for older packs, but its one-shot reaction must
+            // join the exact resting pose on both sides without a looping mouth.
+            if (clips.TryGetValue("meow", out var meow) && (meow.Loop || meow.Frames.Count < 2 ||
+                meow.Frames[0].File != clips["idle"].Frames[0].File || meow.Frames[^1].File != clips["idle"].Frames[0].File))
+            {
+                clips.Remove("meow");
+                HasOptionalActionFallback = true;
+                ErrorLogger.Write("可选动作无法加载，已跳过：meow（需要首尾待机姿势的单次动作）");
+            }
             Clips = clips;
             var requested = new List<IdleAction>();
             if (manifest.TryGetProperty("idleActions", out var actions))
@@ -142,7 +158,8 @@ public sealed class AssetCatalog
         lock (_cacheLock)
         {
             if (_cache.Count > 0 && desired == _decodedHeight) return;
-            _cache.Clear(); _leastRecentlyUsed.Clear(); _lookAhead.Clear(); _playbackFrames.Clear();
+            _cache.Clear(); _leastRecentlyUsed.Clear(); _lookAhead.Clear(); _playbackFrames.Clear(); _inFlight.Clear();
+            _workerCount = 0; _workerGeneration = -1;
             _cachedBytes = 0; _decodedHeight = desired; _generation++;
         }
         // Every state can start immediately. Small packs retain the former all-preloaded
@@ -156,7 +173,7 @@ public sealed class AssetCatalog
     /// <summary>Refresh a short look-ahead queue; cancelled/obsolete clips cannot fill the cache.</summary>
     public void PreparePlayback(AnimationClip clip, int currentIndex)
     {
-        int generation, height;
+        int generation, height, workersToStart;
         lock (_cacheLock)
         {
             if (_decodedHeight == 0) return;
@@ -195,12 +212,17 @@ public sealed class AssetCatalog
                 }
             }
             _playbackFrames = protectedFrames;
-            _lookAhead = new Queue<string>(upcoming.Distinct());
-            if (_lookAhead.Count == 0 || _workerGeneration == _generation) return;
+            _lookAhead = new Queue<string>(upcoming.Distinct().Where(file => !_inFlight.Contains(file)));
+            // Two decoders keep dense 240Hz clips ahead without expanding the cache
+            // or look-ahead window. Refreshes never requeue a frame already decoding.
+            workersToStart = Math.Min(2 - _workerCount, _lookAhead.Count);
+            if (workersToStart == 0) return;
             generation = _generation; height = _decodedHeight;
             _workerGeneration = generation;
+            _workerCount += workersToStart;
         }
-        _ = Task.Run(() => Prefetch(generation, height));
+        for (var worker = 0; worker < workersToStart; worker++)
+            _ = Task.Run(() => Prefetch(generation, height));
     }
 
     /// <summary>Stop obsolete work without discarding useful decoded frames.</summary>
@@ -217,21 +239,31 @@ public sealed class AssetCatalog
             lock (_cacheLock)
             {
                 if (generation != _generation) return;
-                if (!_lookAhead.TryDequeue(out file!)) { _workerGeneration = -1; return; }
-                if (_cache.ContainsKey(file)) continue;
+                if (!_lookAhead.TryDequeue(out file!))
+                {
+                    // Queue refresh and worker retirement share the same lock, so a
+                    // newly populated queue cannot be left without an active worker.
+                    _workerCount--;
+                    if (_workerCount == 0) _workerGeneration = -1;
+                    return;
+                }
+                if (_cache.ContainsKey(file) || !_inFlight.Add(file)) continue;
             }
-            CachedFrame decoded;
+            CachedFrame? decoded = null;
             try { decoded = DecodeWithFallback(file, height); }
             catch (Exception error)
             {
                 // A missing fallback must not surface as an unobserved background exception.
                 ErrorLogger.Write($"动画预读失败：{file}", error);
-                continue;
             }
             lock (_cacheLock)
             {
+                // An obsolete decoder must not remove a newer generation's ownership
+                // of the same file, or insert frames after playback was cancelled.
                 if (generation != _generation) return;
-                Insert(file, decoded);
+                _inFlight.Remove(file);
+                if (decoded is not null && (_playbackFrames.Contains(file) || _entryFrames.Contains(file)))
+                    Insert(file, decoded);
             }
         }
     }
@@ -292,12 +324,12 @@ public sealed class AssetCatalog
 
     private CachedFrame DecodeWithFallback(string file, int height)
     {
-        try { return Decode(Resolve(file), height); }
+        try { return _decode(Resolve(file), height); }
         catch (Exception error)
         {
             _hasFrameFallback = true;
             ErrorLogger.Write($"帧加载失败：{file}", error);
-            return Decode(Path.Combine(_root, "fallback.png"), height);
+            return _decode(Path.Combine(_root, "fallback.png"), height);
         }
     }
     public bool Hit(string file, double x, double y)
@@ -328,7 +360,7 @@ public sealed class AssetCatalog
         finally { ArrayPool<byte>.Shared.Return(pixels); }
         return new(bitmap, alpha);
     }
-    private sealed record CachedFrame(BitmapSource Image, byte[] Alpha);
+    internal sealed record CachedFrame(BitmapSource Image, byte[] Alpha);
     private sealed record CacheEntry(string File, CachedFrame Frame, long Bytes);
     private sealed record ClipFrameIndex(IReadOnlyList<AnimationFrame> Source, string[] Files, int[] FirstIndices, int WorkingSetFrames);
 }

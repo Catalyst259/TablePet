@@ -9,7 +9,10 @@
     "assets:idle": "node tools/build-wink-candidate.cjs --selection reference/idle-v9-fluid-selection.json",
     "assets:idle:install": "node tools/install-wink-v9-smooth.cjs --selection reference/idle-v9-fluid-selection.json",
     "assets:idle:check": "node tools/freeze-release.cjs --verify",
-    "assets:idle:preview": "node tools/preview-actions.cjs 0.3.1"
+    "assets:idle:preview": "node tools/preview-actions.cjs 0.3.1",
+    "assets:meow": "node tools/build-meow.cjs --selection reference/meow-v3-selection.json",
+    "assets:meow:install": "node tools/build-meow.cjs --selection reference/meow-v3-selection.json --install",
+    "assets:meow:check": "node tools/build-meow.cjs --self-test"
   },
   "devDependencies": {
     "sharp": "0.35.5"

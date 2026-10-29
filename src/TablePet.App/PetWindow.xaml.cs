@@ -20,6 +20,7 @@ public partial class PetWindow : Window
     private TrayService? _tray;
     private SettingsWindow? _settingsWindow;
     private SleepIndicatorWindow? _sleepIndicator;
+    private SpeechBubbleWindow? _speechBubble;
     private bool _ready, _closing, _hidden, _systemPaused, _autoPaused, _pointerHeld, _menuOpen;
     private bool _renderingSubscribed;
     private TimeSpan? _lastRenderingTime;
@@ -37,7 +38,10 @@ public partial class PetWindow : Window
         _behavior = new BehaviorController(clock, assets.Clips, settings.Current, idleActions: assets.IdleActions);
         _behavior.StateChanged += state => ErrorLogger.Write($"状态：{state}");
         _interaction = new InteractionService(clock, settings.Current,
-            SystemParameters.MinimumHorizontalDragDistance, SystemParameters.MinimumVerticalDragDistance);
+            SystemParameters.MinimumHorizontalDragDistance, SystemParameters.MinimumVerticalDragDistance,
+            System.Windows.Forms.SystemInformation.DoubleClickTime,
+            System.Windows.Forms.SystemInformation.DoubleClickSize.Width,
+            System.Windows.Forms.SystemInformation.DoubleClickSize.Height);
         _platform = new PlatformService(this);
         _timer = new DispatcherTimer(DispatcherPriority.Input) { Interval = TimeSpan.FromMilliseconds(30) };
         _timer.Tick += (_, _) => Tick();
@@ -55,10 +59,10 @@ public partial class PetWindow : Window
         _settings.Changed += ApplySettings;
         _settings.SaveFailed += message => Dispatcher.BeginInvoke(new Action(() => _tray?.ShowMessage(message)));
         _platform.SuspensionChanged += paused => { _systemPaused = paused; UpdateSuspension(); };
-        _platform.DpiChanged += () => { ResizeAssets(); if (!_behavior.IsDragging) _platform.KeepVisible(); _sleepIndicator?.SyncBounds(); ResetBaseline(); };
-        _platform.DisplayChanged += () => { ResetBaseline(); SavePosition(); };
-        LocationChanged += (_, _) => _sleepIndicator?.SyncBounds();
-        SizeChanged += (_, _) => _sleepIndicator?.SyncBounds();
+        _platform.DpiChanged += () => { ResizeAssets(); ConfigureDoubleClick(); if (!_behavior.IsDragging) _platform.KeepVisible(); SyncDecorations(); ResetBaseline(); };
+        _platform.DisplayChanged += () => { if (!_pointerHeld) _interaction.Cancel(); UpdateBusy(); ResetBaseline(); SavePosition(); SyncDecorations(); };
+        LocationChanged += (_, _) => SyncDecorations();
+        SizeChanged += (_, _) => SyncDecorations();
         Closing += (_, e) => { if (!_closing) { e.Cancel = true; ToggleVisible(); } };
     }
 
@@ -113,10 +117,12 @@ public partial class PetWindow : Window
     private void UpdateRenderingSubscription()
     {
         UpdateSleepIndicator();
+        UpdateSpeechBubble();
         // A static fallback sleep pose still has moving Zs. Dragging pauses the same
         // player clock, so both the body and decoration freeze together.
         var needed = _ready && !_closing && !_hidden && !_systemPaused &&
-            (_behavior.Player.NeedsContinuousRendering || (IsSleepIndicatorActive && !_behavior.Player.IsPaused));
+            (_behavior.Player.NeedsContinuousRendering ||
+                ((IsSleepIndicatorActive || IsSpeechBubbleActive) && !_behavior.Player.IsPaused));
         if (needed == _renderingSubscribed) return;
         _renderingSubscribed = needed;
         _lastRenderingTime = null;
@@ -135,6 +141,31 @@ public partial class PetWindow : Window
         }
         _sleepIndicator ??= new SleepIndicatorWindow(this);
         _sleepIndicator.Update(_behavior.Player.ElapsedMs);
+    }
+    private bool IsSpeechBubbleActive => _behavior.State == PetState.React &&
+        _behavior.ReactionPhase == ReactionPhase.Meow && _behavior.Player.CurrentClip?.Name == "meow";
+
+    private void UpdateSpeechBubble()
+    {
+        if (!_ready || _closing || _hidden || _systemPaused || !IsVisible || !IsSpeechBubbleActive)
+        {
+            _speechBubble?.Hide();
+            return;
+        }
+        _speechBubble ??= new SpeechBubbleWindow(this);
+        _speechBubble.Update(_behavior.Player.ElapsedMs);
+    }
+    private void SyncDecorations()
+    {
+        _sleepIndicator?.SyncBounds();
+        _speechBubble?.SyncBounds();
+    }
+    private void ConfigureDoubleClick()
+    {
+        var dpi = VisualTreeHelper.GetDpi(this);
+        var size = System.Windows.Forms.SystemInformation.DoubleClickSize;
+        _interaction.ConfigureDoubleClick(System.Windows.Forms.SystemInformation.DoubleClickTime,
+            size.Width / dpi.DpiScaleX, size.Height / dpi.DpiScaleY);
     }
     private Point PointerDip(Point physical)
     {
@@ -156,9 +187,13 @@ public partial class PetWindow : Window
         _lastPointer = _downPhysical;
         if (!Hit(_downPhysical)) return;
         _downBounds = _platform.GetWindowBoundsPhysical();
+        ConfigureDoubleClick();
         var point = PointerDip(_downPhysical);
         _pointerHeld = true; UpdateBusy();
-        Handle(_interaction.PointerDown(point.X, point.Y, true)); e.Handled = true;
+        // A press during a reaction can still become a drag, but must not leave
+        // a delayed single click that fires after the reaction/cooldown ends.
+        Handle(_interaction.PointerDown(point.X, point.Y, true, allowClick: _behavior.State != PetState.React));
+        e.Handled = true;
     }
     private void OnPointerUp(object sender, MouseButtonEventArgs e)
     { if (_pointerHeld) { EndPointer(cancel: false); e.Handled = true; } }
@@ -181,7 +216,9 @@ public partial class PetWindow : Window
         if (signal.HasFlag(InteractionSignal.BeginDrag)) { _behavior.BeginDrag(); CaptureMouse(); }
         if (signal.HasFlag(InteractionSignal.EndDrag)) _behavior.EndDrag();
         if (signal.HasFlag(InteractionSignal.Hover)) _behavior.Hover();
+        if (signal.HasFlag(InteractionSignal.DoubleClick)) _behavior.DoubleClick();
         if (signal.HasFlag(InteractionSignal.Click)) _behavior.Click();
+        UpdateBusy();
         UpdateRenderingSubscription();
     }
     private void Render(string file)
@@ -206,8 +243,13 @@ public partial class PetWindow : Window
         var dip = PointerDip(pointer);
         _interaction.ResetBaseline(dip.X, dip.Y, Hit(pointer));
     }
-    private void UpdateBusy() => _behavior.SetInputBusy(_pointerHeld || _menuOpen || _settingsWindow is not null);
-    private void SetMenuOpen(bool open) { _menuOpen = open; UpdateBusy(); ResetBaseline(); }
+    private void UpdateBusy() => _behavior.SetInputBusy(_pointerHeld || _interaction.HasPendingClick || _menuOpen || _settingsWindow is not null);
+    private void SetMenuOpen(bool open)
+    {
+        _menuOpen = open;
+        if (open) { EndPointer(cancel: true); _interaction.Cancel(); }
+        UpdateBusy(); ResetBaseline();
+    }
     private void ApplySettings(PetSettings settings)
     {
         if (!Dispatcher.CheckAccess()) { Dispatcher.BeginInvoke(new Action(() => ApplySettings(settings))); return; }
@@ -225,18 +267,19 @@ public partial class PetWindow : Window
             _interaction.ApplySettings(settings, dip.X, dip.Y, Hit(pointer));
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { _platform.KeepVisible(); ResetBaseline(); }));
         }
-        _applied = settings; _sleepIndicator?.SyncBounds(); UpdateTray();
+        _applied = settings; SyncDecorations(); UpdateBusy(); UpdateTray();
     }
     private void SavePosition()
     { if (_ready) _settings.Update(_settings.Current with { Position = _platform.CapturePlacement() }); }
     private void TogglePause()
-    { _autoPaused = !_autoPaused; _behavior.SetAutomaticActionsPaused(_autoPaused); ResetBaseline(); UpdateTray(); }
+    { _autoPaused = !_autoPaused; _interaction.Cancel(); _behavior.SetAutomaticActionsPaused(_autoPaused); UpdateBusy(); ResetBaseline(); UpdateTray(); }
     private void ToggleVisible()
     {
         _hidden = !_hidden;
         UpdateSuspension();
         if (_hidden) Hide(); else { Show(); _platform.KeepVisible(); ResetBaseline(); }
         UpdateSleepIndicator();
+        UpdateSpeechBubble();
         UpdateTray();
     }
     private void UpdateSuspension()
@@ -255,6 +298,7 @@ public partial class PetWindow : Window
     }
     public void OpenSettings()
     {
+        EndPointer(cancel: true); _interaction.Cancel(); UpdateBusy();
         if (_settingsWindow is not null)
         {
             if (_settingsWindow.WindowState == WindowState.Minimized) _settingsWindow.WindowState = WindowState.Normal;
@@ -281,6 +325,7 @@ public partial class PetWindow : Window
         if (_closing) return;
         _closing = true; _timer.Stop(); UpdateRenderingSubscription(); EndPointer(cancel: true); SavePosition();
         _sleepIndicator?.Close(); _sleepIndicator = null;
+        _speechBubble?.Close(); _speechBubble = null;
         _settingsWindow?.Close(); _settings.Changed -= ApplySettings;
         _settings.Dispose(); _tray?.Dispose(); _platform.Dispose();
         Close(); System.Windows.Application.Current.Shutdown();

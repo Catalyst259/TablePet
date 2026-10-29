@@ -6,6 +6,7 @@ using Xunit;
 
 namespace TablePet.App.Tests;
 
+[Collection("Native decoration windows")]
 public sealed class SleepIndicatorWindowTests
 {
     private const int ExtendedStyle = -20;
@@ -79,6 +80,23 @@ public sealed class SleepIndicatorWindowTests
                 Assert.Equal(topmost, (GetStyle(ownerHandle) & Topmost) != 0);
                 Assert.Equal(topmost, (GetStyle(decorationHandle) & Topmost) != 0);
                 AssertMatchingBounds(ownerHandle, decorationHandle);
+            }
+
+            // Native owner/owned-window Z-order operations can leave the WPF
+            // requested property unchanged while altering WS_EX_TOPMOST. Repair
+            // both directions without changing the user's requested setting.
+            foreach (var requested in new[] { false, true })
+            {
+                owner.Topmost = requested;
+                decoration.SyncBounds();
+                Assert.True(SetWindowPos(ownerHandle, new nint(requested ? -2 : -1), 0, 0, 0, 0,
+                    0x0001 | 0x0002 | 0x0010 | 0x0200));
+                Assert.Equal(!requested, (GetStyle(ownerHandle) & Topmost) != 0);
+                Assert.Equal(requested, owner.Topmost);
+                decoration.SyncBounds();
+                DrainDispatcher();
+                Assert.Equal(requested, (GetStyle(ownerHandle) & Topmost) != 0);
+                Assert.Equal(requested, (GetStyle(decorationHandle) & Topmost) != 0);
             }
 
             // A hidden decoration is aligned again when it reappears, even if

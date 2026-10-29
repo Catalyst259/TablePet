@@ -14006,6 +14006,1363 @@
           "durationMs": 4
         }
       ]
+    },
+    "meow": {
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5755803269fa171aab7de09c63e910ae6b6dec0b1f017a73bc3d67037ed91b07.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/587ab7166795cceba9fde9bea02677ae4952ee20254f4896a6df25ad5d105a14.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/74db5bd8cda8998b845f33f7c0c1e7c1baf115f163ed9bdd3a3c4aad56431a95.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c65ee7dacca7439fd99014357715d5f0a7e82a62ced211ba7a14da96ecfb89f6.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c46cfca7f607186343b7224e6d0c71a3352a2c15f82c5127b844250a59d4eed2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5e34f062d561c775832e542cc8b9d4208e982dd5379eecfd9768a66b4bbbf8f0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2e7932b03710dfb2566f2385fd9febd1af5e5e20714f3cfc76db661b54aeb36e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/48f034c4f447d1b8d3a01a435496873d6caf9bb29ad59bd1c4e9e91abcf40995.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/0ef60fe04c9c7cd3b28d98e17f93cbb4680d152531fdb59a000d56d2b429a9f7.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3058d9de1e8e97f7f328dfb1c0ad496afa6cc0a0605736d88b63a2ddd769c668.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5676b820412c95411122fc6bd818ee5456df63cddcf75fff17d73dcfe7b3ad1b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3128524e18436907a6c84392febbb2327ee558774b9e61865c5fede36d205838.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8ab006bc376b6c2e900951a533a794d57c6289eafe6091db09516fcbe9436733.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/748ba225681d3e684514cac5ba11657d7aa70bf9d91c77ded07f8b492348876a.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/b345cbfae50c8d940a3a00aeba7c03cbd78d99de64baccef116d4b528193e2ec.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/da076d007b5696030ef5aa92537539cab42b05e342eabf4739503e27d4527915.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f1db520abd7884f7a32471f42caae8930c57efdb2eec3938c7126cfebea0a3bf.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/dfc580c88879b42d4a9579f3af88bade6c3c6f090c77922663619f6b4851e7bc.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f349c62a600640d26265cea4f811a30cf27e2529fc97ccae90f567af70f2d20d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f6c777d212c11ca62cfd71812842ddf1ac74ddba3dd38507c87c88d23f3e91fa.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/62c8185b1060c39b0ec52b7530f714b45144f2f26f1939d6e567dd92f8c26b13.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/88321855fdb6bd30eb56176426283426c6634bd8fcfca2446380f4cb43ed60cb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fc85b1c97c238e9644233b506425e9b54ec5ed8522eba6d95318b9db06627b01.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/13be720fe7850a4e8c3ea704019b854500dddda6fff5cb87206df5a25cda4062.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c3de09df43bc3e0463e45bc56fa620f27578c2ff934894cd1fbf4de3b3c8176a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/100751be32eea697e29020fdae87fc5ae8e0d6f2ab6eef399dd231d16c22843a.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/51ab655a48618c9028711eb1ad1b111f6913f74a0af13fb786604a187eb8e4ee.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8b7fe921f93675972a6693880eaaf2272edae97583823db92158cf7daf6c379b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7a7381ef6f27b1da279ca8b886a6f76501de6280e70ad7dc5c59d53d36ef0157.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fa71534f15a175480f20b80bd5d7d0acea564a36188e28267ffcd4e1a59d4ad6.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fc11926f8261cff8899ef6988b2968fd43dd34dc0048eaf707a6ea4041712b33.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/772543bf5ae1789618e2f2536056034ecaa2de0af9b4750772040e9659d20a57.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/428e4037e436f2a5175a9b431b3b009d77334789f11e25e2b5a5010eaad7b778.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/cede8d6708efc140987df548753436f6ba03eda9c33efc9b1bc03ee67a8f30d5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/739d554558a94726a81586aa06d7cc0fd7077358d93019bfd77e7f647b6186c5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7355e5a45423396629d443f710f1f3d91b0a54c66fbc42629752eb4382cf4d44.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c776a23bf750072f96c5df5d2b473a3b7681e127049c64513ff3d404df291011.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4511fd573f10f949102887ca7e273ea7f342ca8a19f22d57f72e5f713e4d4f46.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/cc749936cf2af8a9efa735008270f4aed35cdba81f26e73b50d9731e9d931633.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/498c1cdb8af05e7e4a448b27326c15b72835646746a88bef125335d9fea7cdce.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1450f169c7c4f170a27d87e45d5097a442b27c18ca75d54427c6619a3e46edb8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/199ec4ad0c7f79d8bc00a57de9d148a94deae721a0dea8326d98901211955e50.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7818f145ce89a186c1d04cfab98b1f59fdcc56e4de664c60783ee82312d19544.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/9911dab9d06e6325918b0c60d4a3d5ca01d7f99057c392e48d46caa5fc2b08b0.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/470e6f189d33e06d0e2de4cb14951d77f5c4f8f639ab93772fa768d84b3b18c1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b058a75adc23b7331ff917b9924b1e14b58764b8dfede4c4a4ba97974e7b31ac.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/82029271871343a81bb05326d13e2960e1db0cf31c0560ceb25eb7cf38c0a015.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/acea4d5803044e12d32dac6f63e86a86f8be43966d14787f10bca9127424ed64.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/44a244eb2828fc8f48cbd4e97dbc1dfc1a7f16307cf13c7b8e704b485ccf89c4.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d29479a6b2861a8f9e4e8e00ca53625fdc62b7a560bf113894eb799326a697e2.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/a4534713251675e19d44dae0103987eb7232f94cda2c5972205e33aa0abbe86f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fd45403f3fc0eaa663f4ab3996eed030b68df338469809c62aa8736aed1f4e2f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/0ec3f4e7ed9e6cf0730bafb103e86edc8697c856df8db581b30cdd30015e8876.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/ee1df0d63ba02d49aadf3fd0fdf8d70f9e5aca234630a16a7e8b9dfea30f6198.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/245ced8798a4c84a53a3cde35d2335fc1be8672746cad3e8a0a0e125bbd009ac.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2fe13039a34589e2c227560d7bcc77b7cf1131294fc74a9e30d0f5d58885312c.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/dbb981b3d18f8e10228272e9688d75e8fdc49d7a1d3e47d8c043261a1fd142ee.png",
+          "durationMs": 2
+        },
+        {
+          "file": "frames/meow-v3/014a5855737ae50de0f0c2eaad990cf5bd291e99d1ce05b0c93e878bcfb89fbc.png",
+          "durationMs": 2
+        },
+        {
+          "file": "frames/meow-v3/977df879dde6b9abd24f098dd77628ef70f408bc581d93e54b09e9f55989df40.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2b8f9275de3e72e570ca47d93265522ac8deef479cd50099d8ee69ce1edbf2ed.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2930c51ad7ace675624681491567b55cdba835777505b893ad6eec810a5eba80.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/17a5289f78e03df70b4bd5e8985322c70bcbd69c28ecf8e8efb9a49a99e90da0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/762c2d7d50433d505f53bca2ae2e60b03e51f33fef8b33abae2ef282488a3cf1.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/eaaca2ae53a3c86cd6c3ed41a9b2f8f9c1b0f3f1d6a6898570293704e90d0000.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/624fa217afae0b3cc288660c9449ac23c5d112cee63b93adfed86b2ac2974fce.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fbfe371809ed586091ca45dc044c5ba41bc76ad3a959651ffa902a24e8c78441.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1d8f2777ee35e9763b2d34b252d5deaf36726dffe82c725f3c8e0178d4c8b316.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b9a812937ec677f57c1b91e03290e644aebed467b8a77671ee2b45878185cbf6.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5481bb0ba4ca840575a2130a8a0418c0ef7fcb5e6a6115ede686d3c7706c0741.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/d6266dedef95ecf084f77293355efbb21810a5165e518c1a2ffc95c32e81db31.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/867c985a4814b78fba08039379c18dfa2048eef265a1584717216a99526ab954.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2fa24844b6aac765f806e78034a1086114026b45701df5576cb82bec167125cb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/21bddf34658cd58bf7f7d62d4f6aa6cb83162ea5c88006cb46e5eee31a1d06da.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/629ee5e77bbf535052927fd4f7e6b52a06ab71977e0f33a42497ed5c46a97efe.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/81e7b9fdfda4b9684eb08e054c5246847d92111cbe454dfba8fb9cc6373be000.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/e95b8a71810c00ae8eac80eda8d7942ea8a38edcf60e05dc3720dbff319d83c8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a0b699ae22193cf4891b95c3bf357abee585139dbbe300d3a099d01ea13c2fbf.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/18b5ae9194d5d89765ba41ac6eddb511e88b4e63d527dd6c55023041b8b38bbe.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/9f2f51b842d06be97d9b8cdb425906f526338038119416c5d485b54102e8f6af.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/e9bad4db56b155c8679b774978cac713dea4d2917e0b4b5e514f1bf9a1763fab.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a3126c3ada4afdc934bce26eb0f1d397604eeb6c5f3310372af0c771bbb90aeb.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/c5525f8bb05f5e01426d39a093aca0f4c030e8c166340eed7951c8ffb2ae8ca2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f1ba23a63d07bab819a2c2668d9059156eaa03f13a6c55a3669fb283c31c05b4.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/0dc99f5cbb6d995854f4ffae29e32470cf363778c3179f1fdbf8bd4206f2949e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a9ed5a1ddd6870012576af8bca886f453461a038cc2cbf3f32d67a8a9a9c32b8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1d60392c1638202877cc52b090916cca0c3c024d825afcb4cf0f73d35ed89da1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/07d73acc0268387c6e027dacbaa8a11791235386014d8ab6c1a83ca9d1a048ce.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/e4f6c175032afb505a0c34c1619e4d12bc1e27c6c61641ee7d40416d60d76721.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/84d85b430646a96a56fba5feccdd37814aa7a7d4949479d1584a88251c404259.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d4f1a3e641e95c8cf1773300cb8f76cd2d531add156ee5464d39facda096f780.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/47eb69ab5fc5427f9128b44e4f9f2004782716a2e8e538eacc34983fef943cab.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c37a65075cbb232accfb4ad34c8fbd3b49972c3c0eb0c822486266b5b8b7be6e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/277156fc50d7a9e0627f149d60240f5ff1154c8bad4fe6674ae25cb0bc4511e5.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/be1caa0b8750205a9bab03a1b052df3edf9f082db181799eb2b38d2d1e26e077.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/e5ae7d9d7cdf8ff8539e3b5ad069f496e66d61fbc20b3820a1e7161b2d3505f7.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4a0cf0d3d08fab4e677081b2beda5930e86e347e5e82a918e98340ceae805af2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4c23238348d115440ffa9952aa4af2783a474b4bfa2c27dc27480adece1dc5d2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3246159df32832dc1c9a3877c2213602e32d6fccb8d84ebd346256e6e40483d2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2c9a7f282df3161423aff2319e8f8590cd895bd7feed4fa5001f449f28c3754e.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/6495b94b726035bc964f730526866e84043e3beec546f8d92d6eedbd24479aeb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4590116c809d35d9500ca06602c5182cccd1b18f99bf1a03c763a20e297019dd.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/239568ea949753aa127d93a33e4d1d62f095c5cb296180d1fbd1bad93e21bdab.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4971111860df529688d59a9afc25a39d70b2fbd5de0f8c06ac4ef95313271e33.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/20073af236c08b71d642f4ec2a2d7df8193e2be14f4a3b2013465edf316f009f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/19b87b5866cf26542a928613e8baa7dc9d08d2f0d7bbd21fa106d613af6257c4.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/389f68717ddf14b6b39e7bb600b85ae247150c41592bbc5e82140ddbe6d1576c.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7c3da477135701af52fa946d004e0bd11bb5ed47f6062bd6ff6cd036c4b3e3e6.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d94306ec984ec7982028b422a5eb29ae50393d706d710d35274590d11b678b95.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/32622cdd37af6b7fff6f12fbf0788b6eb81fc05acd6fbb8f87f6e1d5b3c274df.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f1c0653c061d598ff918cbce9d2237eb5df425a5fe333e2c643acfc2b4323824.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/df5e08ddb30dc13f8452a26385a1c226abcd63cd5e91bd3aa774973b0227892e.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/4598ad0b0db42e17377418ebe29ea5a4d248707c5a88d7be3d7e089bf4a94d4b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1cea39b8173cf57ca2f9411ae96d594762f56eecccb47d6bfd4c071c8a2d19bf.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f89aaac0767f529ce9dbaaf897ee6058e3d743c274163b37207f1f49b9163e60.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/83bf7eec3dd7e680fffbe2db51d48e5847a9f6967e002b9aa0d82a5e4db7fe4d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f9b035eef627b79ba7e33b24773eac6ea84107d7d96f0cdf54e32fa9932c2d4a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fd382487927896ce0244f70437760219e697bb25b2ce88c516781a1fa5634d2d.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/3b56bc91524403d69b603001d1a51b2aa8b68f325e337ac84630c9f3bcf87021.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/acc2364f96bb5d879f661e66402b7136561a69161bf343478eb2c0762ff6cd85.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/160b4879c7f9317f4163591a31bbb1cf0a56ec8115d71b37b406f79179bc7d6e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4b3accae2bbb0fe6592163087f9ebcbbf5513527f3cd7cd6ef6687eda4be9f28.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8ff385a00c387813cdd239b170c0cf43335e18769acc9c613ef588284f3110b1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3e145d55f015fabc26ee21352df202c25b326b3837879e5ab390b6ae45cf94b5.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/b18b9c6156e41a9109413d8804cf97443f5acf4694308786d22574b5551ecaa0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8cd27de6944edfe9a6775b0db606064a915115370dd6441ce7d0db36d850182e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/9989c3db4e4d2f0ce9e396a1e6d86cda40912cb66a5b27d7076a64dd12124f80.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/859cbc11865db85fb3b0b870c12c20ad03ff53fecbf37f94a35c1577abc084f5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3450f6cfe54bd7ec441ff6a9fa8654353b7c6fc24514f483d71dd529ecb1fbf3.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/e12592226c8151f5629127744f7bf68d1355ce1eeac18ebdbe63f6113a4c570c.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/17af3473f47ea577b6e9ce18fdbfb219a065fb593d7e663759114ef0d2261c6c.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/22de197060358925f65758d0eee91725ea4ffe603cfc26bf31e92fa1823383bb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/539e2db6b72e14b1e962591a12d45881bcf4c1a24c3d12e524b4a96327a3c5cb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4607f2c86e6129f81b40e8fcf9fd618cecdc80d8b347ec45a8eba17a4f86b355.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/cf097c5d9382ce8779a2af420635e76a20ef7240cb8011edc87bc0f4ae4c434d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d2b5abd99f7458cbe00fcfe2d558fe9077d99ca2ab72ff5dc472d786f10e7243.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/7f3d2c3a91d3846b226fd61164fce53f50cb7fe78a44ada39ccb26eb726898e8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/bea83047ffbf01c5412f3de9946010375f0ac3ef5c0fc224f44931346f3e0a23.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c65073b614896d791d495367e1e371341f027686cc0367ff1c7d7573df63117b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/577ffa89cba14b212b3a4af181cb58659b9a1c0efef982b810d0c830d536367f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/6d8483bec998b1b62fe016934ab0e9a2e1e4821a7b2712c5024296dcbdf4554f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/14838909277dc71ad5ae501aef71035f4f3f669a10f369b01943e506d6ceccff.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/cd70277bbafbc51dbdad0a713c1b04c0cf0c941035d87be00810c88221b07ffb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5acd8cc2aec4207b4de4deae2031ab11de84800ac68c068900974a0441257c13.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/46521fd5e794d5d2c260a2fcae6c5f361e6107c7e67ba20cc09813991f31a827.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/cb4b95fb828d60690161bdb8e7cfd1c55e7465af08701729cad9f7bb81fc3d31.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/78285ad953c402fa90f5962e89332e1c202f4ffd7607c66ed291054e4bf16d1c.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b804954f2d7ddc4930f78c2c2e0e19ad60c0db7a92ba93db7bbb273188f9faad.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/1d8960695f4658d58b18c2acb7bcd413eee1c2db2785356ca4387c94c5665979.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/77d9d1a35606724380e00098c372d9243922dd1ca76ad6a45e37b4abf0dcd057.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7944565f16c2275aed30a81f7216626d223ee595d2444c4295a3ae99624c4774.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4ede8c792cde2de5d35c5a00fcfbf333a0cbc9ea65312e3ee3f327c05233a5a1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5507b112532e304cdd33f1772e0e5c212cac90f1715a442b87241b288fa7546e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/372823a5cfc4af09c735c85121dc64d655fbd3f56f8e11e7b70ee2bc35293b2c.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/ca0fb3994c1d2d6835d0470cbfe9b3e3e201ddf583069b147b241fa4b0892c77.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1e412484a48676e01423ac18003f9624568c7c271808a04f3e8da86d0ecf5af0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/51ebaa4b140ad786be3a81c631583bd4327ae5549666529ea93d5d984eacd3f5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/aa2028bceac67bbce1b6ed9e14df2f3e4f1f5e024f21ee15aa4a2d1fe19d805b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/aae51237d81d91459116596e35c49473ab81fb751e57cdfd4442077e87bce5c8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b174cb2b045a8a096bfe6bf3498e19e9d1f348db9a8578aeaa5651bb64bb01d3.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/0d6390c4da96fc4162e58caaf9305dd7ea6cb9cd93a787f471055201225d53b2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3d74aaca03095757d0e10d735f9a9d7cdaa90eb27c27449926635f514140c62b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b15de719be5dbefb55738b5f379eca63dbca04044482b44816795787c2077045.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d1baddd935a32d8133d8b5f87a6bca2ad271d1f5374f76d30beefb9409221971.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a53a77a4d73724ca52279e51398f633981723b3d725310cce1fe453dcc079f1f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/96e7cceb366d5e26fb8e59afead8a30bf68e695fba0f3ae3b1c4779f9335da0a.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/15b2541542112073d346a085b96a2b14c3ce807e5ec07e5493e259db79904bf5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7db65e996689fbdf75b734af9e59a03304f84bfa6edaf2388e3de191fe6deef6.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/92532bf8615f6fe5c4f61920b88456dcc24b11726ceb48e4565943223f191e0a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/e23ffa10acdac172a1205461728f1bc613ddadc11ab7603bda9b96cf5170ca9d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/92532bf8615f6fe5c4f61920b88456dcc24b11726ceb48e4565943223f191e0a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7db65e996689fbdf75b734af9e59a03304f84bfa6edaf2388e3de191fe6deef6.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/91c79cff111a037e617b6ee92687e116e4975389d996e9c6bc5fede2325adade.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/96e7cceb366d5e26fb8e59afead8a30bf68e695fba0f3ae3b1c4779f9335da0a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a53a77a4d73724ca52279e51398f633981723b3d725310cce1fe453dcc079f1f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d1baddd935a32d8133d8b5f87a6bca2ad271d1f5374f76d30beefb9409221971.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b15de719be5dbefb55738b5f379eca63dbca04044482b44816795787c2077045.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3d74aaca03095757d0e10d735f9a9d7cdaa90eb27c27449926635f514140c62b.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/5abcf85c7d6aeecff62a0d0f087c71326a539cd222a2adde000a9064171b000b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b174cb2b045a8a096bfe6bf3498e19e9d1f348db9a8578aeaa5651bb64bb01d3.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/aae51237d81d91459116596e35c49473ab81fb751e57cdfd4442077e87bce5c8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/aa2028bceac67bbce1b6ed9e14df2f3e4f1f5e024f21ee15aa4a2d1fe19d805b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/51ebaa4b140ad786be3a81c631583bd4327ae5549666529ea93d5d984eacd3f5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1e412484a48676e01423ac18003f9624568c7c271808a04f3e8da86d0ecf5af0.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/afe1a65637cba2b4f601dca7b3b653923c20d623c248cb39467b9869dccfa050.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/372823a5cfc4af09c735c85121dc64d655fbd3f56f8e11e7b70ee2bc35293b2c.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5507b112532e304cdd33f1772e0e5c212cac90f1715a442b87241b288fa7546e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4ede8c792cde2de5d35c5a00fcfbf333a0cbc9ea65312e3ee3f327c05233a5a1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7944565f16c2275aed30a81f7216626d223ee595d2444c4295a3ae99624c4774.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/77d9d1a35606724380e00098c372d9243922dd1ca76ad6a45e37b4abf0dcd057.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/939273aaa84bea11d7263d7dd240bc9b5a66030e8218dfc1d509bf8f06feb420.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b804954f2d7ddc4930f78c2c2e0e19ad60c0db7a92ba93db7bbb273188f9faad.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/78285ad953c402fa90f5962e89332e1c202f4ffd7607c66ed291054e4bf16d1c.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/cb4b95fb828d60690161bdb8e7cfd1c55e7465af08701729cad9f7bb81fc3d31.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/46521fd5e794d5d2c260a2fcae6c5f361e6107c7e67ba20cc09813991f31a827.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5acd8cc2aec4207b4de4deae2031ab11de84800ac68c068900974a0441257c13.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/34163c8e15f6871cfe876e9bfac7630760139fcb1f37ac2ec217f1d2c21eaf99.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/14838909277dc71ad5ae501aef71035f4f3f669a10f369b01943e506d6ceccff.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/6d8483bec998b1b62fe016934ab0e9a2e1e4821a7b2712c5024296dcbdf4554f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/577ffa89cba14b212b3a4af181cb58659b9a1c0efef982b810d0c830d536367f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c65073b614896d791d495367e1e371341f027686cc0367ff1c7d7573df63117b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/bea83047ffbf01c5412f3de9946010375f0ac3ef5c0fc224f44931346f3e0a23.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/b2fa4604c2a05c121d4ac2ea409649e277047a0c64a853bc97f6cfac04037904.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d2b5abd99f7458cbe00fcfe2d558fe9077d99ca2ab72ff5dc472d786f10e7243.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/cf097c5d9382ce8779a2af420635e76a20ef7240cb8011edc87bc0f4ae4c434d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4607f2c86e6129f81b40e8fcf9fd618cecdc80d8b347ec45a8eba17a4f86b355.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/539e2db6b72e14b1e962591a12d45881bcf4c1a24c3d12e524b4a96327a3c5cb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/22de197060358925f65758d0eee91725ea4ffe603cfc26bf31e92fa1823383bb.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/a67fd4c93b4b4713a71ca174ce8f966b412dc0d7e67ae8063a54f97d70430ba9.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/e12592226c8151f5629127744f7bf68d1355ce1eeac18ebdbe63f6113a4c570c.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3450f6cfe54bd7ec441ff6a9fa8654353b7c6fc24514f483d71dd529ecb1fbf3.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/859cbc11865db85fb3b0b870c12c20ad03ff53fecbf37f94a35c1577abc084f5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/9989c3db4e4d2f0ce9e396a1e6d86cda40912cb66a5b27d7076a64dd12124f80.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8cd27de6944edfe9a6775b0db606064a915115370dd6441ce7d0db36d850182e.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/5781d0d37db7344fc5c51d54973353eebe063f0fa09cd3e36cd4b063bb88fb52.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3e145d55f015fabc26ee21352df202c25b326b3837879e5ab390b6ae45cf94b5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8ff385a00c387813cdd239b170c0cf43335e18769acc9c613ef588284f3110b1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4b3accae2bbb0fe6592163087f9ebcbbf5513527f3cd7cd6ef6687eda4be9f28.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/160b4879c7f9317f4163591a31bbb1cf0a56ec8115d71b37b406f79179bc7d6e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/acc2364f96bb5d879f661e66402b7136561a69161bf343478eb2c0762ff6cd85.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/975181158a40e531cd2911ee6820807c70ab79bf4eb1a73fb441a8319579683d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fd382487927896ce0244f70437760219e697bb25b2ce88c516781a1fa5634d2d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f9b035eef627b79ba7e33b24773eac6ea84107d7d96f0cdf54e32fa9932c2d4a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/83bf7eec3dd7e680fffbe2db51d48e5847a9f6967e002b9aa0d82a5e4db7fe4d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f89aaac0767f529ce9dbaaf897ee6058e3d743c274163b37207f1f49b9163e60.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1cea39b8173cf57ca2f9411ae96d594762f56eecccb47d6bfd4c071c8a2d19bf.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/8e0afa9cf088595e49f483fe63f6be50c58501e877ee09482442361270f78147.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/df5e08ddb30dc13f8452a26385a1c226abcd63cd5e91bd3aa774973b0227892e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f1c0653c061d598ff918cbce9d2237eb5df425a5fe333e2c643acfc2b4323824.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/32622cdd37af6b7fff6f12fbf0788b6eb81fc05acd6fbb8f87f6e1d5b3c274df.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d94306ec984ec7982028b422a5eb29ae50393d706d710d35274590d11b678b95.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7c3da477135701af52fa946d004e0bd11bb5ed47f6062bd6ff6cd036c4b3e3e6.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/fbb44446388b5c619f2dc0d77909e70a8bef0d9af2c9e020b31d5d2de2fc3bb2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/19b87b5866cf26542a928613e8baa7dc9d08d2f0d7bbd21fa106d613af6257c4.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/20073af236c08b71d642f4ec2a2d7df8193e2be14f4a3b2013465edf316f009f.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4971111860df529688d59a9afc25a39d70b2fbd5de0f8c06ac4ef95313271e33.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/239568ea949753aa127d93a33e4d1d62f095c5cb296180d1fbd1bad93e21bdab.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4590116c809d35d9500ca06602c5182cccd1b18f99bf1a03c763a20e297019dd.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/5f66f953a8f273d3484320bf6917a512925ba06225e7aec751ab2bca9d65e5fb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2c9a7f282df3161423aff2319e8f8590cd895bd7feed4fa5001f449f28c3754e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3246159df32832dc1c9a3877c2213602e32d6fccb8d84ebd346256e6e40483d2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4c23238348d115440ffa9952aa4af2783a474b4bfa2c27dc27480adece1dc5d2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4a0cf0d3d08fab4e677081b2beda5930e86e347e5e82a918e98340ceae805af2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/e5ae7d9d7cdf8ff8539e3b5ad069f496e66d61fbc20b3820a1e7161b2d3505f7.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/3a7c47ec8428d7a93431d6bb8aed8a187b85efdf0ff5fb3ceb76cc4e995c74e0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/277156fc50d7a9e0627f149d60240f5ff1154c8bad4fe6674ae25cb0bc4511e5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c37a65075cbb232accfb4ad34c8fbd3b49972c3c0eb0c822486266b5b8b7be6e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/47eb69ab5fc5427f9128b44e4f9f2004782716a2e8e538eacc34983fef943cab.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d4f1a3e641e95c8cf1773300cb8f76cd2d531add156ee5464d39facda096f780.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/84d85b430646a96a56fba5feccdd37814aa7a7d4949479d1584a88251c404259.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/d54aa84ad6047ca12a9af4855124492f008fe8b07a70bbf5ecc323a6f70f7e76.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/07d73acc0268387c6e027dacbaa8a11791235386014d8ab6c1a83ca9d1a048ce.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1d60392c1638202877cc52b090916cca0c3c024d825afcb4cf0f73d35ed89da1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a9ed5a1ddd6870012576af8bca886f453461a038cc2cbf3f32d67a8a9a9c32b8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/0dc99f5cbb6d995854f4ffae29e32470cf363778c3179f1fdbf8bd4206f2949e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f1ba23a63d07bab819a2c2668d9059156eaa03f13a6c55a3669fb283c31c05b4.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/e1b0e78dd0893788d1e1d11c9e2d345541d2b6b42400ed8c531d414179b681a2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a3126c3ada4afdc934bce26eb0f1d397604eeb6c5f3310372af0c771bbb90aeb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/e9bad4db56b155c8679b774978cac713dea4d2917e0b4b5e514f1bf9a1763fab.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/9f2f51b842d06be97d9b8cdb425906f526338038119416c5d485b54102e8f6af.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/18b5ae9194d5d89765ba41ac6eddb511e88b4e63d527dd6c55023041b8b38bbe.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/a0b699ae22193cf4891b95c3bf357abee585139dbbe300d3a099d01ea13c2fbf.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/cbfaad74598139df73796cecc98fc2b952d9ebed84768217c281b8f48226c959.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/81e7b9fdfda4b9684eb08e054c5246847d92111cbe454dfba8fb9cc6373be000.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/629ee5e77bbf535052927fd4f7e6b52a06ab71977e0f33a42497ed5c46a97efe.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/21bddf34658cd58bf7f7d62d4f6aa6cb83162ea5c88006cb46e5eee31a1d06da.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2fa24844b6aac765f806e78034a1086114026b45701df5576cb82bec167125cb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/867c985a4814b78fba08039379c18dfa2048eef265a1584717216a99526ab954.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/3b17cd4ebab9483a95e6207f4068ff7b564f55e42d854b4e84813e10affb4558.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5481bb0ba4ca840575a2130a8a0418c0ef7fcb5e6a6115ede686d3c7706c0741.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b9a812937ec677f57c1b91e03290e644aebed467b8a77671ee2b45878185cbf6.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1d8f2777ee35e9763b2d34b252d5deaf36726dffe82c725f3c8e0178d4c8b316.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fbfe371809ed586091ca45dc044c5ba41bc76ad3a959651ffa902a24e8c78441.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/624fa217afae0b3cc288660c9449ac23c5d112cee63b93adfed86b2ac2974fce.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/8e2867f7573b6066c9aa90d2b32143d2cc2185f54220d045cc6b92883bd8b707.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/762c2d7d50433d505f53bca2ae2e60b03e51f33fef8b33abae2ef282488a3cf1.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/17a5289f78e03df70b4bd5e8985322c70bcbd69c28ecf8e8efb9a49a99e90da0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2930c51ad7ace675624681491567b55cdba835777505b893ad6eec810a5eba80.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2b8f9275de3e72e570ca47d93265522ac8deef479cd50099d8ee69ce1edbf2ed.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/977df879dde6b9abd24f098dd77628ef70f408bc581d93e54b09e9f55989df40.png",
+          "durationMs": 2
+        },
+        {
+          "file": "frames/meow-v3/014a5855737ae50de0f0c2eaad990cf5bd291e99d1ce05b0c93e878bcfb89fbc.png",
+          "durationMs": 3
+        },
+        {
+          "file": "frames/meow-v3/ff7f13c7a0a52c812313c3deab600a5f56198138ebb6cce3c6fcfe55178482e3.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2fe13039a34589e2c227560d7bcc77b7cf1131294fc74a9e30d0f5d58885312c.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/245ced8798a4c84a53a3cde35d2335fc1be8672746cad3e8a0a0e125bbd009ac.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/ee1df0d63ba02d49aadf3fd0fdf8d70f9e5aca234630a16a7e8b9dfea30f6198.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/0ec3f4e7ed9e6cf0730bafb103e86edc8697c856df8db581b30cdd30015e8876.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fd45403f3fc0eaa663f4ab3996eed030b68df338469809c62aa8736aed1f4e2f.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/192e83f5c9b29e84453524cd1955baed5f1322f5c39b196a6cae3d6a0cb7dc12.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/d29479a6b2861a8f9e4e8e00ca53625fdc62b7a560bf113894eb799326a697e2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/44a244eb2828fc8f48cbd4e97dbc1dfc1a7f16307cf13c7b8e704b485ccf89c4.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/acea4d5803044e12d32dac6f63e86a86f8be43966d14787f10bca9127424ed64.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/82029271871343a81bb05326d13e2960e1db0cf31c0560ceb25eb7cf38c0a015.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/b058a75adc23b7331ff917b9924b1e14b58764b8dfede4c4a4ba97974e7b31ac.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/7b8531d1478e3201286b177fc7ce14ded9f7cb77d9500eb22d5f1deb83d8d707.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/9911dab9d06e6325918b0c60d4a3d5ca01d7f99057c392e48d46caa5fc2b08b0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7818f145ce89a186c1d04cfab98b1f59fdcc56e4de664c60783ee82312d19544.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/199ec4ad0c7f79d8bc00a57de9d148a94deae721a0dea8326d98901211955e50.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/1450f169c7c4f170a27d87e45d5097a442b27c18ca75d54427c6619a3e46edb8.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/498c1cdb8af05e7e4a448b27326c15b72835646746a88bef125335d9fea7cdce.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/f427ab8098b8cd4f40df99791f1b9df19c5b9eceace4d41188b2a8a2357430d7.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/4511fd573f10f949102887ca7e273ea7f342ca8a19f22d57f72e5f713e4d4f46.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c776a23bf750072f96c5df5d2b473a3b7681e127049c64513ff3d404df291011.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7355e5a45423396629d443f710f1f3d91b0a54c66fbc42629752eb4382cf4d44.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/739d554558a94726a81586aa06d7cc0fd7077358d93019bfd77e7f647b6186c5.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/cede8d6708efc140987df548753436f6ba03eda9c33efc9b1bc03ee67a8f30d5.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/aacb91ead84299df3b31cf93d44019d05a89e5268c3c6c3e66f04808077464ee.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/772543bf5ae1789618e2f2536056034ecaa2de0af9b4750772040e9659d20a57.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fc11926f8261cff8899ef6988b2968fd43dd34dc0048eaf707a6ea4041712b33.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fa71534f15a175480f20b80bd5d7d0acea564a36188e28267ffcd4e1a59d4ad6.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/7a7381ef6f27b1da279ca8b886a6f76501de6280e70ad7dc5c59d53d36ef0157.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8b7fe921f93675972a6693880eaaf2272edae97583823db92158cf7daf6c379b.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/bcace0aa74ea63d870127cc33b615bcc573af81a03502a6e16cfa6a638c4d9cb.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/100751be32eea697e29020fdae87fc5ae8e0d6f2ab6eef399dd231d16c22843a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c3de09df43bc3e0463e45bc56fa620f27578c2ff934894cd1fbf4de3b3c8176a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/13be720fe7850a4e8c3ea704019b854500dddda6fff5cb87206df5a25cda4062.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/fc85b1c97c238e9644233b506425e9b54ec5ed8522eba6d95318b9db06627b01.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/88321855fdb6bd30eb56176426283426c6634bd8fcfca2446380f4cb43ed60cb.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/57dce8cced0f6b952cd15266aadc59be75cb9363abb2861bd5a29de9cc5fcd3b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f6c777d212c11ca62cfd71812842ddf1ac74ddba3dd38507c87c88d23f3e91fa.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f349c62a600640d26265cea4f811a30cf27e2529fc97ccae90f567af70f2d20d.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/dfc580c88879b42d4a9579f3af88bade6c3c6f090c77922663619f6b4851e7bc.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/f1db520abd7884f7a32471f42caae8930c57efdb2eec3938c7126cfebea0a3bf.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/da076d007b5696030ef5aa92537539cab42b05e342eabf4739503e27d4527915.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/613372d4578b41e4c924190ae4f9b347dfed35fcf900006ba6f25b220dc4c925.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/748ba225681d3e684514cac5ba11657d7aa70bf9d91c77ded07f8b492348876a.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/8ab006bc376b6c2e900951a533a794d57c6289eafe6091db09516fcbe9436733.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3128524e18436907a6c84392febbb2327ee558774b9e61865c5fede36d205838.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5676b820412c95411122fc6bd818ee5456df63cddcf75fff17d73dcfe7b3ad1b.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/3058d9de1e8e97f7f328dfb1c0ad496afa6cc0a0605736d88b63a2ddd769c668.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/7fb98cec9a5dd10451e13919ce955d73a341343aca4f196fe02f49f9e0a544bc.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/48f034c4f447d1b8d3a01a435496873d6caf9bb29ad59bd1c4e9e91abcf40995.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/2e7932b03710dfb2566f2385fd9febd1af5e5e20714f3cfc76db661b54aeb36e.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/5e34f062d561c775832e542cc8b9d4208e982dd5379eecfd9768a66b4bbbf8f0.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c46cfca7f607186343b7224e6d0c71a3352a2c15f82c5127b844250a59d4eed2.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/c65ee7dacca7439fd99014357715d5f0a7e82a62ced211ba7a14da96ecfb89f6.png",
+          "durationMs": 5
+        },
+        {
+          "file": "frames/meow-v3/94181a4f5fe34bfb7f7c348a70048d31c816634ef4b5eaac9ad502c7e425b205.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/meow-v3/587ab7166795cceba9fde9bea02677ae4952ee20254f4896a6df25ad5d105a14.png",
+          "durationMs": 4
+        },
+        {
+          "file": "frames/fall_asleep-00.png",
+          "durationMs": 4
+        }
+      ]
     }
   },
   "motion": {

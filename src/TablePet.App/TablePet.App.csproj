@@ -16,6 +16,7 @@
     <Description>本地运行的草莓猫 Windows 桌面宠物</Description>
   </PropertyGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="TablePet.App.Tests" />
     <ProjectReference Include="../TablePet.Core/TablePet.Core.csproj" />
     <Content Include="../../assets/strawberry-cat/frames/**" Link="Assets/strawberry-cat/frames/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="../../assets/strawberry-cat/*.json;../../assets/strawberry-cat/*.png;../../assets/strawberry-cat/*.ico" Link="Assets/strawberry-cat/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />

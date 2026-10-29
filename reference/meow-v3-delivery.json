@@ -1,0 +1,44 @@
+{
+  "revision": "meow-v3",
+  "status": "installed-and-launched",
+  "approvedDesign": "Continuous small head lift from the right side of the HTML prototype, retaining the original closed-eye meow expression.",
+  "selection": "reference/meow-v3-selection.json",
+  "approvedPreview": "artifacts/meow-smooth-prototype/preview.html",
+  "manifestSha256": "6c567e7e3c7b76ec2bf759fb406d3d00a9db53aa154e2ef59bf27032d9739ba2",
+  "application": "dist/TablePet-meow-smooth-preview/TablePet.exe",
+  "launcher": "dist/TablePet-meow-smooth-preview/Start-Preview.cmd",
+  "runtimeChanges": "Two background prefetch workers, in-flight deduplication and stale-result rejection. The animation player, gesture arbitration and bubble clock are unchanged.",
+  "motion": {
+    "durationMs": 1400,
+    "headRiseMs": 460,
+    "headFallMs": 460,
+    "fixedPeakHoldMs": 0,
+    "headCrownRiseSourcePixels": 9,
+    "wholeFrameTranslation": 0,
+    "timeSlots": 338,
+    "referencedMeowPngs": 198
+  },
+  "verification": {
+    "testsPassed": 186,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "assetCheckExitCode": 0,
+    "packagedPngs": 2030,
+    "otherClipsAndPngsUnchanged": true,
+    "independentFrameVerification": "artifacts/meow-v3/qa/installed-verification.json",
+    "wpfRender": "artifacts/meow-v3/runtime-render/render-report.json",
+    "finalPlaybackProbe": "artifacts/meow-v3/perf/playback-final-240hz.json",
+    "meowSynchronousDecodeMisses": 0,
+    "meowSampledHz": 239.9943,
+    "meowFetchP95Ms": 0.0448,
+    "peakDecodedCacheMiB": 127.5,
+    "launchedProcessId": 47200,
+    "launchedProcessResponding": true,
+    "launchTimeLocal": "2026-10-29T22:02:56+08:00"
+  },
+  "limitations": [
+    "The timing probe measures decoding and clock sampling, not actual display presentation FPS.",
+    "The original artwork has up to two source pixels of right-paw contour variation; the paws remain planted.",
+    "Mixed-DPI monitors and real system sleep/resume were not newly verified."
+  ]
+}
