@@ -21,6 +21,7 @@ public partial class PetWindow : Window
     private SettingsWindow? _settingsWindow;
     private SleepIndicatorWindow? _sleepIndicator;
     private SpeechBubbleWindow? _speechBubble;
+    private FireflyWindow? _firefly;
     private bool _ready, _closing, _hidden, _systemPaused, _autoPaused, _pointerHeld, _menuOpen;
     private bool _renderingSubscribed;
     private TimeSpan? _lastRenderingTime;
@@ -118,6 +119,7 @@ public partial class PetWindow : Window
     {
         UpdateSleepIndicator();
         UpdateSpeechBubble();
+        UpdateFirefly();
         // A static fallback sleep pose still has moving Zs. Dragging pauses the same
         // player clock, so both the body and decoration freeze together.
         var needed = _ready && !_closing && !_hidden && !_systemPaused &&
@@ -140,7 +142,7 @@ public partial class PetWindow : Window
             return;
         }
         _sleepIndicator ??= new SleepIndicatorWindow(this);
-        _sleepIndicator.Update(_behavior.Player.ElapsedMs);
+        _sleepIndicator.Update(DecorationElapsedMs);
     }
     private bool IsSpeechBubbleActive => _behavior.State == PetState.React &&
         _behavior.ReactionPhase == ReactionPhase.Meow && _behavior.Player.CurrentClip?.Name == "meow";
@@ -153,12 +155,33 @@ public partial class PetWindow : Window
             return;
         }
         _speechBubble ??= new SpeechBubbleWindow(this);
-        _speechBubble.Update(_behavior.Player.ElapsedMs);
+        _speechBubble.Update(DecorationElapsedMs);
     }
+
+    // Reuse the player's clock; vector decorations follow the same rounded
+    // 60 Hz boundaries as PNG frames without adding a timer or slowing input.
+    private long DecorationElapsedMs => (long)Math.Round(
+        Math.Floor((_behavior.Player.ElapsedMs + .5) * 60 / 1000) * 1000 / 60);
     private void SyncDecorations()
     {
         _sleepIndicator?.SyncBounds();
         _speechBubble?.SyncBounds();
+        _firefly?.SyncBounds();
+    }
+
+    private void UpdateFirefly()
+    {
+        if (!_ready || _closing || _hidden || _systemPaused || !IsVisible ||
+            !_behavior.IsFireflyActive ||
+            !_assets.Decorations.TryGetValue("firefly", out var decoration))
+        {
+            _firefly?.Hide();
+            return;
+        }
+        _firefly ??= new FireflyWindow(this, _assets, decoration);
+        // Automatic firefly playback uses the same catalog clip and exact index
+        // as the cat. A temporary return clip must not bind this decoration.
+        _firefly.Update(_behavior.Player.FrameIndex);
     }
     private void ConfigureDoubleClick()
     {
@@ -326,6 +349,7 @@ public partial class PetWindow : Window
         _closing = true; _timer.Stop(); UpdateRenderingSubscription(); EndPointer(cancel: true); SavePosition();
         _sleepIndicator?.Close(); _sleepIndicator = null;
         _speechBubble?.Close(); _speechBubble = null;
+        _firefly?.Close(); _firefly = null;
         _settingsWindow?.Close(); _settings.Changed -= ApplySettings;
         _settings.Dispose(); _tray?.Dispose(); _platform.Dispose();
         Close(); System.Windows.Application.Current.Shutdown();

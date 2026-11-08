@@ -79,6 +79,7 @@ public sealed class AnimationPlayerTests
     }
 
     [Theory]
+    [InlineData(60)]
     [InlineData(120)]
     [InlineData(240)]
     public void DenseTimelineUsesExactExclusiveBoundariesAcrossLongLoops(int sampleHz)
@@ -134,5 +135,38 @@ public sealed class AnimationPlayerTests
         player.Tick();
         Assert.Equal("a.png", player.CurrentFrame!.File);
         Assert.False(player.IsCompleted);
+    }
+
+    [Theory]
+    [InlineData(2)]
+    [InlineData(120)]
+    public void ReversingDenseLegacyFramesRetainsBothEndpointsAtNoMoreThanSixtySlotsPerSecond(int count)
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(new("dense", Enumerable.Range(0, count).Select(i => new AnimationFrame($"{i}.png", 4)).ToArray()));
+        clock.Advance((count - 1) * 4);
+        player.Tick();
+        var visible = player.CurrentFrame!.File;
+        player.ReverseToStart();
+        var reversed = player.CurrentClip!;
+        Assert.Equal(visible, reversed.Frames[0].File);
+        Assert.Equal("0.png", reversed.Frames[^1].File);
+        Assert.True(reversed.Frames.Count * 1000L <= reversed.DurationMs * 60);
+        Assert.All(reversed.Frames, frame => Assert.True(frame.DurationMs >= 16));
+    }
+
+    [Fact]
+    public void ALongHoldCannotHideShortLegacySlotsFromTheReversalRateLimit()
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(new("mixed", [new("rest.png", 200), new("mid.png", 4), new("visible.png", 4)]));
+        clock.Advance(204);
+        player.Tick();
+        player.ReverseToStart();
+        Assert.Equal("visible.png", player.CurrentClip!.Frames[0].File);
+        Assert.Equal("rest.png", player.CurrentClip.Frames[^1].File);
+        Assert.All(player.CurrentClip.Frames, frame => Assert.True(frame.DurationMs >= 16));
     }
 }

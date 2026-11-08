@@ -1,24 +1,28 @@
 # 草莓猫桌宠 TablePet
 
-基于提供的草莓灰白猫原型和《Windows 桌面宠物实现方案》，使用 C#、WPF、.NET 10 LTS 和透明 PNG 帧动画。待机为较低趴坐，点击后随机起身或眨单眼。
+基于提供的草莓灰白猫原型和《Windows 桌面宠物实现方案》，使用 C#、WPF、.NET 10 LTS 和透明 PNG 帧动画。待机时眨眼、打哈欠、起身右瞥或追逐萤火虫；单击随机喵叫或眨单眼。
 
-**当前源码基线为 0.3.2 · 120Hz 冻结版。** 用户于 2026 年 10 月 30 日确认测试版效果后，将动画素材采样密度从约 240Hz 调整为 120Hz，保留 512×512 PNG 原图、动作总时长和首尾姿态。运行清单包含 11 个片段、1275 张 PNG、1907 个时间槽。冻结范围与复现方法见 [0.3.2 版本说明](docs/UPDATE-0.3.2.md)。
+**0.3.4 · 全动画 60fps。** 保留所有动作的原时长与首尾姿势，通过选取原 PNG 减少运行包体积。待机动作权重为眨眼 2、打哈欠 1、起身右瞥 1、萤火虫 1；单击在喵叫与 Wink 中等概率选择。详见 [0.3.4 版本说明](docs/UPDATE-0.3.4.md)。
 
-本版包含双击回应：双眼完全闭成陶醉的弯弧，头轻轻抬起、小嘴微张，右上角同步出现“喵”气泡，再柔和恢复，整个动作 1.4 秒。采用已确认的“连贯小幅版”：保留原表情，抬头幅度较前版约减 25%，抬起和回落各约 460ms，最高处自然转向。身体、前爪保持落地。气泡使用独立的穿透装饰窗口，不抢焦点；本次用文字呈现，不播放音频。单击会等待系统双击判定间隔，再播放原来的起身或 Wink；双击只播放一次喵叫，拖动不触发。睡眠中先唤醒再回应，正在回应时的点击不排队。
+萤火虫采用用户于 2026 年 11 月 8 日确认的 v3 动作：从右后方出现，小猫追视、微侧身抬爪轻拍，再向上追视并恢复待机。完整动作 10 秒，原 60fps 双轨逐槽保留；拖动时猫和萤火虫一起暂停。透明飞虫层可超出猫画布且不拦截鼠标。0.3.2 的 120Hz 冻结记录作为历史基线保留，见 [0.3.2 版本说明](docs/UPDATE-0.3.2.md)。
 
-本版包含睡眠 Z 动画：右耳上方的小、中、大三个 Z 依次淡入，轻轻向右上浮动后淡出，每轮 3.6 秒，与现有呼吸共用计时。字母使用缩小、收紧后的确认位置；唤醒时收起，拖动时随呼吸冻结。独立透明装饰窗口保持字母区域的鼠标穿透，并跟随宠物的位置、大小和置顶设置。呼吸 PNG 保留原字节，播放时间线现为 120Hz。
+**历史预览：抚摸与日常节奏。** 抚摸方向已取消，所有草稿仅保留为本地设计历史，未接入程序。四版动画对比与第二版日常节奏页面可在保留草稿的开发副本中离线查看。
 
-待机只保留眨眼和打哈欠；点击随机播放起身或 Wink，两种反应机会相同。Wink 沿用 V9 表情和眼神，总长 1.5 秒；120Hz 时间线从此前确认的完整动画中取样。已发布的 0.3.1 点击互动版保留为历史版本，详见 [0.3.1 版本说明](docs/UPDATE-0.3.1.md)。
+喵叫回应为双眼闭成弯弧、轻抬头、小嘴微张，右上角同步出现“喵”气泡，再柔和恢复，整个动作 1.4 秒。身体、前爪保持落地。气泡穿透鼠标、不抢焦点，以文字呈现，不播放音频。单击等待系统双击判定后随机喵叫或 Wink；双击固定喵叫，拖动不触发。睡眠中先唤醒再回应，正在回应时的点击不排队。
 
-本版沿用此前的柔和眨眼与睡眠呼吸：睡眠时头部、肩背每轮轻柔起伏 3.6 秒，前爪保持落地。移动片段使用 **120Hz 素材时间线**，播放器跟随 WPF 合成器刷新；实际呈现帧率受显示器和合成器限制。静态待机和保持仍各为一帧，不持续高频绘制。
+睡眠 Z 动画在右耳上方依次淡入、向右上浮动后淡出，每轮 3.6 秒，与呼吸共用计时。唤醒时收起，拖动时随呼吸冻结；字母区域穿透鼠标，位置、大小和置顶状态跟随宠物。
+
+待机每次独立抽样：眨眼 40%，打哈欠、起身右瞥、萤火虫各 20%，允许连续重复以保持真实概率。起身包含保持和趴下。起身或萤火虫过程中点击，等完整收尾后再回应。Wink 沿用 V9 表情和眼神，总长 1.5 秒。旧素材包缺少可选动作时跳过缺失项。
+
+所有移动片段使用 **60fps 素材时间线**，播放器跟随 WPF 合成器刷新；实际呈现帧率受显示器和合成器限制。静态待机和保持仍各为一帧，不持续高频绘制。
 
 ## 安装和运行
 
 适用系统：**Windows 11 x64**。普通使用者直接安装即可，无需 .NET SDK、Node.js 或其他开发环境。
 
-当前发布版本为 **0.3.2 · 120Hz**，安装包和免安装包见 [0.3.2 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.2)。两种包均内置 .NET 运行时，支持保留现有个人设置。
+当前版本为 **0.3.4 · 60fps**，安装包和免安装包见 [0.3.4 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.4)。两种包均内置 .NET 运行时，支持保留现有个人设置。
 
-1. 从 [Releases 下载页面](https://github.com/Catalyst259/TablePet/releases/latest) 下载安装包，或直接下载 [TablePet-0.3.2-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.3.2/TablePet-0.3.2-Setup.exe)。
+1. 从 [Releases 下载页面](https://github.com/Catalyst259/TablePet/releases/latest) 下载安装包，或直接下载 [TablePet-0.3.4-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.3.4/TablePet-0.3.4-Setup.exe)。
 2. 双击安装包，按中文向导完成安装。默认目录为 `%LocalAppData%\Programs\TablePet`，无需管理员权限，所需 .NET 运行时和动画素材已内置。
 3. 完成页选择启动，或使用桌面、开始菜单中的“草莓猫桌宠”快捷方式。右键猫咪或托盘图标可打开设置和退出。
 
@@ -26,15 +30,15 @@
 
 安装包尚未配置代码签名证书，Windows 可能显示“未知发布者”。可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 <安装包路径>` 对照同一 Release 的 `.sha256` 文件确认下载完整性。
 
-需要免安装版本时，从 [0.3.2 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.2) 下载 `TablePet-0.3.2-win-x64.zip`，或按下面步骤自行构建；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。便携目录附带 `Start-Preview.cmd`，双击可正常退出旧实例并启动新版。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
+需要免安装版本时，从 [0.3.4 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.3.4) 下载 `TablePet-0.3.4-win-x64.zip`，或按下面步骤自行构建；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。便携目录附带 `Start-Preview.cmd`，双击可正常退出旧实例并启动新版。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
 
-0.3.2 安装器已通过静态解包、1774 个载荷文件逐文件 SHA-256 比对，以及解包程序的全部素材解码检查。本次未执行真实安装、覆盖升级或卸载；发布校验摘要见 `reference/releases/distribution-0.3.2.json`，下载文件的验证记录随 Release 提供。
+安装器以静态解包、逐文件 SHA-256 比对和解包程序素材自检进行验证；具体结果见 [验收记录](docs/ACCEPTANCE.md)。这些检查不等同于执行真实安装、覆盖升级或卸载。
 
 - 移入猫咪身体并停留片刻，只会打断入睡或唤醒睡眠，随后保持趴坐；清醒时悬停只刷新互动时间。
-- 轻点身体随机触发起身或 Wink；睡眠中点击先唤醒再播放其中一种。悬停唤醒过程中点击，也能在醒来后接上点击动作。动作进行中不叠加或排队，完成后共用互动冷却。旧的悬停/点击设置自动兼容，无需重置。
+- 轻点身体等概率喵叫或 Wink；睡眠中点击先唤醒再回应。萤火虫和起身待机动作会完整收尾后回应一次，点击回应进行中不叠加或排队。旧设置无需重置。
 - 双击身体播放闭眼陶醉、轻抬头和微张嘴，同时显示右上角“喵”气泡。单击和双击互斥，判定时间与位置容差跟随 Windows 设置；气泡和表情使用同一时钟，拖动时一起冻结。
 - 按住身体拖动以移动位置。静止悬停只触发一次。
-- 默认每隔 3–8 秒播放待机动作（仅眨眼、打哈欠），无互动 60 秒后入睡。睡眠或入睡时，悬停或明确点击可唤醒。
+- 默认每次动作结束后等待 3–8 秒再选择待机动作（眨眼、打哈欠、起身右瞥、萤火虫），无互动 60 秒后入睡。自动动作不刷新入睡期限，已开始的动作自然收尾后再入睡。
 - 右键猫咪打开菜单；系统托盘提供隐藏/显示、设置、暂停自动动作、置顶、鼠标穿透、恢复位置、退出。
 - 再次双击程序会打开已运行实例的设置，不会产生第二只猫。`TablePet.exe --settings` 也可打开设置，`TablePet.exe --quit` 可正常退出。
 - 鼠标穿透后，通过系统托盘恢复。关闭设置不会退出宠物。自启动默认关闭，需在设置中手动开启。
@@ -56,7 +60,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools\setup-dotnet.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File tools\build.ps1 -Test -Publish
 
 # 运行构建结果
-.\dist\TablePet-0.3.2-win-x64\TablePet.exe
+.\dist\TablePet-0.3.4-win-x64\TablePet.exe
 ```
 
 其它常用命令：
@@ -77,16 +81,16 @@ powershell -File tools\package-source.ps1
 # 在开发环境启动
 powershell -File tools\build.ps1 -Launch
 
-# 校验 120Hz 重采样结果和冻结素材指纹（需要 Node.js）
-npm run assets:120hz:check
-npm run assets:freeze:check
+# 校验当前 60fps 素材时间线（需要 Node.js）
+npm run assets:60hz:test
+npm run assets:60hz:check
 ```
 
-构建脚本的发布结果：`dist\TablePet-0.3.2-win-x64\TablePet.exe`、`dist\TablePet-0.3.2-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。另行执行安装器脚本时输出 `dist\TablePet-0.3.2-Setup.exe`，源码打包脚本输出 `dist\TablePet-0.3.2-source.zip`。这些脚本在本地生成文件；公开下载使用上方 Release 链接。`--settings` 启动参数适合开发时直接查看设置页。`--check-assets` 以无窗口方式逐一检查全部素材，退出码 0 表示通过，2 表示缺失、损坏或可选动作回退；该检查不会操作正在运行的桌宠实例。
+构建当前源码得到：`dist\TablePet-0.3.4-win-x64\TablePet.exe`、`dist\TablePet-0.3.4-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`，各 ZIP 附 SHA-256 校验文件。安装器脚本输出 `dist\TablePet-0.3.4-Setup.exe`。这些脚本在本地生成文件，下载使用上方 Release 链接。`--settings` 可直接查看设置页。`--check-assets` 无窗口检查全部猫与装饰层素材，退出码 0 表示通过，2 表示缺失、损坏或可选动作回退；不会操作正在运行的桌宠实例。
 
 ## 源码备份和本地清理
 
-本次 0.3.2 冻结指纹保存在 `reference/releases/frozen-0.3.2.json`，`main` 继续用于后续开发。`v0.3.1` 保留上一版冻结源码；`v0.2.1`、`v0.2.2` 标签保留对应的原始源码快照，含动画帧、关键姿态、原始生成图、Word 方案、提示词、构建脚本及逐文件 `SOURCE-MANIFEST.sha256`。历史源码可随时从 GitHub 标签页下载，或重新导出：
+0.3.4 的 60fps 重采样来源和校验记录保存在 `reference/motion-60hz/`，`main` 继续用于后续开发。历史 0.3.2 冻结指纹保存在 `reference/releases/frozen-0.3.2.json`；旧标签保留对应的原始源码快照。历史源码可随时从 GitHub 标签页下载，或重新导出：
 
 ```powershell
 git fetch origin --tags
@@ -130,13 +134,13 @@ node tools/qa-sleep-breathing.cjs assets/strawberry-cat artifacts/qa-v0.2.1/asse
 
 运行时读取 `Assets/strawberry-cat/manifest.json`。画布、锚点、片段列表、帧时长和循环方式独立于用户行为设置。各片段保持统一画布，透明 alpha 用于身体命中检测；窗口的空白点击穿透由 Windows 分层透明实现。AI 生图原始输出、提示词与切图脚本保留在仓库中。
 
-素材已预先生成，构建和运行桌宠不需要 Node.js、RIFE 模型或联网。0.3.2 包含 11 个片段、1275 张实际引用 PNG、1907 个时间槽。其中 Meow 为 85 张 PNG（与待机共享首尾）、168 个时间槽、总长 1.4 秒；Wink 为 137 张 PNG、180 个时间槽、总长 1.5 秒。睡眠呼吸使用 257 张 PNG，组成 432 槽、3.6 秒的循环；眨眼总长仍为 375ms。活动画面以约 8–9ms 的时间槽取样，重复姿态保留独立时间槽，以维持既有交互回程规则。原 240Hz 清单保存在 `reference/motion-120hz/source-manifest-240hz.json`；0.3.1 的 1833 张 PNG、3485 槽记录仍按历史版本保留。
+素材已预先生成，构建和运行桌宠不需要 Node.js、RIFE 模型或联网。当前包含 12 个猫片段和 1 条萤火虫装饰轨道，移动片段以约 16–17ms 的时间槽取样，最后一槽保留原结束时刻。Meow 仍为 1.4 秒，Wink 为 1.5 秒，睡眠呼吸每轮 3.6 秒，眨眼为 375ms，萤火虫为 10 秒。当前精确帧数与占用见 `reference/motion-60hz/`；旧版统计保留在对应版本文档中。
 
 关键姿态使用内置image_gen生成，再以现成RIFE 4.6模型补充过渡，Sharp负责切图、锚点对齐、透明双底还原和打包；睡眠最靠近休息姿态的15张帧使用FFmpeg标准浮点alpha合成消除推理接缝。无需自制动画引擎。重建时使用Node.js24，`npm ci`，`node tools/motion-setup-rife.cjs`，并安装[FFmpeg 8.1.1](https://ffmpeg.org/download.html)加入PATH，再 `npm run assets:prepare`。这些工具只用于素材制作，运行与编译桌宠使用已保存PNG即可。原图与关键帧已随源码保存，提示词在 `reference/motion-v2-prompts.json`、`reference/motion-v2-followup-prompts.json` 和 `reference/sleep-v4-prompts.json`，流程说明见 [tools/motion-pipeline.md](tools/motion-pipeline.md)。`assets:prepare:v1` 仅供复现旧版，会覆盖当前清单，不用于当前构建。
 
-120Hz 冻结基线可用 `npm run assets:120hz` 从保存的 240Hz 清单重新生成，随后运行 `npm run assets:120hz:check` 和 `npm run assets:freeze:check`。该步骤只重写清单，不重新编码 PNG，也不依赖本机 `dist`、`artifacts` 或模型缓存。历史制作配方仍以 240Hz 生成完整姿态，修改原动画后应先审阅并更新采样源，再重新取样、验收和冻结；不要把历史生成命令的输出直接当作本版冻结结果。
+当前清单使用 `npm run assets:60hz` 从保存的完整 0.3.3 清单重建，再以 `npm run assets:60hz:check` 核对。转换只引用已有 PNG，保留原时长、首尾和萤火虫双轨同步，不依赖 `dist`、`artifacts` 或模型缓存。历史 120Hz 和冻结命令仅用于旧版检出，不能覆盖当前清单。
 
-当前冻结动作预览为 `assets/strawberry-cat/previews/actions-preview-0.3.2.html`。`actions-preview-0.3.1.html`、历史 `motion-preview.html`、睡眠、眨眼 GIF 和旧版待机预览保留为制作档案；其时间线和动作分类不代表本版。120Hz 桌面效果以当前程序读取的运行清单为准。GIF 仅为 50fps 预览，不能用来测量桌宠实际刷新率。单独重建睡眠可运行 `node tools/touchup-sleep.cjs`，重建眨眼可运行 `node tools/touchup-blink.cjs`。睡眠源图与关键姿态在 `sources/sleep-v4`、`keyframes-v4/sleep`，完整提示词和候选选择记录在 `reference/sleep-v4-prompts.json`。
+`assets/strawberry-cat/previews/` 中的 0.3.2、0.3.1 和旧版 HTML/GIF 保留为制作档案，其时间线和动作分类不代表本版。当前效果以程序读取的 60fps 运行清单为准。GIF 不能用来测量桌宠实际刷新率。睡眠源图与关键姿态在 `sources/sleep-v4`、`keyframes-v4/sleep`，完整提示词在 `reference/sleep-v4-prompts.json`。
 
 本版 Wink 的重建选择配置为 `reference/idle-v9-fluid-selection.json`，使用 `tools/build-wink-candidate.cjs` 生成候选，再以 `node tools/install-wink-v9-smooth.cjs --selection reference/idle-v9-fluid-selection.json` 导入运行素材。原始 V9 关键图保留；细分过渡、端点残差修正及按眼睑运动距离重采样只用于离线制帧，不增加运行时依赖。
 

@@ -65,11 +65,21 @@ if (!$SkipAssets) {
         if (!(Test-Path -LiteralPath $manifestPath)) { throw "Missing final manifest: $manifestPath" }
     }
     $manifest = Get-Content -LiteralPath (Join-Path $sourceAssets 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
-    $assetFiles = @('manifest.json','fallback.png','tray.ico') + @($manifest.clips.PSObject.Properties.Value.frames.file | Sort-Object -Unique)
+    $frameFiles = @($manifest.clips.PSObject.Properties.Value.frames.file)
+    if ($manifest.decorations) { $frameFiles += @($manifest.decorations.PSObject.Properties.Value.frames.file) }
+    $frameFiles = @($frameFiles | Sort-Object -Unique)
+    $assetFiles = @('manifest.json','fallback.png','tray.ico') + $frameFiles
     foreach ($relative in $assetFiles) {
         $sourceHash = (Get-FileHash -LiteralPath (Join-Path $sourceAssets $relative) -Algorithm SHA256).Hash
         $publishedHash = (Get-FileHash -LiteralPath (Join-Path $publishedAssets $relative) -Algorithm SHA256).Hash
         if ($sourceHash -ne $publishedHash) { throw "Published asset differs from source: $relative" }
+    }
+    $expectedFrames = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
+    foreach ($relative in $frameFiles) { $null = $expectedFrames.Add([IO.Path]::GetFullPath((Join-Path $publishedAssets $relative))) }
+    $publishedFrames = @(Get-ChildItem -LiteralPath (Join-Path $publishedAssets 'frames') -Filter '*.png' -File -Recurse)
+    if ($publishedFrames.Count -ne $expectedFrames.Count) { throw 'Published PNG count does not match the complete character/decoration manifest.' }
+    foreach ($file in $publishedFrames) {
+        if (!$expectedFrames.Contains($file.FullName)) { throw "Unreferenced PNG remains in the published package: $($file.FullName)" }
     }
     $scratch = Join-Path $workspaceRoot '.tools/runtime-verification'
     New-Item -ItemType Directory -Path $scratch -Force | Out-Null
@@ -110,6 +120,22 @@ internal static class Program
                 "Available idle expressions match the requested acceptance set");
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "manifest.json")));
         var metadata = manifest.RootElement;
+        Check(metadata.GetProperty("motion").GetProperty("sampleFps").GetInt32() == 60, "Current runtime declares 60 fps sampling");
+        Check(catalog.IdleActions.SequenceEqual(new[] { new IdleAction("blink", 2), new IdleAction("yawn", 1),
+            new IdleAction("rise", 1), new IdleAction("firefly", 1) }), "Automatic choices retain independent 2:1:1:1 weights");
+        Check(catalog.Clips.ContainsKey("wink") && catalog.Clips.ContainsKey("meow"), "Both single-click reactions are available");
+        foreach (var clip in catalog.Clips.Values.Concat(catalog.Decorations.Values.Select(decoration => decoration.Clip)))
+        {
+            if (clip.Frames.Count == 1) continue; // Static idle/hold are not duplicated into moving slots.
+            Check(clip.Frames.Count == (int)Math.Ceiling(clip.DurationMs * 60d / 1000), "60 fps slot count " + clip.Name);
+            long elapsed = 0;
+            for (var index = 0; index < clip.Frames.Count; index++)
+            {
+                var expectedEnd = Math.Min(clip.DurationMs, (long)Math.Round((index + 1) * 1000d / 60));
+                Check(clip.Frames[index].DurationMs == expectedEnd - elapsed, "60 fps boundary " + clip.Name + ":" + index);
+                elapsed = expectedEnd;
+            }
+        }
         Check(!string.IsNullOrWhiteSpace(metadata.GetProperty("id").GetString()), "Character id is present");
         Check(metadata.TryGetProperty("version", out var version) && version.ValueKind is JsonValueKind.String or JsonValueKind.Number, "Asset version is present");
         var anchor = metadata.GetProperty("anchor");
@@ -117,23 +143,50 @@ internal static class Program
             && anchor.GetProperty("y").GetDouble() >= 0 && anchor.GetProperty("y").GetDouble() <= catalog.CanvasHeight, "Anchor is within the canvas");
         var region = metadata.GetProperty("hitRegion");
         Check(region.GetProperty("width").GetDouble() > 0 && region.GetProperty("height").GetDouble() > 0, "Interaction region is described");
-        var files = catalog.Clips.Values.SelectMany(c => c.Frames).Select(f => f.File).Distinct().ToArray();
+        var files = catalog.AllFrameFiles.ToArray();
+        var bodyFiles = catalog.Clips.Values.SelectMany(c => c.Frames).Select(f => f.File).ToHashSet();
+        var dimensions = bodyFiles.ToDictionary(file => file, _ => (Width: catalog.CanvasWidth, Height: catalog.CanvasHeight));
+        foreach (var (name, decoration) in catalog.Decorations)
+        {
+            Check(catalog.Clips.TryGetValue(name, out var character), "Decoration has its character channel " + name);
+            Check(!decoration.Clip.Loop && decoration.Clip.Frames.Select(frame => frame.DurationMs)
+                .SequenceEqual(character!.Frames.Select(frame => frame.DurationMs)), "Decoration slots match the character clock " + name);
+            foreach (var frame in decoration.Clip.Frames)
+            {
+                var size = (Width: decoration.CanvasWidth, Height: decoration.CanvasHeight);
+                Check(!dimensions.TryGetValue(frame.File, out var existing) || existing == size, "Shared frame dimensions agree " + frame.File);
+                dimensions[frame.File] = size;
+            }
+        }
         var checksums = new Dictionary<string, string>();
+        var alphaSums = new Dictionary<string, long>();
         foreach (var file in files)
         {
             var encoded = File.ReadAllBytes(Path.Combine(root, file));
             Check(encoded.Length > 26 && encoded[25] == 6, "PNG uses RGBA color type " + file);
             using var stream = File.OpenRead(Path.Combine(root, file));
             var decoded = PngBitmapDecoder.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad).Frames[0];
-            Check(decoded.PixelWidth == catalog.CanvasWidth && decoded.PixelHeight == catalog.CanvasHeight, "Canvas " + file);
+            var size = dimensions[file];
+            Check(decoded.PixelWidth == size.Width && decoded.PixelHeight == size.Height, "Track canvas " + file);
             var bitmap = new FormatConvertedBitmap(decoded, PixelFormats.Bgra32, null, 0);
             var pixels = new byte[bitmap.PixelWidth * bitmap.PixelHeight * 4];
             bitmap.CopyPixels(pixels, bitmap.PixelWidth * 4, 0);
-            var opaque = 0; var transparent = 0;
-            for (var i = 3; i < pixels.Length; i += 4) { if (pixels[i] >= 128) opaque++; if (pixels[i] == 0) transparent++; }
-            Check(opaque > 100 && transparent > 100, "Visible subject and true alpha " + file);
-            Check(pixels[3] == 0 && pixels[(bitmap.PixelWidth - 1) * 4 + 3] == 0 && pixels[^1] == 0, "Transparent corners " + file);
+            var opaque = 0; var transparent = 0; long alpha = 0;
+            for (var i = 3; i < pixels.Length; i += 4) { alpha += pixels[i]; if (pixels[i] >= 128) opaque++; if (pixels[i] == 0) transparent++; }
+            Check(transparent > 100, "True alpha " + file);
+            if (bodyFiles.Contains(file))
+            {
+                Check(opaque > 100, "Visible character " + file);
+                Check(pixels[3] == 0 && pixels[(bitmap.PixelWidth - 1) * 4 + 3] == 0 && pixels[^1] == 0, "Transparent character corners " + file);
+            }
+            // The insect legitimately has completely transparent entrance/exit slots.
+            alphaSums[file] = alpha;
             checksums[file] = Convert.ToHexString(SHA256.HashData(pixels));
+        }
+        foreach (var (name, decoration) in catalog.Decorations)
+        {
+            Check(decoration.Clip.Frames.Any(frame => alphaSums[frame.File] > 0), "Decoration becomes visible " + name);
+            Check(alphaSums[decoration.Clip.Frames[^1].File] == 0, "Decoration is fully transparent at completion " + name);
         }
         string First(string clip) => catalog.Clips[clip].Frames[0].File;
         string Last(string clip) => catalog.Clips[clip].Frames[^1].File;
@@ -144,7 +197,7 @@ internal static class Program
         {
             var clip = catalog.Clips[action.Clip];
             Same(First("idle"), First(action.Clip), "Shared idle expression start " + action.Clip);
-            Same(First("idle"), Last(action.Clip), "Shared idle expression end " + action.Clip);
+            Same(First("idle"), Last(action.Clip == "rise" ? "settle" : action.Clip), "Shared automatic action end " + action.Clip);
             Check(!clip.Loop, "Idle expression is a one-shot " + action.Clip);
             Check(clip.Frames.Any(frame => checksums[frame.File] != checksums[First("idle")]),
                 "Idle expression contains a visibly different decoded pose " + action.Clip);
@@ -160,8 +213,10 @@ internal static class Program
             foreach (var file in files)
             {
                 var bitmap = catalog.Image(file);
-                Check(bitmap.PixelHeight == catalog.CanvasHeight, $"Native canvas decode {file} for {height} DIP / {dpi * 100}% presentation");
-                Check(!catalog.Hit(file, 0, 0), "Transparent corner is not interaction region");
+                var size = dimensions[file];
+                Check(bitmap.PixelWidth == size.Width && bitmap.PixelHeight == size.Height,
+                    $"Native track canvas decode {file} for {height} DIP / {dpi * 100}% presentation");
+                if (bodyFiles.Contains(file)) Check(!catalog.Hit(file, 0, 0), "Transparent character corner is not interaction region");
             }
         }
         catalog.CacheForSize(240, 1.5);
@@ -171,12 +226,11 @@ internal static class Program
         var clock = new FakeClock();
         var settings = new PetSettings { SleepAfterMs = 60000, BlinkMinMs = 3000, BlinkMaxMs = 3000, CooldownMs = 30, HoldMs = 100 };
         var random = new Random(20261027);
-        // These cycles exercise rise/hold/settle; keep click selection separate from idle randomness.
+        var clickChoice = 0; // Current single-click mapping: 0 = meow, 1 = wink.
         var controller = new BehaviorController(clock, catalog.Clips, settings,
-            (a, b) => a == 0 && b == 1 ? 0 : random.Next(a, b + 1), catalog.IdleActions);
+            (a, b) => a == 0 ? clickChoice : random.Next(a, b + 1), catalog.IdleActions);
         var observed = new HashSet<string>();
         var idleSelectionCounts = idleNames.ToDictionary(name => name, _ => 0);
-        string? previousIdle = null;
         long observedToken = -1;
         void Tick()
         {
@@ -186,9 +240,7 @@ internal static class Program
             if (observedToken == controller.Player.Token) return;
             observedToken = controller.Player.Token;
             if (!idleSelectionCounts.ContainsKey(name)) return;
-            if (idleNames.Count > 1) Check(name != previousIdle, "Random idle expression does not immediately repeat");
             idleSelectionCounts[name]++;
-            previousIdle = name;
         }
         void Until(Func<bool> done, long limit = 120000)
         {
@@ -202,6 +254,7 @@ internal static class Program
         }
         for (var cycle = 0; cycle < cycles; cycle++)
         {
+            clickChoice = cycle % 2;
             Until(() => controller.State == PetState.FallAsleep);
             if (cycle % 2 == 0)
             {
@@ -224,24 +277,27 @@ internal static class Program
                 Check(controller.State == PetState.Sleep, "Suspended sleep restores as sleep without backlog");
                 controller.Touch();
             }
-            Until(() => controller.State == PetState.React && controller.ReactionPhase == ReactionPhase.Hold);
+            Until(() => controller.State == PetState.React);
+            Check(controller.Player.CurrentClip!.Name == (clickChoice == 0 ? "meow" : "wink"), "Waking click selects the requested short reaction");
             controller.BeginDrag();
             var held = controller.Player.CurrentFrame!.File;
             clock.NowMilliseconds += 1000; Tick();
             Check(controller.Player.CurrentFrame!.File == held, "Dragging freezes real frame");
             controller.EndDrag();
-            Until(() => controller.State == PetState.Idle);
+            Until(() => controller.State == PetState.Idle && controller.Player.CurrentClip!.Name == "idle");
             controller.Touch();
             Check(controller.State == PetState.Idle, "Cooldown touch does not queue replay");
         }
-        foreach (var action in idleNames)
-            Check(idleSelectionCounts[action] > 0, "Seeded automatic cycles selected real idle expression " + action);
+        var clickAcceptance = VerifyClickActions(catalog);
         File.WriteAllText(report, JsonSerializer.Serialize(new {
             passed = true, manifest = Path.Combine(root, "manifest.json"), clips = catalog.Clips.Count,
             uniquePngs = files.Length, checkedSizes = new[] { 120, 240, 480 },
             decodedDpiScales = new[] { 100, 125, 150, 200 }, cycles,
             nativeBitmapHeightCap = catalog.CanvasHeight,
-            idleActions = catalog.IdleActions, idleSelectionCounts, idleAcceptance,
+            decorations = catalog.Decorations.Select(pair => new { clip = pair.Key, width = pair.Value.CanvasWidth,
+                height = pair.Value.CanvasHeight, offsetX = pair.Value.OffsetX, offsetY = pair.Value.OffsetY,
+                durationMs = pair.Value.Clip.DurationMs, frames = pair.Value.Clip.Frames.Count }).ToArray(),
+            sampleFps = 60, idleActions = catalog.IdleActions, idleSelectionCounts, idleAcceptance, clickAcceptance,
             observedClips = observed.Order().ToArray(), checkCount = Checks.Count,
             elapsedMilliseconds = started.ElapsedMilliseconds,
             note = "DPI values above verify bitmap decoding only, not monitor movement. Clock cycles are accelerated, not real-time desktop residency."
@@ -257,6 +313,7 @@ internal static class Program
         foreach (var action in catalog.IdleActions)
         {
             var clip = catalog.Clips[action.Clip];
+            var actionDuration = clip.DurationMs + (action.Clip == "rise" ? 100 + catalog.Clips["settle"].DurationMs : 0);
             var ticket = 1;
             foreach (var choice in catalog.IdleActions)
             {
@@ -269,12 +326,14 @@ internal static class Program
                 var settings = new PetSettings { AutoSleep = autoSleep, BlinkMinMs = 100, BlinkMaxMs = 100,
                     SleepAfterMs = sleepAfter ?? 60000, HoldMs = 100, CooldownMs = 30 };
                 var pet = new BehaviorController(clock, catalog.Clips, settings,
-                    // An idle-expression ticket must not also choose the independent Wink reaction.
-                    (min, max) => min == 0 && max == 1 ? 0 : min == max ? min : Math.Clamp(ticket, min, max), catalog.IdleActions);
+                    // An idle-expression ticket must not choose a separate click reaction.
+                    (min, max) => min == 0 ? 0 : min == max ? min : Math.Clamp(ticket, min, max), catalog.IdleActions);
                 Step(clock, pet, 99);
                 Check(pet.Player.CurrentClip!.Name == "idle", "Expression waits for its automatic deadline " + action.Clip);
                 Step(clock, pet, 1);
                 Check(pet.Player.CurrentClip!.Name == action.Clip, "Random ticket automatically starts real expression " + action.Clip);
+                Check(pet.IsAutomaticActionActive, "Automatic action is exposed to the host " + action.Clip);
+                Check(pet.IsFireflyActive == (action.Clip == "firefly"), "Firefly overlay eligibility follows the active catalog clip " + action.Clip);
                 Check(pet.LastPetInteraction == 0, "Automatic expression is not user interaction " + action.Clip);
                 return (clock, pet);
             }
@@ -300,7 +359,8 @@ internal static class Program
             Check(clicked.Player.CurrentFrame!.File == visible, "Click preserves exact currently displayed expression frame " + action.Clip);
             var returnToken = clicked.Player.Token;
             var returnClip = clicked.Player.CurrentClip!;
-            if (action.Clip == "blink") Check(returnToken == originalToken, "Click lets the existing blink finish");
+            if (action.Clip is "blink" or "rise" or "firefly")
+                Check(returnToken == originalToken, "Click lets the complete automatic action finish " + action.Clip);
             else
             {
                 Check(returnClip.Name == "idle_to_react" && !returnClip.Loop, "Long expression starts a one-shot return " + action.Clip);
@@ -311,9 +371,10 @@ internal static class Program
             clicked.HandleAnimationCompleted(new AnimationCompleted(returnToken == originalToken ? originalToken - 1 : originalToken, action.Clip));
             Check(clicked.Player.Token == returnToken && clicked.State == PetState.Idle,
                 "Repeated input and stale completion cannot restart or skip the return " + action.Clip);
-            UntilState(clickClock, clicked, () => clicked.State == PetState.React, clip.DurationMs + 1000);
-            Check(clicked.ReactionPhase == ReactionPhase.Rise && clicked.Player.CurrentClip!.Name == "rise",
-                "Explicit click connects expression to rise " + action.Clip);
+            UntilState(clickClock, clicked, () => clicked.State == PetState.React, actionDuration + 1000);
+            Check(clicked.ReactionPhase == ReactionPhase.Meow && clicked.Player.CurrentClip!.Name == "meow",
+                "Explicit click connects automatic action to meow " + action.Clip);
+            Check(!clicked.IsFireflyActive, "Queued click removes firefly overlay eligibility " + action.Clip);
 
             var (hoverClock, hovered) = Start();
             SampleVisiblePose(hoverClock, hovered);
@@ -322,13 +383,16 @@ internal static class Program
             Check(hovered.Player.Token == hoverToken && hovered.Player.CurrentClip!.Name == action.Clip,
                 "Hover leaves the current expression uninterrupted " + action.Clip);
             Check(hovered.LastPetInteraction == hoverClock.NowMilliseconds, "Hover refreshes interaction time " + action.Clip);
-            UntilState(hoverClock, hovered, () => hovered.Player.CurrentClip!.Name == "idle", clip.DurationMs + 1000);
-            Check(hovered.State == PetState.Idle && hovered.ReactionPhase == ReactionPhase.None, "Hover never queues rise " + action.Clip);
+            UntilState(hoverClock, hovered, () => hovered.Player.CurrentClip!.Name == "idle", actionDuration + 1000);
+            Check(hovered.State == PetState.Idle && hovered.ReactionPhase == ReactionPhase.None, "Hover does not queue a click reaction " + action.Clip);
+            Check(hovered.ReactionCooldownUntil == 0, "Automatic completion does not create click cooldown " + action.Clip);
 
             var (pauseClock, paused) = Start();
             SampleVisiblePose(pauseClock, paused);
             paused.SetAutomaticActionsPaused(true);
-            UntilState(pauseClock, paused, () => paused.Player.CurrentClip!.Name == "idle", clip.DurationMs + 1000);
+            UntilState(pauseClock, paused, () => paused.Player.CurrentClip!.Name == "idle", actionDuration + 1000);
+            Check(paused.ReactionCooldownUntil == 0 && paused.LastPetInteraction == 0,
+                "Automatic completion changes neither click cooldown nor interaction time " + action.Clip);
             Step(pauseClock, paused, 100000);
             Check(paused.Player.CurrentClip!.Name == "idle" && paused.NextUpdateInMs == long.MaxValue,
                 "Automatic pause allows a natural finish then suppresses future expressions " + action.Clip);
@@ -343,8 +407,9 @@ internal static class Program
             Check(dragged.Player.CurrentFrame!.File == held && dragged.Player.ElapsedMs == elapsedBeforeDrag,
                 "Dragging freezes the real expression frame and elapsed time " + action.Clip);
             dragged.EndDrag();
-            UntilState(dragClock, dragged, () => dragged.Player.CurrentClip!.Name == "idle", clip.DurationMs + 1000);
-            Check(dragged.State == PetState.Idle && dragged.ReactionPhase == ReactionPhase.None, "Drag release does not trigger rise " + action.Clip);
+            UntilState(dragClock, dragged, () => dragged.Player.CurrentClip!.Name == "idle", actionDuration + 1000);
+            Check(dragged.State == PetState.Idle && dragged.ReactionPhase == ReactionPhase.None, "Drag release does not queue a click reaction " + action.Clip);
+            Check(!dragged.IsFireflyActive, "Completed automatic action hides its firefly channel " + action.Clip);
 
             var (suspendClock, suspended) = Start();
             SampleVisiblePose(suspendClock, suspended);
@@ -363,13 +428,44 @@ internal static class Program
                 "Sleep waits for the expression's shared endpoint " + action.Clip);
             Check(sleepy.LastPetInteraction == 0 && sleepy.SleepDeadline == sleepAfter,
                 "Expressions do not postpone the existing sleep deadline " + action.Clip);
-            UntilState(sleepClock, sleepy, () => sleepy.State == PetState.FallAsleep, clip.DurationMs + 1000);
-            Check(sleepClock.NowMilliseconds >= 100 + clip.DurationMs && sleepy.Player.CurrentClip!.Name == "fall_asleep",
+            UntilState(sleepClock, sleepy, () => sleepy.State == PetState.FallAsleep, actionDuration + 1000);
+            Check(sleepClock.NowMilliseconds >= 100 + actionDuration && sleepy.Player.CurrentClip!.Name == "fall_asleep",
                 "Overdue sleep begins as soon as the real expression finishes " + action.Clip);
+            var (repeatClock, repeated) = Start();
+            UntilState(repeatClock, repeated, () => repeated.Player.CurrentClip!.Name == "idle", actionDuration + 1000);
+            Step(repeatClock, repeated, repeated.NextIdleActionAt - repeatClock.NowMilliseconds);
+            Check(repeated.Player.CurrentClip!.Name == action.Clip,
+                "Independent weighted draws allow the same automatic action consecutively " + action.Clip);
             reports.Add(new { clip = action.Clip, weight = action.Weight, durationMs = clip.DurationMs,
+                fullActionDurationMs = actionDuration,
                 uniquePngs = clip.Frames.Select(frame => frame.File).Distinct().Count(),
                 automaticSelection = true, click = true, hover = true, automaticPause = true,
-                drag = true, suspension = true, sleepDeadline = true });
+                drag = true, suspension = true, sleepDeadline = true, consecutiveRepeat = true, noAutomaticClickCooldown = true });
+        }
+        return reports;
+    }
+
+    private static IReadOnlyList<object> VerifyClickActions(AssetCatalog catalog)
+    {
+        var reports = new List<object>();
+        foreach (var choice in new[] { 0, 1 })
+        {
+            var clock = new FakeClock();
+            var pet = new BehaviorController(clock, catalog.Clips,
+                new PetSettings { AutoSleep = false, BlinkMinMs = 86400000, BlinkMaxMs = 86400000, CooldownMs = 30 },
+                (min, max) => min == 0 ? choice : min, catalog.IdleActions);
+            pet.Click();
+            var expected = choice == 0 ? "meow" : "wink";
+            Check(pet.State == PetState.React && pet.Player.CurrentClip!.Name == expected, "Single click selects " + expected);
+            var token = pet.Player.Token;
+            pet.Click(); pet.DoubleClick();
+            Check(pet.Player.Token == token, "Input during short reaction does not queue or restart " + expected);
+            UntilState(clock, pet, () => pet.Player.CurrentClip!.Name == "idle", catalog.Clips[expected].DurationMs + 100);
+            Check(pet.ReactionCooldownUntil == clock.NowMilliseconds + 30, "Short reaction establishes click cooldown " + expected);
+            Step(clock, pet, 30);
+            pet.DoubleClick();
+            Check(pet.Player.CurrentClip!.Name == "meow", "Double click remains meow independently of single-click selection " + expected);
+            reports.Add(new { ticket = choice, singleClick = expected, doubleClick = "meow", noQueuedReplay = true, cooldown = true });
         }
         return reports;
     }

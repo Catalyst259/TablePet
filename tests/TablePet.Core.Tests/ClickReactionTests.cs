@@ -7,7 +7,7 @@ public sealed class ClickReactionTests
 {
     private static Dictionary<string, AnimationClip> Pack()
     {
-        var clips = new[] { "idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle", "wink", "yawn" }
+        var clips = new[] { "idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle", "wink", "yawn", "meow" }
             .ToDictionary(name => name, name => new AnimationClip(name,
                 [new("rest.png", 20), new(name + ".png", 100), new("rest.png", 20)], name is "idle" or "sleep_loop"));
         clips["idle"] = new("idle", [new("rest.png", 1000)], true);
@@ -27,7 +27,7 @@ public sealed class ClickReactionTests
     }
 
     [Theory]
-    [InlineData(0, "rise", ReactionPhase.Rise)]
+    [InlineData(0, "meow", ReactionPhase.Meow)]
     [InlineData(1, "wink", ReactionPhase.Wink)]
     public void AnAcceptedClickCanChooseEitherReaction(int ticket, string clip, ReactionPhase phase)
     {
@@ -72,7 +72,7 @@ public sealed class ClickReactionTests
         Advance(clock, controller, 1);
         Assert.Equal(PetState.Idle, controller.State);
         controller.Click();
-        Assert.Equal("rise", controller.Player.CurrentClip!.Name);
+        Assert.Equal("meow", controller.Player.CurrentClip!.Name);
         Assert.Empty(selections);
     }
 
@@ -84,7 +84,7 @@ public sealed class ClickReactionTests
     [InlineData("wrong-end")]
     [InlineData("bad-timing")]
     [InlineData("single-frame")]
-    public void MissingOrUnsafeOptionalWinkFallsBackToRise(string kind)
+    public void MissingOrUnsafeOptionalWinkFallsBackToMeow(string kind)
     {
         var clips = Pack();
         switch (kind)
@@ -99,8 +99,8 @@ public sealed class ClickReactionTests
         }
         var controller = new BehaviorController(new FakeClock(), clips, randomBetween: (_, max) => max);
         controller.Click();
-        Assert.Equal("rise", controller.Player.CurrentClip!.Name);
-        Assert.Equal(ReactionPhase.Rise, controller.ReactionPhase);
+        Assert.Equal("meow", controller.Player.CurrentClip!.Name);
+        Assert.Equal(ReactionPhase.Meow, controller.ReactionPhase);
     }
 
     [Theory]

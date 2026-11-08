@@ -1,6 +1,6 @@
 ﻿; Build with tools/build-installer.ps1. The payload must be a versioned publish folder.
 #ifndef AppVersion
-  #define AppVersion "0.3.1"
+  #define AppVersion "0.3.4"
 #endif
 #ifndef PublishDir
   #define PublishDir SourcePath + "..\dist\TablePet-" + AppVersion + "-win-x64"
@@ -41,6 +41,11 @@ Name: "chinesesimp"; MessagesFile: "Languages\ChineseSimplified.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "创建桌面快捷方式"; GroupDescription: "快捷方式："
+
+[InstallDelete]
+; PrepareToInstall has already stopped the old pet. Replace only the application's
+; bundled sprite directory so unused 120Hz frames do not survive an upgrade.
+Type: filesandordirs; Name: "{app}\Assets\strawberry-cat\frames"
 
 [Files]
 Source: "{#PublishDir}\*"; DestDir: "{app}"; Excludes: "README.md,docs\INSTALLATION.md"; Flags: ignoreversion recursesubdirs createallsubdirs

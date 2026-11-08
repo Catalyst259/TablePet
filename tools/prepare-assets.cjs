@@ -159,6 +159,8 @@ async function packageAssets() {
 }
 
 (async()=>{
+  const active=await fs.readFile(path.join(root,'manifest.json')).catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+  if(active&&JSON.parse(active).version>=9)throw Error('Refused historical sprite extraction over the 0.3.4-or-newer source PNGs. Use node tools/resample-motion-60hz.cjs --write to reproduce the complete 60 fps manifest.');
   await fs.mkdir(path.join(root,'frames'),{recursive:true});
   const report={};
   for(const name of names)report[name]=await split(name);

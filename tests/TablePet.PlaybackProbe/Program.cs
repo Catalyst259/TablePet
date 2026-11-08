@@ -15,7 +15,7 @@ using TablePet.Core;
 
 // Exercises the actual WPF decoder/cache and animation clock without a tray, settings,
 // input injection or instance signals. Render mode uses a nonactivating offscreen owner
-// for the real speech overlay. Neither mode measures DWM presentation.
+// for the real decoration overlays. Neither mode measures DWM presentation.
 internal static class Program
 {
     [STAThread]
@@ -23,8 +23,9 @@ internal static class Program
     {
         if (args.Length < 1)
         {
-            Console.Error.WriteLine("Usage: TablePet.PlaybackProbe <asset-root> [sample-hz=240] [height-dip=240] [dpi=1.5]");
+            Console.Error.WriteLine("Usage: TablePet.PlaybackProbe <asset-root> [sample-hz=60] [height-dip=240] [dpi=1.5]");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --render-meow <asset-root> <output-folder>");
+            Console.Error.WriteLine("       TablePet.PlaybackProbe --render-firefly <asset-root> <output-folder>");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --interactive-meow <asset-root> <temp-settings-dir>");
             return 1;
         }
@@ -37,6 +38,15 @@ internal static class Program
             }
             return RenderMeow(Path.GetFullPath(args[1]), Path.GetFullPath(args[2]));
         }
+        if (args[0] == "--render-firefly")
+        {
+            if (args.Length != 3)
+            {
+                Console.Error.WriteLine("Usage: TablePet.PlaybackProbe --render-firefly <asset-root> <output-folder>");
+                return 1;
+            }
+            return RenderFirefly(Path.GetFullPath(args[1]), Path.GetFullPath(args[2]));
+        }
         if (args[0] == "--interactive-meow")
         {
             if (args.Length != 3)
@@ -46,7 +56,7 @@ internal static class Program
             }
             return InteractiveMeow(Path.GetFullPath(args[1]), Path.GetFullPath(args[2]));
         }
-        var hz = args.Length > 1 ? int.Parse(args[1], CultureInfo.InvariantCulture) : 240;
+        var hz = args.Length > 1 ? int.Parse(args[1], CultureInfo.InvariantCulture) : 60;
         var height = args.Length > 2 ? double.Parse(args[2], CultureInfo.InvariantCulture) : 240;
         var dpi = args.Length > 3 ? double.Parse(args[3], CultureInfo.InvariantCulture) : 1.5;
         if (hz is < 1 or > 1000) throw new ArgumentOutOfRangeException(nameof(hz));
@@ -60,27 +70,37 @@ internal static class Program
         var fetchTimes = new List<double>();
         var actualIntervals = new List<double>();
         var rendered = 0;
+        var decorationFetches = 0;
         long maxCache = catalog.CachedBytes;
-        player.FrameChanged += frame =>
+        player.FrameChanged += _ => rendered++;
+        void FetchCurrentFrames()
         {
             var start = Stopwatch.GetTimestamp();
             catalog.PreparePlayback(player.CurrentClip!, player.FrameIndex);
-            var bitmap = catalog.Image(frame.File);
+            var bitmap = catalog.Image(player.CurrentFrame!.File);
             if (!bitmap.IsFrozen) throw new InvalidOperationException("The decoder returned a thread-affine image.");
+            if (catalog.Decorations.TryGetValue(player.CurrentClip!.Name, out var decoration))
+            {
+                var overlay = catalog.Image(decoration.Clip.Frames[player.FrameIndex].File);
+                if (!overlay.IsFrozen || overlay.PixelWidth != decoration.CanvasWidth || overlay.PixelHeight != decoration.CanvasHeight)
+                    throw new InvalidDataException("Decoration decode differs from its declared native canvas.");
+                decorationFetches++;
+            }
             fetchTimes.Add(Stopwatch.GetElapsedTime(start).TotalMilliseconds);
             maxCache = Math.Max(maxCache, catalog.CachedBytes);
-            rendered++;
-        };
+        }
         foreach (var name in new[] { "rise", "hold", "settle", "fall_asleep", "sleep_loop", "wake" }
             .Concat(catalog.Clips.ContainsKey("wink") ? new[] { "wink" } : [])
             .Concat(catalog.Clips.ContainsKey("meow") ? new[] { "meow" } : [])
+            .Concat(catalog.Clips.ContainsKey("firefly") ? new[] { "firefly" } : [])
             .Concat(catalog.IdleActions.Select(action => action.Clip)).Distinct())
         {
-            fetchTimes.Clear(); actualIntervals.Clear(); rendered = 0;
+            fetchTimes.Clear(); actualIntervals.Clear(); rendered = 0; decorationFetches = 0;
             var beforeMisses = catalog.SynchronousCacheMisses;
             var clip = catalog.Clips[name];
             var timer = Stopwatch.StartNew();
             player.Play(clip);
+            FetchCurrentFrames();
             long previousSample = Stopwatch.GetTimestamp();
             var sample = 1;
             while (timer.Elapsed.TotalMilliseconds < clip.DurationMs)
@@ -97,6 +117,9 @@ internal static class Program
                 actualIntervals.Add((now - previousSample) * 1000d / Stopwatch.Frequency);
                 previousSample = now;
                 player.Tick();
+                // Match the application's per-render preparation, including repeated
+                // cat poses while the independent decoration continues moving.
+                FetchCurrentFrames();
                 // Skip expired sample slots after a slow decode instead of dispatching a burst.
                 sample = Math.Max(sample + 1, (int)Math.Floor(timer.Elapsed.TotalMilliseconds * hz / 1000) + 1);
             }
@@ -109,6 +132,8 @@ internal static class Program
                 samples = actualIntervals.Count,
                 sampledHz = actualIntervals.Count * 1000d / timer.Elapsed.TotalMilliseconds,
                 displayedFrameChanges = rendered,
+                frameFetches = fetchTimes.Count,
+                decorationFetches,
                 synchronousCacheMisses = catalog.SynchronousCacheMisses - beforeMisses,
                 fetchP95Ms = Percentile(fetchTimes, .95),
                 fetchMaxMs = fetchTimes.Max(),
@@ -133,6 +158,107 @@ internal static class Program
             limitation = "Headless timing/decoding probe only. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
         }, new JsonSerializerOptions { WriteIndented = true }));
         return catalog.IsFallback || catalog.HasFrameFallback || catalog.HasOptionalActionFallback || maxCache > catalog.CacheBudgetBytes ? 2 : 0;
+    }
+
+    private static int RenderFirefly(string assetRoot, string outputFolder)
+    {
+        var catalog = new AssetCatalog(assetRoot);
+        if (catalog.IsFallback || catalog.HasOptionalActionFallback
+            || !catalog.Clips.TryGetValue("firefly", out var clip)
+            || !catalog.Decorations.TryGetValue("firefly", out var decoration))
+            throw new InvalidDataException("Render mode requires complete firefly character and decoration channels without fallback.");
+        catalog.CacheForSize(catalog.CanvasHeight, 1);
+        Directory.CreateDirectory(outputFolder);
+        var left = Math.Min(0, decoration.OffsetX);
+        var top = Math.Min(0, decoration.OffsetY);
+        var width = checked((int)Math.Ceiling(Math.Max(catalog.CanvasWidth, decoration.OffsetX + decoration.CanvasWidth) - left));
+        var height = checked((int)Math.Ceiling(Math.Max(catalog.CanvasHeight, decoration.OffsetY + decoration.CanvasHeight) - top));
+        var clock = new SampleClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(clip);
+        var owner = new Window
+        {
+            Title = "TablePet offscreen firefly rendering probe",
+            Width = catalog.CanvasWidth,
+            Height = catalog.CanvasHeight,
+            Left = SystemParameters.VirtualScreenLeft - 4096,
+            Top = SystemParameters.VirtualScreenTop - 4096,
+            WindowStartupLocation = WindowStartupLocation.Manual,
+            WindowStyle = WindowStyle.None,
+            ResizeMode = ResizeMode.NoResize,
+            AllowsTransparency = true,
+            Background = Brushes.Transparent,
+            ShowActivated = false,
+            ShowInTaskbar = false,
+            Focusable = false,
+            IsHitTestVisible = false
+        };
+        FireflyWindow? firefly = null;
+        var samples = new List<(long Time, BitmapSource Image)>();
+        var provenance = new List<object>();
+        var times = new long[] { 0, 1050, 2350, 3000, 4500, 5500, 6200, 7400, 8500, 9450, clip.DurationMs }
+            .Where(time => time <= clip.DurationMs).Distinct().Order().ToArray();
+        try
+        {
+            owner.Show();
+            firefly = new FireflyWindow(owner, catalog, decoration);
+            foreach (var time in times)
+            {
+                clock.NowMilliseconds = time;
+                player.Tick();
+                catalog.PreparePlayback(clip, player.FrameIndex);
+                var body = catalog.Image(player.CurrentFrame!.File);
+                firefly.Update(player.FrameIndex);
+                firefly.Dispatcher.Invoke(() => { }, DispatcherPriority.ApplicationIdle);
+                // Render the production window's real content at native asset size.
+                // The final canvas includes the overlay's negative owner-relative offset.
+                var content = (FrameworkElement)firefly.Content;
+                content.Measure(new Size(decoration.CanvasWidth, decoration.CanvasHeight));
+                content.Arrange(new Rect(0, 0, decoration.CanvasWidth, decoration.CanvasHeight));
+                content.UpdateLayout();
+                var overlay = new RenderTargetBitmap((int)decoration.CanvasWidth, (int)decoration.CanvasHeight, 96, 96, PixelFormats.Pbgra32);
+                overlay.Render(content);
+                overlay.Freeze();
+                var composite = Draw(width, height, drawing =>
+                {
+                    drawing.DrawImage(body, new Rect(-left, -top, catalog.CanvasWidth, catalog.CanvasHeight));
+                    drawing.DrawImage(overlay, new Rect(decoration.OffsetX - left, decoration.OffsetY - top,
+                        decoration.CanvasWidth, decoration.CanvasHeight));
+                });
+                var filename = $"firefly-{time:00000}.png";
+                SavePng(composite, Path.Combine(outputFolder, filename));
+                samples.Add((time, composite));
+                provenance.Add(new { timeMs = time, frameIndex = player.FrameIndex, source = player.CurrentFrame.File,
+                    decorationSource = decoration.Clip.Frames[player.FrameIndex].File, rendered = filename });
+            }
+            WriteContactSheet(samples, Color.FromRgb(0xff, 0xf8, 0xef), Brushes.DarkSlateGray,
+                Path.Combine(outputFolder, "contact-light.png"));
+            WriteContactSheet(samples, Color.FromRgb(0x24, 0x22, 0x2a), Brushes.WhiteSmoke,
+                Path.Combine(outputFolder, "contact-dark.png"));
+            var report = JsonSerializer.Serialize(new
+            {
+                passed = !catalog.IsFallback && !catalog.HasOptionalActionFallback && !catalog.HasFrameFallback,
+                assetRoot,
+                manifestSha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(Path.Combine(assetRoot, "manifest.json")))),
+                clip = clip.Name,
+                durationMs = clip.DurationMs,
+                canvas = new { width, height, characterX = -left, characterY = -top },
+                decoration = new { width = decoration.CanvasWidth, height = decoration.CanvasHeight,
+                    offsetX = decoration.OffsetX, offsetY = decoration.OffsetY },
+                renderer = "WPF RenderTargetBitmap with AssetCatalog PNGs and actual FireflyWindow.Content",
+                limitation = "Deterministic offscreen composition, not a screenshot or measurement of compositor presentation or mixed-monitor DPI.",
+                samples = provenance
+            }, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(Path.Combine(outputFolder, "render-report.json"), report);
+            Console.WriteLine(report);
+            return catalog.HasFrameFallback ? 2 : 0;
+        }
+        finally
+        {
+            catalog.StopPrefetch();
+            firefly?.Close();
+            owner.Close();
+        }
     }
 
     private static int RenderMeow(string assetRoot, string outputFolder)

@@ -350,6 +350,8 @@ async function build(selection, options = {}) {
 }
 
 async function install(selection) {
+  const original = await fs.readFile(manifestPath), manifest = JSON.parse(original);
+  if (manifest.version >= 9) throw Error('Refused historical Meow installation over the 0.3.4-or-newer action policy. Use node tools/resample-motion-60hz.cjs --write to reproduce the complete 60 fps manifest.');
   const settings = await load(selection), { outputRoot, config } = settings;
   const candidate = JSON.parse(await fs.readFile(path.join(outputRoot, 'candidate-manifest.json'), 'utf8'));
   const report = JSON.parse(await fs.readFile(path.join(outputRoot, 'qa.json'), 'utf8'));
@@ -360,7 +362,7 @@ async function install(selection) {
     if (key.source && hash(await fs.readFile(key.source)) !== key.sourceSHA256) throw Error('Source key changed: ' + key.id);
   }
   for (const [file, sha] of Object.entries(report.imageHashes)) if (hash(await fs.readFile(inside(outputRoot, file))) !== sha) throw Error('Candidate frame changed: ' + file);
-  const original = await fs.readFile(manifestPath), manifest = JSON.parse(original), before = await snapshot(manifest, true);
+  const before = await snapshot(manifest, true);
   const idleFile = manifest.clips.idle.frames[0].file, idleSource = path.join(production, idleFile), idleHash = hash(await fs.readFile(idleSource));
   await qa(outputRoot, candidate.clips.meow, idleSource);
   const mapping = new Map(), frameFolder = 'frames/' + settings.revision, targetRoot = path.join(production, frameFolder);

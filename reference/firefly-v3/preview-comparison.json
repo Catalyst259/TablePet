@@ -1,0 +1,101 @@
+{
+  "comparison": "One-time comparison against approved preview stills, not a build dependency.",
+  "checks": [
+    {
+      "index": 0,
+      "time": 0,
+      "behind": true,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 90,
+      "time": 1.5,
+      "behind": true,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 150,
+      "time": 2.5,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 210,
+      "time": 3.5,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 306,
+      "time": 5.1,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 330,
+      "time": 5.5,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 354,
+      "time": 5.9,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 372,
+      "time": 6.2,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 390,
+      "time": 6.5,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 444,
+      "time": 7.4,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 510,
+      "time": 8.5,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    },
+    {
+      "index": 599,
+      "time": 9.983333333333333,
+      "behind": false,
+      "changedChannels": 0,
+      "maxDifference": 0,
+      "meanAbsoluteDifference": 0
+    }
+  ]
+}

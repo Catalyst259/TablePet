@@ -1,7 +1,7 @@
 {
   "name": "tablepet-asset-tools",
   "private": true,
-  "version": "0.3.2",
+  "version": "0.3.4",
   "scripts": {
     "assets:prepare": "node tools/build-motion-v2.cjs",
     "assets:prepare:v1": "node tools/prepare-assets.cjs",
@@ -15,7 +15,13 @@
     "assets:meow:check": "node tools/build-meow.cjs --self-test",
     "assets:120hz": "node tools/resample-motion-120hz.cjs --write",
     "assets:120hz:check": "node tools/resample-motion-120hz.cjs --verify",
-    "assets:freeze:check": "node tools/freeze-release.cjs --verify"
+    "assets:freeze:check": "node tools/freeze-release.cjs --verify",
+    "assets:firefly": "node tools/build-firefly.cjs",
+    "assets:firefly:check": "node tools/build-firefly.cjs --verify",
+    "assets:firefly:install": "node tools/install-firefly.cjs",
+    "assets:60hz": "node tools/resample-motion-60hz.cjs --write",
+    "assets:60hz:check": "node tools/resample-motion-60hz.cjs --verify",
+    "assets:60hz:test": "node tools/resample-motion-60hz.cjs --self-test"
   },
   "devDependencies": {
     "sharp": "0.35.5"

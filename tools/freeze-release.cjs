@@ -127,6 +127,11 @@ async function collectLegacy(version) {
 async function collect(version) {
   const projectBytes = await safeRead(repo, projectPath);
   version ??= /<Version>([^<]+)<\/Version>/.exec(projectBytes.toString('utf8'))?.[1];
+  assert(version !== '0.3.4',
+    'Version 0.3.4 has not been frozen; no release snapshot was created. Verify its reproducible 60 fps assets with node tools/resample-motion-60hz.cjs --verify. Historical 0.3.1/0.3.2 freeze records remain unchanged.');
+  assert(version !== '0.3.3',
+    'Version 0.3.3 has not been frozen; no release snapshot was created. This command currently handles the historical 0.3.1 and 0.3.2 freezes. ' +
+    'Check the current firefly assets with node tools/build-firefly.cjs --verify; use node tools/build-firefly.cjs and node tools/install-firefly.cjs to rebuild and install them.');
   if (version === '0.3.2') return require('./freeze-120hz-release.cjs').collect(version);
   return collectLegacy(version);
 }

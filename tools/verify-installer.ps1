@@ -75,6 +75,9 @@ foreach ($requiredFramework in @('Microsoft.NETCore.App', 'Microsoft.WindowsDesk
 $assetRoot = Join-Path $payloadRoot 'Assets/strawberry-cat'
 $manifest = Get-Content (Join-Path $assetRoot 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $framePaths = @($manifest.clips.PSObject.Properties | ForEach-Object { $_.Value.frames } | ForEach-Object { $_.file })
+if ($manifest.decorations) {
+    $framePaths += @($manifest.decorations.PSObject.Properties | ForEach-Object { $_.Value.frames } | ForEach-Object { $_.file })
+}
 $uniqueFrames = @($framePaths | Sort-Object -Unique)
 foreach ($frame in $uniqueFrames) {
     $framePath = [IO.Path]::GetFullPath((Join-Path $assetRoot $frame))

@@ -27,6 +27,7 @@ async function main() {
   const manifestPath = path.join(root, 'manifest.json');
   const original = await fs.readFile(manifestPath);
   const manifest = JSON.parse(original);
+  if (manifest.version >= 9) throw Error('Refused historical Wink installation over the 0.3.4-or-newer action policy. Use node tools/resample-motion-60hz.cjs --write to reproduce the complete 60 fps manifest.');
   const candidate = JSON.parse(await fs.readFile(path.join(candidateRoot, 'candidate-manifest.json'), 'utf8'));
   const qa = JSON.parse(await fs.readFile(path.join(candidateRoot, 'qa.json'), 'utf8'));
   if (!candidate.candidateOnly || candidate.name !== config.name || !qa.passed || !qa.firstExact || !qa.lastExact)

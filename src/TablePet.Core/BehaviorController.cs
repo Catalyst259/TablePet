@@ -1,7 +1,7 @@
 namespace TablePet.Core;
 
 public enum PetState { Idle, FallAsleep, Sleep, Wake, React }
-public enum ReactionPhase { None, Rise, Hold, Settle, Wink, Meow }
+public enum ReactionPhase { None, Rise, Hold, Settle, Wink, Meow, Firefly }
 
 /// <summary>The sole owner of behavior state. All calls are made on the application's UI thread.</summary>
 public sealed class BehaviorController
@@ -11,7 +11,7 @@ public sealed class BehaviorController
     private readonly Func<int, int, int> _randomBetween;
     private readonly bool _canWink;
     private readonly bool _canMeow;
-    private string? _lastIdleAction;
+    private readonly bool _canFirefly;
     private long _expectedToken;
     private PetState _expectedState;
     private string _expectedClip = "";
@@ -45,6 +45,7 @@ public sealed class BehaviorController
             && clip.Frames[0].File == restingFrame && clip.Frames[^1].File == restingFrame;
         _canWink = SafeReaction("wink");
         _canMeow = SafeReaction("meow");
+        _canFirefly = SafeReaction("firefly");
         IdleActions = IdleAction.Available(clips, idleActions);
         Player = new AnimationPlayer(clock);
         Player.Completed += HandleAnimationCompleted;
@@ -60,6 +61,9 @@ public sealed class BehaviorController
     public bool IsDragging { get; private set; }
     public bool IsSuspended { get; private set; }
     public bool AutomaticActionsPaused { get; private set; }
+    public bool IsAutomaticActionActive => State == PetState.Idle && Player.CurrentClip?.Name is { } name && name != "idle";
+    public bool IsFireflyActive => !IsSuspended && _canFirefly && State is PetState.Idle or PetState.React
+        && ReferenceEquals(Player.CurrentClip, _clips["firefly"]);
     public long LastPetInteraction { get; private set; }
     public long NextBlinkAt { get; private set; }
     // The stored BlinkMinMs/BlinkMaxMs settings continue to control this shared cadence.
@@ -73,7 +77,7 @@ public sealed class BehaviorController
         if (IsSuspended || IsDragging) return;
         Player.Tick();
         var now = _clock.NowMilliseconds;
-        if (State == PetState.React && ReactionPhase == ReactionPhase.Hold && now >= _holdStartedAt + Settings.HoldMs)
+        if (ReactionPhase == ReactionPhase.Hold && now >= _holdStartedAt + Settings.HoldMs)
         {
             ReactionPhase = ReactionPhase.Settle;
             if (!ReturnLoopToStart("hold_to_settle")) Play("settle");
@@ -130,10 +134,12 @@ public sealed class BehaviorController
             if (Player.CurrentClip?.Name == "idle") BeginReaction(reaction);
             else if (_reactionAfterIdleAction == ReactionKind.None)
             {
-                // Keep the short blink intact. Longer expressions return through their
-                // existing frames so a click never pops an open mouth into the rise pose.
+                // Blink and the complete automatic rise/firefly sequence finish
+                // naturally. In particular, a firefly return clip would lose its
+                // synchronized decorative channel. Only yawn uses a short return.
                 _reactionAfterIdleAction = reaction;
-                if (Player.CurrentClip?.Name != "blink" && !ReturnLoopToStart("idle_to_react")) BeginReaction(reaction);
+                if (ReactionPhase == ReactionPhase.None && Player.CurrentClip?.Name != "blink"
+                    && !ReturnLoopToStart("idle_to_react")) BeginReaction(reaction);
             }
             else if (reaction > _reactionAfterIdleAction) _reactionAfterIdleAction = reaction;
         }
@@ -155,7 +161,7 @@ public sealed class BehaviorController
         IsDragging = false;
         if (IsSuspended) return;
         LastPetInteraction = _clock.NowMilliseconds;
-        if (State == PetState.React && ReactionPhase == ReactionPhase.Hold)
+        if (ReactionPhase == ReactionPhase.Hold)
             _holdStartedAt += _clock.NowMilliseconds - _dragStartedAt;
         Player.Resume();
         if (State is PetState.FallAsleep or PetState.Sleep) Hover();
@@ -226,6 +232,15 @@ public sealed class BehaviorController
         switch (State)
         {
             case PetState.Idle:
+                if (ReactionPhase == ReactionPhase.Rise) { BeginHold(); break; }
+                if (ReactionPhase == ReactionPhase.Hold) break;
+                if (ReactionPhase == ReactionPhase.Settle && completion.ClipName == "hold_to_settle")
+                {
+                    Play("settle");
+                    break;
+                }
+                // Automatic actions neither consume reaction cooldown nor extend
+                // the sleep deadline. Tick can sleep at this resting endpoint.
                 if (_reactionAfterIdleAction != ReactionKind.None) BeginReaction(_reactionAfterIdleAction);
                 else EnterIdle();
                 break;
@@ -244,9 +259,7 @@ public sealed class BehaviorController
                 }
                 break;
             case PetState.React when ReactionPhase == ReactionPhase.Rise:
-                ReactionPhase = ReactionPhase.Hold;
-                _holdStartedAt = _clock.NowMilliseconds;
-                Play("hold", loop: true);
+                BeginHold();
                 break;
             case PetState.React when ReactionPhase == ReactionPhase.Settle:
                 if (completion.ClipName == "hold_to_settle")
@@ -258,6 +271,7 @@ public sealed class BehaviorController
                 break;
             case PetState.React when ReactionPhase == ReactionPhase.Wink:
             case PetState.React when ReactionPhase == ReactionPhase.Meow:
+            case PetState.React when ReactionPhase == ReactionPhase.Firefly:
                 EndReaction();
                 break;
         }
@@ -270,7 +284,7 @@ public sealed class BehaviorController
             if (IsSuspended || IsDragging) return long.MaxValue;
             var delay = Player.NextUpdateInMs;
             var now = _clock.NowMilliseconds;
-            if (State == PetState.React && ReactionPhase == ReactionPhase.Hold)
+            if (ReactionPhase == ReactionPhase.Hold)
                 delay = Math.Min(delay, Math.Max(0, _holdStartedAt + Settings.HoldMs - now));
             if (State == PetState.Idle && Player.CurrentClip?.Name == "idle" && !AutomaticActionsPaused && !_inputBusy)
             {
@@ -292,9 +306,34 @@ public sealed class BehaviorController
             Play("meow");
             return;
         }
-        var wink = _canWink && _randomBetween(0, 1) == 1;
-        ReactionPhase = wink ? ReactionPhase.Wink : ReactionPhase.Rise;
-        Play(wink ? "wink" : "rise");
+        // Single clicks choose meow/wink equally; old packs use whichever safe
+        // clip exists, then rise if neither does. Keep the legacy double-click
+        // fallback when its optional meow is missing.
+        var wink = reaction == ReactionKind.Meow
+            ? _canWink && _randomBetween(0, 1) == 1
+            : _canWink && (!_canMeow || _randomBetween(0, 1) == 1);
+        if (wink)
+        {
+            ReactionPhase = ReactionPhase.Wink;
+            Play("wink");
+        }
+        else if (_canMeow)
+        {
+            ReactionPhase = ReactionPhase.Meow;
+            Play("meow");
+        }
+        else
+        {
+            ReactionPhase = ReactionPhase.Rise;
+            Play("rise");
+        }
+    }
+
+    private void BeginHold()
+    {
+        ReactionPhase = ReactionPhase.Hold;
+        _holdStartedAt = _clock.NowMilliseconds;
+        Play("hold", loop: true);
     }
 
     private void EndReaction()
@@ -361,9 +400,10 @@ public sealed class BehaviorController
         var forwardDuration = forward.Sum(frame => (long)frame.DurationMs);
         var reverseDuration = reverse.Sum(frame => (long)frame.DurationMs);
         var route = forwardDuration <= reverseDuration ? forward : reverse;
-        var duration = (int)Math.Min(240, Math.Min(forwardDuration, reverseDuration));
-        // 60 samples over 240 ms retain up to 250 Hz, without waiting for a full breath.
-        var count = Math.Min(route.Length, Math.Min(60, duration));
+        var duration = (int)Math.Clamp(Math.Min(forwardDuration, reverseDuration), 34, 240);
+        // At least two slots retain both endpoints; at most 60 slots per second
+        // avoid recreating the former 240/250Hz timeline in dynamic return paths.
+        var count = Math.Min(route.Length, Math.Max(2, duration * 60 / 1000));
         var frames = Enumerable.Range(0, count).Select(i => new AnimationFrame(
             route[(int)Math.Round(i * (route.Length - 1d) / (count - 1))].File,
             (int)Math.Round((i + 1d) * duration / count) - (int)Math.Round(i * (double)duration / count))).ToArray();
@@ -377,7 +417,7 @@ public sealed class BehaviorController
 
     private void PlayNextIdleAction()
     {
-        var choices = IdleActions.Count == 1 ? IdleActions : IdleActions.Where(a => a.Clip != _lastIdleAction).ToArray();
+        var choices = IdleActions;
         var selected = choices[0];
         if (choices.Count > 1)
         {
@@ -390,7 +430,16 @@ public sealed class BehaviorController
                 break;
             }
         }
-        _lastIdleAction = selected.Clip;
-        Play(selected.Clip, loop: false);
+        // Independent draws deliberately allow repetition, so the declared
+        // 2:1:1:1 weights remain the actual per-draw probabilities.
+        ReactionPhase = selected.Clip switch
+        {
+            "rise" => ReactionPhase.Rise,
+            "firefly" => ReactionPhase.Firefly,
+            _ => ReactionPhase.None
+        };
+        // Keep the catalog firefly identity for paired overlay playback/cache.
+        if (selected.Clip == "firefly") Play("firefly");
+        else Play(selected.Clip, loop: false);
     }
 }

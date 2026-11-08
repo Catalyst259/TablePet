@@ -46,7 +46,7 @@ public sealed class IdleActionTests
     }
 
     [Fact]
-    public void LegacyChoicesScheduleOnlyBlinkAndYawnWithoutImmediateRepetition()
+    public void LegacyChoicesScheduleBlinkAndYawnWithIndependentRepetition()
     {
         var clock = new FakeClock();
         var random = new Random(42);
@@ -54,14 +54,14 @@ public sealed class IdleActionTests
             new PetSettings { AutoSleep = false, BlinkMinMs = 100, BlinkMaxMs = 100 },
             (min, max) => random.Next(min, max + 1), Choices);
         var played = new HashSet<string>();
-        string? previous = null;
+
         for (var i = 0; i < 100; i++)
         {
             Advance(clock, controller, 100);
             var clip = controller.Player.CurrentClip!;
-            Assert.NotEqual(previous, clip.Name);
+
             played.Add(clip.Name);
-            previous = clip.Name;
+
             Advance(clock, controller, clip.DurationMs);
             Assert.Equal("idle", controller.Player.CurrentClip!.Name);
             Assert.Equal(clock.NowMilliseconds + 100, controller.NextIdleActionAt);
@@ -99,11 +99,11 @@ public sealed class IdleActionTests
         IdleAction[] requested = [new("looping"), new("wrong-start"), new("wrong-end"), new("bad-timing"),
             new("missing"), new("rise"), new("idle"), new("happy", 0), new("wink", 1001), new("yawn"), new("yawn")];
         var available = IdleAction.Available(clips, requested);
-        Assert.Equal(new[] { "blink", "yawn" }, available.Select(a => a.Clip));
+        Assert.Equal(new[] { "blink", "rise", "yawn" }, available.Select(a => a.Clip));
     }
 
     [Fact]
-    public void ClickReturnsFromTheVisibleYawnThenRisesOnlyOnce()
+    public void ClickReturnsFromTheVisibleYawnThenWinksOnlyOnce()
     {
         var clock = new FakeClock();
         var controller = Create(clock);
@@ -118,15 +118,16 @@ public sealed class IdleActionTests
         Assert.Equal(visible, returning.Frames[0].File);
         Assert.Equal("rest.png", returning.Frames[^1].File);
         Assert.InRange(returning.DurationMs, 1, 240);
+        Assert.True(returning.Frames.Count * 1000L <= returning.DurationMs * 60);
         var returnToken = controller.Player.Token;
         controller.Click();
         controller.Hover();
         controller.HandleAnimationCompleted(new(oldToken, expression.Name));
         Assert.Equal(returnToken, controller.Player.Token);
         Advance(clock, controller, returning.DurationMs);
-        Assert.Equal("rise", controller.Player.CurrentClip!.Name);
+        Assert.Equal("wink", controller.Player.CurrentClip!.Name);
         Assert.Equal(PetState.React, controller.State);
-        Assert.Equal(ReactionPhase.Rise, controller.ReactionPhase);
+        Assert.Equal(ReactionPhase.Wink, controller.ReactionPhase);
     }
 
     [Theory]
@@ -157,11 +158,12 @@ public sealed class IdleActionTests
         Assert.Equal("closed.png", returning.Frames[0].File);
         Assert.Equal("rest.png", returning.Frames[^1].File);
         Assert.InRange(returning.DurationMs, 1, 240);
+        Assert.True(returning.Frames.Count * 1000L <= returning.DurationMs * 60);
         Assert.DoesNotContain(returning.Frames.Zip(returning.Frames.Skip(1)), pair => pair.First.File == pair.Second.File);
         Advance(clock, controller, returning.Frames[0].DurationMs);
         Assert.NotEqual("closed.png", controller.Player.CurrentFrame!.File);
         Advance(clock, controller, returning.DurationMs - returning.Frames[0].DurationMs);
-        Assert.Equal("rise", controller.Player.CurrentClip!.Name);
+        Assert.Equal("wink", controller.Player.CurrentClip!.Name);
         Assert.Equal(sourceSnapshot, clips["yawn"].Frames);
     }
 
@@ -233,6 +235,6 @@ public sealed class IdleActionTests
         Assert.Equal("idle", controller.Player.CurrentClip!.Name);
         Assert.Equal(long.MaxValue, controller.NextUpdateInMs);
         controller.Click();
-        Assert.Equal("rise", controller.Player.CurrentClip!.Name);
+        Assert.Equal("wink", controller.Player.CurrentClip!.Name);
     }
 }

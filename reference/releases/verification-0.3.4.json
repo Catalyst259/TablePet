@@ -1,0 +1,185 @@
+{
+  "version": "0.3.4",
+  "date": "2026-11-08",
+  "build": {
+    "configuration": "Release",
+    "runtime": "win-x64",
+    "selfContained": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "unitTests": {
+    "core": 170,
+    "app": 87,
+    "total": 257,
+    "failed": 0
+  },
+  "sampling": {
+    "targetFps": 60,
+    "selfTestAssertions": 1603,
+    "manifestSHA256": "cc7dc2a329449247abcb7c99da082fb5cde3d2ba3f289677eab47830903818ec",
+    "source": "reference/motion-60hz/source-manifest-0.3.3.json",
+    "sourceSHA256": "82bf49467ef3ff47524418a79dbbf50c3c5526448c7b4e72a5698594dea6fc1a",
+    "frameSlots": 2155,
+    "uniquePngs": 1644,
+    "pngBytes": 214309748,
+    "pngBytesSaved": 104734227,
+    "originalPngBytesPreserved": true,
+    "originalDurationsAndEndpointsPreserved": true,
+    "fireflyTracksUnchanged": true
+  },
+  "runtime": {
+    "command": "powershell -File tools/verify-runtime.ps1 -PublishDirectory dist/TablePet-0.3.4-win-x64 -ProbeAppHost -Cycles 1000 -ExpectedIdleActions blink,yawn,rise,firefly",
+    "isolatedAppHostAssetCheckExitCode": 0,
+    "clips": 12,
+    "decorations": [
+      {
+        "clip": "firefly",
+        "width": 640,
+        "height": 640,
+        "offsetX": -64,
+        "offsetY": -100,
+        "durationMs": 10000,
+        "frames": 600
+      }
+    ],
+    "cycles": 1000,
+    "assertions": 49085,
+    "checkedSizes": [
+      120,
+      240,
+      480
+    ],
+    "decodedDpiScales": [
+      100,
+      125,
+      150,
+      200
+    ],
+    "idleActions": [
+      {
+        "Clip": "blink",
+        "Weight": 2
+      },
+      {
+        "Clip": "yawn",
+        "Weight": 1
+      },
+      {
+        "Clip": "rise",
+        "Weight": 1
+      },
+      {
+        "Clip": "firefly",
+        "Weight": 1
+      }
+    ],
+    "idleSelectionCounts": {
+      "blink": 3843,
+      "yawn": 1851,
+      "rise": 1931,
+      "firefly": 1933
+    },
+    "idleAcceptance": [
+      {
+        "clip": "blink",
+        "weight": 2,
+        "durationMs": 375,
+        "fullActionDurationMs": 375,
+        "uniquePngs": 18,
+        "automaticSelection": true,
+        "click": true,
+        "hover": true,
+        "automaticPause": true,
+        "drag": true,
+        "suspension": true,
+        "sleepDeadline": true,
+        "consecutiveRepeat": true,
+        "noAutomaticClickCooldown": true
+      },
+      {
+        "clip": "yawn",
+        "weight": 1,
+        "durationMs": 4400,
+        "fullActionDurationMs": 4400,
+        "uniquePngs": 169,
+        "automaticSelection": true,
+        "click": true,
+        "hover": true,
+        "automaticPause": true,
+        "drag": true,
+        "suspension": true,
+        "sleepDeadline": true,
+        "consecutiveRepeat": true,
+        "noAutomaticClickCooldown": true
+      },
+      {
+        "clip": "rise",
+        "weight": 1,
+        "durationMs": 800,
+        "fullActionDurationMs": 1900,
+        "uniquePngs": 48,
+        "automaticSelection": true,
+        "click": true,
+        "hover": true,
+        "automaticPause": true,
+        "drag": true,
+        "suspension": true,
+        "sleepDeadline": true,
+        "consecutiveRepeat": true,
+        "noAutomaticClickCooldown": true
+      },
+      {
+        "clip": "firefly",
+        "weight": 1,
+        "durationMs": 10000,
+        "fullActionDurationMs": 10000,
+        "uniquePngs": 496,
+        "automaticSelection": true,
+        "click": true,
+        "hover": true,
+        "automaticPause": true,
+        "drag": true,
+        "suspension": true,
+        "sleepDeadline": true,
+        "consecutiveRepeat": true,
+        "noAutomaticClickCooldown": true
+      }
+    ],
+    "clickAcceptance": [
+      {
+        "ticket": 0,
+        "singleClick": "meow",
+        "doubleClick": "meow",
+        "noQueuedReplay": true,
+        "cooldown": true
+      },
+      {
+        "ticket": 1,
+        "singleClick": "wink",
+        "doubleClick": "meow",
+        "noQueuedReplay": true,
+        "cooldown": true
+      }
+    ],
+    "observedClips": [
+      "blink",
+      "fall_asleep",
+      "firefly",
+      "hold",
+      "idle",
+      "meow",
+      "return_to_idle",
+      "rise",
+      "settle",
+      "sleep_loop",
+      "wake",
+      "wink",
+      "yawn"
+    ]
+  },
+  "limitations": [
+    "Accelerated behavior cycles and bitmap decode sizes do not establish monitor FPS, mixed-DPI behavior or long-term stability.",
+    "Installer verification extracts and checks the payload; interactive installation, upgrade and uninstall were not executed."
+  ]
+}

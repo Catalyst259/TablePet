@@ -58,6 +58,25 @@ public sealed class AnimationPlayer(IClock clock)
     {
         if (CurrentClip is null) throw new InvalidOperationException("No animation to reverse.");
         var frames = CurrentClip.Frames.Take(FrameIndex + 1).Reverse().ToArray();
+        var duration = frames.Sum(frame => (long)frame.DurationMs);
+        if (frames.Length > 1 && (frames.Length * 1000L > duration * 60 || frames.Any(frame => frame.DurationMs < 16)))
+        {
+            // Old dense packs can still be interrupted. Generated reversal clips
+            // retain the visible first and resting last pose without exceeding 60Hz.
+            duration = Math.Max(34, duration);
+            var count = (int)Math.Min(frames.Length, duration * 60 / 1000);
+            var original = frames;
+            var ends = original.Select(frame => (long)frame.DurationMs).ToArray();
+            for (var i = 1; i < ends.Length; i++) ends[i] += ends[i - 1];
+            frames = Enumerable.Range(0, count).Select(i =>
+            {
+                var time = i * ends[^1] / count;
+                var index = Array.BinarySearch(ends, time);
+                index = i == count - 1 ? original.Length - 1 : index >= 0 ? index + 1 : ~index;
+                return new AnimationFrame(original[index].File,
+                    (int)(Math.Round((i + 1d) * duration / count) - Math.Round(i * (double)duration / count)));
+            }).ToArray();
+        }
         return Play(new AnimationClip(name, frames));
     }
 

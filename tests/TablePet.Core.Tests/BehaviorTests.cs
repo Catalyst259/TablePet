@@ -288,8 +288,9 @@ public sealed class BehaviorTests
         Assert.Equal("sleep_loop-600.png", bridge.Frames[0].File);
         Assert.Equal("sleep_loop-0.png", bridge.Frames[^1].File);
         Assert.InRange(bridge.DurationMs, 1, 240);
-        Assert.InRange(bridge.Frames.Count, 2, 60);
-        Assert.All(bridge.Frames, frame => Assert.True(frame.DurationMs > 0));
+        Assert.InRange(bridge.Frames.Count, 2, 14);
+        Assert.True(bridge.Frames.Count * 1000L <= bridge.DurationMs * 60);
+        Assert.All(bridge.Frames, frame => Assert.True(frame.DurationMs >= 16));
         Assert.Equal(bridge.Frames.Count, bridge.Frames.Select(frame => frame.File).Distinct().Count());
     }
 

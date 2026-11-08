@@ -39,7 +39,9 @@ if ($Publish) {
     $framePrefix = $frameRoot.TrimEnd('\') + '\'
     $packManifest = Get-Content -LiteralPath (Join-Path $assetRoot 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
     $referenced = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
-    foreach ($frame in $packManifest.clips.PSObject.Properties.Value.frames) {
+    $runtimeFrames = @($packManifest.clips.PSObject.Properties.Value.frames)
+    if ($packManifest.decorations) { $runtimeFrames += @($packManifest.decorations.PSObject.Properties.Value.frames) }
+    foreach ($frame in $runtimeFrames) {
         $framePath = [IO.Path]::GetFullPath((Join-Path $assetRoot $frame.file))
         if (!$framePath.StartsWith($framePrefix, [StringComparison]::OrdinalIgnoreCase) -or !(Test-Path -LiteralPath $framePath -PathType Leaf)) {
             throw "发布素材路径无效或缺失：$($frame.file)"

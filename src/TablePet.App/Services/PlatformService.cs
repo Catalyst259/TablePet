@@ -85,7 +85,7 @@ public sealed class PlatformService : IDisposable
     }
 
     /// <summary>Showing an owned WPF window must not raise an occluded pet in the desktop stack.</summary>
-    public static void ShowDecorationWindow(Window owner, Window decoration)
+    public static void ShowDecorationWindow(Window owner, Window decoration, Rect? relativeBounds = null)
     {
         owner.Dispatcher.VerifyAccess();
         var ownerHandle = new WindowInteropHelper(owner).Handle;
@@ -93,7 +93,7 @@ public sealed class PlatformService : IDisposable
         var aboveOwner = GetWindow(ownerHandle, 3); // GW_HWNDPREV, before HWND creation or Show.
         if (aboveOwner != 0 && aboveOwner == decorationHandle) aboveOwner = GetWindow(aboveOwner, 3);
         new WindowInteropHelper(decoration).EnsureHandle();
-        AlignDecorationWindow(owner, decoration);
+        AlignDecorationWindow(owner, decoration, relativeBounds);
         decoration.Show();
         decorationHandle = new WindowInteropHelper(decoration).Handle;
         // WPF Show can raise the whole owner group even with ShowActivated=false.
@@ -107,7 +107,7 @@ public sealed class PlatformService : IDisposable
     }
 
     /// <summary>Align an owned overlay in physical coordinates, including on monitors with different DPI.</summary>
-    public static void AlignDecorationWindow(Window owner, Window decoration)
+    public static void AlignDecorationWindow(Window owner, Window decoration, Rect? relativeBounds = null)
     {
         owner.Dispatcher.VerifyAccess();
         decoration.Dispatcher.VerifyAccess();
@@ -122,12 +122,22 @@ public sealed class PlatformService : IDisposable
         SyncNativeTopmost(decorationHandle, owner.Topmost);
         if (!GetWindowRect(ownerHandle, out var bounds)) throw new Win32Exception();
         if (!GetWindowRect(decorationHandle, out var current)) throw new Win32Exception();
-        if (bounds.Left == current.Left && bounds.Top == current.Top &&
-            bounds.Right == current.Right && bounds.Bottom == current.Bottom) return;
-        if (!SetWindowPos(decorationHandle, 0, bounds.Left, bounds.Top,
-            bounds.Right - bounds.Left, bounds.Bottom - bounds.Top, SwpNoZOrder | SwpNoActivate))
+        var target = DecorationBounds(new Rect(bounds.Left, bounds.Top,
+            bounds.Right - bounds.Left, bounds.Bottom - bounds.Top), relativeBounds ?? new Rect(0, 0, 1, 1));
+        if (target.Left == current.Left && target.Top == current.Top &&
+            target.Right == current.Right && target.Bottom == current.Bottom) return;
+        if (!SetWindowPos(decorationHandle, 0, (int)target.Left, (int)target.Top,
+            (int)target.Width, (int)target.Height, SwpNoZOrder | SwpNoActivate))
             throw new Win32Exception();
     }
+
+    // Fractions of the owner's physical rectangle preserve the character's
+    // registration even when a decoration extends onto a different-DPI screen.
+    internal static Rect DecorationBounds(Rect owner, Rect relative) => new(
+        Math.Round(owner.Left + relative.X * owner.Width),
+        Math.Round(owner.Top + relative.Y * owner.Height),
+        Math.Max(1, Math.Round(relative.Width * owner.Width)),
+        Math.Max(1, Math.Round(relative.Height * owner.Height)));
 
     private static void SyncNativeTopmost(nint handle, bool topmost)
     {

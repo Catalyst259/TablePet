@@ -119,11 +119,23 @@ async function collect(root = repo, { revision = '0.3.2' } = {}) {
 async function main(args) {
   assert(args.length <= 2 && ['--write', '--verify'].includes(args[0] || '--verify'),
     'Usage: node tools/resample-motion-120hz.cjs --write|--verify [revision]');
-  const mode = args[0] || '--verify', result = await collect(repo, { revision: args[1] || '0.3.2' });
-  const output = serialize(result.manifest), destination = await containedFile(repo, runtimeManifestPath);
-  if (mode === '--write') await fs.writeFile(destination.path, output);
+  const mode = args[0] || '--verify', destination = await containedFile(repo, runtimeManifestPath);
+  const current = await fs.readFile(destination.path), currentManifest = parse(current);
+  assert(!(currentManifest.version >= 9),
+    `Refused ${mode}: this is the historical 0.3.2 / 120 Hz baseline tool. Use node tools/resample-motion-60hz.cjs --write or --verify for the complete 0.3.4 manifest; the current action policy must not be downgraded.`);
+  // This CLI replaces the entire manifest with the historical 0.3.2 baseline.
+  // A revision argument must never let it discard newly installed channels.
+  assert(!Object.hasOwn(currentManifest.clips || {}, 'firefly') && !Object.hasOwn(currentManifest, 'decorations'),
+    `Refused ${mode}: this is the historical 0.3.2 / 120 Hz baseline tool. The current manifest contains firefly or decorations and must not be overwritten. ` +
+    'Use node tools/build-firefly.cjs to export, node tools/install-firefly.cjs to install, or node tools/build-firefly.cjs --verify to check the current firefly assets.');
+  const result = await collect(repo, { revision: args[1] || '0.3.2' });
+  const output = serialize(result.manifest);
+  if (mode === '--write') {
+    assert((await fs.readFile(destination.path)).equals(current),
+      'The runtime manifest changed during historical baseline preparation; refused to overwrite it.');
+    await fs.writeFile(destination.path, output);
+  }
   else {
-    const current = await fs.readFile(destination.path);
     assert(isDeepStrictEqual(parse(current), result.manifest),
       'Runtime manifest differs from the approved 120 Hz sampling; run --write to reproduce it.');
     assert.equal(current.toString('utf8'), output, 'Runtime manifest formatting differs from the reproducible output.');

@@ -20,6 +20,10 @@ public sealed class AssetCatalog
     private readonly LinkedList<CacheEntry> _leastRecentlyUsed = new();
     private readonly HashSet<string> _entryFrames = new();
     private readonly Dictionary<string, ClipFrameIndex> _clipFrameIndices = new();
+    private readonly Dictionary<string, long> _frameBytes = new();
+    private readonly Dictionary<string, int> _frameHeights = new();
+    private readonly Dictionary<string, (int Width, int Height)> _frameDimensions = new();
+    private readonly HashSet<string> _decorationFrames = new();
     private HashSet<string> _playbackFrames = new();
     private Queue<string> _lookAhead = new();
     private int _generation, _workerGeneration = -1, _decodedHeight;
@@ -32,7 +36,10 @@ public sealed class AssetCatalog
     public int CachedFrameCount { get { lock (_cacheLock) return _cache.Count; } }
     public long SynchronousCacheMisses => Interlocked.Read(ref _synchronousCacheMisses);
     public IReadOnlyDictionary<string, AnimationClip> Clips { get; private set; } = null!;
-    public IReadOnlyList<IdleAction> IdleActions { get; private set; } = [new("blink", 4)];
+    public IReadOnlyDictionary<string, AnimationDecoration> Decorations { get; private set; } =
+        new Dictionary<string, AnimationDecoration>();
+    public IReadOnlyList<string> AllFrameFiles { get; }
+    public IReadOnlyList<IdleAction> IdleActions { get; private set; } = [new("blink", 2)];
     public double CanvasWidth { get; private set; } = 512;
     public double CanvasHeight { get; private set; } = 512;
     public bool IsFallback { get; private set; }
@@ -70,14 +77,7 @@ public sealed class AssetCatalog
             {
                 try
                 {
-                    var frames = property.Value.GetProperty("frames").EnumerateArray().Select(f =>
-                        new AnimationFrame(f.GetProperty("file").GetString()!, f.GetProperty("durationMs").GetInt32())).ToArray();
-                    foreach (var frame in frames)
-                        if (!File.Exists(Resolve(frame.File))) throw new FileNotFoundException(frame.File);
-                    var clip = new AnimationClip(property.Name, frames,
-                        property.Value.TryGetProperty("loop", out var loop) && loop.GetBoolean());
-                    clip.EnsureValid();
-                    clips.Add(property.Name, clip);
+                    clips.Add(property.Name, ReadClip(property.Name, property.Value));
                 }
                 catch (Exception error) when (!RequiredClips.Contains(property.Name))
                 {
@@ -97,6 +97,7 @@ public sealed class AssetCatalog
                 HasOptionalActionFallback = true;
                 ErrorLogger.Write("可选动作无法加载，已跳过：meow（需要首尾待机姿势的单次动作）");
             }
+            LoadFireflyDecoration(manifest, clips);
             Clips = clips;
             var requested = new List<IdleAction>();
             if (manifest.TryGetProperty("idleActions", out var actions))
@@ -113,8 +114,9 @@ public sealed class AssetCatalog
                     }
             }
             IdleActions = IdleAction.Available(Clips, requested);
-            // These legacy entries are intentionally retired from the idle pool,
-            // rather than broken assets. Wink remains available as a click reaction.
+            // Legacy happy/wink entries are retired rather than broken assets.
+            // Current automatic choices (including the complete rise sequence
+            // and paired firefly clip) are validated by IdleAction.Available.
             HasOptionalActionFallback |= requested.Any(action => action.Clip is not ("happy" or "wink")
                 && !IdleActions.Contains(action));
         }
@@ -122,6 +124,7 @@ public sealed class AssetCatalog
         {
             ErrorLogger.Write("素材清单无法加载，使用原型静态图。", error);
             IsFallback = true;
+            Decorations = new Dictionary<string, AnimationDecoration>();
             _hitRegion = null;
             CanvasWidth = 1208; CanvasHeight = 1255;
             Clips = RequiredClips
@@ -129,18 +132,103 @@ public sealed class AssetCatalog
         }
         // An eased opening can repeat one image across several timeline slots.
         // Warm three different poses so those repeats do not exhaust the head start.
-        var distinctFrames = Clips.Values.ToDictionary(clip => clip.Name, clip => clip.Frames
-            .Select((frame, index) => (frame.File, Index: index)).DistinctBy(item => item.File).ToArray());
-        foreach (var frames in distinctFrames.Values)
-            foreach (var frame in frames.Take(3)) _entryFrames.Add(frame.File);
+        var allClips = Clips.Values.Concat(Decorations.Values.Select(decoration => decoration.Clip)).ToArray();
+        AllFrameFiles = allClips.SelectMany(clip => clip.Frames).Select(frame => frame.File).Distinct().ToArray();
+        foreach (var clip in allClips)
+            foreach (var file in clip.Frames.Select(frame => frame.File).Distinct().Take(3)) _entryFrames.Add(file);
+        void RegisterFrames(AnimationClip clip, double width, double height)
+        {
+            var bytes = (long)Math.Ceiling(width) * (long)Math.Ceiling(height) * 5;
+            foreach (var file in clip.Frames.Select(frame => frame.File).Distinct())
+            {
+                _frameBytes[file] = Math.Max(_frameBytes.GetValueOrDefault(file), bytes);
+                _frameHeights[file] = Math.Max(_frameHeights.GetValueOrDefault(file), (int)height);
+                _frameDimensions[file] = ((int)width, (int)height);
+            }
+        }
+        foreach (var clip in Clips.Values) RegisterFrames(clip, CanvasWidth, CanvasHeight);
+        foreach (var decoration in Decorations.Values)
+        {
+            RegisterFrames(decoration.Clip, decoration.CanvasWidth, decoration.CanvasHeight);
+            _decorationFrames.UnionWith(decoration.Clip.Frames.Select(frame => frame.File));
+        }
         foreach (var clip in Clips.Values)
         {
-            var frames = distinctFrames[clip.Name];
-            _clipFrameIndices.Add(clip.Name, new ClipFrameIndex(clip.Frames,
+            var channels = PlaybackChannels(clip);
+            var frames = Enumerable.Range(0, clip.Frames.Count)
+                .SelectMany(index => channels.Select(channel => (channel.Frames[index].File, Index: index)))
+                .DistinctBy(item => item.File).ToArray();
+            var workingSetBytes = _entryFrames.Union(frames.Select(frame => frame.File)).Sum(EstimatedBytes);
+            _clipFrameIndices.Add(clip.Name, new ClipFrameIndex(clip,
                 frames.Select(frame => frame.File).ToArray(), frames.Select(frame => frame.Index).ToArray(),
-                _entryFrames.Count + frames.Count(frame => !_entryFrames.Contains(frame.File))));
+                workingSetBytes));
         }
     }
+
+    private AnimationClip ReadClip(string name, JsonElement definition)
+    {
+        var frames = definition.GetProperty("frames").EnumerateArray().Select(frame => new AnimationFrame(
+            frame.GetProperty("file").GetString()!, frame.GetProperty("durationMs").GetInt32())).ToArray();
+        var clip = new AnimationClip(name, frames,
+            definition.TryGetProperty("loop", out var loop) && loop.GetBoolean());
+        clip.EnsureValid();
+        foreach (var frame in frames)
+            if (!File.Exists(Resolve(frame.File))) throw new FileNotFoundException(frame.File);
+        return clip;
+    }
+
+    private void LoadFireflyDecoration(JsonElement manifest, Dictionary<string, AnimationClip> clips)
+    {
+        var hasClip = manifest.GetProperty("clips").TryGetProperty("firefly", out _);
+        var hasDecorations = manifest.TryGetProperty("decorations", out var definitions);
+        var definition = default(JsonElement);
+        var hasDecoration = hasDecorations && definitions.ValueKind == JsonValueKind.Object
+            && definitions.TryGetProperty("firefly", out definition);
+        if (!hasClip && !hasDecoration) return; // Existing packs do not require this optional pair.
+        try
+        {
+            if (!clips.TryGetValue("firefly", out var clip) || !hasDecoration)
+                throw new InvalidDataException("Firefly requires both character and decoration channels.");
+            var rest = clips["idle"].Frames[0].File;
+            if (clip.Loop || clip.Frames.Count < 2 || clip.Frames[0].File != rest || clip.Frames[^1].File != rest)
+                throw new InvalidDataException("Firefly must start and end on the resting frame.");
+            var width = definition.GetProperty("canvas").GetProperty("width").GetDouble();
+            var height = definition.GetProperty("canvas").GetProperty("height").GetDouble();
+            var x = definition.GetProperty("offset").GetProperty("x").GetDouble();
+            var y = definition.GetProperty("offset").GetProperty("y").GetDouble();
+            if (!double.IsFinite(width) || !double.IsFinite(height) || !double.IsFinite(x) || !double.IsFinite(y)
+                || width is < 1 or > 4096 || height is < 1 or > 4096
+                || width != Math.Truncate(width) || height != Math.Truncate(height)
+                || Math.Abs(x) > 4096 || Math.Abs(y) > 4096
+                || x >= CanvasWidth || y >= CanvasHeight || x + width <= 0 || y + height <= 0
+                || (width * height + CanvasWidth * CanvasHeight) * 5 > CacheBudgetBytes)
+                throw new InvalidDataException("Invalid decoration geometry or a frame pair larger than the cache budget.");
+            var overlay = ReadClip("firefly-decoration", definition);
+            if (overlay.Loop || overlay.Frames.Count != clip.Frames.Count
+                || !overlay.Frames.Select(frame => frame.DurationMs).SequenceEqual(clip.Frames.Select(frame => frame.DurationMs)))
+                throw new InvalidDataException("Decoration slots must match the character timeline exactly.");
+            if ((width != CanvasWidth || height != CanvasHeight)
+                && overlay.Frames.Select(frame => frame.File).Intersect(clips.Values.SelectMany(source => source.Frames).Select(frame => frame.File)).Any())
+                throw new InvalidDataException("The same image cannot declare different native dimensions in two channels.");
+            Decorations = new Dictionary<string, AnimationDecoration>
+            {
+                ["firefly"] = new(width, height, x, y, overlay)
+            };
+        }
+        catch (Exception error)
+        {
+            clips.Remove("firefly");
+            HasOptionalActionFallback = true;
+            ErrorLogger.Write("可选动作无法加载，已跳过：firefly（角色与萤火虫图层必须完整且同步）", error);
+        }
+    }
+
+    private AnimationClip[] PlaybackChannels(AnimationClip clip) =>
+        Clips.TryGetValue(clip.Name, out var fixedClip) && ReferenceEquals(clip, fixedClip)
+        && Decorations.TryGetValue(clip.Name, out var decoration) ? [clip, decoration.Clip] : [clip];
+
+    private long EstimatedBytes(string file) => _frameBytes.GetValueOrDefault(file,
+        Math.Max(1L, (long)Math.Ceiling(CanvasWidth) * (long)Math.Ceiling(CanvasHeight) * 5));
 
     private string Resolve(string file)
     {
@@ -164,9 +252,8 @@ public sealed class AssetCatalog
         }
         // Every state can start immediately. Small packs retain the former all-preloaded
         // behavior; dense packs prefetch their remaining frames as playback approaches.
-        var files = Clips.Values.SelectMany(c => c.Frames).Select(f => f.File).Distinct().ToArray();
-        var estimatedBytes = (long)Math.Ceiling(desired * CanvasWidth / CanvasHeight) * desired * 5 * files.Length;
-        foreach (var file in estimatedBytes <= CacheBudgetBytes ? files : _entryFrames.ToArray()) GetFrame(file, countMiss: false);
+        var estimatedBytes = AllFrameFiles.Sum(EstimatedBytes);
+        foreach (var file in estimatedBytes <= CacheBudgetBytes ? AllFrameFiles : _entryFrames.ToArray()) GetFrame(file, countMiss: false);
     }
     public BitmapSource Image(string file) => GetFrame(file, countMiss: true).Image;
 
@@ -177,13 +264,18 @@ public sealed class AssetCatalog
         lock (_cacheLock)
         {
             if (_decodedHeight == 0) return;
+            var channels = PlaybackChannels(clip);
             var upcoming = new List<string>();
-            var protectedFrames = new HashSet<string> { clip.Frames[currentIndex].File };
+            var protectedFrames = channels.Select(channel => channel.Frames[currentIndex].File).ToHashSet();
+            upcoming.AddRange(protectedFrames.Where(file => !_cache.ContainsKey(file)));
             var duration = 0;
-            var frameBytes = Math.Max(1L, (long)Math.Ceiling(_decodedHeight * CanvasWidth / CanvasHeight) * _decodedHeight * 5);
             if (_clipFrameIndices.TryGetValue(clip.Name, out var complete)
-                && ReferenceEquals(clip.Frames, complete.Source)
-                && complete.WorkingSetFrames <= CacheBudgetBytes / frameBytes)
+                && (ReferenceEquals(clip, complete.Source)
+                    // Existing loop playback copies a clip only to override Loop.
+                    // Retain its old fixed-frame cache behavior; decorated clips
+                    // require the original clip object before binding either channel.
+                    || !Decorations.ContainsKey(clip.Name) && ReferenceEquals(clip.Frames, complete.Source.Frames))
+                && complete.WorkingSetBytes <= CacheBudgetBytes)
             {
                 // Compact clips fit alongside all entry poses. Queue their distinct
                 // images beyond long holds too, and retain them through reopening.
@@ -200,15 +292,24 @@ public sealed class AssetCatalog
             }
             else
             {
-                var lookAheadCount = (int)Math.Clamp(CacheBudgetBytes / frameBytes - _entryFrames.Count - 2, 1, 64);
-                for (var offset = 1; offset <= lookAheadCount && duration < 250; offset++)
+                var reserved = _entryFrames.Union(protectedFrames).ToHashSet();
+                var reservedBytes = reserved.Sum(EstimatedBytes);
+                // Leave room for one demand-loaded image without evicting either
+                // channel's current frame or its protected upcoming frames.
+                var limit = CacheBudgetBytes - protectedFrames.Max(EstimatedBytes);
+                for (var offset = 1; offset <= 64 && duration < 250; offset++)
                 {
                     var index = currentIndex + offset;
                     if (index >= clip.Frames.Count && !clip.Loop) break;
-                    var frame = clip.Frames[index % clip.Frames.Count];
-                    duration += frame.DurationMs;
-                    protectedFrames.Add(frame.File);
-                    if (!_cache.ContainsKey(frame.File)) upcoming.Add(frame.File);
+                    index %= clip.Frames.Count;
+                    var files = channels.Select(channel => channel.Frames[index].File).Distinct().ToArray();
+                    var extraBytes = files.Where(file => !reserved.Contains(file)).Sum(EstimatedBytes);
+                    if (reservedBytes + extraBytes > limit) break;
+                    reservedBytes += extraBytes;
+                    reserved.UnionWith(files);
+                    duration += clip.Frames[index].DurationMs;
+                    protectedFrames.UnionWith(files);
+                    upcoming.AddRange(files.Where(file => !_cache.ContainsKey(file)));
                 }
             }
             _playbackFrames = protectedFrames;
@@ -324,11 +425,29 @@ public sealed class AssetCatalog
 
     private CachedFrame DecodeWithFallback(string file, int height)
     {
-        try { return _decode(Resolve(file), height); }
+        try
+        {
+            var decoded = _decode(Resolve(file), _frameHeights.GetValueOrDefault(file, height));
+            if (!IsFallback && _frameDimensions.TryGetValue(file, out var expected)
+                && (decoded.Image.PixelWidth != expected.Width || decoded.Image.PixelHeight != expected.Height))
+                throw new InvalidDataException($"Frame dimensions do not match its declared canvas: {file}");
+            return decoded;
+        }
         catch (Exception error)
         {
             _hasFrameFallback = true;
             ErrorLogger.Write($"帧加载失败：{file}", error);
+            if (_decorationFrames.Contains(file))
+            {
+                // Decorative failures must never display the character fallback
+                // over the enlarged transparent window. Keep the channel invisible.
+                var size = _frameDimensions[file];
+                var alpha = new byte[size.Width * size.Height];
+                var transparent = BitmapSource.Create(size.Width, size.Height, 96, 96,
+                    PixelFormats.Bgra32, null, new byte[alpha.Length * 4], size.Width * 4);
+                transparent.Freeze();
+                return new(transparent, alpha);
+            }
             return _decode(Path.Combine(_root, "fallback.png"), height);
         }
     }
@@ -362,5 +481,5 @@ public sealed class AssetCatalog
     }
     internal sealed record CachedFrame(BitmapSource Image, byte[] Alpha);
     private sealed record CacheEntry(string File, CachedFrame Frame, long Bytes);
-    private sealed record ClipFrameIndex(IReadOnlyList<AnimationFrame> Source, string[] Files, int[] FirstIndices, int WorkingSetFrames);
+    private sealed record ClipFrameIndex(AnimationClip Source, string[] Files, int[] FirstIndices, long WorkingSetBytes);
 }
