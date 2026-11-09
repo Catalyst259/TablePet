@@ -7,5 +7,7 @@ artifacts/
 *.user
 *.suo
 node_modules/
+__pycache__/
+*.pyc
 TablePet-*-source.zip
 TablePet-*-source.zip.sha256

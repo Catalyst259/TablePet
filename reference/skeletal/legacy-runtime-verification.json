@@ -1,0 +1,20 @@
+{
+  "AllRgbaHashesExact": true,
+  "CheckedPoses": 708,
+  "ConcurrentPrefetchPassed": true,
+  "CallerMutationIsolationPassed": true,
+  "CacheBytes": 25165824,
+  "WarmupPoseCount": 0,
+  "ArchiveResidentBytes": 0,
+  "BindingBytes": 3145728,
+  "ConstructionMs": 233.288,
+  "SequentialTotalMs": 7352.472,
+  "SequentialP50Ms": 9.414,
+  "SequentialP95Ms": 13.146,
+  "RandomSeekP50Ms": 50.34,
+  "RandomSeekP95Ms": 125.96,
+  "RandomSeekMaxMs": 152.9386,
+  "AssetRoot": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet.Skeletal\\assets\\strawberry-cat",
+  "ArchiveSha256": "3cf200558ebdf766bf2e272a117e876ac5919ea2ed10c2da61ff5052dcd60599",
+  "TimingNote": "Decode timings are diagnostic wall times, not presentation cadence. This run overlapped the independent WPF pixel verification; use the separate playback probe for frame-rate acceptance."
+}

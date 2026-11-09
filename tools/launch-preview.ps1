@@ -1,9 +1,9 @@
 #requires -Version 5.1
-param([string]$ApplicationPath = (Join-Path $PSScriptRoot 'TablePet.exe'))
+param([string]$ApplicationPath = (Join-Path $PSScriptRoot 'TablePet.Skeletal.exe'))
 $ErrorActionPreference = 'Stop'
 try {
     $application = (Get-Item -LiteralPath $ApplicationPath -ErrorAction Stop).FullName
-    $running = @(Get-Process -Name TablePet -ErrorAction SilentlyContinue)
+    $running = @(Get-Process -Name TablePet.Skeletal -ErrorAction SilentlyContinue)
     if ($running.Count -eq 1 -and $running[0].Path -ieq $application) { return }
     if ($running.Count) {
         # Use the app's graceful exit signal; never kill a running pet or edit its settings.

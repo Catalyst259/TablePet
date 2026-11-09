@@ -1,0 +1,39 @@
+{
+  "original": {
+    "frameFiles": 1685,
+    "pngBytes": 221854869,
+    "totalRuntimeAssetBytes": 223580970
+  },
+  "rewritten": {
+    "skeletal": {
+      "bytes": 61007025,
+      "files": 8
+    },
+    "totalRuntimeAssets": {
+      "bytes": 62733126,
+      "files": 11
+    }
+  },
+  "animationReductionPercent": 72.50138107178526,
+  "totalAssetReductionPercent": 71.94165227926152,
+  "components": {
+    "legacy": {
+      "bytes": 56799433,
+      "files": 3
+    },
+    "work": {
+      "bytes": 1563276,
+      "files": 2
+    },
+    "firefly": {
+      "bytes": 2643781,
+      "files": 2
+    }
+  },
+  "selfContainedZip": {
+    "originalBytes": 298309692,
+    "rewrittenBytes": 130902846,
+    "reductionPercent": 56.118473683382696,
+    "note": "Both include the Windows x64 .NET runtime. New runtime bundle additionally uses standard single-file compression."
+  }
+}

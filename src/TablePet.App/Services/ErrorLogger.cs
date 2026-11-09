@@ -9,7 +9,7 @@ public static class ErrorLogger
 {
     private static readonly object Gate = new();
     public static string LogPath { get; } = Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DesktopPet", "TablePet.log");
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DesktopPet.Skeletal", "TablePet.log");
 
     public static void Write(string message, Exception? exception = null)
     {

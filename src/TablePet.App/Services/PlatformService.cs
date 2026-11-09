@@ -246,7 +246,7 @@ public sealed class PlatformService : IDisposable
             ?? throw new IOException("无法打开当前用户的启动设置。");
         if (!enabled)
         {
-            key.DeleteValue("TablePet", throwOnMissingValue: false);
+            key.DeleteValue("TablePet.Skeletal", throwOnMissingValue: false);
             return;
         }
         var executable = Environment.ProcessPath;
@@ -254,8 +254,14 @@ public sealed class PlatformService : IDisposable
             throw new IOException("无法确定当前应用程序的位置。");
         var command = $"\"{executable}\"";
         if (string.Equals(Path.GetFileNameWithoutExtension(executable), "dotnet", StringComparison.OrdinalIgnoreCase))
-            command += $" \"{Assembly.GetEntryAssembly()?.Location ?? throw new IOException("无法确定应用程序入口。")}\"";
-        key.SetValue("TablePet", command, RegistryValueKind.String);
+        {
+            var name = Assembly.GetEntryAssembly()?.GetName().Name
+                ?? throw new IOException("无法确定应用程序入口。");
+            var entry = Path.Combine(AppContext.BaseDirectory, name + ".dll");
+            if (!File.Exists(entry)) throw new IOException("找不到应用程序入口文件。");
+            command += $" \"{entry}\"";
+        }
+        key.SetValue("TablePet.Skeletal", command, RegistryValueKind.String);
     }
 
     private nint WindowProc(nint hwnd, int message, nint wParam, nint lParam, ref bool handled)

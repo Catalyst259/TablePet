@@ -23,13 +23,19 @@ internal static partial class Program
     {
         if (args.Length < 1)
         {
-            Console.Error.WriteLine("Usage: TablePet.PlaybackProbe <asset-root> [sample-hz=60] [height-dip=240] [dpi=1.5]");
+            Console.Error.WriteLine("Usage: TablePet.PlaybackProbe <asset-root> [sample-hz=60] [height-dip=240] [dpi=1.5] [clip1,clip2,...]");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --render-meow <asset-root> <output-folder>");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --render-firefly <asset-root> <output-folder>");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --interactive-meow <asset-root> <temp-settings-dir>");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --render-work <asset-root> <output-folder>");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --interactive-work <asset-root> <temp-settings-dir>");
+            Console.Error.WriteLine("       TablePet.PlaybackProbe --verify-skeletal <old-asset-root> <new-asset-root> <output-folder>");
             return 1;
+        }
+        if (args[0] == "--verify-skeletal")
+        {
+            if (args.Length != 4) throw new ArgumentException("Usage: --verify-skeletal <old-asset-root> <new-asset-root> <output-folder>");
+            return VerifySkeletal(Path.GetFullPath(args[1]), Path.GetFullPath(args[2]), Path.GetFullPath(args[3]));
         }
         if (args[0] == "--audit-cadence")
         {
@@ -87,6 +93,9 @@ internal static partial class Program
         var results = new List<object>();
         var fetchTimes = new List<double>();
         var actualIntervals = new List<double>();
+        var synchronousMissDetails = new List<object>();
+        var overBudgetFetches = new List<object>();
+        var overBudgetFetchCount = 0;
         var rendered = 0;
         var decorationFetches = 0;
         long maxCache = catalog.CachedBytes;
@@ -95,26 +104,47 @@ internal static partial class Program
         {
             var start = Stopwatch.GetTimestamp();
             catalog.PreparePlayback(player.CurrentClip!, player.FrameIndex);
+            var beforeMisses = catalog.SynchronousCacheMisses;
+            var decodeStart = Stopwatch.GetTimestamp();
             var bitmap = catalog.Image(player.CurrentFrame!.File);
+            RecordMiss("cat", player.CurrentFrame.File, beforeMisses, decodeStart);
             if (!bitmap.IsFrozen) throw new InvalidOperationException("The decoder returned a thread-affine image.");
             if (catalog.Decorations.TryGetValue(player.CurrentClip!.Name, out var decoration))
             {
+                beforeMisses = catalog.SynchronousCacheMisses;
+                decodeStart = Stopwatch.GetTimestamp();
                 var overlay = catalog.Image(decoration.Clip.Frames[player.FrameIndex].File);
+                RecordMiss("decoration", decoration.Clip.Frames[player.FrameIndex].File, beforeMisses, decodeStart);
                 if (!overlay.IsFrozen || overlay.PixelWidth != decoration.CanvasWidth || overlay.PixelHeight != decoration.CanvasHeight)
                     throw new InvalidDataException("Decoration decode differs from its declared native canvas.");
                 decorationFetches++;
             }
-            fetchTimes.Add(Stopwatch.GetElapsedTime(start).TotalMilliseconds);
+            var fetchMs = Stopwatch.GetElapsedTime(start).TotalMilliseconds;
+            fetchTimes.Add(fetchMs);
+            if (fetchMs > 1000d / hz)
+            {
+                overBudgetFetchCount++;
+                overBudgetFetches.Add(new { player.FrameIndex, player.PresentedElapsedMs, player.CurrentFrame!.File, fetchMs });
+            }
             maxCache = Math.Max(maxCache, catalog.CachedBytes);
         }
-        foreach (var name in new[] { "rise", "hold", "settle", "fall_asleep", "sleep_loop", "wake" }
+        void RecordMiss(string channel, string file, long beforeMisses, long start)
+        {
+            var misses = catalog.SynchronousCacheMisses - beforeMisses;
+            if (misses > 0) synchronousMissDetails.Add(new { channel, file, player.FrameIndex, player.PresentedElapsedMs,
+                elapsedMs = Stopwatch.GetElapsedTime(start).TotalMilliseconds, misses, catalog.CachedBytes });
+        }
+        var orderedClips = new[] { "rise", "hold", "settle", "fall_asleep", "sleep_loop", "wake" }
             .Concat(catalog.Clips.ContainsKey("wink") ? new[] { "wink" } : [])
             .Concat(catalog.Clips.ContainsKey("meow") ? new[] { "meow" } : [])
             .Concat(catalog.Clips.ContainsKey("firefly") ? new[] { "firefly" } : [])
             .Concat(catalog.IdleActions.Select(action => action.Clip))
-            .Concat(catalog.Clips.Keys).Distinct())
+            .Concat(catalog.Clips.Keys).Distinct();
+        if (args.Length > 4) orderedClips = args[4].Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        foreach (var name in orderedClips)
         {
             fetchTimes.Clear(); actualIntervals.Clear(); rendered = 0; decorationFetches = 0;
+            synchronousMissDetails.Clear(); overBudgetFetches.Clear();
             var beforeMisses = catalog.SynchronousCacheMisses;
             var clip = catalog.Clips[name];
             var timer = Stopwatch.StartNew();
@@ -157,6 +187,8 @@ internal static partial class Program
                 frameFetches = fetchTimes.Count,
                 decorationFetches,
                 synchronousCacheMisses = catalog.SynchronousCacheMisses - beforeMisses,
+                synchronousMissDetails = synchronousMissDetails.ToArray(),
+                overBudgetFetches = overBudgetFetches.ToArray(),
                 fetchP95Ms = Percentile(fetchTimes, .95),
                 fetchMaxMs = fetchTimes.Max(),
                 sampleIntervalP95Ms = Percentile(actualIntervals, .95),
@@ -168,6 +200,13 @@ internal static partial class Program
         Console.WriteLine(JsonSerializer.Serialize(new
         {
             passed = !catalog.IsFallback && !catalog.HasFrameFallback && !catalog.HasOptionalActionFallback && maxCache <= catalog.CacheBudgetBytes,
+            allFetchesWithinRequestedFrameBudget = overBudgetFetchCount == 0,
+            overBudgetFetchCount,
+            totalSynchronousCacheMisses = catalog.SynchronousCacheMisses,
+            assetRoot = Path.GetFullPath(args[0]),
+            manifestSha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(Path.Combine(args[0], "manifest.json")))),
+            skeletalPackSha256 = File.Exists(Path.Combine(args[0], "skeletal", "pack.json"))
+                ? Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(Path.Combine(args[0], "skeletal", "pack.json")))) : null,
             requestedSampleHz = hz,
             measurementUsesActiveWait = true,
             measurementUsesSimulatedPresentationTimestamps = true,
@@ -178,7 +217,7 @@ internal static partial class Program
             peakDecodedPixelCacheMiB = maxCache / 1048576d,
             processWorkingSetMiB = Process.GetCurrentProcess().WorkingSet64 / 1048576d,
             clips = results,
-            limitation = "Headless timing/decoding probe with simulated presentation timestamps, matching the application's RenderingTime input. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
+            limitation = "Headless timing/decoding probe with simulated presentation timestamps, matching the application's RenderingTime input. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget covers the outer decoded-frame LRU only; it excludes renderer source-pose/texture caches, WPF native allocations and transient decode/GC overhead."
         }, new JsonSerializerOptions { WriteIndented = true }));
         return catalog.IsFallback || catalog.HasFrameFallback || catalog.HasOptionalActionFallback || maxCache > catalog.CacheBudgetBytes ? 2 : 0;
     }

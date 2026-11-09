@@ -1,33 +1,11 @@
 {
-  "name": "tablepet-asset-tools",
+  "name": "tablepet-skeletal-tools",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0-skeletal",
   "scripts": {
-    "assets:prepare": "node tools/build-motion-v2.cjs",
-    "assets:prepare:v1": "node tools/prepare-assets.cjs",
-    "assets:check": "node tools/qa-motion-assets.cjs",
-    "assets:idle": "node tools/build-wink-candidate.cjs --selection reference/idle-v9-fluid-selection.json",
-    "assets:idle:install": "node tools/install-wink-v9-smooth.cjs --selection reference/idle-v9-fluid-selection.json",
-    "assets:idle:check": "node tools/freeze-release.cjs --verify",
-    "assets:idle:preview": "node tools/preview-actions.cjs 0.3.2",
-    "assets:meow": "node tools/build-meow.cjs --selection reference/meow-v3-selection.json",
-    "assets:meow:install": "node tools/build-meow.cjs --selection reference/meow-v3-selection.json --install",
-    "assets:meow:check": "node tools/build-meow.cjs --self-test",
-    "assets:120hz": "node tools/resample-motion-120hz.cjs --write",
-    "assets:120hz:check": "node tools/resample-motion-120hz.cjs --verify",
-    "assets:freeze:check": "node tools/freeze-release.cjs --verify",
-    "assets:firefly": "node tools/build-firefly.cjs",
-    "assets:firefly:check": "node tools/build-firefly.cjs --verify",
-    "assets:firefly:install": "node tools/install-firefly.cjs",
-    "assets:60hz": "node tools/resample-motion-60hz.cjs --write",
-    "assets:60hz:check": "node tools/resample-motion-60hz.cjs --verify",
-    "assets:60hz:test": "node tools/resample-motion-60hz.cjs --self-test",
-    "assets:yawn": "node tools/build-yawn.cjs --install-selected",
-    "assets:yawn:check": "node tools/qa-yawn.cjs --verify",
-    "assets:yawn:preview": "node tools/preview-yawn.cjs",
-    "assets:work:install": "node tools/install-work-assets.cjs",
-    "assets:work:check": "node tools/install-work-assets.cjs --verify",
-    "assets:runtime:check": "npm run assets:60hz:check && npm run assets:yawn:check"
+    "assets:compile": "node tools/compile-skeletal.cjs",
+    "assets:size": "node tools/report-size.cjs",
+    "source:verify": "node tools/frozen-source.cjs verify"
   },
   "devDependencies": {
     "sharp": "0.35.5"

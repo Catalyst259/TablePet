@@ -1,168 +1,54 @@
-# 草莓猫桌宠 TablePet
+# TablePet 骨骼重写版
 
-基于提供的草莓灰白猫原型和《Windows 桌面宠物实现方案》，使用 C#、WPF、.NET 10 LTS 和透明 PNG 帧动画。待机时眨眼、打哈欠、起身右瞥或追逐萤火虫；单击随机喵叫或眨单眼。
+从 TablePet 0.4.0 独立重写的 Windows WPF 桌宠。原仓库保持冻结；此目录是单独的 Git 仓库，没有继承原仓库的历史图片和 Git 对象。
 
-**0.4.0 正式版 · 日常陪伴与工作模式。** 默认保持日常陪伴，新增工作 25 分钟、休息 5 分钟的循环，可在设置、猫咪右键菜单或托盘切换。工作时保留趴姿、专注眼神和轻微起伏，电脑与 Working 小标固定在前景；到点提醒后睡觉，醒后开始下一轮。详见 [0.4.0 版本说明](docs/UPDATE-0.4.0.md) 和 [GitHub Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.4.0)。
+保留全部 16 个动作片段、萤火虫装饰轨道、原始时间槽和交互行为，在运行时重建画面，替代整帧 PNG 序列。动画资源由 **211.58 MiB 降至 58.18 MiB，减少 72.50%**；包含 fallback、图标和清单的全部运行素材由 213.22 MiB 降至 59.83 MiB，减少 71.94%。
 
-工作开始喵叫并提示“开始工作啦~”；工作中点击只提示“工作呢，别打扰我”；到点退出电脑场景、Wink 并提示“休息一下吧~”；休息中点击会唤醒、打哈欠并提示“和我一起休息”，然后继续休息，不重置休息时长。工作从正式进入循环计时，休息从首次睡眠循环计时。拖拽、隐藏及工作模式的暂停同时冻结动画与计时。模式和时长自动保存，重启后从新一轮工作开始。
+## 渲染方式
 
-日常模式继续采用 60fps 素材时间线：眨眼、打哈欠、起身右瞥、萤火虫的待机权重为 2:1:1:1，单击在喵叫与 Wink 中等概率选择。下文未注明的互动规则均指日常模式。
+- 萤火虫：移植已批准的身体、肩部、前臂、爪、眼球与高光控制；少量纹理和骨骼姿态在 C# 中合成。飞虫使用小尺寸旋转附件，独立定位、透明度和遮挡。
+- 工作模式：一张基础猫贴图、局部眼睛表情修正及独立电脑前景。原有根骨骼呼吸位移、进出场淡化继续由同一个行为时钟驱动。
+- 其余动作：拟合头、身体、双耳、双眼、口鼻、尾巴和双爪的二维骨骼，逆向蒙皮后叠加无损修正数据。旧 AI 补帧会改变毛发、表情和透明边缘，这些不能由少量刚性骨骼表达的内容需要保留。
 
-当前选用打哈欠 v2：修正重复的深色脸颊轮廓及补帧透明缝，保留 60fps、4.4 秒。用户已接受灰白分界与边毛的轻微错位，完整姿势 v3 仅保留为未选用的候选。`npm run assets:yawn:check` 校验选用素材，`npm run assets:yawn:preview` 生成对比页；`npm run assets:yawn` 接入当前选用版本，不会自动换为 v3。来源及逐帧指纹记录在 `reference/yawn-repair/runtime.json`，此修复随 0.4.0 发布。
+这是**骨骼和贴图驱动、带无损修正的混合实现**。不是所有动作都能仅靠几张贴图和骨骼曲线保持原版像素；精确度优先于进一步丢弃纹理。无需在运行时解压或写出完整 PNG 序列，也不依赖 Python、Node.js、RIFE 或原仓库。
 
-萤火虫采用用户于 2026 年 11 月 8 日确认的 v3 动作：从右后方出现，小猫追视、微侧身抬爪轻拍，再向上追视并恢复待机。完整动作 10 秒，原 60fps 双轨逐槽保留；拖动时猫和萤火虫一起暂停。透明飞虫层可超出猫画布且不拦截鼠标。0.3.2 的 120Hz 冻结记录作为历史基线保留，见 [0.3.2 版本说明](docs/UPDATE-0.3.2.md)。
+## 运行与构建
 
-**历史预览：抚摸与日常节奏。** 抚摸方向已取消，所有草稿仅保留为本地设计历史，未接入程序。四版动画对比与第二版日常节奏页面可在保留草稿的开发副本中离线查看。
+发布目录的 `TablePet.Skeletal.exe` 可直接运行。它使用单独的进程通信标识、开机启动项和 `%LocalAppData%/DesktopPet.Skeletal/` 设置目录，可与冻结的原版并存。
 
-喵叫回应为双眼闭成弯弧、轻抬头、小嘴微张，右上角同步出现“喵”气泡，再柔和恢复，整个动作 1.4 秒。身体、前爪保持落地。气泡穿透鼠标、不抢焦点，以文字呈现，不播放音频。单击等待系统双击判定后随机喵叫或 Wink；双击固定喵叫，拖动不触发。睡眠中先唤醒再回应，正在回应时的点击不排队。
-
-睡眠 Z 动画在右耳上方依次淡入、向右上浮动后淡出，每轮 3.6 秒，直接跟随呼吸播放器的呈现时间，向量绘制随显示刷新推进。唤醒时收起，拖动时随呼吸冻结；字母区域穿透鼠标，位置、大小和置顶状态跟随宠物。
-
-待机每次独立抽样：眨眼 40%，打哈欠、起身右瞥、萤火虫各 20%，允许连续重复以保持真实概率。起身包含保持和趴下。起身或萤火虫过程中点击，等完整收尾后再回应。Wink 沿用 V9 表情和眼神，总长 1.5 秒。旧素材包缺少可选动作时跳过缺失项。
-
-所有移动片段使用 **60fps 素材时间线**，播放器跟随 WPF 合成器刷新；实际呈现帧率受显示器和合成器限制。静态待机和保持仍各为一帧，不持续高频绘制。
-
-## 安装和运行
-
-适用系统：**Windows 11 x64**。普通使用者直接安装即可，无需 .NET SDK、Node.js 或其他开发环境。
-
-当前安装包和免安装包为 **0.4.0 · 工作模式与动画计时修复**，见 [0.4.0 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.4.0)。全部素材保持 60fps，新增工作模式并修复入睡、醒来及其他动作的播放节奏。两种发布包均内置 .NET 运行时，支持保留现有个人设置；功能与验证范围见 [版本说明](docs/UPDATE-0.4.0.md)。
-
-1. 从 [Releases 下载页面](https://github.com/Catalyst259/TablePet/releases/latest) 下载安装包，或直接下载 [TablePet-0.4.0-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.4.0/TablePet-0.4.0-Setup.exe)。
-2. 双击安装包，按中文向导完成安装。默认目录为 `%LocalAppData%\Programs\TablePet`，无需管理员权限，所需 .NET 运行时和动画素材已内置。
-3. 完成页选择启动，或使用桌面、开始菜单中的“草莓猫桌宠”快捷方式。右键猫咪或托盘图标可打开设置和退出。
-
-安装程序默认创建快捷方式，可从 Windows“设置 → 应用 → 安装的应用”卸载。更新时运行新安装包，个人设置会保留。开机启动默认关闭，可在桌宠设置中手动开启。应用和素材完全本地运行，无联网服务。详细说明见 [docs/INSTALLATION.md](docs/INSTALLATION.md)。
-
-安装包尚未配置代码签名证书，Windows 可能显示“未知发布者”。可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 <安装包路径>` 对照同一 Release 的 `.sha256` 文件确认下载完整性。
-
-需要免安装版本时，下载 [TablePet-0.4.0-win-x64.zip](https://github.com/Catalyst259/TablePet/releases/download/v0.4.0/TablePet-0.4.0-win-x64.zip)，或按下面步骤自行构建；完整解压后双击其中的 `TablePet.exe`。直接切换便携版本前，先从托盘退出旧实例；否则再次启动只会打开旧实例的设置。便携目录附带 `Start-Preview.cmd`，双击可正常退出旧实例并启动新版。GitHub 自动提供的 “Source code (zip)” 是源码备份，需要先构建。
-
-安装器以静态解包、逐文件 SHA-256 比对和解包程序素材自检进行验证；具体结果见 [验收记录](docs/ACCEPTANCE.md)。这些检查不等同于执行真实安装、覆盖升级或卸载。
-
-- 移入猫咪身体并停留片刻，只会打断入睡或唤醒睡眠，随后保持趴坐；清醒时悬停只刷新互动时间。
-- 轻点身体等概率喵叫或 Wink；睡眠中点击先唤醒再回应。萤火虫和起身待机动作会完整收尾后回应一次，点击回应进行中不叠加或排队。旧设置无需重置。
-- 双击身体播放闭眼陶醉、轻抬头和微张嘴，同时显示右上角“喵”气泡。单击和双击互斥，判定时间与位置容差跟随 Windows 设置；气泡和表情使用同一时钟，拖动时一起冻结。
-- 按住身体拖动以移动位置。静止悬停只触发一次。
-- 默认每次动作结束后等待 3–8 秒再选择待机动作（眨眼、打哈欠、起身右瞥、萤火虫），无互动 60 秒后入睡。自动动作不刷新入睡期限，已开始的动作自然收尾后再入睡。
-- 0.4.0 可在设置、猫咪右键菜单或托盘选择“日常陪伴／工作模式”。工作和休息分钟数在设置中修改，支持小数。工作模式中的“暂停工作／休息计时”会同时冻结场景和计时；日常的“暂停自动动作”仍允许点击互动。
-- 右键猫咪打开菜单；系统托盘还提供隐藏/显示、设置、置顶、鼠标穿透、恢复位置、退出。
-- 再次双击程序会打开已运行实例的设置，不会产生第二只猫。`TablePet.exe --settings` 也可打开设置，`TablePet.exe --quit` 可正常退出。
-- 鼠标穿透后，通过系统托盘恢复。关闭设置不会退出宠物。自启动默认关闭，需在设置中手动开启。
-
-设置文件：`%LocalAppData%\DesktopPet\settings.json`。日志：同目录的 `TablePet.log`，超过 256 KiB 后轮转。损坏配置会备份为带时间戳的文件，再使用默认配置。程序不会监听全局键盘。
-
-## 开发和构建
-
-使用 Windows x64 和 .NET SDK **10.0.403**（`global.json` 固定版本，允许补丁滚动）。构建使用源码附带的最终 PNG，无需本机旧的解压目录、源码 ZIP 或生图服务。以下输出路径对应 0.4.0；需要复现正式版时检出 `v0.4.0` 标签。
+使用 .NET SDK 10.0.403 构建，仓库已包含编译好的骨骼资源：
 
 ```powershell
-git clone https://github.com/Catalyst259/TablePet.git
-cd TablePet
-
-# 没有对应 SDK 时执行；下载微软官方 SDK 到本项目 .tools，并校验 SHA-512
-powershell -NoProfile -ExecutionPolicy Bypass -File tools\setup-dotnet.ps1
-
-# 生成带运行时的便携版本，并运行测试
-powershell -NoProfile -ExecutionPolicy Bypass -File tools\build.ps1 -Test -Publish
-
-# 运行构建结果
-.\dist\TablePet-0.4.0-win-x64\TablePet.exe
+powershell -File tools/build-skeletal.ps1 -Test -Publish
 ```
 
-其它常用命令：
+可用 `-DotnetPath <dotnet.exe>` 指定 SDK，或运行 `tools/setup-dotnet.ps1` 在本仓库安装 SDK。发布包自带 .NET，不要求使用者安装开发环境。
 
 ```powershell
-# 构建、自动测试
-powershell -File tools\build.ps1 -Test
+# 不启动窗口或写入用户设置的素材检查
+.\dist\TablePet.Skeletal-0.5.0-win-x64\TablePet.Skeletal.exe --check-assets
 
-# 构建、测试、发布含运行时的 Windows x64 ZIP
-powershell -File tools\build.ps1 -Test -Publish
-
-# 使用 Inno Setup 6 制作安装 EXE，详见 installer/README.md
-powershell -File tools\build-installer.ps1
-
-# 从发布标签保存本版源码 ZIP（仅包含已提交文件）
-git -c core.autocrlf=false archive --format=zip --prefix=TablePet-0.4.0-source/ --output=TablePet-0.4.0-source.zip v0.4.0
-
-# 在开发环境启动
-powershell -File tools\build.ps1 -Launch
-
-# 校验当前完整运行素材：日常、哈欠与工作（需要 Node.js）
-npm run assets:runtime:check
-
-# 旧版 60fps 转换逻辑自检，不改运行清单
-npm run assets:60hz:test
+# 对冻结原版作实际 WPF 逐像素、时序、缓存与缩放验证
+dotnet run --project tests/TablePet.PlaybackProbe -c Release -- --verify-skeletal `
+  ../TablePet/assets/strawberry-cat ./assets/strawberry-cat ./artifacts/skeletal-verification
 ```
 
-0.4.0 发布提供 `TablePet-0.4.0-Setup.exe` 和 `TablePet-0.4.0-win-x64.zip`，附 SHA-256 校验文件。本地构建输出为：`dist\TablePet-0.4.0-win-x64\TablePet.exe`、`dist\TablePet-0.4.0-win-x64.zip` 和最新包别名 `dist\TablePet-win-x64.zip`。`--settings` 可直接查看设置页。`--check-assets` 无窗口检查全部猫与装饰层素材，退出码 0 表示通过，2 表示缺失、损坏或可选动作回退；不会操作正在运行的桌宠实例。
+详细动作来源见 [动画盘点](docs/ANIMATION-AUDIT.md)。`reference/frozen-source.json` 保存原工作副本全部受版本控制文件及未忽略的本地候选的 SHA-256；只读核验命令为 `node tools/frozen-source.cjs verify ../TablePet`。
 
-## 源码备份和本地清理
+## 验证记录
 
-0.3.4 的 60fps 重采样来源和校验记录保存在 `reference/motion-60hz/`，`main` 继续用于后续开发。历史 0.3.2 冻结指纹保存在 `reference/releases/frozen-0.3.2.json`；旧标签保留对应的原始源码快照。历史源码可随时从 GitHub 标签页下载，或重新导出：
+全量验收与包体实测记录在 `reference/skeletal/`。原生桌面上的多屏、混合 DPI、锁屏/恢复及长时间使用，仍需要对应环境验收；离屏像素与计时测试不代表显示器实际呈现帧率。
+
+## 重新编译骨骼资源
+
+日常构建不需要此步骤。仅在需要从冻结原图重新制作时，在本目录安装 Node.js 依赖及 Python 制作工具，再传入原仓库的只读路径。制作脚本的输出始终位于本仓库；运行时不需要这些工具。
 
 ```powershell
-git fetch origin --tags
-git -c core.autocrlf=false archive --format=zip --output=TablePet-v0.2.1-source.zip v0.2.1
-git -c core.autocrlf=false archive --format=zip --output=TablePet-v0.2.2-source.zip v0.2.2
-git -c core.autocrlf=false archive --format=zip --output=TablePet-v0.3.1-source.zip v0.3.1
+npm ci
+python -m venv .tools/rig-python
+.tools/rig-python/Scripts/python.exe -m pip install -r tools/rig-requirements.txt
+npm run assets:compile -- ../TablePet
+npm run assets:size -- ../TablePet
 ```
 
-确认远端标签完整后，本地 `TablePet-*-source.zip` 和安装包验包产生的 `artifacts/installer-check/*/extracted` 目录可删除。`dist` 中的便携解压目录可在保留对应 ZIP 后删除；`.tools`、`node_modules`、`bin`、`obj` 为可重新安装或构建的本机依赖与缓存，不纳入 Git。当前工作目录中的源码、`assets`、`reference` 和 `.git` 是继续开发使用的文件。
-
-桌宠安装目录 `%LocalAppData%\Programs\TablePet`、个人设置 `%LocalAppData%\DesktopPet` 与这些开发目录独立。清理开发副本时保留它们。
-
-导出历史版本时显式关闭 `core.autocrlf`，可避免 Windows Git 自动改写文本换行，确保文件内容与原始 `SOURCE-MANIFEST.sha256` 一致。
-
-睡眠对比 QA 默认读取旧版解压素材。清理旧目录后，可从标签恢复基准再传给检查脚本：
-
-```powershell
-New-Item -ItemType Directory -Force artifacts | Out-Null
-git -c core.autocrlf=false archive --format=zip --output=artifacts/qa-v0.2.1.zip v0.2.1
-Expand-Archive artifacts/qa-v0.2.1.zip artifacts/qa-v0.2.1
-node tools/qa-sleep-breathing.cjs assets/strawberry-cat artifacts/qa-v0.2.1/assets/strawberry-cat
-```
-
-## 结构和依赖
-
-- `src/TablePet.Core`：独立于 WPF 的时钟、有限状态机、帧播放器、交互识别及配置类型。
-- `src/TablePet.App`：WPF 窗口、预解码图像缓存、设置界面及 Windows 适配。
-- `assets/strawberry-cat`：PNG 帧、manifest、原始生成图和预览。
-- `tests`：xUnit 行为、素材回退和设置持久化测试，使用独立临时目录。
-- `docs`：设置字段与实际验收状态。
-- `reference`：需求文本和生图提示词记录。
-- `installer`：Inno Setup 安装脚本、简体中文语言文件及打包说明。
-
-生产功能复用 WPF 图像/窗口、System.Text.Json、WinForms NotifyIcon、Windows 工作区/鼠标/会话 API；没有引入自制渲染引擎或全局输入钩子。测试依赖版本固定在对应 `.csproj`。
-
-状态机以单调时钟计算时间；入睡中断只倒播已经显示过的帧，所有完成回调检查动画令牌。眨眼中点击先等眨眼结束；呼吸中唤醒先从当前姿态平滑收敛到共同睡姿，避免突然跳帧。悬停和点击使用不同信号，拖拽释放不自动起身。
-
-动画通过 `CompositionTarget.Rendering` 按显示刷新推进，使用其呈现时间选帧，避免 UI 回调执行早晚改变动画节奏。高精度单调时钟负责回调之外的时间衔接；工作／休息及交互期限仍按真实时间计算。匹配声明采样率的时间槽会还原为均匀的分数毫秒边界，避免 16/17ms 整数存储与时钟截断造成的重复、跳帧；没有采样声明或带不规则保持的片段仍使用原始时长。时间轴预计算后二分定位，入睡中断倒播保持原来的采样节奏。PNG 以原始512像素流式解码，WPF负责显示缩放；128 MiB解码像素缓存配合最多两个后台预读线程，正在解码的帧去重，预读中的未来帧受到保护，过期结果不会干扰新动作。该预算不包含WPF、程序及临时解码的其他内存。鼠标位置仍以30ms间隔采样；静态姿态解绑绘制回调，拖动时冻结动作，隐藏或系统暂停后停止调度。
-
-## 素材维护
-
-运行时读取 `Assets/strawberry-cat/manifest.json`。画布、锚点、片段列表、帧时长和循环方式独立于用户行为设置。各片段保持统一画布，透明 alpha 用于身体命中检测；窗口的空白点击穿透由 Windows 分层透明实现。AI 生图原始输出、提示词与切图脚本保留在仓库中。
-
-素材已预先生成，构建和运行桌宠不需要 Node.js、RIFE 模型或联网。当前清单包含 **16 个 clips**（包含固定道具 `work_props`），另有 1 条萤火虫装饰轨道。工作新增 `work_enter`、`work_loop`、`work_exit` 和 `work_props`；进入/退出各 400ms，工作循环 9.6 秒，身体起伏每轮 4.8 秒。移动片段以约 16–17ms 的时间槽取样。Meow 为 1.4 秒，Wink 为 1.5 秒，睡眠呼吸每轮 3.6 秒，眨眼为 375ms，萤火虫为 10 秒。0.3.4 的历史帧数与占用保留在 `reference/motion-60hz/`，本版素材以运行清单为准。
-
-关键姿态使用内置image_gen生成，再以现成RIFE 4.6模型补充过渡，Sharp负责切图、锚点对齐、透明双底还原和打包；睡眠最靠近休息姿态的15张帧使用FFmpeg标准浮点alpha合成消除推理接缝。无需自制动画引擎。重建时使用Node.js24，`npm ci`，`node tools/motion-setup-rife.cjs`，并安装[FFmpeg 8.1.1](https://ffmpeg.org/download.html)加入PATH，再 `npm run assets:prepare`。这些工具只用于素材制作，运行与编译桌宠使用已保存PNG即可。原图与关键帧已随源码保存，提示词在 `reference/motion-v2-prompts.json`、`reference/motion-v2-followup-prompts.json` 和 `reference/sleep-v4-prompts.json`，流程说明见 [tools/motion-pipeline.md](tools/motion-pipeline.md)。`assets:prepare:v1` 仅供复现旧版，会覆盖当前清单，不用于当前构建。
-
-`npm run assets:runtime:check` 已通过，覆盖日常基线、选用哈欠和独立工作素材核验。其中 `assets:60hz:check` 校验清单及时间线，并调用独立工作核验；哈欠检查另核对修复后的 PNG。`npm run assets:60hz` 的写入模式只用于历史 0.3.3 → 0.3.4 基线，遇到工作片段或哈欠修复等新版清单会拒绝写入，防止覆盖。工作素材接入使用 `npm run assets:work:install`，哈欠选用版本使用 `npm run assets:yawn`。历史 120Hz 和冻结命令仍仅用于对应旧版检出。具体素材来源见 [工作场景设计](docs/COMPANIONSHIP-INTERACTION-DESIGN.md)。
-
-`assets/strawberry-cat/previews/` 中的 0.3.2、0.3.1 和旧版 HTML/GIF 保留为制作档案，其时间线和动作分类不代表本版。当前效果以程序读取的 60fps 运行清单为准。GIF 不能用来测量桌宠实际刷新率。睡眠源图与关键姿态在 `sources/sleep-v4`、`keyframes-v4/sleep`，完整提示词在 `reference/sleep-v4-prompts.json`。
-
-本版 Wink 的重建选择配置为 `reference/idle-v9-fluid-selection.json`，使用 `tools/build-wink-candidate.cjs` 生成候选，再以 `node tools/install-wink-v9-smooth.cjs --selection reference/idle-v9-fluid-selection.json` 导入运行素材。原始 V9 关键图保留；细分过渡、端点残差修正及按眼睑运动距离重采样只用于离线制帧，不增加运行时依赖。
-
-## 验证范围
-
-计时修复的回归覆盖 60／120Hz 各 1000 个启动相位、回调抖动、暂停、循环、倒播及真实行为期限；运行素材保持 60fps。完整测试计数、性能验证与包体记录见 `reference/motion-timing-fix/verification.json`。此前工作模式的真实 WPF 离屏检查，以可控时钟完成默认 25／5 分钟两轮，共通过 69 项断言、输出 27 张图；原交付记录保留在 `reference/work-runtime/package-verification.json`。详细范围见 [0.4.0 版本说明](docs/UPDATE-0.4.0.md)。
-
-全动作复查另覆盖全部常规片段、动态中断回程、截止时间启动动作的首帧和睡眠 Z。发布前完整 Core／App 测试 **367 项通过**，全动作在 60／120／144Hz 和不同启动相位下的 **83,930 项节奏检查通过**；测试、性能与本机更新快照见 `reference/motion-timing-fix/all-actions-verification.json`。生成回程显式保留均匀时间间隔，旧素材中手工指定的可变保持时长不自动改写。
-
-此前工作模式的桌面检查仅观察了原生程序运行；用户按 Esc 中止后未继续桌面控制。点击行为由 Core 与真实 WPF 离屏检查验证，未记为完整鼠标 UI 验收。
-
-0.3.2 的冻结范围、素材指纹和复现命令见 [0.3.2 版本说明](docs/UPDATE-0.3.2.md) 与 `reference/releases/frozen-0.3.2.json`；历史 0.3.1 记录保留在 [0.3.1 版本说明](docs/UPDATE-0.3.1.md)。测试覆盖点击选择、Wink 完成与冷却、睡眠中点击、待机动作衔接、拖拽和挂起，以及旧素材包兼容。资源检查和无窗口播放探针验证实际 PNG 的加载与缓存，不等同于显示器实际呈现帧率。
-
-历史呼吸优化记录见 [0.2.2 版本说明](docs/UPDATE-0.2.2.md)，眨眼和交互记录见 [0.2.1 版本说明](docs/UPDATE-0.2.1.md)，0.3.0 的旧待机动作范围见 [0.3.0 版本说明](docs/UPDATE-0.3.0.md)。已操作的桌面验证与待验收项见 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。多屏混合 DPI、拔屏、真实锁屏/休眠、无开发环境电脑和长时间运行仍需相应环境验证。
-
-配置说明见 [docs/SETTINGS.md](docs/SETTINGS.md)。动画视觉一致性仍可通过替换素材包继续打磨，无需修改行为控制器。
+编译先拟合骨骼并生成无损残差，再以 Brotli 11 重压并逐块验证；14 个跨动作共享姿态及 9 个动作入口提升为独立检查点，避免反向播放和冷启动时反复重算。原来的大图和制作历史继续保存在被冻结的仓库中，无须复制进这个新仓库。

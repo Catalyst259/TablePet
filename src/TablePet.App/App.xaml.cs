@@ -22,14 +22,18 @@ public partial class App : System.Windows.Application
                 var check = new AssetCatalog(Path.Combine(AppContext.BaseDirectory, "Assets", "strawberry-cat"));
                 check.CacheForSize(240, 1.5);
                 foreach (var file in check.AllFrameFiles) check.Image(file);
+                // These are loaded by filesystem path, too. Single-file publish
+                // must not silently embed the fallback or replace the tray icon.
+                check.Image("fallback.png");
+                using var trayIcon = new System.Drawing.Icon(Path.Combine(AppContext.BaseDirectory, "Assets", "strawberry-cat", "tray.ico"));
                 Shutdown(check.IsFallback || check.HasFrameFallback || check.HasOptionalActionFallback ? 2 : 0);
             }
             catch (Exception error) { ErrorLogger.Write("素材自检失败。", error); Shutdown(2); }
             return;
         }
-        _showSettings = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\TablePet.ShowSettings");
-        _exitRequested = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\TablePet.Exit");
-        _singleInstance = new Mutex(true, @"Local\TablePet.StrawberryCat", out var isFirst);
+        _showSettings = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\TablePet.Skeletal.ShowSettings");
+        _exitRequested = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\TablePet.Skeletal.Exit");
+        _singleInstance = new Mutex(true, @"Local\TablePet.Skeletal.StrawberryCat", out var isFirst);
         if (!isFirst)
         {
             if (e.Args.Contains("--quit")) _exitRequested.Set(); else _showSettings.Set();

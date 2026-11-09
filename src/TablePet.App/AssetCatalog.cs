@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using TablePet.App.Services;
 using TablePet.Core;
+using TablePet.App.Skeletal;
 
 namespace TablePet.App;
 
@@ -15,6 +16,7 @@ public sealed class AssetCatalog
     private static readonly string[] RequiredClips = ["idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle"];
     private readonly string _root;
     private readonly Func<string, int, CachedFrame> _decode;
+    private SkeletalAssetSource? _skeletal;
     private readonly object _cacheLock = new();
     private readonly Dictionary<string, LinkedListNode<CacheEntry>> _cache = new();
     private readonly LinkedList<CacheEntry> _leastRecentlyUsed = new();
@@ -57,6 +59,7 @@ public sealed class AssetCatalog
         CacheBudgetBytes = cacheBudgetBytes;
         try
         {
+            _skeletal = SkeletalAssetSource.OpenIfPresent(root);
             using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "manifest.json")));
             var manifest = document.RootElement;
             CanvasWidth = manifest.GetProperty("canvas").GetProperty("width").GetDouble();
@@ -125,6 +128,7 @@ public sealed class AssetCatalog
         {
             ErrorLogger.Write("素材清单无法加载，使用原型静态图。", error);
             IsFallback = true;
+            _skeletal = null;
             Decorations = new Dictionary<string, AnimationDecoration>();
             _hitRegion = null;
             CanvasWidth = 1208; CanvasHeight = 1255;
@@ -137,6 +141,10 @@ public sealed class AssetCatalog
         AllFrameFiles = allClips.SelectMany(clip => clip.Frames).Select(frame => frame.File).Distinct().ToArray();
         foreach (var clip in allClips)
             foreach (var file in clip.Frames.Select(frame => frame.File).Distinct().Take(3)) _entryFrames.Add(file);
+        // Reverse motion can enter a distant skeletal dependency chain shortly
+        // after the three ordinary entry poses. Warm that exact pose once in
+        // the existing image budget, without pinning the renderer's source LRU.
+        if (_skeletal is not null) _entryFrames.UnionWith(_skeletal.WarmupFiles.Where(AllFrameFiles.Contains));
         void RegisterFrames(AnimationClip clip, double width, double height)
         {
             var bytes = (long)Math.Ceiling(width) * (long)Math.Ceiling(height) * 5;
@@ -207,7 +215,10 @@ public sealed class AssetCatalog
             definition.TryGetProperty("loop", out var loop) && loop.GetBoolean(), sampleFps);
         clip.EnsureValid();
         foreach (var frame in frames)
-            if (!File.Exists(Resolve(frame.File))) throw new FileNotFoundException(frame.File);
+        {
+            var path = Resolve(frame.File); // Validate virtual identifiers just like physical paths.
+            if (_skeletal?.Contains(frame.File) != true && !File.Exists(path)) throw new FileNotFoundException(frame.File);
+        }
         return clip;
     }
 
@@ -461,7 +472,9 @@ public sealed class AssetCatalog
     {
         try
         {
-            var decoded = _decode(Resolve(file), _frameHeights.GetValueOrDefault(file, height));
+            var decoded = _skeletal?.Contains(file) == true
+                ? _skeletal.Decode(file)
+                : _decode(Resolve(file), _frameHeights.GetValueOrDefault(file, height));
             if (!IsFallback && _frameDimensions.TryGetValue(file, out var expected)
                 && (decoded.Image.PixelWidth != expected.Width || decoded.Image.PixelHeight != expected.Height))
                 throw new InvalidDataException($"Frame dimensions do not match its declared canvas: {file}");

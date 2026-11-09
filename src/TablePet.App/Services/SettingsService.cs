@@ -26,7 +26,7 @@ public sealed class SettingsService : IDisposable
     public SettingsService(string? settingsPath = null)
     {
         SettingsPath = settingsPath ?? Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DesktopPet", "settings.json");
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DesktopPet.Skeletal", "settings.json");
         _saveTimer = new Timer(_ => Flush(), null, Timeout.Infinite, Timeout.Infinite);
     }
 
