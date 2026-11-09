@@ -1,4 +1,4 @@
-param([switch]$Test, [switch]$Publish, [string]$DotnetPath)
+param([switch]$Test, [switch]$Publish, [string]$DotnetPath, [string]$BuildLog)
 $ErrorActionPreference = 'Stop'
 $workspaceRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $workspaceRoot
@@ -32,6 +32,6 @@ if ($Publish) {
     Compress-Archive -Path (Join-Path $output '*') -DestinationPath $zip -Force
     $hash = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
     "$hash  $(Split-Path -Leaf $zip)" | Set-Content -LiteralPath ($zip + '.sha256') -Encoding ascii
-    & (Join-Path $PSScriptRoot 'verify-package.ps1')
+    & (Join-Path $PSScriptRoot 'verify-package.ps1') -BuildLog $BuildLog
     Write-Host "Published: $zip"
 }

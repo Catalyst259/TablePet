@@ -5,7 +5,7 @@ const crypto = require('node:crypto');
 const {execFileSync} = require('node:child_process');
 const repo = path.resolve(__dirname,'..');
 async function main() {
-  const source = path.resolve(process.argv[2] || path.join(repo,'../TablePet'));
+  const source = path.resolve(process.argv[2] || path.join(repo,'../TablePet.Legacy'));
   if (source.toLowerCase() === repo.toLowerCase()) throw Error('Use a separate frozen source checkout');
   const sourceRoot = path.join(source,'assets/strawberry-cat');
   const manifest = await fs.readFile(path.join(sourceRoot,'manifest.json'));

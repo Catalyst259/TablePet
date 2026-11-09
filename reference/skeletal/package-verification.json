@@ -1,124 +1,124 @@
-﻿{
-    "passed":  true,
-    "zip":  "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet.Skeletal\\dist\\TablePet.Skeletal-0.5.0-win-x64.zip",
-    "zipBytes":  130902846,
-    "zipSha256":  "28696278bfea16f5b20a08d696a988338f976e48cccc1607ac897f9f68a2698d",
-    "packagedFiles":  22,
-    "runtimeAssets":  11,
-    "allPublishedFilesMatchZip":  true,
-    "allRuntimeAssetsMatchVerifiedSource":  true,
-    "containsFrameSequencePngs":  false,
-    "buildLog":  "artifacts/final-build.log",
-    "files":  [
-                  {
-                      "file":  "Assets/strawberry-cat/fallback.png",
-                      "bytes":  1288875,
-                      "sha256":  "3edd6f98d0ef5d7ec5121f59e241302cad4e8ee5b205cf3052621244f440f9ee"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/manifest.json",
-                      "bytes":  313668,
-                      "sha256":  "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/tray.ico",
-                      "bytes":  123558,
-                      "sha256":  "0c64952e32a606cafeb419d37622b94121e6cf1341df639b206b304566e2c3dc"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/pack.json",
-                      "bytes":  535,
-                      "sha256":  "1371899ce3ef4d17969e871dd4f8a0f0c2c0711b4241def45bc9f922ad5a17d2"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/firefly/firefly.json",
-                      "bytes":  895384,
-                      "sha256":  "3313a21ac8b833f99c3a13a71a5cd05482030d597500277824a99a01f4b32f32"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/firefly/textures.bin.z",
-                      "bytes":  1748397,
-                      "sha256":  "3f16f0a39451e74d882cbd1b175183795c4ff2489826e1039d8da2003e5c649d"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/legacy/legacy.bin",
-                      "bytes":  56266293,
-                      "sha256":  "3cf200558ebdf766bf2e272a117e876ac5919ea2ed10c2da61ff5052dcd60599"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/legacy/legacy.json",
-                      "bytes":  530921,
-                      "sha256":  "efb56b981a8c0c74a6f7222175f11e8108165a5f203c962300f9138da57ec5c6"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/legacy/verification.json",
-                      "bytes":  2219,
-                      "sha256":  "e2c21725159811590874c4136facc6300d3419792e5891a7e0d069ec250fa499"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/work/work.bin",
-                      "bytes":  1514402,
-                      "sha256":  "0e7167d026901bbcf800b0f12769894436709a0b244c16c241e038d5ba6c0128"
-                  },
-                  {
-                      "file":  "Assets/strawberry-cat/skeletal/work/work.json",
-                      "bytes":  48874,
-                      "sha256":  "0799754fb574190529315f369f8282b03434f227e79d2330bbb7bde761a4e2a5"
-                  },
-                  {
-                      "file":  "docs/ANIMATION-AUDIT.md",
-                      "bytes":  9368,
-                      "sha256":  "8600c9b803f1ed7fe2b2ebdfa4e5195301003738ef45003278ead1be944e1558"
-                  },
-                  {
-                      "file":  "docs/FIREFLY-RIG.md",
-                      "bytes":  2249,
-                      "sha256":  "d80562b599f658b60ce66e5aba3fa59d4503eeb18d0e14fa96e0e0bf8f80886d"
-                  },
-                  {
-                      "file":  "docs/LEGACY-SKELETON.md",
-                      "bytes":  7295,
-                      "sha256":  "42a1c0d25b7679eef69549cb324d45b44894ef35bab2e00b9d6431bc076b6704"
-                  },
-                  {
-                      "file":  "docs/SETTINGS.md",
-                      "bytes":  8155,
-                      "sha256":  "301c48d854f5d629984dbc650dd73506d10dcfbba2ce0d8d99d8b6210027bc1c"
-                  },
-                  {
-                      "file":  "docs/VALIDATION.md",
-                      "bytes":  3220,
-                      "sha256":  "1d0494d9ecbe29dfb99f10c49ca0b2e53eadfa3cde8e7b90b8c9bfda9fe3a805"
-                  },
-                  {
-                      "file":  "README.md",
-                      "bytes":  3733,
-                      "sha256":  "79fc0a3fb8ba92fa56f8db408220ad998b7b67e2b38c020e2ffa7a24a984df08"
-                  },
-                  {
-                      "file":  "Start-Preview.cmd",
-                      "bytes":  221,
-                      "sha256":  "322b89172a4a94e9a7012a200c211464d8d1f21293ac41be55cbe2dba80c8761"
-                  },
-                  {
-                      "file":  "Start-Preview.ps1",
-                      "bytes":  1286,
-                      "sha256":  "81818825010d0015f84bd29b10b85ea6ea6f3ebd166e84ddb11186ad89d8373c"
-                  },
-                  {
-                      "file":  "TablePet.Core.pdb",
-                      "bytes":  24336,
-                      "sha256":  "a94a40ba7a01ba7f766f3bb7e48285b0f291dd6f133b2bfddecd8fe8d4e4b19b"
-                  },
-                  {
-                      "file":  "TablePet.Skeletal.exe",
-                      "bytes":  75756585,
-                      "sha256":  "eb080b336d8d6a4363bb340f9c6df930402223ddbf82efe43abe8de660dd39b6"
-                  },
-                  {
-                      "file":  "TablePet.Skeletal.pdb",
-                      "bytes":  63372,
-                      "sha256":  "c93271a9ee32e824eddfb7a82689d3d274282c8436203e4b0c97228d5e1adab7"
-                  }
-              ]
+{
+  "passed": true,
+  "zip": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\dist\\TablePet.Skeletal-0.5.0-win-x64.zip",
+  "zipBytes": 131104269,
+  "zipSha256": "7874101a993a6ff273fe65b6b48c3ddf0a132e1b40277a2a4fb6c6743c7a7eaf",
+  "packagedFiles": 22,
+  "runtimeAssets": 11,
+  "allPublishedFilesMatchZip": true,
+  "allRuntimeAssetsMatchVerifiedSource": true,
+  "containsFrameSequencePngs": false,
+  "buildLog": "artifacts/skeleton-integration-build.log",
+  "files": [
+    {
+      "file": "Assets/strawberry-cat/fallback.png",
+      "bytes": 1288875,
+      "sha256": "3edd6f98d0ef5d7ec5121f59e241302cad4e8ee5b205cf3052621244f440f9ee"
+    },
+    {
+      "file": "Assets/strawberry-cat/manifest.json",
+      "bytes": 313668,
+      "sha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d"
+    },
+    {
+      "file": "Assets/strawberry-cat/tray.ico",
+      "bytes": 123558,
+      "sha256": "0c64952e32a606cafeb419d37622b94121e6cf1341df639b206b304566e2c3dc"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/pack.json",
+      "bytes": 535,
+      "sha256": "1371899ce3ef4d17969e871dd4f8a0f0c2c0711b4241def45bc9f922ad5a17d2"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/firefly/firefly.json",
+      "bytes": 895384,
+      "sha256": "3313a21ac8b833f99c3a13a71a5cd05482030d597500277824a99a01f4b32f32"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/firefly/textures.bin.z",
+      "bytes": 1748397,
+      "sha256": "3f16f0a39451e74d882cbd1b175183795c4ff2489826e1039d8da2003e5c649d"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/legacy/legacy.bin",
+      "bytes": 56266293,
+      "sha256": "3cf200558ebdf766bf2e272a117e876ac5919ea2ed10c2da61ff5052dcd60599"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/legacy/legacy.json",
+      "bytes": 530921,
+      "sha256": "efb56b981a8c0c74a6f7222175f11e8108165a5f203c962300f9138da57ec5c6"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/legacy/verification.json",
+      "bytes": 2219,
+      "sha256": "e2c21725159811590874c4136facc6300d3419792e5891a7e0d069ec250fa499"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/work/work.bin",
+      "bytes": 1514402,
+      "sha256": "0e7167d026901bbcf800b0f12769894436709a0b244c16c241e038d5ba6c0128"
+    },
+    {
+      "file": "Assets/strawberry-cat/skeletal/work/work.json",
+      "bytes": 48874,
+      "sha256": "0799754fb574190529315f369f8282b03434f227e79d2330bbb7bde761a4e2a5"
+    },
+    {
+      "file": "docs/ANIMATION-AUDIT.md",
+      "bytes": 9863,
+      "sha256": "44d6a7c02266af1adae44953d9415ca03ff1a72cb04fca7591e218917378b88b"
+    },
+    {
+      "file": "docs/FIREFLY-RIG.md",
+      "bytes": 2301,
+      "sha256": "947745364bf7a4b968f9db7c4905f780a7a9010f7f253c5d6ce1c7c3f9d61c5f"
+    },
+    {
+      "file": "docs/LEGACY-SKELETON.md",
+      "bytes": 7636,
+      "sha256": "f4ea22614ff086e33b96040c43ccd5fd197ca9d3ab0f0a31b7d10ad6fe89a5cf"
+    },
+    {
+      "file": "docs/SETTINGS.md",
+      "bytes": 8155,
+      "sha256": "301c48d854f5d629984dbc650dd73506d10dcfbba2ce0d8d99d8b6210027bc1c"
+    },
+    {
+      "file": "docs/VALIDATION.md",
+      "bytes": 3662,
+      "sha256": "51ebeafde8a0c22e1f319fa9db856aa1d006f60446d998a9b532e34ab8a432d2"
+    },
+    {
+      "file": "README.md",
+      "bytes": 4651,
+      "sha256": "480d365a354ceb8b5230cf817ed92b21aeffcb08a16e0fe006bdd2c5ab98423a"
+    },
+    {
+      "file": "Start-Preview.cmd",
+      "bytes": 221,
+      "sha256": "322b89172a4a94e9a7012a200c211464d8d1f21293ac41be55cbe2dba80c8761"
+    },
+    {
+      "file": "Start-Preview.ps1",
+      "bytes": 1286,
+      "sha256": "81818825010d0015f84bd29b10b85ea6ea6f3ebd166e84ddb11186ad89d8373c"
+    },
+    {
+      "file": "TablePet.Core.pdb",
+      "bytes": 24556,
+      "sha256": "26607c4da3dda0c445ec814cc2e978a822daa7d8a88dae8202185a2497cbe276"
+    },
+    {
+      "file": "TablePet.Skeletal.exe",
+      "bytes": 75756786,
+      "sha256": "8e3f811162584a788475c3cf13e6d9e7a7e154ab08d68251ac8d5fffc61c167f"
+    },
+    {
+      "file": "TablePet.Skeletal.pdb",
+      "bytes": 63596,
+      "sha256": "5c9b604aa9ae3c85a3460c2ad6dad4e79998492f5e1b53eb5a0889a2efa81781"
+    }
+  ]
 }

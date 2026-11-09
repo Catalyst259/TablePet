@@ -8,7 +8,10 @@
   "failedTests": 0,
   "publishedAssetCheckExitCode": 0,
   "assetCheckIncludes": "all 1685 logical poses, fallback.png, tray.ico",
-  "executableSha256": "eb080b336d8d6a4363bb340f9c6df930402223ddbf82efe43abe8de660dd39b6",
-  "buildLogSha256": "539595932af271643265db1389a4b73069b2b51fa8d59dd527012bb8cc21ad76",
-  "packageVerification": "package-verification.json"
+  "executableSha256": "8e3f811162584a788475c3cf13e6d9e7a7e154ab08d68251ac8d5fffc61c167f",
+  "buildLogSha256": "80a8e95fb4535cf6fd5882590763cd57bcbea917ac4aa9ddfeb47f66e95431e1",
+  "packageVerification": "package-verification.json",
+  "scope": "Rebuilt and tested in the original TablePet repository after integrating the skeletal rewrite.",
+  "sourceMergeCommit": "81333261a3bc8ad01b4ddd09a973b8cce309c2e4",
+  "buildLog": "artifacts/skeleton-integration-build.log"
 }

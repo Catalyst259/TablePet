@@ -94,5 +94,5 @@ async function compile(sourceRepo) {
   console.log(JSON.stringify({...report,sourceInventory:undefined},null,2));
   return report;
 }
-if(require.main===module) compile(process.argv[2] || path.join(repo,'../TablePet')).catch(error=>{console.error(error);process.exitCode=1;});
+if(require.main===module) compile(process.argv[2] || path.join(repo,'../TablePet.Legacy')).catch(error=>{console.error(error);process.exitCode=1;});
 module.exports={compile};

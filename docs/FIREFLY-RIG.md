@@ -8,12 +8,12 @@
 
 `FireflyRenderer` 不依赖 Node、Sharp、源仓库或源图片。其不可变贴图数组占用 23,741,648 字节；另外有约 2 MiB 身体权重表、姿态参数、对象开销和临时输出。原 `AssetCatalog` 的 128 MiB 图像缓存预算不包含这些不可变数据。渲染调用不复用可变输出，不同线程可同时调用。
 
-编译脚本只读取冻结仓库；所有准备脚本在新仓库的 `artifacts/firefly-authoring` 独立副本内执行。此目录是制作缓存，不参与打包。
+编译脚本只读取单独的 `legacy` 参考目录；所有准备脚本在当前 `skeleton` 工作目录的 `artifacts/firefly-authoring` 副本内执行。此目录是制作缓存，不参与打包。按根目录 README 获取 `../TablePet.Legacy` 后，在 `skeleton` 工作目录运行：
 
 ```powershell
 npm ci
-node tools/compile-firefly.cjs C:\Users\33776\Documents\ChatGPT\TablePet
-dotnet run --project tests/TablePet.FireflyProbe -c Release -- C:\Users\33776\Documents\ChatGPT\TablePet.Skeletal
+node tools/compile-firefly.cjs ../TablePet.Legacy
+dotnet run --project tests/TablePet.FireflyProbe -c Release -- .
 ```
 
 独立探针覆盖 600 个猫时间槽和 600 个装饰时间槽，与冻结 PNG 的完整 RGBA SHA-256 比较，全部相等；另验证 384 次并发渲染、输出缓冲区隔离、索引边界以及截断、摘要错误、尺寸错误和非法姿态档案的拒绝。结果在 `reference/firefly-csharp-verification.json`，制作体积记录在 `reference/firefly-compilation.json`。这些是实际 CPU 渲染测试，不代表显示器帧率验收。

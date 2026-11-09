@@ -1,6 +1,6 @@
 # 骨骼重写验收记录
 
-2026-11-10，Windows x64。本版本在独立仓库制作，基准为被冻结工作副本的当前运行 manifest。
+2026-11-10，Windows x64。本版本在独立仓库制作并完成以下验收，随后合入同一仓库的 `skeleton` 分支；原逐帧基线保留在 `legacy` 分支的 `426f160`。下列历史记录中的绝对路径与快照不因分支整合而改写。
 
 ## 画面与行为
 
@@ -31,6 +31,6 @@
 
 ## 可复核文件与范围
 
-源码仓库 `reference/skeletal/` 保存最终 WPF、独立 C#、完整播放、冷入口、体积、骨骼检查点和 Core 源码一致性记录；`reference/frozen-source-verification.json` 保存原仓库核验结果。`artifacts/skeletal-verification/` 的并排 PNG 左侧为原版、右侧为骨骼版。
+源码仓库 `reference/skeletal/` 保存上述 WPF、独立 C#、完整播放、冷入口、体积、骨骼检查点和 Core 源码一致性记录；`reference/frozen-source-verification.json` 保存合并前旧工作副本的核验结果。该 9,364 文件快照包括 3,812 个未跟踪草稿，普通 `legacy` 分支克隆只有已提交内容，不能用它代替完整旧工作副本作该快照核验。基于已提交运行素材的画面比对和重新制作，可按根目录 README 使用 `../TablePet.Legacy`。`artifacts/skeletal-verification/` 的并排 PNG 左侧为原版、右侧为骨骼版。
 
 像素比较经过真实 WPF 解码和离屏合成。实时探针使用真实等待和模拟呈现时间，**没有测量 DWM／显示器实际刷新率**。多屏混合 DPI、真实锁屏／恢复及长时间桌面运行没有新增现场验收。程序和启动项使用独立的 Skeletal 标识，设置写入 `%LocalAppData%/DesktopPet.Skeletal/`，不会覆盖原版配置。

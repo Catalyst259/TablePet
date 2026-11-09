@@ -7,7 +7,7 @@ const sharp=require('sharp');
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
 async function main(){
- const original=path.resolve(process.argv[2]||path.join(repo,'../TablePet'));
+ const original=path.resolve(process.argv[2]||path.join(repo,'../TablePet.Legacy'));
  if(original===repo)throw Error('Source must be a separate frozen checkout');
  const source=path.join(original,'assets/strawberry-cat/sources/firefly-v3');
  const staging=path.join(repo,'artifacts/firefly-authoring'),root=path.join(staging,'assets/strawberry-cat/sources/firefly-v3');

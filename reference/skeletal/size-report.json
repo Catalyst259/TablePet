@@ -32,8 +32,8 @@
   },
   "selfContainedZip": {
     "originalBytes": 298309692,
-    "rewrittenBytes": 130902846,
-    "reductionPercent": 56.118473683382696,
+    "rewrittenBytes": 131104269,
+    "reductionPercent": 56.05095224328145,
     "note": "Both include the Windows x64 .NET runtime. New runtime bundle additionally uses standard single-file compression."
   }
 }

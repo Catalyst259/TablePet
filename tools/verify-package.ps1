@@ -1,3 +1,4 @@
+param([string]$BuildLog)
 $ErrorActionPreference = 'Stop'
 $workspaceRoot = Split-Path -Parent $PSScriptRoot
 $published = Join-Path $workspaceRoot 'dist/TablePet.Skeletal-0.5.0-win-x64'
@@ -32,8 +33,13 @@ try {
         }
     }
 } finally { $zip.Dispose() }
-$expectedAssets = @(Get-ChildItem -LiteralPath (Join-Path $workspaceRoot 'assets/strawberry-cat') -Recurse -File)
-if ($assets.Count -ne $expectedAssets.Count -or $assets.Count -ne 11) { throw 'Asset coverage mismatch.' }
+$assetRoot = Join-Path $workspaceRoot 'assets/strawberry-cat'
+# Preserve local legacy drafts, but never treat them as skeletal runtime files.
+$expectedAssets = @(Get-ChildItem -LiteralPath (Join-Path $assetRoot 'skeletal') -Recurse -File)
+foreach ($common in @('manifest.json', 'fallback.png', 'tray.ico')) { $expectedAssets += Get-Item -LiteralPath (Join-Path $assetRoot $common) }
+$expectedNames = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
+foreach ($asset in $expectedAssets) { $null = $expectedNames.Add($asset.FullName.Substring($assetRoot.Length + 1).Replace('\', '/')) }
+if (!$expectedNames.SetEquals([string[]]$assets)) { throw 'Asset coverage mismatch.' }
 if (!($files.file -contains 'TablePet.Skeletal.exe')) { throw 'Self-contained application is missing.' }
 $result = [ordered]@{
     passed = $true
@@ -45,9 +51,10 @@ $result = [ordered]@{
     allPublishedFilesMatchZip = $true
     allRuntimeAssetsMatchVerifiedSource = $true
     containsFrameSequencePngs = $false
-    buildLog = 'artifacts/final-build.log'
+    buildLog = $BuildLog
     files = $files
 }
 $report = Join-Path $workspaceRoot 'reference/skeletal/package-verification.json'
-$result | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $report -Encoding UTF8
+$json = ($result | ConvertTo-Json -Depth 5).Replace("`r`n", "`n") + "`n"
+[IO.File]::WriteAllText($report, $json, (New-Object Text.UTF8Encoding $false))
 Write-Output "Package verified: $($files.Count) files, $($assets.Count) runtime assets, SHA-256 $zipHash"
