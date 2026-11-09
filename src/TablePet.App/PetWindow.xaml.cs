@@ -77,11 +77,14 @@ public partial class PetWindow : Window
         _tray = new TrayService(new TrayActions(ToggleVisible, OpenSettings, TogglePause,
             () => _settings.Update(_settings.Current with { Topmost = !_settings.Current.Topmost }),
             () => _settings.Update(_settings.Current with { ClickThrough = !_settings.Current.ClickThrough }),
-            RestorePosition, Quit, () => SetMenuOpen(true), () => SetMenuOpen(false)),
+            RestorePosition, Quit, () => SetMenuOpen(true), () => SetMenuOpen(false),
+            () => SetMode(CompanionMode.Daily), () => SetMode(CompanionMode.Work)),
             Path.Combine(AppContext.BaseDirectory, "Assets", "strawberry-cat", "tray.ico"));
         UpdateTray(); _timer.Start(); UpdateRenderingSubscription();
         if (_settings.LastError is { } error) _tray.ShowMessage(error);
         if (_assets.IsFallback) _tray.ShowMessage("动画素材暂不可用，已显示原型图。请检查 Assets 文件夹。");
+        else if (_settings.Current.Mode == CompanionMode.Work && !_behavior.CanWork)
+            _tray.ShowMessage("工作模式素材不完整，暂时使用日常陪伴。请使用完整的新版素材包。");
     }
 
     private void Tick()
@@ -107,16 +110,19 @@ public partial class PetWindow : Window
     }
     private void OnRendering(object? sender, EventArgs e)
     {
+        TimeSpan? presentationTime = null;
         if (e is RenderingEventArgs args)
         {
             if (_lastRenderingTime == args.RenderingTime) return;
             _lastRenderingTime = args.RenderingTime;
+            presentationTime = args.RenderingTime;
         }
-        _behavior.Tick();
+        _behavior.Tick(presentationTime);
         UpdateRenderingSubscription();
     }
     private void UpdateRenderingSubscription()
     {
+        UpdateWorkScene();
         UpdateSleepIndicator();
         UpdateSpeechBubble();
         UpdateFirefly();
@@ -142,10 +148,9 @@ public partial class PetWindow : Window
             return;
         }
         _sleepIndicator ??= new SleepIndicatorWindow(this);
-        _sleepIndicator.Update(DecorationElapsedMs);
+        _sleepIndicator.Update(SleepDecorationTime(_behavior.Player));
     }
-    private bool IsSpeechBubbleActive => _behavior.State == PetState.React &&
-        _behavior.ReactionPhase == ReactionPhase.Meow && _behavior.Player.CurrentClip?.Name == "meow";
+    private bool IsSpeechBubbleActive => _behavior.SpeechText is not null;
 
     private void UpdateSpeechBubble()
     {
@@ -155,13 +160,17 @@ public partial class PetWindow : Window
             return;
         }
         _speechBubble ??= new SpeechBubbleWindow(this);
-        _speechBubble.Update(DecorationElapsedMs);
+        _speechBubble.Update(_behavior.SpeechElapsedMs, _behavior.SpeechText!, _behavior.SpeechDurationMs);
     }
 
-    // Reuse the player's clock; vector decorations follow the same rounded
-    // 60 Hz boundaries as PNG frames without adding a timer or slowing input.
-    private long DecorationElapsedMs => (long)Math.Round(
-        Math.Floor((_behavior.Player.ElapsedMs + .5) * 60 / 1000) * 1000 / 60);
+    private void UpdateWorkScene()
+    {
+        WorkScenePresentation.Apply(PetShift, WorkPropsImage, _behavior, _assets, Height);
+    }
+
+    // Use the exact pose time chosen for this presentation. Re-sampling rounded
+    // milliseconds into 60 Hz slots can repeat or skip the letters' movement.
+    internal static double SleepDecorationTime(AnimationPlayer player) => player.PresentedElapsedMs;
     private void SyncDecorations()
     {
         _sleepIndicator?.SyncBounds();
@@ -200,8 +209,11 @@ public partial class PetWindow : Window
         if (_frame.Length == 0) return false;
         if (!IsMouseCaptured && !_platform.IsPointerOverPet(physical)) return false;
         var bounds = _platform.GetWindowBoundsPhysical();
-        return _assets.Hit(_frame, (physical.X - bounds.X) / Math.Max(1, bounds.Width),
-            (physical.Y - bounds.Y) / Math.Max(1, bounds.Height));
+        var x = (physical.X - bounds.X) / Math.Max(1, bounds.Width);
+        var y = (physical.Y - bounds.Y) / Math.Max(1, bounds.Height);
+        return _assets.Hit(_frame, x, y - _behavior.WorkBodyOffsetY / _assets.CanvasHeight)
+            || (_behavior.WorkPropsOpacity > .2 && _assets.Clips.TryGetValue("work_props", out var props)
+                && _assets.Hit(props.Frames[0].File, x, y));
     }
     private void OnPointerDown(object sender, MouseButtonEventArgs e)
     {
@@ -290,12 +302,23 @@ public partial class PetWindow : Window
             _interaction.ApplySettings(settings, dip.X, dip.Y, Hit(pointer));
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() => { _platform.KeepVisible(); ResetBaseline(); }));
         }
-        _applied = settings; SyncDecorations(); UpdateBusy(); UpdateTray();
+        _applied = settings; SyncDecorations(); UpdateBusy(); UpdateTray(); UpdateRenderingSubscription();
     }
     private void SavePosition()
     { if (_ready) _settings.Update(_settings.Current with { Position = _platform.CapturePlacement() }); }
     private void TogglePause()
-    { _autoPaused = !_autoPaused; _interaction.Cancel(); _behavior.SetAutomaticActionsPaused(_autoPaused); UpdateBusy(); ResetBaseline(); UpdateTray(); }
+    { _autoPaused = !_autoPaused; _interaction.Cancel(); _behavior.SetAutomaticActionsPaused(_autoPaused); UpdateBusy(); ResetBaseline(); UpdateTray(); UpdateRenderingSubscription(); }
+    private void SetMode(CompanionMode mode)
+    {
+        if (mode == CompanionMode.Work && !_behavior.CanWork)
+        {
+            _tray?.ShowMessage("工作模式素材不完整，请使用完整的新版素材包。");
+            return;
+        }
+        _interaction.Cancel();
+        _settings.Update(_settings.Current with { Mode = mode }, saveImmediately: true);
+        UpdateBusy(); ResetBaseline(); UpdateRenderingSubscription();
+    }
     private void ToggleVisible()
     {
         _hidden = !_hidden;
@@ -327,7 +350,7 @@ public partial class PetWindow : Window
             if (_settingsWindow.WindowState == WindowState.Minimized) _settingsWindow.WindowState = WindowState.Normal;
             _settingsWindow.Activate(); return;
         }
-        _settingsWindow = new SettingsWindow(_settings, _assets.Image(_assets.Clips["idle"].Frames[0].File));
+        _settingsWindow = new SettingsWindow(_settings, _assets.Image(_assets.Clips["idle"].Frames[0].File), _behavior.CanWork);
         UpdateBusy(); ResetBaseline();
         _settingsWindow.Closed += (_, _) => { _settingsWindow = null; UpdateBusy(); ResetBaseline(); _settings.Flush(); };
         _settingsWindow.Show();
@@ -336,13 +359,25 @@ public partial class PetWindow : Window
     {
         var menu = new ContextMenu();
         void Add(string text, Action action) { var item = new MenuItem { Header = text }; item.Click += (_, _) => action(); menu.Items.Add(item); }
-        Add("设置…", OpenSettings); Add(_autoPaused ? "恢复自动动作" : "暂停自动动作", TogglePause);
+        void AddMode(string text, CompanionMode mode)
+        {
+            var item = new MenuItem { Header = text, IsCheckable = true, IsChecked = _settings.Current.Mode == mode,
+                IsEnabled = mode == CompanionMode.Daily || _behavior.CanWork };
+            item.Click += (_, _) => SetMode(mode); menu.Items.Add(item);
+        }
+        AddMode("日常陪伴", CompanionMode.Daily); AddMode("工作模式", CompanionMode.Work);
+        menu.Items.Add(new Separator());
+        Add("设置…", OpenSettings);
+        Add(_settings.Current.Mode == CompanionMode.Work
+            ? (_autoPaused ? "继续工作／休息计时" : "暂停工作／休息计时")
+            : (_autoPaused ? "恢复自动动作" : "暂停自动动作"), TogglePause);
         Add("隐藏桌宠", ToggleVisible); Add("恢复位置", RestorePosition);
         menu.Items.Add(new Separator()); Add("退出", Quit);
         menu.Opened += (_, _) => SetMenuOpen(true); menu.Closed += (_, _) => SetMenuOpen(false);
         ContextMenu = menu; menu.IsOpen = true;
     }
-    private void UpdateTray() => _tray?.Update(!_hidden, _autoPaused, _settings.Current.Topmost, _settings.Current.ClickThrough);
+    private void UpdateTray() => _tray?.Update(!_hidden, _autoPaused, _settings.Current.Topmost,
+        _settings.Current.ClickThrough, _settings.Current.Mode == CompanionMode.Work, _behavior.CanWork);
     public void Quit()
     {
         if (_closing) return;

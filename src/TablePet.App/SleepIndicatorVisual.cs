@@ -11,7 +11,7 @@ internal sealed class SleepIndicatorVisual : FrameworkElement
     private readonly ContainerVisual _canvas = new();
     private readonly ScaleTransform _canvasScale = new();
     private readonly Letter[] _letters;
-    private long _lastTime = -1;
+    private double _lastTime = -1;
 
     public SleepIndicatorVisual()
     {
@@ -47,7 +47,7 @@ internal sealed class SleepIndicatorVisual : FrameworkElement
         _canvasScale.ScaleY = ActualHeight / 512;
     }
 
-    public void Update(long elapsedMs)
+    public void Update(double elapsedMs)
     {
         var time = Math.Max(0, elapsedMs) % CycleMs;
         if (time == _lastTime) return;

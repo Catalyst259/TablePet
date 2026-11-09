@@ -3,6 +3,7 @@
 // no PNG is generated, encoded, overwritten or removed.
 const fs=require('node:fs/promises'),path=require('node:path'),crypto=require('node:crypto');
 const assert=require('node:assert/strict'),{isDeepStrictEqual}=require('node:util');
+const {applyYawnRepair,selfTest:yawnRepairSelfTest,recordPath:yawnRepairRecordPath}=require('./yawn-runtime.cjs');
 const repo=path.resolve(__dirname,'..');
 const sourcePath='reference/motion-60hz/source-manifest-0.3.3.json';
 const inventoryPath='reference/motion-60hz/source-png-inventory.json';
@@ -10,6 +11,7 @@ const runtimePath='assets/strawberry-cat/manifest.json';
 const sourceSha256='82bf49467ef3ff47524418a79dbbf50c3c5526448c7b4e72a5698594dea6fc1a';
 const inventorySha256='48bd33a33a1067844e8a2ecf03200bbf674609994c9c6834806abdcbb6013363';
 const clipNames=['idle','blink','fall_asleep','sleep_loop','wake','rise','hold','settle','yawn','wink','meow','firefly'].sort();
+const workClipNames=['work_enter','work_loop','work_exit','work_props'];
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const parse=bytes=>JSON.parse(bytes.toString('utf8').replace(/^\uFEFF/,''));
 const serialize=value=>JSON.stringify(value,null,2)+'\n';
@@ -41,6 +43,10 @@ function totals(manifest){
   const characterFrameSlots=Object.values(manifest.clips).reduce((sum,clip)=>sum+clip.frames.length,0);
   const decorationFrameSlots=Object.values(manifest.decorations||{}).reduce((sum,clip)=>sum+clip.frames.length,0);
   return{characterFrameSlots,decorationFrameSlots,totalFrameSlots:characterFrameSlots+decorationFrameSlots,uniquePngs:referencedFiles(manifest).length};
+}
+function assertHistoricalWriteAllowed(current,source,manifest){
+  assert(isDeepStrictEqual(current,source)||isDeepStrictEqual(current,manifest),
+    'Refused to overwrite an unrecognized or newer runtime manifest, including installed work clips or a yawn repair. Restore the archived 0.3.3 input or the reproducible 0.3.4 result deliberately.');
 }
 function validateFirefly(manifest){
   const cat=manifest.clips.firefly,overlay=manifest.decorations.firefly;
@@ -155,23 +161,59 @@ async function selfTest(){
   assert.throws(()=>buildManifest(approved,'bad'));checks++;
   const bad=structuredClone(approved);bad.decorations.firefly.frames[1].durationMs++;assert.throws(()=>buildManifest(bad));checks++;
   for(const clip of Object.values(runtime.clips))if(clip.frames.length>1){let time=0;for(let i=0;i<clip.frames.length;i++){check(time===Math.round(i*1000/60),'Runtime boundary');time+=clip.frames[i].durationMs;}check(time===duration(clip),'Runtime total');}
-  return{passed:true,mode:'self-test',checks,sourceMutation:false,pngWrites:0};
+  const yawnRepair=yawnRepairSelfTest();checks+=yawnRepair.checks;
+  assertHistoricalWriteAllowed(approved,approved,runtime);checks++;
+  assertHistoricalWriteAllowed(runtime,approved,runtime);checks++;
+  const withWork=structuredClone(runtime);withWork.clips.work_props={loop:true,frames:[{file:'frames/work-v1/props.png',durationMs:17}]};
+  assert.throws(()=>assertHistoricalWriteAllowed(withWork,approved,runtime),/installed work clips/);checks++;
+  return{passed:true,mode:'self-test',checks,sourceMutation:false,pngWrites:0,yawnRepair};
 }
 async function main(args){
   assert(args.length===1&&['--write','--verify','--self-test'].includes(args[0]),'Usage: node tools/resample-motion-60hz.cjs --write|--verify|--self-test');
   if(args[0]==='--self-test')return selfTest();
   const destination=await containedFile(repo,runtimePath),beforeBytes=await fs.readFile(destination),current=parse(beforeBytes);
-  const {source,manifest,report}=await collect(),output=serialize(manifest);
+  const {source,manifest,report}=await collect();
+  let expected=manifest,yawnRepair,workAssets;
+  // The frozen conversion and its source fingerprints remain unchanged. A
+  // separately recorded yawn repair is recognized only by --verify; --write
+  // still refuses to replace a newer/repaired runtime with the historical one.
+  if(args[0]==='--verify'&&current.sampling?.clipOverrides?.yawn){
+    assert.equal(current.sampling.clipOverrides.yawn.sourceRecord,yawnRepairRecordPath,'Unrecognized yawn repair record.');
+    const runtime=parse(await fs.readFile(await containedFile(repo,yawnRepairRecordPath)));
+    expected=applyYawnRepair(manifest,runtime);
+    yawnRepair={sourceRecord:yawnRepairRecordPath,revision:runtime.revision,sourceClipSha256:runtime.sourceClipSha256,
+      frameSlots:runtime.clip.frames.length,uniquePngs:runtime.frames.length,
+      rebuiltRuntimePngs:runtime.frames.filter(frame=>frame.file!==manifest.clips.idle.frames[0].file).length,
+      originalDurationAndCadencePreserved:true,
+      validation:'Manifest structure and timeline; run node tools/qa-yawn.cjs --verify for repaired PNG hashes and visual regression checks.'};
+  }
+  // Work is a separately approved layer export. Validate its source hashes,
+  // copied PNG pixels, timing and composition before including those four clips
+  // in the comparison. Every historical/daily field still compares exactly.
+  if(args[0]==='--verify'&&workClipNames.some(name=>Object.hasOwn(current.clips,name))){
+    assert(workClipNames.every(name=>Object.hasOwn(current.clips,name)),'Work runtime must contain all four clips; run its independent asset verification.');
+    const work=await require('./install-work-assets.cjs').verify();
+    assert(work.passed,'Independent work asset verification failed.');
+    expected={...expected,clips:{...expected.clips,...Object.fromEntries(workClipNames.map(name=>[name,current.clips[name]]))}};
+    workAssets={validation:'Independent read-only tools/install-work-assets.cjs --verify',clips:work.clips,
+      importedPngs:work.importedPngs,referencedPngs:work.productionReferencedPngs,
+      exactV3RepresentativeFrames:work.representativeFrames.length,sourceUnchanged:work.sourceUnchanged};
+  }
+  const output=serialize(expected);
   if(args[0]==='--write'){
-    assert(isDeepStrictEqual(current,source)||isDeepStrictEqual(current,manifest),'Refused to overwrite an unrecognized or newer runtime manifest. Restore the archived 0.3.3 input or the reproducible 0.3.4 result deliberately.');
+    assertHistoricalWriteAllowed(current,source,manifest);
     assert((await fs.readFile(destination)).equals(beforeBytes),'Manifest changed concurrently; refused to overwrite it.');
     await fs.writeFile(destination,output);
     const diskAfter=await diskStats(path.join(repo,'assets/strawberry-cat/frames'));assert.deepEqual(diskAfter,report.after.allFramePngsOnDisk,'PNG files changed during manifest conversion.');
     await fs.writeFile(path.join(repo,'reference/motion-60hz/conversion-report.json'),serialize(report));
   }else{
-    assert(isDeepStrictEqual(current,manifest),'Runtime differs from the reproducible 0.3.4 / 60 fps manifest.');
+    assert(isDeepStrictEqual(current,expected),'Runtime differs from the reproducible 0.3.4 / 60 fps manifest, its recorded yawn repair, or independently verified work clips.');
     assert.equal(beforeBytes.toString('utf8').replaceAll('\r\n','\n'),output,'Runtime manifest formatting differs.');
+    assert((await fs.readFile(destination)).equals(beforeBytes),'Runtime manifest changed during verification.');
   }
+  if(yawnRepair||workAssets)return{passed:true,mode:args[0].slice(2),runtimeManifestSha256:hash(output),
+    historicalConversion:{scope:'Original 0.3.3 to 0.3.4 selection only; zero PNG reencoding describes that historical conversion, not later yawn or work additions.',...report},
+    ...(yawnRepair?{yawnRepair}:{}),...(workAssets?{workAssets}:{})};
   return{passed:true,mode:args[0].slice(2),runtimeManifestSha256:hash(output),...report};
 }
 module.exports={resampleClip,buildManifest,collect,selfTest};

@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-09",
+  "sourceTool": "built-in image_gen",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "eyeRegions": [
+    {
+      "cx": 164.5,
+      "cy": 329,
+      "rx": 53,
+      "ry": 50
+    },
+    {
+      "cx": 304,
+      "cy": 344,
+      "rx": 54,
+      "ry": 50
+    }
+  ],
+  "featherNormalizedRange": [
+    0.9,
+    1
+  ],
+  "sourceInventory": [
+    {
+      "name": "base",
+      "file": "assets/strawberry-cat/frames/fall_asleep-00.png",
+      "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+    },
+    {
+      "name": "open",
+      "file": "assets/strawberry-cat/sources/work-v3/focused-eyes.png",
+      "sha256": "563d43a96a01ded89231ef520538d0958531367242d5951809cdf729e222191b"
+    },
+    {
+      "name": "closed",
+      "file": "assets/strawberry-cat/frames/blink-03.png",
+      "sha256": "94ea75789d4bcb85d450543503dca954e7d6cb7660d6148c5e9f2cd3f09593a4"
+    },
+    {
+      "name": "props",
+      "file": "assets/strawberry-cat/work-preview-v2/props.png",
+      "sha256": "2a8aeac09ecaede7d6d128a17eff53a8cf4c700143cf1447e84a43308481939d"
+    }
+  ],
+  "exactOutsideMask": true,
+  "alphaPreserved": true,
+  "keys": {
+    "open": {
+      "rgbaSha256": "6954c104f3721f66f12ac3d2a37c5d1fbecb91c0e38491a4c904a0c0dfeca4fc"
+    },
+    "closed": {
+      "rgbaSha256": "836a1615e4b5bdd4a67faa765be909afaa493accdbd377b26b20b85ed856c49a"
+    }
+  }
+}

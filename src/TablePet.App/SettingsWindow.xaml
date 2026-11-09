@@ -33,7 +33,21 @@
             </StackPanel>
           </Grid>
         </Border>
-        <TextBlock Text="互动与休息" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+        <TextBlock Text="陪伴模式" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <RadioButton x:Name="DailyMode" GroupName="CompanionMode" Content="日常陪伴" Margin="0,0,28,0" Checked="Mode_Changed"/>
+          <RadioButton x:Name="WorkMode" GroupName="CompanionMode" Content="工作模式" Checked="Mode_Changed"/>
+        </StackPanel>
+        <TextBlock Text="工作时一起专注，到点提醒并睡觉休息，醒后开始下一轮。休息中点击会短暂回应，再继续睡。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,0,0,8"/>
+        <Grid Margin="0,0,0,8">
+          <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="100"/><ColumnDefinition Width="72"/></Grid.ColumnDefinitions>
+          <Grid.RowDefinitions><RowDefinition Height="46"/><RowDefinition Height="46"/></Grid.RowDefinitions>
+          <TextBlock Text="每轮工作" VerticalAlignment="Center"/><TextBox x:Name="WorkMinutes" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="分钟" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
+          <TextBlock Text="每轮休息" Grid.Row="1" VerticalAlignment="Center"/><TextBox x:Name="BreakMinutes" Grid.Row="1" Grid.Column="1" LostFocus="Number_Changed"/><TextBlock Text="分钟" Grid.Row="1" Grid.Column="2" Margin="12,0" VerticalAlignment="Center"/>
+        </Grid>
+        <TextBlock Text="时长仅用于工作模式，可输入小数；切换模式立即生效。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,0,0,20"/>
+        <TextBlock Text="日常陪伴设置" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,4"/>
+        <TextBlock Text="以下互动与自动休息规则仅在日常模式生效。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,0,0,10"/>
         <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="210"/></Grid.ColumnDefinitions>
           <TextBlock Text="互动方式" VerticalAlignment="Center"/>
           <TextBlock Grid.Column="1" Text="悬停唤醒 · 点击互动" Padding="10,7" Foreground="#8D7785" VerticalAlignment="Center"/>
@@ -56,7 +70,7 @@
         <CheckBox x:Name="AlwaysTop" Content="始终显示在其他窗口上方" Click="Option_Changed"/>
         <CheckBox x:Name="PassThrough" Content="鼠标穿透猫咪（通过托盘恢复）" Click="Option_Changed"/>
         <CheckBox x:Name="Startup" Content="登录 Windows 时启动" Click="Option_Changed"/>
-        <TextBlock Text="仅与猫咪的互动会推迟入睡；在其他软件打字不影响它休息。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,15,0,0"/>
+        <TextBlock Text="日常模式下，仅与猫咪的互动会推迟入睡；在其他软件打字不影响它休息。" TextWrapping="Wrap" Foreground="#8D7785" Margin="0,15,0,0"/>
       </StackPanel>
     </ScrollViewer>
   </DockPanel>

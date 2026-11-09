@@ -1,10 +1,10 @@
 namespace TablePet.Core;
 
-public enum PetState { Idle, FallAsleep, Sleep, Wake, React }
+public enum PetState { Idle, FallAsleep, Sleep, Wake, React, Work }
 public enum ReactionPhase { None, Rise, Hold, Settle, Wink, Meow, Firefly }
 
 /// <summary>The sole owner of behavior state. All calls are made on the application's UI thread.</summary>
-public sealed class BehaviorController
+public sealed partial class BehaviorController
 {
     private readonly IClock _clock;
     private readonly IReadOnlyDictionary<string, AnimationClip> _clips;
@@ -51,6 +51,7 @@ public sealed class BehaviorController
         Player.Completed += HandleAnimationCompleted;
         LastPetInteraction = _sleepOrigin = clock.NowMilliseconds;
         EnterIdle();
+        InitializeWorkMode();
     }
 
     public event Action<PetState>? StateChanged;
@@ -72,10 +73,13 @@ public sealed class BehaviorController
     public long SleepDeadline => Math.Max(LastPetInteraction, _sleepOrigin) + Settings.SleepAfterMs;
     public long ReactionCooldownUntil { get; private set; }
 
-    public void Tick()
+    public void Tick(TimeSpan? presentationTime = null)
     {
         if (IsSuspended || IsDragging) return;
-        Player.Tick();
+        if (WorkSessionActive && AutomaticActionsPaused && Mode == CompanionMode.Work) return;
+        using var presentation = Player.EnterPresentation(presentationTime);
+        Player.Tick(presentationTime);
+        if (TickWorkMode()) return;
         var now = _clock.NowMilliseconds;
         if (ReactionPhase == ReactionPhase.Hold && now >= _holdStartedAt + Settings.HoldMs)
         {
@@ -107,6 +111,7 @@ public sealed class BehaviorController
     private void Interact(ReactionKind reaction)
     {
         if (IsSuspended || IsDragging) return;
+        if (WorkSessionActive || Mode == CompanionMode.Work) { InteractWithWork(reaction); return; }
         LastPetInteraction = _clock.NowMilliseconds;
         if (State == PetState.FallAsleep)
         {
@@ -153,12 +158,15 @@ public sealed class BehaviorController
         IsDragging = true;
         _dragStartedAt = _clock.NowMilliseconds;
         Player.Pause();
+        SyncWorkPause();
     }
 
     public void EndDrag()
     {
         if (!IsDragging) return;
+        if (!WorkSessionActive) _speechStartedAt += _clock.NowMilliseconds - _dragStartedAt;
         IsDragging = false;
+        if (WorkSessionActive) { SyncWorkPause(); return; }
         if (IsSuspended) return;
         LastPetInteraction = _clock.NowMilliseconds;
         if (ReactionPhase == ReactionPhase.Hold)
@@ -172,6 +180,12 @@ public sealed class BehaviorController
     {
         if (IsSuspended == suspended) return;
         IsSuspended = suspended;
+        if (WorkSessionActive)
+        {
+            if (suspended) { IsDragging = false; _inputBusy = false; }
+            SyncWorkPause();
+            return;
+        }
         if (suspended)
         {
             _reactionAfterIdleAction = ReactionKind.None;
@@ -183,6 +197,7 @@ public sealed class BehaviorController
             return;
         }
         LastPetInteraction = _sleepOrigin = _clock.NowMilliseconds;
+        _speechText = null;
         ReactionCooldownUntil = 0;
         _reactionEndedAt = null;
         if (_suspendedState == PetState.Sleep)
@@ -205,6 +220,7 @@ public sealed class BehaviorController
     {
         if (AutomaticActionsPaused == paused) return;
         AutomaticActionsPaused = paused;
+        if (WorkSessionActive) { SyncWorkPause(); return; }
         if (!paused)
         {
             _sleepOrigin = _clock.NowMilliseconds;
@@ -217,7 +233,9 @@ public sealed class BehaviorController
         settings.EnsureValid();
         var rescheduleBlink = Settings.BlinkMinMs != settings.BlinkMinMs || Settings.BlinkMaxMs != settings.BlinkMaxMs;
         var rescheduleCooldown = Settings.CooldownMs != settings.CooldownMs;
+        var oldMode = Mode;
         Settings = settings;
+        ApplyWorkSettings(oldMode);
         if (rescheduleBlink) ScheduleBlink();
         if (rescheduleCooldown && _reactionEndedAt is { } endedAt)
             ReactionCooldownUntil = endedAt + settings.CooldownMs;
@@ -229,6 +247,8 @@ public sealed class BehaviorController
     {
         if (IsSuspended || IsDragging || completion.Token != _expectedToken || completion.Token != Player.Token
             || State != _expectedState || completion.ClipName != _expectedClip) return;
+        if (WorkSessionActive && AutomaticActionsPaused && Mode == CompanionMode.Work) return;
+        if (HandleWorkCompleted(completion)) return;
         switch (State)
         {
             case PetState.Idle:
@@ -282,7 +302,9 @@ public sealed class BehaviorController
         get
         {
             if (IsSuspended || IsDragging) return long.MaxValue;
+            if (WorkSessionActive && AutomaticActionsPaused && Mode == CompanionMode.Work) return long.MaxValue;
             var delay = Player.NextUpdateInMs;
+            if (WorkSessionActive && WorkPhase != WorkPhase.WaitingForIdle) return WorkNextUpdate(delay);
             var now = _clock.NowMilliseconds;
             if (ReactionPhase == ReactionPhase.Hold)
                 delay = Math.Min(delay, Math.Max(0, _holdStartedAt + Settings.HoldMs - now));
@@ -351,6 +373,7 @@ public sealed class BehaviorController
         SetState(PetState.Idle);
         Play("idle", loop: true);
         ScheduleBlink();
+        if (WorkPhase == WorkPhase.WaitingForIdle) StartWorkAnnouncement();
     }
 
     private void SetState(PetState state)
@@ -367,6 +390,7 @@ public sealed class BehaviorController
         _expectedState = State;
         _expectedClip = clip.Name;
         _expectedToken = Player.Play(clip);
+        if (name == "meow") ShowSpeech("喵", (int)Math.Min(int.MaxValue, clip.DurationMs));
     }
 
     /// <summary>
@@ -409,7 +433,7 @@ public sealed class BehaviorController
             (int)Math.Round((i + 1d) * duration / count) - (int)Math.Round(i * (double)duration / count))).ToArray();
         _expectedState = State;
         _expectedClip = name;
-        _expectedToken = Player.Play(new AnimationClip(name, frames));
+        _expectedToken = Player.Play(new AnimationClip(name, frames) { UniformFrameTiming = true });
         return true;
     }
 

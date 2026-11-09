@@ -1,0 +1,23 @@
+{
+  "input": "assets/strawberry-cat/sources/work-v2/props-clean.png",
+  "crop": {
+    "left": 85,
+    "top": 145,
+    "width": 1680,
+    "height": 517
+  },
+  "placement": {
+    "left": 82,
+    "top": 382,
+    "width": 390,
+    "height": 120
+  },
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "alphaNormalization": {
+    "transparentAtOrBelow": 3,
+    "opaqueAtOrAbove": 252
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-09",
+  "tool": "built-in image_gen",
+  "revision": "work-v2",
+  "userCorrections": [
+    "保留原趴坐姿势，不立起来",
+    "电脑屏幕朝猫，背面对观众并遮住爪子",
+    "眨眼自然，不为眨眼暂停身体运动",
+    "整只猫同步小幅缓慢起伏，如睡眠呼吸"
+  ],
+  "catSource": "assets/strawberry-cat/frames/fall_asleep-00.png",
+  "blinkSource": "assets/strawberry-cat/manifest.json#clips.blink",
+  "records": [
+    {
+      "id": "props-draft",
+      "prompt": "Use case: stylized-concept. Asset type: transparent foreground prop layer for an existing 2D desktop kitten animation.\nInput image is a STYLE and PLACEMENT reference ONLY. The kitten must remain exactly its original low lying/loafing pose in the final animation; it will be composited from the original unchanged image separately. DO NOT draw the kitten in this output.\nGenerate ONLY a small open laptop viewed straight-on from behind its screen, plus a small freestanding sign to its right reading exactly \"Working\". The unseen glowing screen faces AWAY from the viewer, directly toward the kitten behind it. We see the clean cream/beige BACK of the lid, with NO logo and NO screen display. The laptop is frontal and symmetrical, not angled sideways; its lid should be wide and low, gently rounded corners and a narrow base/hinge visible below. The lid will occlude BOTH front paws. The keyboard is behind the lid and not visible, no hands or paws visible. Match the kitten reference's thick dark brown outline, clean soft 2D shading, warm cream palette. No 3D photorealism.\nComposition: a single compact laptop-and-sign grouping isolated on true alpha transparency. Laptop occupies roughly three quarters of the group's width, the Working sign occupies the right quarter and rests on the same baseline. The back of the laptop lid is about 2.3 times wider than its height so it can hide paws without covering the kitten's face. Small sign has clear dark brown lettering, no extra text. All four outer margins fully transparent, no tabletop, no floor, no cast shadow, no cables, no extra objects, no cat, no characters. This is a stationary sprite overlay. Return only these props as one complete transparent image, not an illustration of the whole scene.",
+      "generatedPath": "C:/Users/33776/.codex/generated_images/01a1be05-0d56-7723-8583-528aecf4071d/exec-6842eb66-2bfe-42ea-bb33-0f14edb31b87.png",
+      "file": "assets/strawberry-cat/sources/work-v2/props-glow-draft.png",
+      "decision": "Rejected surrounding diffuse glow; retained as generation history"
+    },
+    {
+      "id": "props-clean",
+      "prompt": "Use case: background-extraction / precise-object-edit. Edit this image into a CLEAN TRANSPARENT SPRITE LAYER.\nKeep the laptop and Working sign artwork exactly, including their dark brown outlines. Remove ALL of the diffuse brown glow, halo, drop shadow, dark haze, background illumination and ground shadows surrounding the objects. Outside the actual solid outlined laptop and sign, every pixel should be fully transparent except the thin antialiased object edge. No soft atmospheric halo at all. Also remove the three orange attention rays above \"Working\", filling that tiny area with the sign's cream surface; keep the exact word \"Working\". Do not change the laptop orientation, shape, sign lettering, colors or arrangement. Give a tightly framed full grouping with modest transparent margin, no cat, no new objects. Genuine alpha transparency.",
+      "generatedPath": "C:/Users/33776/.codex/generated_images/01a1be05-0d56-7723-8583-528aecf4071d/exec-757993d5-fce5-40ad-a584-7b7901f82ff7.png",
+      "file": "assets/strawberry-cat/sources/work-v2/props-clean.png",
+      "decision": "Selected; normalize with props-layout.json and composite over original cat"
+    }
+  ]
+}

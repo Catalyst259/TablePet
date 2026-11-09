@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-09",
+  "timezone": "Asia/Shanghai",
+  "scope": "Read-only audit after restoring production to the original 60 fps manifest; no PNG generation or edits.",
+  "files": {
+    "runtime": {
+      "path": "assets/strawberry-cat/manifest.json",
+      "sha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d"
+    },
+    "source120": {
+      "path": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "sha256": "82bf49467ef3ff47524418a79dbbf50c3c5526448c7b4e72a5698594dea6fc1a"
+    },
+    "sourcePngInventory": {
+      "path": "reference/motion-60hz/source-png-inventory.json",
+      "sha256": "48bd33a33a1067844e8a2ecf03200bbf674609994c9c6834806abdcbb6013363"
+    },
+    "source240": {
+      "path": "reference/motion-120hz/source-manifest-240hz.json",
+      "sha256": "6c567e7e3c7b76ec2bf759fb406d3d00a9db53aa154e2ef59bf27032d9739ba2"
+    }
+  },
+  "verification": {
+    "command": "npm run assets:runtime:check",
+    "passed": true,
+    "log": "artifacts/sleep-smoothness-20261109/restored-60-runtime-check.log",
+    "archivedPngHashesValidated": 2211,
+    "note": "The historical converter validates every pinned source PNG hash, including frames omitted at 60 fps; work and selected yawn checks also passed."
+  },
+  "clips": {
+    "fall_asleep": {
+      "frameSlots": 105,
+      "durationMs": 1750,
+      "source120FrameSlots": 210,
+      "exactHistoricalResampling": true,
+      "rounded60HzStartTimes": true,
+      "durationCounts": {
+        "16": 35,
+        "17": 70
+      },
+      "adjacentRepeatedFiles": 0,
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/v2/fall_asleep-00768.png"
+    },
+    "wake": {
+      "frameSlots": 63,
+      "durationMs": 1050,
+      "source120FrameSlots": 126,
+      "exactHistoricalResampling": true,
+      "rounded60HzStartTimes": true,
+      "durationCounts": {
+        "16": 21,
+        "17": 42
+      },
+      "adjacentRepeatedFiles": 0,
+      "first": "frames/v2/fall_asleep-00768.png",
+      "last": "frames/fall_asleep-00.png"
+    },
+    "rise": {
+      "frameSlots": 48,
+      "durationMs": 800,
+      "source120FrameSlots": 96,
+      "exactHistoricalResampling": true,
+      "rounded60HzStartTimes": true,
+      "durationCounts": {
+        "16": 16,
+        "17": 32
+      },
+      "adjacentRepeatedFiles": 0,
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/v2/rise-00896.png"
+    },
+    "settle": {
+      "frameSlots": 60,
+      "durationMs": 1000,
+      "source120FrameSlots": 120,
+      "exactHistoricalResampling": true,
+      "rounded60HzStartTimes": true,
+      "durationCounts": {
+        "16": 20,
+        "17": 40
+      },
+      "adjacentRepeatedFiles": 0,
+      "first": "frames/v2/rise-00896.png",
+      "last": "frames/fall_asleep-00.png"
+    }
+  },
+  "boundaries": [
+    {
+      "from": "idle",
+      "to": "fall_asleep",
+      "sameFile": true,
+      "file": "frames/fall_asleep-00.png"
+    },
+    {
+      "from": "fall_asleep",
+      "to": "sleep_loop",
+      "sameFile": true,
+      "file": "frames/v2/fall_asleep-00768.png"
+    },
+    {
+      "from": "sleep_loop",
+      "to": "wake",
+      "sameFile": true,
+      "file": "frames/v2/fall_asleep-00768.png"
+    },
+    {
+      "from": "wake",
+      "to": "idle",
+      "sameFile": true,
+      "file": "frames/fall_asleep-00.png"
+    },
+    {
+      "from": "idle",
+      "to": "rise",
+      "sameFile": true,
+      "file": "frames/fall_asleep-00.png"
+    },
+    {
+      "from": "rise",
+      "to": "hold",
+      "sameFile": true,
+      "file": "frames/v2/rise-00896.png"
+    },
+    {
+      "from": "hold",
+      "to": "settle",
+      "sameFile": true,
+      "file": "frames/v2/rise-00896.png"
+    },
+    {
+      "from": "settle",
+      "to": "idle",
+      "sameFile": true,
+      "file": "frames/fall_asleep-00.png"
+    }
+  ],
+  "keyframeSampling": {
+    "finding": "Uniform temporal selection necessarily omits some exact intermediate poses. No evidence of irregular sampling, reversed ordering or an exceptional jump at the omitted wake pose.",
+    "wakeExample": {
+      "source120": {
+        "timeMs": 358,
+        "file": "frames/v2/fall_asleep-00512.png"
+      },
+      "current60Before": {
+        "timeMs": 350,
+        "file": "frames/v2/fall_asleep-00518.png"
+      },
+      "current60After": {
+        "timeMs": 367,
+        "file": "frames/v2/fall_asleep-00506.png"
+      },
+      "neighborRgbMae": 2.1057535807291665,
+      "wholeWakeMeanRgbMae": 2.241723829700101
+    },
+    "fallAsleepKeyTimes": {
+      "timeMs": [
+        0,
+        250,
+        550,
+        850,
+        1150,
+        1450
+      ],
+      "currentAndSource120SelectSameFile": true
+    },
+    "note": "The earliest exact 240 Hz authoring timeline itself does not hit every nominal interpolation key exactly. For example 550/850/1150/1450 ms in fall_asleep select dense phases 257/385/513/641 in all three versions; these are not losses introduced by 60 Hz conversion."
+  },
+  "pixelDifferenceMethod": {
+    "resolution": [
+      128,
+      128
+    ],
+    "preprocessing": "sharp resize, alpha flattened against #808080, RGB mean absolute difference between adjacent images; range 0..255.",
+    "limitation": "Image differences measure visual change, not rendered frame delivery or perceived stutter."
+  },
+  "adjacentDifferenceSummary": {
+    "fall_asleep": {
+      "mean60": 1.3693266648512628,
+      "max60": 4.150899251302083,
+      "maxAtMs": 167
+    },
+    "wake": {
+      "mean60": 2.241723829700101,
+      "max60": 5.940083821614583,
+      "maxAtMs": 950
+    },
+    "rise": {
+      "mean60": 2.8887026090148495,
+      "max60": 7.2657470703125,
+      "maxAtMs": 33
+    },
+    "settle": {
+      "mean60": 2.450513591874118,
+      "max60": 8.4237060546875,
+      "maxAtMs": 117
+    }
+  },
+  "endpointSharpness": {
+    "finding": "A slight sharpness difference exists between exact endpoint artwork and nearby RIFE frames in the archived 120 Hz source too. Side-by-side inspection of rise-00896 and settle-00001 showed softer interpolated edges, rather than mismatched cross-clip poses.",
+    "examples": [
+      {
+        "clip": "settle",
+        "source120From": "frames/v2/rise-00896.png",
+        "source120To": "frames/v2/settle-00001.png",
+        "source120RgbMae": 2.8572591145833335,
+        "current60FirstStepRgbMae": 3.0725301106770835
+      },
+      {
+        "clip": "rise",
+        "source120From": "frames/v2/rise-00895.png",
+        "source120To": "frames/v2/rise-00896.png",
+        "source120RgbMae": 2.0780843098958335
+      }
+    ],
+    "interpretation": "May account for localized edge flicker; does not establish whole-action frame pacing failure, and restoring 120 Hz retains it."
+  },
+  "conclusion": "Production remains at 60 fps. These asset checks did not identify irregular extraction or incorrect boundary poses as the cause of the reported whole-action stutter. Evaluate the separately diagnosed playback clock repair using runtime probes.",
+  "limitations": [
+    "Static endpoint equality does not prove the behavior controller only exits a breathing loop at that endpoint.",
+    "This audit does not measure WPF display intervals, synchronous decode stalls, monitor refresh cadence or the user's perceived smoothness.",
+    "No claim is made that 60 fps can never show motion judder; the finding is that the selected sequence is a faithful, regular historical conversion."
+  ]
+}

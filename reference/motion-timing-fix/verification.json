@@ -1,0 +1,311 @@
+{
+  "passed": true,
+  "version": "0.4.0",
+  "localOnly": true,
+  "checkedAt": "2026-11-09T15:20:45.5559120+08:00",
+  "scope": "Keep the existing 60 fps artwork; fix clock quantization and callback-jitter frame pacing.",
+  "runtime": {
+    "manifestSha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d",
+    "matchesTaskStartingManifest": true,
+    "pngFilesGeneratedOrEdited": 0,
+    "defaultSampleFps": 60,
+    "clips": {
+      "fall_asleep": {
+        "frameSlots": 105,
+        "durationMs": 1750
+      },
+      "wake": {
+        "frameSlots": 63,
+        "durationMs": 1050
+      },
+      "rise": {
+        "frameSlots": 48,
+        "durationMs": 800
+      },
+      "settle": {
+        "frameSlots": 60,
+        "durationMs": 1000
+      }
+    }
+  },
+  "changes": [
+    "Use precise monotonic elapsed time outside render callbacks.",
+    "Reconstruct fractional boundaries only for timelines matching declared sample rates.",
+    "Use WPF RenderingTime for animation advancement; preserve real-time behavior deadlines.",
+    "Preserve fractional pause/resume time and sampled interruption/reversal cadence."
+  ],
+  "tests": {
+    "core": 230,
+    "app": 118,
+    "total": 348,
+    "failed": 0,
+    "warnings": 0,
+    "log": "artifacts/sleep-smoothness-20261109/build-60-final.log",
+    "coverage": "1000 start phases at 60/120 Hz; quantized presentation ticks and CPU callback jitter; pause/resume; loops; callback-started clips; legacy variable timing and reversals."
+  },
+  "assetAudit": {
+    "report": "reference/motion-timing-fix/asset-audit.json",
+    "passedRuntimeVerification": true,
+    "conclusion": "Production remains at 60 fps. These asset checks did not identify irregular extraction or incorrect boundary poses as the cause of the reported whole-action stutter. Evaluate the separately diagnosed playback clock repair using runtime probes."
+  },
+  "baselineWallClockProbe": {
+    "report": "artifacts/sleep-smoothness-20261109/current-60.json",
+    "wake": {
+      "clip": "wake",
+      "frames": 63,
+      "durationMs": 1050,
+      "elapsedMs": 1050.0186,
+      "samples": 63,
+      "sampledHz": 59.998931447601834,
+      "displayedFrameChanges": 42,
+      "frameFetches": 64,
+      "decorationFetches": 0,
+      "synchronousCacheMisses": 0,
+      "fetchP95Ms": 0.0234,
+      "fetchMaxMs": 0.0386,
+      "sampleIntervalP95Ms": 16.6681,
+      "cachedFrames": 100,
+      "cachedMiB": 127.109375
+    },
+    "limitation": "The baseline used CPU callback time; final probes use simulated WPF presentation timestamps to match the repaired application. Neither measures physical presentation FPS."
+  },
+  "playback": [
+    {
+      "sampleHz": 60,
+      "report": "artifacts/sleep-smoothness-20261109/final-presentation-60.json",
+      "simulatedPresentationTimestamps": true,
+      "decodedPixelCacheBudgetMiB": 128,
+      "peakDecodedPixelCacheMiB": 127.96875,
+      "clips": [
+        {
+          "clip": "rise",
+          "frames": 48,
+          "durationMs": 800,
+          "elapsedMs": 800.1036,
+          "samples": 46,
+          "sampledHz": 57.49255471416451,
+          "displayedFrameChanges": 46,
+          "frameFetches": 47,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.1184,
+          "fetchMaxMs": 3.7605,
+          "sampleIntervalP95Ms": 16.6702,
+          "cachedFrames": 78,
+          "cachedMiB": 99.609375
+        },
+        {
+          "clip": "settle",
+          "frames": 60,
+          "durationMs": 1000,
+          "elapsedMs": 1000.0145,
+          "samples": 60,
+          "sampledHz": 59.99913001261482,
+          "displayedFrameChanges": 60,
+          "frameFetches": 61,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.0313,
+          "fetchMaxMs": 0.1657,
+          "sampleIntervalP95Ms": 16.6683,
+          "cachedFrames": 100,
+          "cachedMiB": 127.109375
+        },
+        {
+          "clip": "fall_asleep",
+          "frames": 105,
+          "durationMs": 1750,
+          "elapsedMs": 1750.027,
+          "samples": 105,
+          "sampledHz": 59.999070871531075,
+          "displayedFrameChanges": 105,
+          "frameFetches": 106,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.1424,
+          "fetchMaxMs": 1.673,
+          "sampleIntervalP95Ms": 16.67,
+          "cachedFrames": 100,
+          "cachedMiB": 127.109375
+        },
+        {
+          "clip": "wake",
+          "frames": 63,
+          "durationMs": 1050,
+          "elapsedMs": 1050.0233,
+          "samples": 63,
+          "sampledHz": 59.99866860097295,
+          "displayedFrameChanges": 63,
+          "frameFetches": 64,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.0362,
+          "fetchMaxMs": 0.0791,
+          "sampleIntervalP95Ms": 16.7428,
+          "cachedFrames": 100,
+          "cachedMiB": 127.109375
+        }
+      ],
+      "limitation": "Headless timing/decoding probe with simulated presentation timestamps, matching the application's RenderingTime input. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
+    },
+    {
+      "sampleHz": 120,
+      "report": "artifacts/sleep-smoothness-20261109/final-presentation-120.json",
+      "simulatedPresentationTimestamps": true,
+      "decodedPixelCacheBudgetMiB": 128,
+      "peakDecodedPixelCacheMiB": 127.96875,
+      "clips": [
+        {
+          "clip": "rise",
+          "frames": 48,
+          "durationMs": 800,
+          "elapsedMs": 800.0171,
+          "samples": 94,
+          "sampledHz": 117.4974884911835,
+          "displayedFrameChanges": 48,
+          "frameFetches": 95,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.0587,
+          "fetchMaxMs": 5.8929,
+          "sampleIntervalP95Ms": 8.3351,
+          "cachedFrames": 78,
+          "cachedMiB": 99.609375
+        },
+        {
+          "clip": "settle",
+          "frames": 60,
+          "durationMs": 1000,
+          "elapsedMs": 1000.0164,
+          "samples": 120,
+          "sampledHz": 119.99802003266947,
+          "displayedFrameChanges": 60,
+          "frameFetches": 121,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.0296,
+          "fetchMaxMs": 0.1708,
+          "sampleIntervalP95Ms": 8.3604,
+          "cachedFrames": 100,
+          "cachedMiB": 127.109375
+        },
+        {
+          "clip": "fall_asleep",
+          "frames": 105,
+          "durationMs": 1750,
+          "elapsedMs": 1750.0257,
+          "samples": 210,
+          "sampledHz": 119.9982308832247,
+          "displayedFrameChanges": 105,
+          "frameFetches": 211,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.0961,
+          "fetchMaxMs": 1.3466,
+          "sampleIntervalP95Ms": 8.4556,
+          "cachedFrames": 100,
+          "cachedMiB": 127.109375
+        },
+        {
+          "clip": "wake",
+          "frames": 63,
+          "durationMs": 1050,
+          "elapsedMs": 1050.0099,
+          "samples": 126,
+          "sampledHz": 119.99886858209622,
+          "displayedFrameChanges": 63,
+          "frameFetches": 127,
+          "decorationFetches": 0,
+          "synchronousCacheMisses": 0,
+          "fetchP95Ms": 0.0445,
+          "fetchMaxMs": 0.1195,
+          "sampleIntervalP95Ms": 8.3664,
+          "cachedFrames": 100,
+          "cachedMiB": 127.109375
+        }
+      ],
+      "limitation": "Headless timing/decoding probe with simulated presentation timestamps, matching the application's RenderingTime input. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
+    }
+  ],
+  "workRegression": {
+    "passed": true,
+    "completedDefaultCycles": 2,
+    "assertions": 69,
+    "captures": 27,
+    "report": "artifacts/sleep-smoothness-20261109/final-work-regression/render-report.json",
+    "limitation": "Deterministic offscreen rendering verifies production behavior and WPF layers. It does not measure DWM refresh or replace real input acceptance; use --interactive-work for that."
+  },
+  "standaloneAssetCheck": {
+    "passed": true,
+    "externalDotnetDisabled": true,
+    "exitCode": 0,
+    "application": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\dist\\TablePet-0.4.0-win-x64\\TablePet.exe"
+  },
+  "package": {
+    "passed": true,
+    "path": "dist/TablePet-0.4.0-win-x64.zip",
+    "bytes": 295948782,
+    "sha256": "7ec2c7cbff3ab6524ac1134f1055fb1a210688a0cea213597f415ab3a5f572e6",
+    "checksumFileMatches": true,
+    "latestAliasMatches": true,
+    "entryCount": 2196,
+    "referencedPngs": 1685,
+    "packagedPngs": 1685,
+    "exactFrameList": true,
+    "criticalFiles": [
+      {
+        "file": "TablePet.dll",
+        "sha256": "4732dd5f9cfd0bf968e2f503dbcfe97c78c4188162ee0408066a29b3a640942a"
+      },
+      {
+        "file": "TablePet.Core.dll",
+        "sha256": "741a975a92b42528a0a3e50593a868116c285a7294ae33facfb247e64123347c"
+      },
+      {
+        "file": "Assets/strawberry-cat/manifest.json",
+        "sha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d"
+      }
+    ],
+    "limitation": "Frame filenames and critical assembly/manifest bytes checked; runtime PNG decoding is checked separately by the installed application."
+  },
+  "deployment": {
+    "path": "D:\\_APPS\\TablePet\\TablePet.exe",
+    "processId": 24400,
+    "assetCheckExitCode": 0,
+    "finalChangedFiles": 7,
+    "installedArtworkUnchanged": true,
+    "backupDirectory": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\artifacts\\sleep-smoothness-20261109\\installed-backup",
+    "detail": "artifacts/sleep-smoothness-20261109/deployment.json",
+    "note": "Installed artwork was retained. The portable package contains the current checkout artwork, including pre-existing work-mode assets."
+  },
+  "sourceFiles": [
+    {
+      "file": "src/TablePet.Core/Clock.cs",
+      "sha256": "ed8b704b161ea2e7ae7043108e01f61fb28abbcdfe4774233c72473e6f88e330"
+    },
+    {
+      "file": "src/TablePet.Core/AnimationPlayer.cs",
+      "sha256": "3dc1dd2aaabe673d3e8fa9b860468ca4502b29f820517e3a1a1949b0ab3a0e0d"
+    },
+    {
+      "file": "src/TablePet.Core/BehaviorController.cs",
+      "sha256": "d5069d31729852b718419cae69cc89457dd18e4d4ca64d94b093111202662613"
+    },
+    {
+      "file": "src/TablePet.App/AssetCatalog.cs",
+      "sha256": "bc231f7997dbde1548a5bfb03f39a0cd26efcafaddc97596f8fac48d14f7e258"
+    },
+    {
+      "file": "src/TablePet.App/PetWindow.xaml.cs",
+      "sha256": "66b9a61227d6722a3fffbf579306e8f33e819becba8e7f3a4bbeb76108cf770c"
+    },
+    {
+      "file": "tests/TablePet.PlaybackProbe/Program.cs",
+      "sha256": "f7b1af2351c6ec491b1afc553cfc46de0c96fee565df38918dac7fc5d9da5d3e"
+    }
+  ],
+  "limitations": [
+    "Automated sampling and offscreen WPF checks do not establish actual monitor/DWM presentation FPS.",
+    "Real missed render callbacks still skip to elapsed time instead of slowing the action."
+  ]
+}

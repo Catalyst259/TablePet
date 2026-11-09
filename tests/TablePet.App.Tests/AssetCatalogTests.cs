@@ -11,6 +11,56 @@ public sealed class AssetCatalogTests
 {
     private static readonly string[] RequiredClips = ["idle", "blink", "fall_asleep", "sleep_loop", "wake", "rise", "hold", "settle"];
 
+    [Fact]
+    public void SamplingOverridesReachThePlayerAndKeepDecorationCadenceAligned()
+    {
+        using var directory = new TestDirectory();
+        File.WriteAllText(directory.FilePath("frame.png"), "Existence is sufficient for timeline loading.");
+        File.WriteAllText(directory.FilePath("glow.png"), "Existence is sufficient for timeline loading.");
+        object[] Frames(int fps, string file) => Enumerable.Range(0, 6).Select(i => (object)new
+        {
+            file,
+            durationMs = (int)Math.Round((i + 1) * 1000d / fps) - (int)Math.Round(i * 1000d / fps)
+        }).ToArray();
+        File.WriteAllText(directory.FilePath("manifest.json"), JsonSerializer.Serialize(new
+        {
+            canvas = new { width = 512, height = 512 },
+            sampling = new { targetFps = 60, clipOverrides = new { wake = new { targetFps = 120 } } },
+            clips = RequiredClips.Append("firefly").ToDictionary(name => name, name => new
+            {
+                loop = name == "sleep_loop",
+                frames = Frames(name == "wake" ? 120 : 60, "frame.png")
+            }),
+            decorations = new
+            {
+                firefly = new
+                {
+                    canvas = new { width = 512, height = 512 },
+                    offset = new { x = 0, y = 0 },
+                    frames = Frames(60, "glow.png")
+                }
+            }
+        }));
+        var catalog = new AssetCatalog(directory.Root);
+        Assert.False(catalog.IsFallback);
+        Assert.False(catalog.HasOptionalActionFallback);
+        Assert.Equal(60, catalog.Clips["fall_asleep"].SampleFps);
+        Assert.Equal(120, catalog.Clips["wake"].SampleFps);
+        Assert.Equal(catalog.Clips["firefly"].SampleFps, catalog.Decorations["firefly"].Clip.SampleFps);
+        var clock = new SamplingClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(catalog.Clips["wake"]);
+        clock.PreciseMilliseconds = 16.667;
+        player.Tick();
+        Assert.Equal(2, player.FrameIndex);
+    }
+
+    private sealed class SamplingClock : IClock
+    {
+        public double PreciseMilliseconds { get; set; }
+        public long NowMilliseconds => (long)PreciseMilliseconds;
+    }
+
     [Theory]
     [InlineData("missing-manifest")]
     [InlineData("malformed-json")]

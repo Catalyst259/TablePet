@@ -1,16 +1,18 @@
-# 0.3.4 安装和源码备份
+# 0.4.0 安装和源码备份
 
 ## 选择文件
 
-- `TablePet-0.3.4-Setup.exe`：推荐给日常使用者。双击后按中文向导安装，包含运行所需的 .NET 运行时和全部 60fps 动画素材。
-- `TablePet-0.3.4-win-x64.zip`：便携版，解压整个文件夹后运行其中的 `TablePet.exe`。
+- [TablePet-0.4.0-Setup.exe](https://github.com/Catalyst259/TablePet/releases/download/v0.4.0/TablePet-0.4.0-Setup.exe)：推荐给日常使用者。双击后按中文向导安装，包含运行所需的 .NET 运行时和全部 60fps 动画素材。
+- [TablePet-0.4.0-win-x64.zip](https://github.com/Catalyst259/TablePet/releases/download/v0.4.0/TablePet-0.4.0-win-x64.zip)：便携版，解压整个文件夹后运行其中的 `TablePet.exe`。
 - GitHub Release 的 `Source code (zip)`：本版标签的源码备份，包含已提交的源码、动画素材、构建脚本和文档；供继续开发使用。
+
+文件均可从 [0.4.0 Release](https://github.com/Catalyst259/TablePet/releases/tag/v0.4.0) 下载。本版新增可切换的工作／休息循环，包含已选定的哈欠修复和动画计时修复；功能见 [版本说明](UPDATE-0.4.0.md)。
 
 本版面向 Windows x64；当前实际运行验证环境是 Windows 11、150% 显示缩放。多屏混合 DPI 和没有开发环境的另一台电脑仍待验收。
 
 ## 安装
 
-1. 双击 `TablePet-0.3.4-Setup.exe`。
+1. 双击 `TablePet-0.4.0-Setup.exe`。
 2. 按向导完成安装。默认装到当前用户的 `%LocalAppData%\Programs\TablePet`，无需管理员权限，也不需要另外安装 .NET 或开发工具。桌面快捷方式默认勾选，可按需取消。
 3. 完成页可直接启动桌宠；以后从桌面或开始菜单的“草莓猫桌宠”快捷方式启动。
 
@@ -20,7 +22,7 @@
 
 运行新版本安装程序，并使用已有安装目录即可更新。点击安装后，安装程序会通知当前桌宠正常保存设置并退出，再复制新文件；如果 10 秒内未退出，会提示手动从托盘退出后重试。安装版和便携版共享单实例，因此正在运行的便携版也会正常退出。
 
-0.3.4 升级会刷新安装目录中随程序分发的动画帧目录，移除已不再使用的 120fps 图片，再安装当前 60fps 素材；个人设置目录独立保留。
+安装程序会刷新安装目录中随程序分发的动画帧目录，移除已不再使用的图片，再安装当前 60fps 素材和工作场景。个人设置目录独立保留。此前 0.3.4 从 120fps 切换为 60fps 的素材精简记录保留在源码的 `reference/motion-60hz/`。
 
 程序同一时间只运行一个实例；如果旧版仍在运行，直接双击另一份 `TablePet.exe` 会打开旧实例的设置。
 

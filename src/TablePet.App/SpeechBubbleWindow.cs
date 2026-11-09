@@ -16,7 +16,7 @@ public sealed class SpeechBubbleWindow : Window
     {
         _pet = pet;
         Owner = pet;
-        Title = "草莓猫喵气泡";
+        Title = "草莓猫回应气泡";
         WindowStyle = WindowStyle.None;
         AllowsTransparency = true;
         Background = Brushes.Transparent;
@@ -44,16 +44,19 @@ public sealed class SpeechBubbleWindow : Window
         PlatformService.AlignDecorationWindow(_pet, this);
     }
 
-    public void Update(long elapsedMs)
+    public void Update(long elapsedMs) => Update(elapsedMs, "喵", 1400);
+
+    public void Update(long elapsedMs, string text, int durationMs)
     {
         Dispatcher.VerifyAccess();
         if (_closed) return;
-        if (!_pet.IsVisible || _pet.WindowState == WindowState.Minimized || elapsedMs <= 180 || elapsedMs >= 1400)
+        if (!_pet.IsVisible || _pet.WindowState == WindowState.Minimized ||
+            string.IsNullOrWhiteSpace(text) || elapsedMs <= SpeechBubbleVisual.AppearanceDelay(durationMs) || elapsedMs >= durationMs)
         {
             if (IsVisible) Hide();
             return;
         }
-        _bubble.Update(elapsedMs);
+        _bubble.Update(elapsedMs, text, durationMs);
         if (IsVisible) return;
         PlatformService.ShowDecorationWindow(_pet, this);
         SyncBounds();

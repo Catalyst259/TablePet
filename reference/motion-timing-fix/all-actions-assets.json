@@ -1,0 +1,810 @@
+{
+  "date": "2026-11-09",
+  "timezone": "Asia/Shanghai",
+  "scope": "Read-only manifest and referenced-file audit of all 16 character clips plus the firefly overlay; no production mutation or image generation.",
+  "snapshot": {
+    "sourceManifest": {
+      "path": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\assets\\strawberry-cat\\manifest.json",
+      "sha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d",
+      "version": 9,
+      "motionRevision": "0.3.4",
+      "defaultSampleFps": 60
+    },
+    "installedManifest": {
+      "path": "D:\\_APPS\\TablePet\\Assets\\strawberry-cat\\manifest.json",
+      "sha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d",
+      "version": 9,
+      "motionRevision": "0.3.4"
+    },
+    "manifestBytesEqual": true,
+    "manifestObjectsEqual": true,
+    "installedApplication": {
+      "path": "D:/_APPS/TablePet/TablePet.exe",
+      "processId": 24400,
+      "productVersion": "0.4.0+7d2ca232857819a94dd1defd6f8f6bbfdd18377e",
+      "fileVersion": "0.4.0.0"
+    },
+    "referenceHashes": {
+      "reference/motion-60hz/source-manifest-0.3.3.json": "82bf49467ef3ff47524418a79dbbf50c3c5526448c7b4e72a5698594dea6fc1a",
+      "reference/motion-60hz/source-png-inventory.json": "48bd33a33a1067844e8a2ecf03200bbf674609994c9c6834806abdcbb6013363",
+      "reference/yawn-repair/runtime.json": "13b78839f8e66662ac9fa991aa9c0d70bc5668096d5a88ef25acd143d5865df5",
+      "reference/work-runtime/verification.json": "a6050047313776bec7a4664d12ed07c9dd5cacf5205538260495443d90d09b6b"
+    }
+  },
+  "assets": {
+    "referencedPngs": 1685,
+    "encodedPngBytes": 221854869,
+    "missingSource": [],
+    "missingInstalled": [],
+    "sourceInstalledHashDifferences": [],
+    "referenceHashDifferences": [],
+    "unrecordedPngs": []
+  },
+  "clips": [
+    {
+      "name": "idle",
+      "kind": "character",
+      "slots": 1,
+      "durationMs": 1000,
+      "uniquePngs": 1,
+      "loop": true,
+      "declaredSampleFps": 60,
+      "static": true,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "1000": 1
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 1000,
+          "file": "frames/fall_asleep-00.png"
+        }
+      ],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": true,
+      "interpretation": "Intentional static resting pose."
+    },
+    {
+      "name": "blink",
+      "kind": "character",
+      "slots": 23,
+      "durationMs": 375,
+      "uniquePngs": 18,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "8": 1,
+        "16": 7,
+        "17": 15
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 4,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 167,
+          "durationMs": 83,
+          "file": "frames/blink-03.png"
+        }
+      ],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "Intentional closed-eye hold; the final 8 ms slot preserves the exact 375 ms duration."
+    },
+    {
+      "name": "fall_asleep",
+      "kind": "character",
+      "slots": 105,
+      "durationMs": 1750,
+      "uniquePngs": 105,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 35,
+        "17": 70
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/v2/fall_asleep-00768.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "No repeated slots; retains regular historical sampling."
+    },
+    {
+      "name": "sleep_loop",
+      "kind": "character",
+      "slots": 216,
+      "durationMs": 3600,
+      "uniquePngs": 157,
+      "loop": true,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 72,
+        "17": 144
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 19,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 67,
+          "file": "frames/v2/fall_asleep-00768.png"
+        },
+        {
+          "startMs": 1750,
+          "durationMs": 100,
+          "file": "frames/v4/sleep-breath-0256.png"
+        },
+        {
+          "startMs": 1850,
+          "durationMs": 50,
+          "file": "frames/v4/sleep-breath-0255.png"
+        },
+        {
+          "startMs": 3550,
+          "durationMs": 50,
+          "file": "frames/v2/fall_asleep-00768.png"
+        }
+      ],
+      "first": "frames/v2/fall_asleep-00768.png",
+      "last": "frames/v2/fall_asleep-00768.png",
+      "loopEndpointSamePng": true,
+      "interpretation": "Cosine breathing has low-motion extrema; repeated files are inherited quantized near-rest phases."
+    },
+    {
+      "name": "wake",
+      "kind": "character",
+      "slots": 63,
+      "durationMs": 1050,
+      "uniquePngs": 63,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 21,
+        "17": 42
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [],
+      "first": "frames/v2/fall_asleep-00768.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "No repeated slots; retains regular historical sampling."
+    },
+    {
+      "name": "rise",
+      "kind": "character",
+      "slots": 48,
+      "durationMs": 800,
+      "uniquePngs": 48,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 16,
+        "17": 32
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/v2/rise-00896.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "No repeated slots; retains regular historical sampling."
+    },
+    {
+      "name": "hold",
+      "kind": "character",
+      "slots": 1,
+      "durationMs": 1000,
+      "uniquePngs": 1,
+      "loop": true,
+      "declaredSampleFps": 60,
+      "static": true,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "1000": 1
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 1000,
+          "file": "frames/v2/rise-00896.png"
+        }
+      ],
+      "first": "frames/v2/rise-00896.png",
+      "last": "frames/v2/rise-00896.png",
+      "loopEndpointSamePng": true,
+      "interpretation": "Intentional static standing hold; duration controlled by behavior settings."
+    },
+    {
+      "name": "settle",
+      "kind": "character",
+      "slots": 60,
+      "durationMs": 1000,
+      "uniquePngs": 60,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 20,
+        "17": 40
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [],
+      "first": "frames/v2/rise-00896.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "No repeated slots; retains regular historical sampling."
+    },
+    {
+      "name": "yawn",
+      "kind": "character",
+      "slots": 264,
+      "durationMs": 4400,
+      "uniquePngs": 169,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 88,
+        "17": 176
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/yawn-repair/runtime.json",
+      "adjacentRepeatedSlots": 47,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 550,
+          "durationMs": 67,
+          "file": "frames/yawn-v2/2d2bfd532e6a/00192.png"
+        },
+        {
+          "startMs": 2200,
+          "durationMs": 633,
+          "file": "frames/yawn-v2/2d2bfd532e6a/00384.png"
+        },
+        {
+          "startMs": 3867,
+          "durationMs": 50,
+          "file": "frames/yawn-v2/2d2bfd532e6a/00192.png"
+        }
+      ],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "Selected yawn-v2 has a deliberate peak hold and symmetric return; its known cheek-boundary limitation is visual artwork provenance, not an extraction defect."
+    },
+    {
+      "name": "wink",
+      "kind": "character",
+      "slots": 90,
+      "durationMs": 1500,
+      "uniquePngs": 69,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 30,
+        "17": 60
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 20,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 450,
+          "durationMs": 350,
+          "file": "frames/wink-v9-fluid/0bb9954687fd55c4e2ff25ab79d55ca920e213866b7b3239683d7f0f6bec9533.png"
+        }
+      ],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "Approved wink peak hold is 350 ms."
+    },
+    {
+      "name": "meow",
+      "kind": "character",
+      "slots": 84,
+      "durationMs": 1400,
+      "uniquePngs": 43,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 28,
+        "17": 56
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "No adjacent repeated PNGs; deliberate ascent and return reuse images non-adjacently."
+    },
+    {
+      "name": "firefly",
+      "kind": "character",
+      "slots": 600,
+      "durationMs": 10000,
+      "uniquePngs": 496,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 200,
+        "17": 400
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 103,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 1150,
+          "file": "frames/fall_asleep-00.png"
+        },
+        {
+          "startMs": 9400,
+          "durationMs": 600,
+          "file": "frames/fall_asleep-00.png"
+        }
+      ],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "Character stays idle before/after flight while the separate overlay animates; endpoint idle holds are deliberate."
+    },
+    {
+      "name": "work_enter",
+      "kind": "character",
+      "slots": 24,
+      "durationMs": 400,
+      "uniquePngs": 19,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 8,
+        "17": 16
+      },
+      "sourceSequenceExact": null,
+      "sourceSequenceReference": "Current work reference summary and PNG hashes; full regenerated sequence not evaluated because authoring tools are changing concurrently.",
+      "adjacentRepeatedSlots": 5,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 50,
+          "file": "frames/fall_asleep-00.png"
+        }
+      ],
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/work-v1/focused.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "Quintic gaze easing repeats endpoint-near poses; props fade separately."
+    },
+    {
+      "name": "work_loop",
+      "kind": "character",
+      "slots": 576,
+      "durationMs": 9600,
+      "uniquePngs": 23,
+      "loop": true,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 192,
+        "17": 384
+      },
+      "sourceSequenceExact": null,
+      "sourceSequenceReference": "Current work reference summary and PNG hashes; full regenerated sequence not evaluated because authoring tools are changing concurrently.",
+      "adjacentRepeatedSlots": 529,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 1267,
+          "file": "frames/work-v1/focused.png"
+        },
+        {
+          "startMs": 1633,
+          "durationMs": 5084,
+          "file": "frames/work-v1/focused.png"
+        },
+        {
+          "startMs": 7083,
+          "durationMs": 2517,
+          "file": "frames/work-v1/focused.png"
+        }
+      ],
+      "first": "frames/work-v1/focused.png",
+      "last": "frames/work-v1/focused.png",
+      "loopEndpointSamePng": true,
+      "interpretation": "Long focused-eye poses are intentional; whole-body breathing is rendered procedurally and two blink events change the image."
+    },
+    {
+      "name": "work_exit",
+      "kind": "character",
+      "slots": 24,
+      "durationMs": 400,
+      "uniquePngs": 19,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 8,
+        "17": 16
+      },
+      "sourceSequenceExact": null,
+      "sourceSequenceReference": "Current work reference summary and PNG hashes; full regenerated sequence not evaluated because authoring tools are changing concurrently.",
+      "adjacentRepeatedSlots": 5,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 50,
+          "file": "frames/work-v1/focused.png"
+        }
+      ],
+      "first": "frames/work-v1/focused.png",
+      "last": "frames/fall_asleep-00.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "Reverse gaze easing repeats endpoint-near poses; props fade and body offset damp separately."
+    },
+    {
+      "name": "work_props",
+      "kind": "character",
+      "slots": 1,
+      "durationMs": 17,
+      "uniquePngs": 1,
+      "loop": true,
+      "declaredSampleFps": 60,
+      "static": true,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "17": 1
+      },
+      "sourceSequenceExact": null,
+      "sourceSequenceReference": "Current work reference summary and PNG hashes; full regenerated sequence not evaluated because authoring tools are changing concurrently.",
+      "adjacentRepeatedSlots": 0,
+      "holdsAtLeast50Ms": [],
+      "first": "frames/work-v1/props.png",
+      "last": "frames/work-v1/props.png",
+      "loopEndpointSamePng": true,
+      "interpretation": "Static independent props layer; opacity changes in code, not PNG slots."
+    },
+    {
+      "name": "firefly",
+      "kind": "decoration",
+      "slots": 600,
+      "durationMs": 10000,
+      "uniquePngs": 441,
+      "loop": false,
+      "declaredSampleFps": 60,
+      "static": false,
+      "rounded60HzStarts": true,
+      "irregular": [],
+      "slotDurationCounts": {
+        "16": 200,
+        "17": 400
+      },
+      "sourceSequenceExact": true,
+      "sourceSequenceReference": "reference/motion-60hz/source-manifest-0.3.3.json",
+      "adjacentRepeatedSlots": 158,
+      "holdsAtLeast50Ms": [
+        {
+          "startMs": 0,
+          "durationMs": 1083,
+          "file": "frames/firefly-v3/transparent.png"
+        },
+        {
+          "startMs": 8433,
+          "durationMs": 1567,
+          "file": "frames/firefly-v3/transparent.png"
+        }
+      ],
+      "first": "frames/firefly-v3/transparent.png",
+      "last": "frames/firefly-v3/transparent.png",
+      "loopEndpointSamePng": null,
+      "interpretation": "Transparent lead/tail are deliberate; timing aligns slot-for-slot with the character."
+    }
+  ],
+  "boundaries": [
+    {
+      "from": "idle",
+      "to": "fall_asleep",
+      "samePng": true
+    },
+    {
+      "from": "fall_asleep",
+      "to": "sleep_loop",
+      "samePng": true
+    },
+    {
+      "from": "sleep_loop",
+      "to": "wake",
+      "samePng": true
+    },
+    {
+      "from": "wake",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "idle",
+      "to": "rise",
+      "samePng": true
+    },
+    {
+      "from": "rise",
+      "to": "hold",
+      "samePng": true
+    },
+    {
+      "from": "hold",
+      "to": "settle",
+      "samePng": true
+    },
+    {
+      "from": "settle",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "idle",
+      "to": "blink",
+      "samePng": true
+    },
+    {
+      "from": "blink",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "idle",
+      "to": "yawn",
+      "samePng": true
+    },
+    {
+      "from": "yawn",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "idle",
+      "to": "wink",
+      "samePng": true
+    },
+    {
+      "from": "wink",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "idle",
+      "to": "meow",
+      "samePng": true
+    },
+    {
+      "from": "meow",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "idle",
+      "to": "firefly",
+      "samePng": true
+    },
+    {
+      "from": "firefly",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "idle",
+      "to": "work_enter",
+      "samePng": true
+    },
+    {
+      "from": "work_enter",
+      "to": "work_loop",
+      "samePng": true
+    },
+    {
+      "from": "work_loop",
+      "to": "work_exit",
+      "samePng": true
+    },
+    {
+      "from": "work_exit",
+      "to": "idle",
+      "samePng": true
+    },
+    {
+      "from": "meow",
+      "to": "work_enter",
+      "samePng": true
+    },
+    {
+      "from": "work_exit",
+      "to": "wink",
+      "samePng": true
+    },
+    {
+      "from": "wink",
+      "to": "fall_asleep",
+      "samePng": true
+    },
+    {
+      "from": "wake",
+      "to": "yawn",
+      "samePng": true
+    },
+    {
+      "from": "yawn",
+      "to": "fall_asleep",
+      "samePng": true
+    }
+  ],
+  "fireflySynchronization": {
+    "slotCountsEqual": true,
+    "allSlotDurationsEqual": true,
+    "firstOverlayTransparent": true,
+    "lastOverlayTransparent": true
+  },
+  "workSummary": {
+    "work_enter": {
+      "matchesReferenceSummary": true,
+      "summary": {
+        "slots": 24,
+        "durationMs": 400,
+        "loop": false,
+        "first": "frames/fall_asleep-00.png",
+        "last": "frames/work-v1/focused.png",
+        "uniqueFiles": 19
+      }
+    },
+    "work_loop": {
+      "matchesReferenceSummary": true,
+      "summary": {
+        "slots": 576,
+        "durationMs": 9600,
+        "loop": true,
+        "first": "frames/work-v1/focused.png",
+        "last": "frames/work-v1/focused.png",
+        "uniqueFiles": 23
+      }
+    },
+    "work_exit": {
+      "matchesReferenceSummary": true,
+      "summary": {
+        "slots": 24,
+        "durationMs": 400,
+        "loop": false,
+        "first": "frames/work-v1/focused.png",
+        "last": "frames/fall_asleep-00.png",
+        "uniqueFiles": 19
+      }
+    },
+    "work_props": {
+      "matchesReferenceSummary": true,
+      "summary": {
+        "slots": 1,
+        "durationMs": 17,
+        "loop": true,
+        "first": "frames/work-v1/props.png",
+        "last": "frames/work-v1/props.png",
+        "uniqueFiles": 1
+      }
+    }
+  },
+  "findings": {
+    "confirmedFrameSamplingAnomalies": [],
+    "confirmedStaticBoundaryAnomalies": [],
+    "metadataOnly": [
+      {
+        "issue": "Top-level sampling statistics retain historical 60 fps conversion totals and omit later work clips.",
+        "declared": {
+          "characterFrameSlots": 1555,
+          "decorationFrameSlots": 600,
+          "totalFrameSlots": 2155,
+          "uniquePngs": 1644
+        },
+        "actual": {
+          "characterFrameSlots": 2180,
+          "decorationFrameSlots": 600,
+          "totalFrameSlots": 2780,
+          "uniquePngs": 1685
+        },
+        "runtimeImpact": "The player reads frame lists and sampleFps; these aggregate counts are not used for playback."
+      },
+      {
+        "issue": "motion.clipStatistics has no work entries; motion.revision describes the 0.3.4 asset baseline while the installed app version is 0.4.0.",
+        "missingEntries": [
+          "work_enter",
+          "work_loop",
+          "work_exit",
+          "work_props"
+        ],
+        "runtimeImpact": "Provenance/summary distinction, not a cadence mismatch."
+      }
+    ],
+    "visualHypotheses": [
+      {
+        "scope": "Selected yawn-v2",
+        "finding": "Existing verification records its accepted grey/white cheek-boundary mismatch; this audit makes no new visual approval."
+      },
+      {
+        "scope": "Legacy rise/settle/sleep interpolation endpoints",
+        "finding": "The preceding sleep audit found slight source interpolation sharpness changes that predate the 60 fps extraction; this is not evidence of missed runtime frames.",
+        "evidence": "artifacts/sleep-smoothness-20261109/asset-audit-60.json"
+      }
+    ]
+  },
+  "concurrency": {
+    "sourceManifestUnchangedDuringAudit": true,
+    "installedManifestUnchangedDuringAudit": true,
+    "referenceUnchangedDuringAudit": {
+      "reference/motion-60hz/source-manifest-0.3.3.json": true,
+      "reference/motion-60hz/source-png-inventory.json": true,
+      "reference/yawn-repair/runtime.json": true,
+      "reference/work-runtime/verification.json": true
+    },
+    "note": "Work tools and work provenance files have other in-progress edits. No installer or regeneration was run. Current manifest/installed bytes are reported separately from authoring tools."
+  },
+  "limits": [
+    "All listed joins compare completed clip endpoints. Mid-action interruption and work blink-exit behavior require runtime tests, not endpoint equality alone.",
+    "Deliberate holds are not flagged as stutters: character, decoration, body transforms and props opacity can have different motion while sharing stable PNGs.",
+    "No refresh-rate timing, UI decode latency, dropped-frame or subjective smoothness claims are derived from this asset audit."
+  ]
+}

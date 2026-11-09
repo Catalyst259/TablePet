@@ -5,6 +5,12 @@
         Background="Transparent" ResizeMode="NoResize" ShowInTaskbar="False"
         ShowActivated="False" Focusable="False" Topmost="True"
         UseLayoutRounding="True" SnapsToDevicePixels="True">
-    <Image x:Name="PetImage" Stretch="Fill" Focusable="False"
-           RenderOptions.BitmapScalingMode="HighQuality" />
+    <Grid>
+      <Image x:Name="PetImage" Stretch="Fill" Focusable="False"
+             RenderOptions.BitmapScalingMode="HighQuality">
+        <Image.RenderTransform><TranslateTransform x:Name="PetShift"/></Image.RenderTransform>
+      </Image>
+      <Image x:Name="WorkPropsImage" Stretch="Fill" Focusable="False" IsHitTestVisible="False"
+             Visibility="Collapsed" RenderOptions.BitmapScalingMode="HighQuality"/>
+    </Grid>
 </Window>

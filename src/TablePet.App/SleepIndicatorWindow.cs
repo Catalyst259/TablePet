@@ -50,10 +50,10 @@ public sealed class SleepIndicatorWindow : Window
     }
 
     /// <summary>
-    /// Uses the existing player's elapsed time; pausing the player freezes the letters.
+    /// Uses the player's last presented time; pausing the player freezes the letters.
     /// The host calls Hide when sleep ends or the pet is suspended.
     /// </summary>
-    public void Update(long elapsedMs)
+    public void Update(double elapsedMs)
     {
         Dispatcher.VerifyAccess();
         if (_closed) return;

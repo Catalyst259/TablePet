@@ -1,0 +1,467 @@
+{
+  "passed": true,
+  "localOnly": true,
+  "version": "0.4.0",
+  "checkedAt": "2026-11-09T16:02:35.9486046+08:00",
+  "scope": "Audit all existing 60 fps actions and repair generated returns, deadline-started clips, and sleep-letter presentation cadence.",
+  "fixes": [
+    {
+      "path": "Generated interrupt returns",
+      "cause": "Evenly spaced generated slots lost their fractional timing metadata.",
+      "resolution": "Explicit uniform timing, validated against the existing rounded boundaries; retain slot count, total duration and endpoints."
+    },
+    {
+      "path": "Actions started by behavior deadlines",
+      "cause": "A new clip started after Player.Tick no longer inherited the current presentation timestamp.",
+      "resolution": "Keep presentation context for the full behavior tick, with nested/exception-safe restoration."
+    },
+    {
+      "path": "Sleep Z",
+      "cause": "Resampling integer elapsed milliseconds to 60 Hz produced approximately 40 updates/second at some phases.",
+      "resolution": "Pass the stable PresentedElapsedMs snapshot to the vector visual at double precision without a second quantization."
+    }
+  ],
+  "artwork": {
+    "modified": false,
+    "runtimeManifestSha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d",
+    "clips": 16,
+    "referencedPngs": 1685,
+    "checkedCompletionBoundaries": 27,
+    "sourceAndInstalledMatchAtAudit": true,
+    "report": "reference/motion-timing-fix/all-actions-assets.json",
+    "nonblockingFindings": {
+      "confirmedFrameSamplingAnomalies": [],
+      "confirmedStaticBoundaryAnomalies": [],
+      "metadataOnly": [
+        {
+          "issue": "Top-level sampling statistics retain historical 60 fps conversion totals and omit later work clips.",
+          "declared": {
+            "characterFrameSlots": 1555,
+            "decorationFrameSlots": 600,
+            "totalFrameSlots": 2155,
+            "uniquePngs": 1644
+          },
+          "actual": {
+            "characterFrameSlots": 2180,
+            "decorationFrameSlots": 600,
+            "totalFrameSlots": 2780,
+            "uniquePngs": 1685
+          },
+          "runtimeImpact": "The player reads frame lists and sampleFps; these aggregate counts are not used for playback."
+        },
+        {
+          "issue": "motion.clipStatistics has no work entries; motion.revision describes the 0.3.4 asset baseline while the installed app version is 0.4.0.",
+          "missingEntries": [
+            "work_enter",
+            "work_loop",
+            "work_exit",
+            "work_props"
+          ],
+          "runtimeImpact": "Provenance/summary distinction, not a cadence mismatch."
+        }
+      ],
+      "visualHypotheses": [
+        {
+          "scope": "Selected yawn-v2",
+          "finding": "Existing verification records its accepted grey/white cheek-boundary mismatch; this audit makes no new visual approval."
+        },
+        {
+          "scope": "Legacy rise/settle/sleep interpolation endpoints",
+          "finding": "The preceding sleep audit found slight source interpolation sharpness changes that predate the 60 fps extraction; this is not evidence of missed runtime frames.",
+          "evidence": "artifacts/sleep-smoothness-20261109/asset-audit-60.json"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "core": 246,
+    "app": 121,
+    "total": 367,
+    "failed": 0,
+    "warnings": 0,
+    "log": "artifacts/all-motion-audit-20261109/build-final.log",
+    "redThenGreen": "Six real-controller cases and two real sleep-visual cases failed before their respective fixes and passed after.",
+    "coverage": "Every reachable interruption phase for sleep/work return, animated hold return and idle-expression return; sampled reversals; deadline starts; explicit variable holds; presentation scope nesting/exception restoration; sleep visual position/opacity, pause and duplicate callbacks."
+  },
+  "cadence": {
+    "clips": 16,
+    "checks": 83930,
+    "failures": 0,
+    "displayRates": [
+      60,
+      120,
+      144
+    ],
+    "phasesPerRate": 5,
+    "report": "artifacts/all-motion-audit-20261109/cadence-audit.json",
+    "limitation": "Deterministic real-catalog/player audit with quantized presentation timestamps and CPU callback jitter. Does not measure actual DWM rendering or image decoding; generated interrupt paths are covered by controller regression tests."
+  },
+  "playback": {
+    "clips": [
+      {
+        "clip": "rise",
+        "frames": 48,
+        "durationMs": 800,
+        "elapsedMs": 800.0084,
+        "samples": 92,
+        "sampledHz": 114.99877813798228,
+        "displayedFrameChanges": 47,
+        "frameFetches": 93,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0644,
+        "fetchMaxMs": 5.2543,
+        "sampleIntervalP95Ms": 8.3347,
+        "cachedFrames": 78,
+        "cachedMiB": 99.609375
+      },
+      {
+        "clip": "hold",
+        "frames": 1,
+        "durationMs": 1000,
+        "elapsedMs": 1000.1976,
+        "samples": 120,
+        "sampledHz": 119.97629268456554,
+        "displayedFrameChanges": 1,
+        "frameFetches": 121,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.014,
+        "fetchMaxMs": 0.029,
+        "sampleIntervalP95Ms": 8.528,
+        "cachedFrames": 78,
+        "cachedMiB": 99.609375
+      },
+      {
+        "clip": "settle",
+        "frames": 60,
+        "durationMs": 1000,
+        "elapsedMs": 1000.0435,
+        "samples": 120,
+        "sampledHz": 119.99478022706012,
+        "displayedFrameChanges": 60,
+        "frameFetches": 121,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0323,
+        "fetchMaxMs": 0.1914,
+        "sampleIntervalP95Ms": 8.339,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "fall_asleep",
+        "frames": 105,
+        "durationMs": 1750,
+        "elapsedMs": 1750.0223,
+        "samples": 209,
+        "sampledHz": 119.42704958673954,
+        "displayedFrameChanges": 105,
+        "frameFetches": 210,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0883,
+        "fetchMaxMs": 2.658,
+        "sampleIntervalP95Ms": 8.3935,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "sleep_loop",
+        "frames": 216,
+        "durationMs": 3600,
+        "elapsedMs": 3600.04,
+        "samples": 432,
+        "sampledHz": 119.99866334822214,
+        "displayedFrameChanges": 217,
+        "frameFetches": 433,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0882,
+        "fetchMaxMs": 0.4283,
+        "sampleIntervalP95Ms": 8.4803,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "wake",
+        "frames": 63,
+        "durationMs": 1050,
+        "elapsedMs": 1050.0875,
+        "samples": 126,
+        "sampledHz": 119.99000083326388,
+        "displayedFrameChanges": 63,
+        "frameFetches": 127,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0301,
+        "fetchMaxMs": 0.2143,
+        "sampleIntervalP95Ms": 8.4388,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "wink",
+        "frames": 90,
+        "durationMs": 1500,
+        "elapsedMs": 1500.0209,
+        "samples": 180,
+        "sampledHz": 119.99832002351967,
+        "displayedFrameChanges": 90,
+        "frameFetches": 181,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0386,
+        "fetchMaxMs": 0.2601,
+        "sampleIntervalP95Ms": 8.4017,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "meow",
+        "frames": 84,
+        "durationMs": 1400,
+        "elapsedMs": 1400.0226,
+        "samples": 168,
+        "sampledHz": 119.99806288841337,
+        "displayedFrameChanges": 84,
+        "frameFetches": 169,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0352,
+        "fetchMaxMs": 0.1354,
+        "sampleIntervalP95Ms": 8.4117,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "firefly",
+        "frames": 600,
+        "durationMs": 10000,
+        "elapsedMs": 10000.2135,
+        "samples": 1200,
+        "sampledHz": 119.9974368547488,
+        "displayedFrameChanges": 600,
+        "frameFetches": 1201,
+        "decorationFetches": 1201,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.126,
+        "fetchMaxMs": 1.7383,
+        "sampleIntervalP95Ms": 8.403,
+        "cachedFrames": 98,
+        "cachedMiB": 126.71875
+      },
+      {
+        "clip": "blink",
+        "frames": 23,
+        "durationMs": 375,
+        "elapsedMs": 375.0134,
+        "samples": 45,
+        "sampledHz": 119.99571215321906,
+        "displayedFrameChanges": 23,
+        "frameFetches": 46,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0268,
+        "fetchMaxMs": 0.0405,
+        "sampleIntervalP95Ms": 8.3444,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "yawn",
+        "frames": 264,
+        "durationMs": 4400,
+        "elapsedMs": 4400.0189,
+        "samples": 528,
+        "sampledHz": 119.99948454766864,
+        "displayedFrameChanges": 264,
+        "frameFetches": 529,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0753,
+        "fetchMaxMs": 0.4699,
+        "sampleIntervalP95Ms": 8.3487,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "idle",
+        "frames": 1,
+        "durationMs": 1000,
+        "elapsedMs": 1000.0117,
+        "samples": 120,
+        "sampledHz": 119.9985840167086,
+        "displayedFrameChanges": 1,
+        "frameFetches": 121,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0096,
+        "fetchMaxMs": 0.0143,
+        "sampleIntervalP95Ms": 8.3347,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "work_enter",
+        "frames": 24,
+        "durationMs": 400,
+        "elapsedMs": 400.0156,
+        "samples": 48,
+        "sampledHz": 119.99532018251288,
+        "displayedFrameChanges": 24,
+        "frameFetches": 49,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0156,
+        "fetchMaxMs": 0.0261,
+        "sampleIntervalP95Ms": 8.3348,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "work_loop",
+        "frames": 576,
+        "durationMs": 9600,
+        "elapsedMs": 9600.0141,
+        "samples": 1152,
+        "sampledHz": 119.99982250026255,
+        "displayedFrameChanges": 577,
+        "frameFetches": 1153,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0165,
+        "fetchMaxMs": 0.1307,
+        "sampleIntervalP95Ms": 8.335,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "work_exit",
+        "frames": 24,
+        "durationMs": 400,
+        "elapsedMs": 400.0101,
+        "samples": 48,
+        "sampledHz": 119.996940078028,
+        "displayedFrameChanges": 24,
+        "frameFetches": 49,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0204,
+        "fetchMaxMs": 0.0229,
+        "sampleIntervalP95Ms": 8.335,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      },
+      {
+        "clip": "work_props",
+        "frames": 1,
+        "durationMs": 17,
+        "elapsedMs": 25.0086,
+        "samples": 3,
+        "sampledHz": 119.95825452742446,
+        "displayedFrameChanges": 1,
+        "frameFetches": 4,
+        "decorationFetches": 0,
+        "synchronousCacheMisses": 0,
+        "fetchP95Ms": 0.0161,
+        "fetchMaxMs": 0.0161,
+        "sampleIntervalP95Ms": 8.3349,
+        "cachedFrames": 100,
+        "cachedMiB": 127.109375
+      }
+    ],
+    "sampleHz": 120,
+    "synchronousCacheMisses": 0,
+    "peakDecodedPixelCacheMiB": 127.96875,
+    "cacheBudgetMiB": 128,
+    "report": "artifacts/all-motion-audit-20261109/playback-120.json",
+    "limitation": "Headless timing/decoding probe with simulated presentation timestamps, matching the application's RenderingTime input. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
+  },
+  "workRegression": {
+    "passed": true,
+    "cycles": 2,
+    "assertions": 69,
+    "captures": 27,
+    "report": "artifacts/all-motion-audit-20261109/work-regression/render-report.json",
+    "limitation": "Deterministic offscreen rendering verifies production behavior and WPF layers. It does not measure DWM refresh or replace real input acceptance; use --interactive-work for that."
+  },
+  "package": {
+    "passed": true,
+    "path": "dist/TablePet-0.4.0-win-x64.zip",
+    "bytes": 295949768,
+    "sha256": "03933b8872068124f172742030050369fa40b084472bdb316856afac0d724044",
+    "checksumFileMatches": true,
+    "latestAliasMatches": true,
+    "entryCount": 2196,
+    "referencedPngs": 1685,
+    "packagedPngs": 1685,
+    "exactFrameList": true,
+    "criticalFiles": [
+      {
+        "file": "TablePet.dll",
+        "sha256": "887b291053e9c9d5c724f4c1fa501eb9b660e987700920703baf85d2757df7d4"
+      },
+      {
+        "file": "TablePet.Core.dll",
+        "sha256": "ef51611fd6f2b166b7bb92ad39fe77069e9c703363079172f727edf46e0fc7e8"
+      },
+      {
+        "file": "Assets/strawberry-cat/manifest.json",
+        "sha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d"
+      }
+    ],
+    "limitation": "Frame filenames and critical assembly/manifest bytes checked; runtime PNG decoding is checked separately by the installed application."
+  },
+  "deployment": {
+    "path": "D:\\_APPS\\TablePet\\TablePet.exe",
+    "processId": 41160,
+    "assetCheckExitCode": 0,
+    "changedFiles": [
+      "TablePet.dll",
+      "TablePet.pdb",
+      "TablePet.Core.dll",
+      "TablePet.Core.pdb",
+      "README.md",
+      "docs/ACCEPTANCE.md",
+      "docs/UPDATE-0.4.0.md"
+    ],
+    "artworkPreserved": true,
+    "backupDirectory": "C:\\Users\\33776\\Documents\\ChatGPT\\TablePet\\artifacts\\all-motion-audit-20261109\\installed-backup",
+    "report": "artifacts/all-motion-audit-20261109/deployment.json"
+  },
+  "sourceFiles": [
+    {
+      "file": "src/TablePet.Core/AnimationPlayer.cs",
+      "sha256": "da36afab78c2e64ab945331875b8c9a591565cc78961f85e945f987c16100c53"
+    },
+    {
+      "file": "src/TablePet.Core/BehaviorController.cs",
+      "sha256": "16cb8326cf6244a4ca30a888d0119acd832a9f9590d2fd797dd2f98004334e5b"
+    },
+    {
+      "file": "src/TablePet.App/PetWindow.xaml.cs",
+      "sha256": "252b770c41fdb0e5fd7deb15f90ec2c1fa0af9b63ac5589e3ec8e3868e089419"
+    },
+    {
+      "file": "src/TablePet.App/SleepIndicatorWindow.cs",
+      "sha256": "f9cefe577b230ad4a733f57877c375421cdf83ce5275d0981359a344084cccab"
+    },
+    {
+      "file": "src/TablePet.App/SleepIndicatorVisual.cs",
+      "sha256": "7bd707eb1e2a529d85469ecf5021f53eb47546b8bbf7e3accbf5302f94226cf1"
+    },
+    {
+      "file": "tests/TablePet.PlaybackProbe/Program.cs",
+      "sha256": "e29e6fdb8d142c89114e829df70ee99308262f791c1e07c405bce018bc75a7af"
+    },
+    {
+      "file": "tests/TablePet.PlaybackProbe/CadenceAudit.cs",
+      "sha256": "edb6fbd5b83d07e409c3f04448138e5f8bf210e700cc6857aca46c82551a60b2"
+    }
+  ],
+  "limits": [
+    "Automated time sampling and offscreen WPF rendering do not measure actual monitor/DWM presentation FPS.",
+    "Intentional held poses remain; real missing rendering callbacks still skip forward instead of slowing the action."
+  ]
+}

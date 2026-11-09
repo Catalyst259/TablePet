@@ -152,21 +152,29 @@ public sealed class AnimationPlayerTests
         var reversed = player.CurrentClip!;
         Assert.Equal(visible, reversed.Frames[0].File);
         Assert.Equal("0.png", reversed.Frames[^1].File);
+        Assert.Null(reversed.SampleFps);
         Assert.True(reversed.Frames.Count * 1000L <= reversed.DurationMs * 60);
+        Assert.True(reversed.Frames.Count <= count);
         Assert.All(reversed.Frames, frame => Assert.True(frame.DurationMs >= 16));
     }
 
-    [Fact]
-    public void ALongHoldCannotHideShortLegacySlotsFromTheReversalRateLimit()
+    [Theory]
+    [InlineData(200)]
+    [InlineData(600000)]
+    [InlineData(int.MaxValue)]
+    public void ALongHoldCannotHideShortLegacySlotsOrExpandTheReversalTimeline(int holdMs)
     {
         var clock = new FakeClock();
         var player = new AnimationPlayer(clock);
-        player.Play(new("mixed", [new("rest.png", 200), new("mid.png", 4), new("visible.png", 4)]));
-        clock.Advance(204);
+        player.Play(new("mixed", [new("rest.png", holdMs), new("mid.png", 4), new("visible.png", 4)]));
+        clock.Advance((long)holdMs + 4);
         player.Tick();
         player.ReverseToStart();
         Assert.Equal("visible.png", player.CurrentClip!.Frames[0].File);
         Assert.Equal("rest.png", player.CurrentClip.Frames[^1].File);
+        Assert.Null(player.CurrentClip.SampleFps);
+        Assert.Equal(3, player.CurrentClip.Frames.Count);
+        Assert.Equal((long)holdMs + 8, player.CurrentClip.DurationMs);
         Assert.All(player.CurrentClip.Frames, frame => Assert.True(frame.DurationMs >= 16));
     }
 }

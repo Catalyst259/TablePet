@@ -77,7 +77,7 @@ public sealed class AssetCatalog
             {
                 try
                 {
-                    clips.Add(property.Name, ReadClip(property.Name, property.Value));
+                    clips.Add(property.Name, ReadClip(property.Name, property.Value, ReadSampleFps(manifest, property.Name)));
                 }
                 catch (Exception error) when (!RequiredClips.Contains(property.Name))
                 {
@@ -98,6 +98,7 @@ public sealed class AssetCatalog
                 ErrorLogger.Write("可选动作无法加载，已跳过：meow（需要首尾待机姿势的单次动作）");
             }
             LoadFireflyDecoration(manifest, clips);
+            ValidateWorkClips(clips);
             Clips = clips;
             var requested = new List<IdleAction>();
             if (manifest.TryGetProperty("idleActions", out var actions))
@@ -165,12 +166,45 @@ public sealed class AssetCatalog
         }
     }
 
-    private AnimationClip ReadClip(string name, JsonElement definition)
+    private void ValidateWorkClips(Dictionary<string, AnimationClip> clips)
+    {
+        string[] names = ["work_enter", "work_loop", "work_exit", "work_props"];
+        if (!names.Any(clips.ContainsKey)) return;
+        var valid = names.All(clips.ContainsKey);
+        if (valid)
+        {
+            var enter = clips["work_enter"]; var loop = clips["work_loop"];
+            var exit = clips["work_exit"]; var props = clips["work_props"];
+            var idle = clips["idle"].Frames[0].File;
+            valid = !enter.Loop && !exit.Loop && loop.Loop && props.Loop
+                && enter.DurationMs == 400 && exit.DurationMs == 400 && loop.DurationMs == 9600
+                && enter.Frames.Count >= 2 && exit.Frames.Count >= 2 && loop.Frames.Count > 1 && props.Frames.Count == 1
+                && enter.Frames[0].File == idle && exit.Frames[^1].File == idle
+                && enter.Frames[^1].File == loop.Frames[0].File && exit.Frames[0].File == loop.Frames[0].File;
+        }
+        if (valid) return;
+        foreach (var name in names) clips.Remove(name);
+        HasOptionalActionFallback = true;
+        ErrorLogger.Write("工作模式素材不完整或进出端点不一致，已保留日常陪伴素材。");
+    }
+
+    private static int? ReadSampleFps(JsonElement manifest, string name)
+    {
+        if (!manifest.TryGetProperty("sampling", out var sampling) || sampling.ValueKind != JsonValueKind.Object) return null;
+        var target = default(JsonElement);
+        if (sampling.TryGetProperty("clipOverrides", out var overrides) && overrides.ValueKind == JsonValueKind.Object
+            && overrides.TryGetProperty(name, out var clipOverride) && clipOverride.ValueKind == JsonValueKind.Object)
+            clipOverride.TryGetProperty("targetFps", out target);
+        if (target.ValueKind == JsonValueKind.Undefined) sampling.TryGetProperty("targetFps", out target);
+        return target.ValueKind == JsonValueKind.Number && target.TryGetInt32(out var fps) && fps is > 0 and <= 1000 ? fps : null;
+    }
+
+    private AnimationClip ReadClip(string name, JsonElement definition, int? sampleFps = null)
     {
         var frames = definition.GetProperty("frames").EnumerateArray().Select(frame => new AnimationFrame(
             frame.GetProperty("file").GetString()!, frame.GetProperty("durationMs").GetInt32())).ToArray();
         var clip = new AnimationClip(name, frames,
-            definition.TryGetProperty("loop", out var loop) && loop.GetBoolean());
+            definition.TryGetProperty("loop", out var loop) && loop.GetBoolean(), sampleFps);
         clip.EnsureValid();
         foreach (var frame in frames)
             if (!File.Exists(Resolve(frame.File))) throw new FileNotFoundException(frame.File);
@@ -203,7 +237,7 @@ public sealed class AssetCatalog
                 || x >= CanvasWidth || y >= CanvasHeight || x + width <= 0 || y + height <= 0
                 || (width * height + CanvasWidth * CanvasHeight) * 5 > CacheBudgetBytes)
                 throw new InvalidDataException("Invalid decoration geometry or a frame pair larger than the cache budget.");
-            var overlay = ReadClip("firefly-decoration", definition);
+            var overlay = ReadClip("firefly-decoration", definition, clip.SampleFps);
             if (overlay.Loop || overlay.Frames.Count != clip.Frames.Count
                 || !overlay.Frames.Select(frame => frame.DurationMs).SequenceEqual(clip.Frames.Select(frame => frame.DurationMs)))
                 throw new InvalidDataException("Decoration slots must match the character timeline exactly.");

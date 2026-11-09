@@ -27,6 +27,9 @@ public sealed class SettingsServiceTests
         File.WriteAllText(path, """{"petHeightDip":180,"triggerMode":"click"}""");
         using var service = new SettingsService(path);
         Assert.Equal(new PetSettings { PetHeightDip = 180, TriggerMode = TriggerMode.Click }, service.Load());
+        Assert.Equal(CompanionMode.Daily, service.Current.Mode);
+        Assert.Equal(1500000, service.Current.WorkDurationMs);
+        Assert.Equal(300000, service.Current.BreakDurationMs);
     }
 
     [Fact]
@@ -39,6 +42,9 @@ public sealed class SettingsServiceTests
             PetHeightDip = 300,
             TriggerMode = TriggerMode.Click,
             HoldMs = 1234,
+            Mode = CompanionMode.Work,
+            WorkDurationMs = 1800000,
+            BreakDurationMs = 600000,
             Position = new WindowPlacement { MonitorId = "DISPLAY2", RelativeX = 0.1, RelativeY = 0.7 }
         };
         using (var service = new SettingsService(path))
@@ -49,6 +55,7 @@ public sealed class SettingsServiceTests
             Assert.Equal(expected, Assert.Single(published));
             using var document = JsonDocument.Parse(File.ReadAllText(path));
             Assert.Equal("click", document.RootElement.GetProperty("triggerMode").GetString());
+            Assert.Equal("work", document.RootElement.GetProperty("mode").GetString());
         }
         using var restarted = new SettingsService(path);
         Assert.Equal(expected, restarted.Load());
@@ -103,6 +110,9 @@ public sealed class SettingsServiceTests
     [InlineData("{\"schemaVersion\":99}")]
     [InlineData("{\"blinkMinMs\":9000,\"blinkMaxMs\":3000}")]
     [InlineData("{\"triggerMode\":99}")]
+    [InlineData("{\"mode\":\"unknown\"}")]
+    [InlineData("{\"workDurationMs\":0}")]
+    [InlineData("{\"breakDurationMs\":28800001}")]
     public void InvalidFilesAreBackedUpExactlyAndResetRepairsEvenDefaultState(string invalid)
     {
         using var directory = new TestDirectory();

@@ -16,7 +16,7 @@ using TablePet.Core;
 // Exercises the actual WPF decoder/cache and animation clock without a tray, settings,
 // input injection or instance signals. Render mode uses a nonactivating offscreen owner
 // for the real decoration overlays. Neither mode measures DWM presentation.
-internal static class Program
+internal static partial class Program
 {
     [STAThread]
     private static int Main(string[] args)
@@ -27,7 +27,25 @@ internal static class Program
             Console.Error.WriteLine("       TablePet.PlaybackProbe --render-meow <asset-root> <output-folder>");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --render-firefly <asset-root> <output-folder>");
             Console.Error.WriteLine("       TablePet.PlaybackProbe --interactive-meow <asset-root> <temp-settings-dir>");
+            Console.Error.WriteLine("       TablePet.PlaybackProbe --render-work <asset-root> <output-folder>");
+            Console.Error.WriteLine("       TablePet.PlaybackProbe --interactive-work <asset-root> <temp-settings-dir>");
             return 1;
+        }
+        if (args[0] == "--audit-cadence")
+        {
+            if (args.Length != 3) throw new ArgumentException("Usage: --audit-cadence <asset-root> <report.json>");
+            return AuditCadence(Path.GetFullPath(args[1]), Path.GetFullPath(args[2]));
+        }
+        if (args[0] is "--render-work" or "--interactive-work")
+        {
+            if (args.Length != 3)
+            {
+                Console.Error.WriteLine("Usage: TablePet.PlaybackProbe " + args[0] + " <asset-root> <output-folder>");
+                return 1;
+            }
+            return args[0] == "--render-work"
+                ? RenderWork(Path.GetFullPath(args[1]), Path.GetFullPath(args[2]))
+                : InteractiveWork(Path.GetFullPath(args[1]), Path.GetFullPath(args[2]));
         }
         if (args[0] == "--render-meow")
         {
@@ -93,13 +111,17 @@ internal static class Program
             .Concat(catalog.Clips.ContainsKey("wink") ? new[] { "wink" } : [])
             .Concat(catalog.Clips.ContainsKey("meow") ? new[] { "meow" } : [])
             .Concat(catalog.Clips.ContainsKey("firefly") ? new[] { "firefly" } : [])
-            .Concat(catalog.IdleActions.Select(action => action.Clip)).Distinct())
+            .Concat(catalog.IdleActions.Select(action => action.Clip))
+            .Concat(catalog.Clips.Keys).Distinct())
         {
             fetchTimes.Clear(); actualIntervals.Clear(); rendered = 0; decorationFetches = 0;
             var beforeMisses = catalog.SynchronousCacheMisses;
             var clip = catalog.Clips[name];
             var timer = Stopwatch.StartNew();
             player.Play(clip);
+            // Match CompositionTarget.Rendering's presentation timestamps. CPU
+            // callback/decoder jitter must not change which frame is scheduled.
+            player.Tick(TimeSpan.Zero);
             FetchCurrentFrames();
             long previousSample = Stopwatch.GetTimestamp();
             var sample = 1;
@@ -116,7 +138,7 @@ internal static class Program
                 var now = Stopwatch.GetTimestamp();
                 actualIntervals.Add((now - previousSample) * 1000d / Stopwatch.Frequency);
                 previousSample = now;
-                player.Tick();
+                player.Tick(TimeSpan.FromMilliseconds(target));
                 // Match the application's per-render preparation, including repeated
                 // cat poses while the independent decoration continues moving.
                 FetchCurrentFrames();
@@ -148,6 +170,7 @@ internal static class Program
             passed = !catalog.IsFallback && !catalog.HasFrameFallback && !catalog.HasOptionalActionFallback && maxCache <= catalog.CacheBudgetBytes,
             requestedSampleHz = hz,
             measurementUsesActiveWait = true,
+            measurementUsesSimulatedPresentationTimestamps = true,
             heightDip = height,
             dpiScale = dpi,
             initializationMs = initialization.Elapsed.TotalMilliseconds,
@@ -155,7 +178,7 @@ internal static class Program
             peakDecodedPixelCacheMiB = maxCache / 1048576d,
             processWorkingSetMiB = Process.GetCurrentProcess().WorkingSet64 / 1048576d,
             clips = results,
-            limitation = "Headless timing/decoding probe only. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
+            limitation = "Headless timing/decoding probe with simulated presentation timestamps, matching the application's RenderingTime input. The sampling rate is requested by this probe and does not establish actual window/compositor presentation FPS. Cache budget excludes WPF native allocations and transient decode/GC overhead."
         }, new JsonSerializerOptions { WriteIndented = true }));
         return catalog.IsFallback || catalog.HasFrameFallback || catalog.HasOptionalActionFallback || maxCache > catalog.CacheBudgetBytes ? 2 : 0;
     }

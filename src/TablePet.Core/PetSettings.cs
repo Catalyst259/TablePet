@@ -1,6 +1,7 @@
 namespace TablePet.Core;
 
 public enum TriggerMode { Hover, Click }
+public enum CompanionMode { Daily, Work }
 
 public sealed record WindowPlacement
 {
@@ -13,6 +14,9 @@ public sealed record PetSettings
 {
     public int SchemaVersion { get; init; } = 1;
     public bool AutoSleep { get; init; } = true;
+    public CompanionMode Mode { get; init; } = CompanionMode.Daily;
+    public int WorkDurationMs { get; init; } = 25 * 60 * 1000;
+    public int BreakDurationMs { get; init; } = 5 * 60 * 1000;
     // Keep these JSON names for compatibility; they now schedule all idle expressions.
     public int BlinkMinMs { get; init; } = 3000;
     public int BlinkMaxMs { get; init; } = 8000;
@@ -32,6 +36,9 @@ public sealed record PetSettings
     {
         var errors = new List<string>();
         if (SchemaVersion != 1) errors.Add("不支持此设置版本。");
+        if (!Enum.IsDefined(Mode)) errors.Add("请选择日常或工作模式。");
+        if (WorkDurationMs is < 1 or > 28800000) errors.Add("工作时长须为 1 至 28800000 毫秒。");
+        if (BreakDurationMs is < 1 or > 28800000) errors.Add("休息时长须为 1 至 28800000 毫秒。");
         // Bounds prevent overflow and accidentally scheduling multi-year intervals.
         if (BlinkMinMs is < 1 or > 86400000 || BlinkMaxMs is < 1 or > 86400000 || BlinkMinMs > BlinkMaxMs)
             errors.Add("待机动作间隔须为 1 至 86400000 毫秒，且最小值不大于最大值。");

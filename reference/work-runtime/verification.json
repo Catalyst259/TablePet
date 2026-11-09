@@ -1,0 +1,1343 @@
+{
+  "passed": true,
+  "mode": "install",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "sampleFps": 60,
+  "artwork": {
+    "version": 3,
+    "preview": "work-preview-v3",
+    "transition": "work-transition-v1"
+  },
+  "clips": {
+    "work_enter": {
+      "slots": 24,
+      "durationMs": 400,
+      "loop": false,
+      "first": "frames/fall_asleep-00.png",
+      "last": "frames/work-v1/focused.png",
+      "uniqueFiles": 19
+    },
+    "work_loop": {
+      "slots": 576,
+      "durationMs": 9600,
+      "loop": true,
+      "first": "frames/work-v1/focused.png",
+      "last": "frames/work-v1/focused.png",
+      "uniqueFiles": 23
+    },
+    "work_exit": {
+      "slots": 24,
+      "durationMs": 400,
+      "loop": false,
+      "first": "frames/work-v1/focused.png",
+      "last": "frames/fall_asleep-00.png",
+      "uniqueFiles": 19
+    },
+    "work_props": {
+      "slots": 1,
+      "durationMs": 17,
+      "loop": true,
+      "first": "frames/work-v1/props.png",
+      "last": "frames/work-v1/props.png",
+      "uniqueFiles": 1
+    }
+  },
+  "importedPngs": 41,
+  "productionReferencedPngs": 42,
+  "importedPngBytes": 7673342,
+  "sourceUnchanged": true,
+  "sourceInventory": [
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/manifest.json",
+      "sha256": "fc0ff7ad59b69fc129f03344dd163089e5c8fae10c3c0247448af70c63cca77f"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/manifest.json",
+      "sha256": "b816e4130d240a4cd63bf1c5773115527f0504c7bafbb3c41ad236ec99ec598e"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/manifest.json",
+      "sha256": "b702b3c9b752d4658f2d1bfa87d6552e1740dadb8455ac02693cb0a29a54b3fe"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/verification.json",
+      "sha256": "7ce8ffb589c4a42a0e7f6d8eabe8a832119947e442345c9feeb4f6dd2b7382e9"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/verification.json",
+      "sha256": "60da955994869fa0873a70227ceb43f6360f246f124a56bef3e60f15fc315eed"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/timeline.json",
+      "sha256": "69f21c60021b74ca1c8aa5c90b86824bc1d8a9babba42c03d93110ef991160e6"
+    },
+    {
+      "file": "assets/strawberry-cat/frames/fall_asleep-00.png",
+      "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/keys/open.png",
+      "sha256": "3d23bc36f3093ea54584fe2efa5798af82e1d250db5bbfcd8d79b6a157edff7b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/props.png",
+      "sha256": "2a8aeac09ecaede7d6d128a17eff53a8cf4c700143cf1447e84a43308481939d"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-00.png",
+      "sha256": "5fa859b9074ad57f2a0c5c84174ca1cf3002bd5bea27b9a92abe2d769163543e"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-32.png",
+      "sha256": "3d23bc36f3093ea54584fe2efa5798af82e1d250db5bbfcd8d79b6a157edff7b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-01.png",
+      "sha256": "9e48434470be18e6cbf44acd905710ab30e5a2fe4d2681cc3bd4bbc9d39ba984"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-31.png",
+      "sha256": "3a867af03f00566dd3434a271df81d7e5d95275477ea214397ae877467c79065"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-02.png",
+      "sha256": "6d87a5fd5b7d32039f8fbfea01177d0ecb68c9aeb3402381e52b1bff0ce17326"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-30.png",
+      "sha256": "128f04181d227187fcfa2dc3c4f5caa6cecd5d52fa2b002b443d4e04dcde6bdd"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-03.png",
+      "sha256": "26ee311e0adab5dd97c5d852cc06e8f603cb4eeacaf59cddcff9d0566ef826e1"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-29.png",
+      "sha256": "aef282328c6d9b2963c6fcfc46ceb2e725d84b60d78b6adbbde41ec34f7662d8"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-05.png",
+      "sha256": "6177fe3546164821d91da9dfb232138eb9a832047debb10fa4ada5160b58087a"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-27.png",
+      "sha256": "14ded4217d6570c08ed5b9090d36447f4251a0be2dec2ba5405a3bb2a463cbd2"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-07.png",
+      "sha256": "2ac74b32bb30e3723bb22ce9f13681ec6fd864652f3ab784624097e4e35377f4"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-25.png",
+      "sha256": "3ee8669f846d2deaa6ea42bf5a6b4668b8b63fe51f1c123af154524523ab3aef"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-09.png",
+      "sha256": "f7dd4be7659ab4c30d2ad0aff67d03c22a0d2ca449a5b61b156711ac2d59110b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-23.png",
+      "sha256": "79c867b4cadc0b18caebd613e11026f6e76d3cced04edef95d6e246b24ebadaa"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-11.png",
+      "sha256": "6bba52f8dc5bd7b77c96a4a6716d400d980a660c5f482cc5d64582fa9a471854"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-21.png",
+      "sha256": "355dadb005534336cb1e908f7e58c28efd30669c5afeed1c381b1a7ff1c6a38e"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-14.png",
+      "sha256": "4614d90be24dc6ebc220b3cec625ed46770cd44995da3f85ec61e154052c6620"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-18.png",
+      "sha256": "21a80bc7ce2a6d8dec9914969eee75c0f2c9d3fef93357d6c72393d4f01b7972"
+    },
+    {
+      "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-16.png",
+      "sha256": "b28e427b619ea629fa99eeb389e8a12e55732ae20a120119ed87e6a0a31d085f"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-00.png",
+      "sha256": "3d23bc36f3093ea54584fe2efa5798af82e1d250db5bbfcd8d79b6a157edff7b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-04.png",
+      "sha256": "1c2d7794a87e62c3a5f2e3495b8b2e2fbdfac5faf0cf861facab197a32f8725d"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-08.png",
+      "sha256": "48781ee51d0d1186d1b209c191bbc52d2330e34b77a22c1ddb245307d3e09b01"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-11.png",
+      "sha256": "03220ca59f5b7a42b7404b9452bfcb3f0e6cf1b3e8c62912bd9158a4b4f310e3"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-15.png",
+      "sha256": "087f9ac64e4c48f8f3ef814af029c185c82cd5185351ab88648a76906a4e519c"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-19.png",
+      "sha256": "904e77058ef4d3e2ce859a7a34bf33b8e3b96720fe07bc12cce64c809ae9f924"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-23.png",
+      "sha256": "c7c8ec18c0ed4bd248f7396e6d2c21a1143ea872d886b2905f114461ec3db55b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-27.png",
+      "sha256": "10622698b835e7ca08a61ec2e530cd63f6c8e519f0b841ba6616c164f6dce448"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-30.png",
+      "sha256": "4721e38236792ac6d2590722121ba22b123f0a7cce42d10b7a54fab377cd4464"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-32.png",
+      "sha256": "f0582dc58988da99338c0f3f57dc057db0d7a118ff939ae6f037fab299c84008"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-33.png",
+      "sha256": "d2e0dcf71f03918aaf4633dc5254b4fb8617e4e6f240fa7a4933291d5175e7c8"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-36.png",
+      "sha256": "a8d149f464131979bee48023b8dd1741cb371e36f508011ba90aa2d44398d604"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-38.png",
+      "sha256": "8b813fe2a91237e2f622451747c9f6e1d753f6324b9fc6335afd53163fabaf3f"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-41.png",
+      "sha256": "c7c8ec18c0ed4bd248f7396e6d2c21a1143ea872d886b2905f114461ec3db55b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-43.png",
+      "sha256": "12d9ed0d2e4cb4a5c7cd6104e503dbc8918e92322ab454a6502970f46d18a3d3"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-46.png",
+      "sha256": "9baa5ed88865af52d73be85ac52faa55501aa2fcee548a525f2302ead3ac16d0"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-48.png",
+      "sha256": "9f4aaacf278821ff40ca7dfdf030d77553aae0a9513d9561e4d706effc9f5513"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-51.png",
+      "sha256": "5f8f22c550af5edbedb8fd0615e0a71cf0c889a068446a508140fdb23f0fa468"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-53.png",
+      "sha256": "03220ca59f5b7a42b7404b9452bfcb3f0e6cf1b3e8c62912bd9158a4b4f310e3"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-55.png",
+      "sha256": "7e9dd2b8ba20e5fd2a0a8a4105c50997ca26123981c11fffa45411a6a63e290d"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-58.png",
+      "sha256": "f3a51909dfb4834ff24edb5cc01793cc2e95904db2c377a62ee8c4ef32fd70f4"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-60.png",
+      "sha256": "1c2d7794a87e62c3a5f2e3495b8b2e2fbdfac5faf0cf861facab197a32f8725d"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/blink/blink-63.png",
+      "sha256": "be78c3a525edc14f09c5c4c4634ca161d8c6f21f9c68133194af3f61f43df3f8"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-4534e8f8e5ae7a7270d1.png",
+      "sha256": "569201a3d898d97196750b9374cb8808debdca30d515a9f4b574fdffaabbd4e9"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-e11c67f7d778017d0c86.png",
+      "sha256": "5a6a599c572b8e7f9d004364ad5c39f3159ee7e5429974364e13bbf762a2df4a"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-9a07ffaa99f9f308b436.png",
+      "sha256": "66001dde73d7fe8632e46f8e261704234691eaac0acf4ebbd0a7a13caa42fa68"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-07942facb5705c98f38c.png",
+      "sha256": "f54f455a27c515dc7bd87e9bf9779ef5f7b6be0edbd3928a6f30b1046b40ce6b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-ee1c001245df0a93387c.png",
+      "sha256": "8392ba9abe0f792a9a8b2dd39838d84ef5bcfd68704fb7d3d02fc88b08033dda"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-0efc3a29708c87cc81a6.png",
+      "sha256": "ea200cf269756e8b09edc319a99f3b4424e7255e4eaa83df6763c8e14df7b52d"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-af9fa7cfe1e97686de5c.png",
+      "sha256": "d9b91a7505390132a4749f0b46cdbe67142a72c6c283e65c6afb6d1adf22c601"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-95951e04ba576f852876.png",
+      "sha256": "1dcc7e7c56dd2f6200b0194bbbdc4d15abd981d870f8ca19ad64bcc8f09b084c"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-eab929254b7f23070fd3.png",
+      "sha256": "e145d5510e1933717860c60e264d39d579fbfa96a2021fa0e7cd1d94170994fc"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-7af56bdfb517695137cb.png",
+      "sha256": "0f3d5d0bd3768eb41fca3726618a6cf046a6564e201e8e241b75907d42872f77"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-2f7ff3d4861c235ff160.png",
+      "sha256": "f2930c9247c0c94a33b69d75bdc4c81bb41c1dd414b23d4febbb07bb828b98a6"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-a53de5b1f16f768d3e65.png",
+      "sha256": "dc8bc812f501027ca7c614cc41f489a4bd895e1a98a405f3726c2db537fcfa01"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-1f72fb3c674526f51e9d.png",
+      "sha256": "d7d8f8847a95f1d9ec7b0abf0aca1ce2c674fc01a76e33cee47b03a03d03d23e"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-f40978353c05bf9d6660.png",
+      "sha256": "fc43159a14fc1e3eccf9c935762c8e550a1751f19e3b587dbbce9f0bd90ff500"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-6fb7a8609bd721464ed6.png",
+      "sha256": "33b23e5529a19b6064c571c6631188db5f9951c2b0d0e1aa85c8e961b01aadf0"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-0bc1f57ab765691734de.png",
+      "sha256": "55719293180550818310fc838f331c2e8f569d56dc57463b35680b711b1c1b44"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-bfd7f4be70cb9a3b0cfb.png",
+      "sha256": "5c23269166f0e3bad23b052b61569d251f9f2209be01d8331b36bca0e761d991"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-807b45a75978fac93fe1.png",
+      "sha256": "b4e2225c23bce4806b34b1d7e482c96cc34dcf0326b20b6723509b0f2e8304fc"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-b800806feff0dae10a3f.png",
+      "sha256": "a2acd1bbd4e317d8537ed29473cd26936abdca186c45c74f372d0ba24411f02b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-42c24995536255a1ca00.png",
+      "sha256": "000f28c3c1be6c15bf4b4068100989c02c8f2f73ecf921e2fd42d8422492c8ba"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-3018bd5c816a8e8263ef.png",
+      "sha256": "d9245f6dbd82b515358727ce2a5bd7435bdfebf45e283879dbd2133452b99fbd"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-1fbd9d6a8cea24490aa4.png",
+      "sha256": "8dfe2d8ddf6d2208e0d1377d6c01c7ab78fd00e0cfc25338a1e7811e5a360bc7"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-39c34c458a5536d4d9b3.png",
+      "sha256": "b0189e3550612a9e3210b412ed0ac069d4c5895b9d78a952fd6a6cd55d40dfb6"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-ccc79a5f6936c32e3647.png",
+      "sha256": "db47d022d118bc9b5c46de2e9681b93f5247a206d3731d2bd35693eb416d1ed5"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-793a8fcd4cecd9db57ce.png",
+      "sha256": "c19688cf1e497b9e18dd6f530edd107ee606d114866dbd05af3bde7c3cbc3f2c"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-f90603d13b3b2bbbc10c.png",
+      "sha256": "50615d1801bdd833813ec0ab3cc5719a741b0b264b5e0eeb3bd6255b984e892b"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-89c22b4952c48695f55b.png",
+      "sha256": "56f398a8a2c2b806a7daffd23034d4e98b1d48cb082e2536ff9617dec8b2a0d9"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-9295e6c70a7090363e39.png",
+      "sha256": "b498f246845524e57089d6ad0bc9e451fcc4a61d438da0cbb72ec3bf488db7f9"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-d96bf2292670d6da6bbc.png",
+      "sha256": "7e3f8e3691325ebf051e8fea20dad3287540c93526b6508ef2fc3e34db542f78"
+    },
+    {
+      "file": "assets/strawberry-cat/work-preview-v3/frames/frame-2555c995fabfced0df7a.png",
+      "sha256": "1399fba93433d7e858e44d0b39137c1251565fba134f8357920ea9681abe26fe"
+    }
+  ],
+  "copiedAssets": [
+    {
+      "file": "frames/work-v1/focused.png",
+      "source": "assets/strawberry-cat/work-preview-v3/keys/open.png",
+      "sha256": "3d23bc36f3093ea54584fe2efa5798af82e1d250db5bbfcd8d79b6a157edff7b",
+      "rgbaSha256": "6954c104f3721f66f12ac3d2a37c5d1fbecb91c0e38491a4c904a0c0dfeca4fc",
+      "bytes": 190283,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": [
+        {
+          "file": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-32.png",
+          "sha256": "3d23bc36f3093ea54584fe2efa5798af82e1d250db5bbfcd8d79b6a157edff7b",
+          "pixelsExact": true
+        },
+        {
+          "file": "assets/strawberry-cat/work-preview-v3/keys/open.png",
+          "sha256": "3d23bc36f3093ea54584fe2efa5798af82e1d250db5bbfcd8d79b6a157edff7b",
+          "pixelsExact": true
+        },
+        {
+          "file": "assets/strawberry-cat/work-preview-v3/blink/blink-00.png",
+          "sha256": "3d23bc36f3093ea54584fe2efa5798af82e1d250db5bbfcd8d79b6a157edff7b",
+          "pixelsExact": true
+        }
+      ]
+    },
+    {
+      "file": "frames/work-v1/props.png",
+      "source": "assets/strawberry-cat/work-preview-v3/props.png",
+      "sha256": "2a8aeac09ecaede7d6d128a17eff53a8cf4c700143cf1447e84a43308481939d",
+      "rgbaSha256": "d1c847546d6479d2beb11b4f32daecabe6d9113f4a1a342e44801db1a576f269",
+      "bytes": 52866,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-01.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-01.png",
+      "sha256": "9e48434470be18e6cbf44acd905710ab30e5a2fe4d2681cc3bd4bbc9d39ba984",
+      "rgbaSha256": "bd08a2b729498eedb1153582448b68422a697939a633605cc629a6df210de341",
+      "bytes": 195833,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-31.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-31.png",
+      "sha256": "3a867af03f00566dd3434a271df81d7e5d95275477ea214397ae877467c79065",
+      "rgbaSha256": "9f24b5b498c0340b7d8ef61b9eb04a89063fa701adbce9bde0502bb3549c1a56",
+      "bytes": 191833,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-02.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-02.png",
+      "sha256": "6d87a5fd5b7d32039f8fbfea01177d0ecb68c9aeb3402381e52b1bff0ce17326",
+      "rgbaSha256": "f6cc04a8df0b5446624d85538e6a502ceeface387e88c34437a7ad903216e93c",
+      "bytes": 196072,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-30.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-30.png",
+      "sha256": "128f04181d227187fcfa2dc3c4f5caa6cecd5d52fa2b002b443d4e04dcde6bdd",
+      "rgbaSha256": "ee1a1dea9fb579b51b6fe804da5672927b33e346786a2f748640e9bf80b8e99d",
+      "bytes": 192561,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-03.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-03.png",
+      "sha256": "26ee311e0adab5dd97c5d852cc06e8f603cb4eeacaf59cddcff9d0566ef826e1",
+      "rgbaSha256": "c41d44df6705dc747c9cd6740b267b524f56387330da9d671111ab2fbbb4c3dd",
+      "bytes": 194928,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-29.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-29.png",
+      "sha256": "aef282328c6d9b2963c6fcfc46ceb2e725d84b60d78b6adbbde41ec34f7662d8",
+      "rgbaSha256": "b389dc58b62c4fc1e5125eb33ee4f8989cc8705e667f332392ced41be40b2f59",
+      "bytes": 191869,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-05.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-05.png",
+      "sha256": "6177fe3546164821d91da9dfb232138eb9a832047debb10fa4ada5160b58087a",
+      "rgbaSha256": "8a573ba193db6ce993070ba5b985a9849900b98e3d655e6e6d7909a78c74b0b2",
+      "bytes": 194621,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-27.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-27.png",
+      "sha256": "14ded4217d6570c08ed5b9090d36447f4251a0be2dec2ba5405a3bb2a463cbd2",
+      "rgbaSha256": "1874ab8688309b833125e90e10d60db353c449adc0d8f35a3d4439c45487d2f2",
+      "bytes": 191561,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-07.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-07.png",
+      "sha256": "2ac74b32bb30e3723bb22ce9f13681ec6fd864652f3ab784624097e4e35377f4",
+      "rgbaSha256": "5f0a51330dcc94a42dad8c4a59723729e2690e9ee83dc0e3e3bd4d66cd2b2832",
+      "bytes": 194320,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-25.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-25.png",
+      "sha256": "3ee8669f846d2deaa6ea42bf5a6b4668b8b63fe51f1c123af154524523ab3aef",
+      "rgbaSha256": "fb9586b09a47cb5a90bf08b1221c49f9e2deae2fe97b16d2b668c8bf9ebad745",
+      "bytes": 192018,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-09.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-09.png",
+      "sha256": "f7dd4be7659ab4c30d2ad0aff67d03c22a0d2ca449a5b61b156711ac2d59110b",
+      "rgbaSha256": "da79fec24978e51a37af847c9b30e4226cb48445144a0abc29740cc599277b36",
+      "bytes": 194002,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-23.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-23.png",
+      "sha256": "79c867b4cadc0b18caebd613e11026f6e76d3cced04edef95d6e246b24ebadaa",
+      "rgbaSha256": "a950e71729aba9b2f4ff23371c9ce2350f34a821d8478a1126ae346341de133c",
+      "bytes": 192485,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-11.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-11.png",
+      "sha256": "6bba52f8dc5bd7b77c96a4a6716d400d980a660c5f482cc5d64582fa9a471854",
+      "rgbaSha256": "3f264025d059288ba4c511e547458327717e9724cf810b13a26be0823e28054d",
+      "bytes": 194011,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-21.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-21.png",
+      "sha256": "355dadb005534336cb1e908f7e58c28efd30669c5afeed1c381b1a7ff1c6a38e",
+      "rgbaSha256": "5a6e0943e1571eea20320f4defbd7805d055105a7233ba8ff546159cd4b05a98",
+      "bytes": 192174,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-14.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-14.png",
+      "sha256": "4614d90be24dc6ebc220b3cec625ed46770cd44995da3f85ec61e154052c6620",
+      "rgbaSha256": "dbac81dc20cba241e2d90289687985acb4d2c15e531a42f0852465e48b4998c5",
+      "bytes": 193300,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-18.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-18.png",
+      "sha256": "21a80bc7ce2a6d8dec9914969eee75c0f2c9d3fef93357d6c72393d4f01b7972",
+      "rgbaSha256": "9fd93f6bbccf4b6c52d4143dd84a48cec3b30b724b1c36a40ca5802b5fec3c29",
+      "bytes": 192761,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/gaze-16.png",
+      "source": "assets/strawberry-cat/work-transition-v1/gaze/frames/gaze-16.png",
+      "sha256": "b28e427b619ea629fa99eeb389e8a12e55732ae20a120119ed87e6a0a31d085f",
+      "rgbaSha256": "a0b1570e896719ee14f87eeda428880f5865ed263fc3b281d5185d3ea695a3be",
+      "bytes": 193102,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-04.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-04.png",
+      "sha256": "1c2d7794a87e62c3a5f2e3495b8b2e2fbdfac5faf0cf861facab197a32f8725d",
+      "rgbaSha256": "463a33bbdaec549e20014bce50a1d79aba747dddbb4dee6ddcd63c0d5bacf417",
+      "bytes": 192277,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-08.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-08.png",
+      "sha256": "48781ee51d0d1186d1b209c191bbc52d2330e34b77a22c1ddb245307d3e09b01",
+      "rgbaSha256": "721916addda60542c21122ddf2ce891eee0787d68d6571d5d772265968ae136b",
+      "bytes": 192108,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-11.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-11.png",
+      "sha256": "03220ca59f5b7a42b7404b9452bfcb3f0e6cf1b3e8c62912bd9158a4b4f310e3",
+      "rgbaSha256": "38d9851a0aa97c6cf66e18ac070c377476239c5ce277f66656ff2455a08fef51",
+      "bytes": 191944,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-15.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-15.png",
+      "sha256": "087f9ac64e4c48f8f3ef814af029c185c82cd5185351ab88648a76906a4e519c",
+      "rgbaSha256": "ff04332ee577815de7fbabc8523d06f2f83f1d74d054d93d68d617a876c27652",
+      "bytes": 190053,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-19.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-19.png",
+      "sha256": "904e77058ef4d3e2ce859a7a34bf33b8e3b96720fe07bc12cce64c809ae9f924",
+      "rgbaSha256": "e02fcb2bdc359cd8e561702e2eed4fd432e551d571df83178a646b02b0ac7348",
+      "bytes": 186735,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-23.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-23.png",
+      "sha256": "c7c8ec18c0ed4bd248f7396e6d2c21a1143ea872d886b2905f114461ec3db55b",
+      "rgbaSha256": "19e8ed2598133fffab20886f8253826b77303c11f1776fa13858926a6426691c",
+      "bytes": 185237,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-27.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-27.png",
+      "sha256": "10622698b835e7ca08a61ec2e530cd63f6c8e519f0b841ba6616c164f6dce448",
+      "rgbaSha256": "f3bdb2ed5be4d307bea2254b08735df02f8339461a9b6af7cad69f16e8347003",
+      "bytes": 184397,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-30.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-30.png",
+      "sha256": "4721e38236792ac6d2590722121ba22b123f0a7cce42d10b7a54fab377cd4464",
+      "rgbaSha256": "c5183364822bc5257bb2b1b3167d4c1611d3a1762e039840fbb3f54121033351",
+      "bytes": 184039,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-32.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-32.png",
+      "sha256": "f0582dc58988da99338c0f3f57dc057db0d7a118ff939ae6f037fab299c84008",
+      "rgbaSha256": "836a1615e4b5bdd4a67faa765be909afaa493accdbd377b26b20b85ed856c49a",
+      "bytes": 183376,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-33.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-33.png",
+      "sha256": "d2e0dcf71f03918aaf4633dc5254b4fb8617e4e6f240fa7a4933291d5175e7c8",
+      "rgbaSha256": "5aea9923accbdca580e0c876595ee8a6b038f04e1cf0cc70a4e62e478f750b25",
+      "bytes": 183945,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-36.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-36.png",
+      "sha256": "a8d149f464131979bee48023b8dd1741cb371e36f508011ba90aa2d44398d604",
+      "rgbaSha256": "2fcef38a2ece60b7694527ef6caaa9c8995d6beab58349633c22a6e0535276cd",
+      "bytes": 184169,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-38.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-38.png",
+      "sha256": "8b813fe2a91237e2f622451747c9f6e1d753f6324b9fc6335afd53163fabaf3f",
+      "rgbaSha256": "8600da0e6da60236686d664a621646eb3bfb4f513b63f5b7cab28cf03a6a5c21",
+      "bytes": 184577,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-41.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-41.png",
+      "sha256": "c7c8ec18c0ed4bd248f7396e6d2c21a1143ea872d886b2905f114461ec3db55b",
+      "rgbaSha256": "19e8ed2598133fffab20886f8253826b77303c11f1776fa13858926a6426691c",
+      "bytes": 185237,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-43.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-43.png",
+      "sha256": "12d9ed0d2e4cb4a5c7cd6104e503dbc8918e92322ab454a6502970f46d18a3d3",
+      "rgbaSha256": "075aded9fa816e7303a74c476b591a9c17f50f658b206de104ae87e6baa66847",
+      "bytes": 185797,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-46.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-46.png",
+      "sha256": "9baa5ed88865af52d73be85ac52faa55501aa2fcee548a525f2302ead3ac16d0",
+      "rgbaSha256": "24af065f1dc9153e09a249774faabed2932a0ae2f2031a7926c84e541e00566c",
+      "bytes": 187359,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-48.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-48.png",
+      "sha256": "9f4aaacf278821ff40ca7dfdf030d77553aae0a9513d9561e4d706effc9f5513",
+      "rgbaSha256": "082e39b1315e168f5e2c1335826a8531ccc0678b1dc73b5536102c317c4d4020",
+      "bytes": 188989,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-51.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-51.png",
+      "sha256": "5f8f22c550af5edbedb8fd0615e0a71cf0c889a068446a508140fdb23f0fa468",
+      "rgbaSha256": "806d1fbb716c2c558b820b3e397cf77dd37587e24f27d8b4161c7e9862e66110",
+      "bytes": 192122,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-53.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-53.png",
+      "sha256": "03220ca59f5b7a42b7404b9452bfcb3f0e6cf1b3e8c62912bd9158a4b4f310e3",
+      "rgbaSha256": "38d9851a0aa97c6cf66e18ac070c377476239c5ce277f66656ff2455a08fef51",
+      "bytes": 191944,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-55.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-55.png",
+      "sha256": "7e9dd2b8ba20e5fd2a0a8a4105c50997ca26123981c11fffa45411a6a63e290d",
+      "rgbaSha256": "475afaf32982f2ab4c4c2334302af1eba0fcd4daab9fb7be25025d58727e71e7",
+      "bytes": 191943,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-58.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-58.png",
+      "sha256": "f3a51909dfb4834ff24edb5cc01793cc2e95904db2c377a62ee8c4ef32fd70f4",
+      "rgbaSha256": "830d7c077e9e659f72bb3e9d4808f1129fbe1b954fd206d37ef4189b00f2fe50",
+      "bytes": 192231,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-60.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-60.png",
+      "sha256": "1c2d7794a87e62c3a5f2e3495b8b2e2fbdfac5faf0cf861facab197a32f8725d",
+      "rgbaSha256": "463a33bbdaec549e20014bce50a1d79aba747dddbb4dee6ddcd63c0d5bacf417",
+      "bytes": 192277,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    },
+    {
+      "file": "frames/work-v1/blink-63.png",
+      "source": "assets/strawberry-cat/work-preview-v3/blink/blink-63.png",
+      "sha256": "be78c3a525edc14f09c5c4c4634ca161d8c6f21f9c68133194af3f61f43df3f8",
+      "rgbaSha256": "dc24b1249f78131e2a7ebcaeb6ddb8896dc9e5b7a0c5f5fc3f935e496a7cc822",
+      "bytes": 191986,
+      "exactSha": true,
+      "exactPixels": true,
+      "aliasSources": []
+    }
+  ],
+  "clipContentsExact": true,
+  "nonWorkManifestExact": true,
+  "nonWorkManifestTextExact": true,
+  "manifest": {
+    "beforeSha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d",
+    "afterSha256": "e672778c6684979b9cd294893a09e39e188fdbc061b5d859a94c8798dae13c4d",
+    "beforeNonWorkSha256": "60311e2f2c927d248fcff90f170ae1f8f0849b7d89f5d4c1f53b7f6002dd8723",
+    "afterNonWorkSha256": "60311e2f2c927d248fcff90f170ae1f8f0849b7d89f5d4c1f53b7f6002dd8723",
+    "beforeNonWorkTextSha256": "159ac866162da6db1c62280f033191baf8b5801399a11987bd0756956dee81ba",
+    "afterNonWorkTextSha256": "159ac866162da6db1c62280f033191baf8b5801399a11987bd0756956dee81ba",
+    "preservedClipNames": [
+      "idle",
+      "blink",
+      "fall_asleep",
+      "sleep_loop",
+      "wake",
+      "rise",
+      "hold",
+      "settle",
+      "yawn",
+      "wink",
+      "meow",
+      "firefly"
+    ],
+    "yawnSha256": "bf0494c6a87112a15c8b37ee86ff1781eee51176b2fac3bebd520176e170f8c0",
+    "version": 9
+  },
+  "transitionPhases": [
+    {
+      "index": 0,
+      "startMs": 0,
+      "durationMs": 17,
+      "enterPhase": 0,
+      "exitPhase": 32
+    },
+    {
+      "index": 1,
+      "startMs": 17,
+      "durationMs": 16,
+      "enterPhase": 0,
+      "exitPhase": 32
+    },
+    {
+      "index": 2,
+      "startMs": 33,
+      "durationMs": 17,
+      "enterPhase": 0,
+      "exitPhase": 32
+    },
+    {
+      "index": 3,
+      "startMs": 50,
+      "durationMs": 17,
+      "enterPhase": 1,
+      "exitPhase": 31
+    },
+    {
+      "index": 4,
+      "startMs": 67,
+      "durationMs": 16,
+      "enterPhase": 1,
+      "exitPhase": 31
+    },
+    {
+      "index": 5,
+      "startMs": 83,
+      "durationMs": 17,
+      "enterPhase": 2,
+      "exitPhase": 30
+    },
+    {
+      "index": 6,
+      "startMs": 100,
+      "durationMs": 17,
+      "enterPhase": 3,
+      "exitPhase": 29
+    },
+    {
+      "index": 7,
+      "startMs": 117,
+      "durationMs": 16,
+      "enterPhase": 5,
+      "exitPhase": 27
+    },
+    {
+      "index": 8,
+      "startMs": 133,
+      "durationMs": 17,
+      "enterPhase": 7,
+      "exitPhase": 25
+    },
+    {
+      "index": 9,
+      "startMs": 150,
+      "durationMs": 17,
+      "enterPhase": 9,
+      "exitPhase": 23
+    },
+    {
+      "index": 10,
+      "startMs": 167,
+      "durationMs": 16,
+      "enterPhase": 11,
+      "exitPhase": 21
+    },
+    {
+      "index": 11,
+      "startMs": 183,
+      "durationMs": 17,
+      "enterPhase": 14,
+      "exitPhase": 18
+    },
+    {
+      "index": 12,
+      "startMs": 200,
+      "durationMs": 17,
+      "enterPhase": 16,
+      "exitPhase": 16
+    },
+    {
+      "index": 13,
+      "startMs": 217,
+      "durationMs": 16,
+      "enterPhase": 18,
+      "exitPhase": 14
+    },
+    {
+      "index": 14,
+      "startMs": 233,
+      "durationMs": 17,
+      "enterPhase": 21,
+      "exitPhase": 11
+    },
+    {
+      "index": 15,
+      "startMs": 250,
+      "durationMs": 17,
+      "enterPhase": 23,
+      "exitPhase": 9
+    },
+    {
+      "index": 16,
+      "startMs": 267,
+      "durationMs": 16,
+      "enterPhase": 25,
+      "exitPhase": 7
+    },
+    {
+      "index": 17,
+      "startMs": 283,
+      "durationMs": 17,
+      "enterPhase": 27,
+      "exitPhase": 5
+    },
+    {
+      "index": 18,
+      "startMs": 300,
+      "durationMs": 17,
+      "enterPhase": 29,
+      "exitPhase": 3
+    },
+    {
+      "index": 19,
+      "startMs": 317,
+      "durationMs": 16,
+      "enterPhase": 30,
+      "exitPhase": 2
+    },
+    {
+      "index": 20,
+      "startMs": 333,
+      "durationMs": 17,
+      "enterPhase": 31,
+      "exitPhase": 1
+    },
+    {
+      "index": 21,
+      "startMs": 350,
+      "durationMs": 17,
+      "enterPhase": 31,
+      "exitPhase": 1
+    },
+    {
+      "index": 22,
+      "startMs": 367,
+      "durationMs": 16,
+      "enterPhase": 32,
+      "exitPhase": 0
+    },
+    {
+      "index": 23,
+      "startMs": 383,
+      "durationMs": 17,
+      "enterPhase": 32,
+      "exitPhase": 0
+    }
+  ],
+  "representativeFrames": [
+    {
+      "index": 0,
+      "timeMs": 0,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": 0,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-4534e8f8e5ae7a7270d1.png",
+      "actualRgbaSha256": "4534e8f8e5ae7a7270d104d26b7c3a51a1eb63991f488e398fc7f6fe39a1d2fc",
+      "expectedRgbaSha256": "4534e8f8e5ae7a7270d104d26b7c3a51a1eb63991f488e398fc7f6fe39a1d2fc",
+      "pixelsExact": true
+    },
+    {
+      "index": 1,
+      "timeMs": 16.666666666666668,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": -0.00023797292009086757,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-e11c67f7d778017d0c86.png",
+      "actualRgbaSha256": "e11c67f7d778017d0c86bdec38b6d29f666a4d28e32bcc45f77f763df4dbc8a7",
+      "expectedRgbaSha256": "e11c67f7d778017d0c86bdec38b6d29f666a4d28e32bcc45f77f763df4dbc8a7",
+      "pixelsExact": true
+    },
+    {
+      "index": 72,
+      "timeMs": 1200,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": -0.9999999999999999,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-9a07ffaa99f9f308b436.png",
+      "actualRgbaSha256": "9a07ffaa99f9f308b436a2cd1db613255815f938097cd34f5129aa7506bf9da1",
+      "expectedRgbaSha256": "9a07ffaa99f9f308b436a2cd1db613255815f938097cd34f5129aa7506bf9da1",
+      "pixelsExact": true
+    },
+    {
+      "index": 75,
+      "timeMs": 1250,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": -1.0654031292301431,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-07942facb5705c98f38c.png",
+      "actualRgbaSha256": "07942facb5705c98f38c693cd25c14e536e1a9ee7fdd49003471b63a2d9fd491",
+      "expectedRgbaSha256": "07942facb5705c98f38c693cd25c14e536e1a9ee7fdd49003471b63a2d9fd491",
+      "pixelsExact": true
+    },
+    {
+      "index": 76,
+      "timeMs": 1266.6666666666667,
+      "catFile": "frames/work-v1/blink-04.png",
+      "dyPx": -1.0871557427476581,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-ee1c001245df0a93387c.png",
+      "actualRgbaSha256": "ee1c001245df0a93387c48cedf4c891affc223ba26533425fc427b278e96943a",
+      "expectedRgbaSha256": "ee1c001245df0a93387c48cedf4c891affc223ba26533425fc427b278e96943a",
+      "pixelsExact": true
+    },
+    {
+      "index": 77,
+      "timeMs": 1283.3333333333333,
+      "catFile": "frames/work-v1/blink-08.png",
+      "dyPx": -1.1088668748519643,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-0efc3a29708c87cc81a6.png",
+      "actualRgbaSha256": "0efc3a29708c87cc81a6cce74caf30a4f109e862ba958c7528563d371d9d3437",
+      "expectedRgbaSha256": "0efc3a29708c87cc81a6cce74caf30a4f109e862ba958c7528563d371d9d3437",
+      "pixelsExact": true
+    },
+    {
+      "index": 78,
+      "timeMs": 1300,
+      "catFile": "frames/work-v1/blink-11.png",
+      "dyPx": -1.1305261922200514,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-af9fa7cfe1e97686de5c.png",
+      "actualRgbaSha256": "af9fa7cfe1e97686de5c7c636f47415faf269ff4b5bafeb6e36a9c7305c18cc1",
+      "expectedRgbaSha256": "af9fa7cfe1e97686de5c7c636f47415faf269ff4b5bafeb6e36a9c7305c18cc1",
+      "pixelsExact": true
+    },
+    {
+      "index": 79,
+      "timeMs": 1316.6666666666667,
+      "catFile": "frames/work-v1/blink-15.png",
+      "dyPx": -1.152123386189917,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-95951e04ba576f852876.png",
+      "actualRgbaSha256": "95951e04ba576f8528760b60fce91871a69187d7512a3c8b618e6afdd32136a5",
+      "expectedRgbaSha256": "95951e04ba576f8528760b60fce91871a69187d7512a3c8b618e6afdd32136a5",
+      "pixelsExact": true
+    },
+    {
+      "index": 80,
+      "timeMs": 1333.3333333333333,
+      "catFile": "frames/work-v1/blink-19.png",
+      "dyPx": -1.1736481776669303,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-eab929254b7f23070fd3.png",
+      "actualRgbaSha256": "eab929254b7f23070fd3191be50b009d0ca5d180f16313526f0fee62ac947d5f",
+      "expectedRgbaSha256": "eab929254b7f23070fd3191be50b009d0ca5d180f16313526f0fee62ac947d5f",
+      "pixelsExact": true
+    },
+    {
+      "index": 81,
+      "timeMs": 1350,
+      "catFile": "frames/work-v1/blink-23.png",
+      "dyPx": -1.1950903220161284,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-7af56bdfb517695137cb.png",
+      "actualRgbaSha256": "7af56bdfb517695137cb71faba61f777e1cc4c829de04731f460eace72a545db",
+      "expectedRgbaSha256": "7af56bdfb517695137cb71faba61f777e1cc4c829de04731f460eace72a545db",
+      "pixelsExact": true
+    },
+    {
+      "index": 82,
+      "timeMs": 1366.6666666666667,
+      "catFile": "frames/work-v1/blink-27.png",
+      "dyPx": -1.2164396139381028,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-2f7ff3d4861c235ff160.png",
+      "actualRgbaSha256": "2f7ff3d4861c235ff160f3fff636d58bbeb9b4e0e926b4d02c64bb557cb20440",
+      "expectedRgbaSha256": "2f7ff3d4861c235ff160f3fff636d58bbeb9b4e0e926b4d02c64bb557cb20440",
+      "pixelsExact": true
+    },
+    {
+      "index": 83,
+      "timeMs": 1383.3333333333333,
+      "catFile": "frames/work-v1/blink-30.png",
+      "dyPx": -1.237685892326173,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-a53de5b1f16f768d3e65.png",
+      "actualRgbaSha256": "a53de5b1f16f768d3e65aa8db94300fa654d6c2e0dc813cebf6d90eec75ccb5c",
+      "expectedRgbaSha256": "a53de5b1f16f768d3e65aa8db94300fa654d6c2e0dc813cebf6d90eec75ccb5c",
+      "pixelsExact": true
+    },
+    {
+      "index": 84,
+      "timeMs": 1400,
+      "catFile": "frames/work-v1/blink-32.png",
+      "dyPx": -1.2588190451025207,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-1f72fb3c674526f51e9d.png",
+      "actualRgbaSha256": "1f72fb3c674526f51e9d9f3d080daa1bd762c1ae57f9db7ea1313f3ac9fd0e1c",
+      "expectedRgbaSha256": "1f72fb3c674526f51e9d9f3d080daa1bd762c1ae57f9db7ea1313f3ac9fd0e1c",
+      "pixelsExact": true
+    },
+    {
+      "index": 85,
+      "timeMs": 1416.6666666666667,
+      "catFile": "frames/work-v1/blink-33.png",
+      "dyPx": -1.2798290140309918,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-f40978353c05bf9d6660.png",
+      "actualRgbaSha256": "f40978353c05bf9d66608b28e2b56ad1d643212266fa2a6d9c718e1ae4325e4c",
+      "expectedRgbaSha256": "f40978353c05bf9d66608b28e2b56ad1d643212266fa2a6d9c718e1ae4325e4c",
+      "pixelsExact": true
+    },
+    {
+      "index": 86,
+      "timeMs": 1433.3333333333333,
+      "catFile": "frames/work-v1/blink-36.png",
+      "dyPx": -1.3007057995042728,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-6fb7a8609bd721464ed6.png",
+      "actualRgbaSha256": "6fb7a8609bd721464ed618a530f2e8878ade7a4d17e0b9603d092f15c5a505bb",
+      "expectedRgbaSha256": "6fb7a8609bd721464ed618a530f2e8878ade7a4d17e0b9603d092f15c5a505bb",
+      "pixelsExact": true
+    },
+    {
+      "index": 87,
+      "timeMs": 1450,
+      "catFile": "frames/work-v1/blink-38.png",
+      "dyPx": -1.3214394653031614,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-0bc1f57ab765691734de.png",
+      "actualRgbaSha256": "0bc1f57ab765691734de69e4a7d8d6fde90c91640514902b2fe33e9459336455",
+      "expectedRgbaSha256": "0bc1f57ab765691734de69e4a7d8d6fde90c91640514902b2fe33e9459336455",
+      "pixelsExact": true
+    },
+    {
+      "index": 88,
+      "timeMs": 1466.6666666666667,
+      "catFile": "frames/work-v1/blink-41.png",
+      "dyPx": -1.3420201433256687,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-bfd7f4be70cb9a3b0cfb.png",
+      "actualRgbaSha256": "bfd7f4be70cb9a3b0cfbb92472906f5f566ea438ebd0871f1df25e5f6972fd55",
+      "expectedRgbaSha256": "bfd7f4be70cb9a3b0cfbb92472906f5f566ea438ebd0871f1df25e5f6972fd55",
+      "pixelsExact": true
+    },
+    {
+      "index": 89,
+      "timeMs": 1483.3333333333333,
+      "catFile": "frames/work-v1/blink-43.png",
+      "dyPx": -1.3624380382837014,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-807b45a75978fac93fe1.png",
+      "actualRgbaSha256": "807b45a75978fac93fe1a6b8a6d97afbb385abfb0951579b7f69cb82cedda493",
+      "expectedRgbaSha256": "807b45a75978fac93fe1a6b8a6d97afbb385abfb0951579b7f69cb82cedda493",
+      "pixelsExact": true
+    },
+    {
+      "index": 90,
+      "timeMs": 1500,
+      "catFile": "frames/work-v1/blink-46.png",
+      "dyPx": -1.3826834323650896,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-b800806feff0dae10a3f.png",
+      "actualRgbaSha256": "b800806feff0dae10a3fd99f9b2fc6f6f0497cdd538ae6816e16b33a01abec78",
+      "expectedRgbaSha256": "b800806feff0dae10a3fd99f9b2fc6f6f0497cdd538ae6816e16b33a01abec78",
+      "pixelsExact": true
+    },
+    {
+      "index": 91,
+      "timeMs": 1516.6666666666667,
+      "catFile": "frames/work-v1/blink-48.png",
+      "dyPx": -1.4027466898587373,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-42c24995536255a1ca00.png",
+      "actualRgbaSha256": "42c24995536255a1ca0024a407ea58d0d139843f7b41ee4a2135508be027669e",
+      "expectedRgbaSha256": "42c24995536255a1ca0024a407ea58d0d139843f7b41ee4a2135508be027669e",
+      "pixelsExact": true
+    },
+    {
+      "index": 92,
+      "timeMs": 1533.3333333333333,
+      "catFile": "frames/work-v1/blink-51.png",
+      "dyPx": -1.4226182617406993,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-3018bd5c816a8e8263ef.png",
+      "actualRgbaSha256": "3018bd5c816a8e8263eff7b944639e6ec2d1b7ed44d0274473357cfd8ba0d404",
+      "expectedRgbaSha256": "3018bd5c816a8e8263eff7b944639e6ec2d1b7ed44d0274473357cfd8ba0d404",
+      "pixelsExact": true
+    },
+    {
+      "index": 93,
+      "timeMs": 1550,
+      "catFile": "frames/work-v1/blink-53.png",
+      "dyPx": -1.442288690219001,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-1fbd9d6a8cea24490aa4.png",
+      "actualRgbaSha256": "1fbd9d6a8cea24490aa45e05e684d708a07c03c3ffcad4de2347d6c8569423b6",
+      "expectedRgbaSha256": "1fbd9d6a8cea24490aa45e05e684d708a07c03c3ffcad4de2347d6c8569423b6",
+      "pixelsExact": true
+    },
+    {
+      "index": 94,
+      "timeMs": 1566.6666666666667,
+      "catFile": "frames/work-v1/blink-55.png",
+      "dyPx": -1.4617486132350341,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-39c34c458a5536d4d9b3.png",
+      "actualRgbaSha256": "39c34c458a5536d4d9b3ba5040639e1e71d66e3b466e9e6a712e5bb1336f5c2b",
+      "expectedRgbaSha256": "39c34c458a5536d4d9b3ba5040639e1e71d66e3b466e9e6a712e5bb1336f5c2b",
+      "pixelsExact": true
+    },
+    {
+      "index": 95,
+      "timeMs": 1583.3333333333333,
+      "catFile": "frames/work-v1/blink-58.png",
+      "dyPx": -1.4809887689193875,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-ccc79a5f6936c32e3647.png",
+      "actualRgbaSha256": "ccc79a5f6936c32e3647f001ce854d60e7bb1ae63caee4bdd8333580bb11c512",
+      "expectedRgbaSha256": "ccc79a5f6936c32e3647f001ce854d60e7bb1ae63caee4bdd8333580bb11c512",
+      "pixelsExact": true
+    },
+    {
+      "index": 96,
+      "timeMs": 1600,
+      "catFile": "frames/work-v1/blink-60.png",
+      "dyPx": -1.5000000000000002,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-793a8fcd4cecd9db57ce.png",
+      "actualRgbaSha256": "793a8fcd4cecd9db57ce9e937d43f5eece8cfa63b262ce1a38d3d6467bbd2c0b",
+      "expectedRgbaSha256": "793a8fcd4cecd9db57ce9e937d43f5eece8cfa63b262ce1a38d3d6467bbd2c0b",
+      "pixelsExact": true
+    },
+    {
+      "index": 97,
+      "timeMs": 1616.6666666666667,
+      "catFile": "frames/work-v1/blink-63.png",
+      "dyPx": -1.5187732581605216,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-f90603d13b3b2bbbc10c.png",
+      "actualRgbaSha256": "f90603d13b3b2bbbc10c4c45bbc49c68f70cf5fd0f08ce9610dfdf88bbe48683",
+      "expectedRgbaSha256": "f90603d13b3b2bbbc10c4c45bbc49c68f70cf5fd0f08ce9610dfdf88bbe48683",
+      "pixelsExact": true
+    },
+    {
+      "index": 144,
+      "timeMs": 2400,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": -2,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-89c22b4952c48695f55b.png",
+      "actualRgbaSha256": "89c22b4952c48695f55b3c94bbc7e8fc8d9e097c827a1d8c551732d356f3c342",
+      "expectedRgbaSha256": "89c22b4952c48695f55b3c94bbc7e8fc8d9e097c827a1d8c551732d356f3c342",
+      "pixelsExact": true
+    },
+    {
+      "index": 288,
+      "timeMs": 4800,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": 0,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-4534e8f8e5ae7a7270d1.png",
+      "actualRgbaSha256": "4534e8f8e5ae7a7270d104d26b7c3a51a1eb63991f488e398fc7f6fe39a1d2fc",
+      "expectedRgbaSha256": "4534e8f8e5ae7a7270d104d26b7c3a51a1eb63991f488e398fc7f6fe39a1d2fc",
+      "pixelsExact": true
+    },
+    {
+      "index": 402,
+      "timeMs": 6700,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": -1.7933533402912358,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-9295e6c70a7090363e39.png",
+      "actualRgbaSha256": "9295e6c70a7090363e39300f864d9da680f45b4ed6b884ef23e9e90fc966cb24",
+      "expectedRgbaSha256": "9295e6c70a7090363e39300f864d9da680f45b4ed6b884ef23e9e90fc966cb24",
+      "pixelsExact": true
+    },
+    {
+      "index": 411,
+      "timeMs": 6850,
+      "catFile": "frames/work-v1/blink-32.png",
+      "dyPx": -1.8968727415326887,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-d96bf2292670d6da6bbc.png",
+      "actualRgbaSha256": "d96bf2292670d6da6bbc5304139b4616c4502c69d1f7f160efd68295e327d358",
+      "expectedRgbaSha256": "d96bf2292670d6da6bbc5304139b4616c4502c69d1f7f160efd68295e327d358",
+      "pixelsExact": true
+    },
+    {
+      "index": 423,
+      "timeMs": 7050,
+      "catFile": "frames/work-v1/blink-60.png",
+      "dyPx": -1.9807852804032304,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-2555c995fabfced0df7a.png",
+      "actualRgbaSha256": "2555c995fabfced0df7af6769ac169a949eca12bc484422c174691eb49b72fbd",
+      "expectedRgbaSha256": "2555c995fabfced0df7af6769ac169a949eca12bc484422c174691eb49b72fbd",
+      "pixelsExact": true
+    },
+    {
+      "index": 432,
+      "timeMs": 7200,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": -2,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-89c22b4952c48695f55b.png",
+      "actualRgbaSha256": "89c22b4952c48695f55b3c94bbc7e8fc8d9e097c827a1d8c551732d356f3c342",
+      "expectedRgbaSha256": "89c22b4952c48695f55b3c94bbc7e8fc8d9e097c827a1d8c551732d356f3c342",
+      "pixelsExact": true
+    },
+    {
+      "index": 575,
+      "timeMs": 9583.333333333334,
+      "catFile": "frames/work-v1/focused.png",
+      "dyPx": -0.00023797292009086757,
+      "previewFile": "assets/strawberry-cat/work-preview-v3/frames/frame-e11c67f7d778017d0c86.png",
+      "actualRgbaSha256": "e11c67f7d778017d0c86bdec38b6d29f666a4d28e32bcc45f77f763df4dbc8a7",
+      "expectedRgbaSha256": "e11c67f7d778017d0c86bdec38b6d29f666a4d28e32bcc45f77f763df4dbc8a7",
+      "pixelsExact": true
+    }
+  ],
+  "runtime": {
+    "bodyTranslation": "dy(t) = cos(2*pi*t/4800)-1, in source 512px coordinates",
+    "props": "Static independent image; opacity belongs to Core/WPF",
+    "transitionMs": 400,
+    "gazeTiming": "quintic ease; final slot is exact endpoint",
+    "workClock": "Continuous while working; independent of blink selection",
+    "exit": "Finish an active blink first; reverse gaze and fade props over 400ms; damp continuing breath to zero using 1-quinticEase"
+  }
+}

@@ -1,0 +1,2345 @@
+{
+  "version": 3,
+  "status": "candidate-not-installed",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "clip": {
+    "name": "work_loop",
+    "loop": true,
+    "durationMs": 9600,
+    "frames": [
+      {
+        "file": "frames/frame-4534e8f8e5ae7a7270d1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-e11c67f7d778017d0c86.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8c591123a743e76ccb50.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8ffde6957e5ff7751d1d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-73e36ffa1ed778fc3048.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-64e9c031778691f8349e.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a878a45310cefd3e2aed.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b8c0839080d1d01e0f11.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-47d402300d64506df0e7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-704e5e8a4d53fc1784a8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c8b6cf2a81433ac90f5f.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1f35b62b18565b47bed7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5903bce2443f5eb469a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-26a617c7de95944e5178.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b6a24c35e3fbe96b4b36.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4ad5d3cf306550a61479.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b804800b347968ba99a7.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-cdc1d8e4d46920af107e.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9f5a2c552ccd205a1432.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2e9e01694ef7788ff0e9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-5d300c3e65460e3b5ae2.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a3e0d68b7db46f6f855a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1aa8b5a72503dc709604.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-086b926fca5f11c52001.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-eeb3d4568bad4a69c082.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-dedf16dffd6171dc1017.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-119261b0a7e2bcc499fc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-35f290a256122d6e369a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c3dd8fa498d94068d97b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ae32b5d20685e3bd1771.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5d4f5fc7d72e1130f443.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-dcb428706250cae9afff.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-bd19bb123762a5e99677.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9c133af8b20d7edb5801.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-10ea4f27e5110009d1bd.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-2a3f68880d7e1c8ccc69.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c81cb1928f6420bb19c3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d279d70969db0f4e2fd9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c2005d3c84888fed14de.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d4cb325d5f01b8b138c0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1f726fdc3180a3534322.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-6f388da1ce90432770a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-143bdcc36231399084d5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5be5e8cd467d123e3390.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-76208045a13c90130b1f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-63fd01d2ee859a6f00a3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1ff2ba191ffacb8fe896.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-47043420299ce9672385.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-45687372a735e72b8e4c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1052ee3e94abcc9f19fe.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-96ad8a53a1097a289353.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3837c933065f07d640cc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-867705f327ffce0fbc4a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d0c4b33c1d6d9008c0e0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8f9f880a3026c94e11ff.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c6d44533d3b067d9738e.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-43152e473c1adcbd6a5c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-617c063d5c5c433f74c1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7591a0d430a4bad51538.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1e93bf62c62cf7af4556.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-37c54c6ddef8a0a52293.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1c7010a49b54bf6c0585.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c6bed051bd2cd4291f7b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-38c32ca0f16ac920b0df.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-45c9b2abbf9d39e5fef9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b273a3db604a23ae6e50.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d7c0f93acf98d13b49b8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-fe6baeaae370e9f76b3d.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-839fc4ceea7d583afe77.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7588ec3414e68f9797f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-de879c4c90486cde5fc2.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-597b2b89fb5e9aaacbbe.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9a07ffaa99f9f308b436.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-efe8bf92d0cfcbc387e5.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8363bdc009106614e8e0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-07942facb5705c98f38c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ee1c001245df0a93387c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-0efc3a29708c87cc81a6.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-af9fa7cfe1e97686de5c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-95951e04ba576f852876.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-eab929254b7f23070fd3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7af56bdfb517695137cb.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2f7ff3d4861c235ff160.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-a53de5b1f16f768d3e65.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1f72fb3c674526f51e9d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f40978353c05bf9d6660.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-6fb7a8609bd721464ed6.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-0bc1f57ab765691734de.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-bfd7f4be70cb9a3b0cfb.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-807b45a75978fac93fe1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b800806feff0dae10a3f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-42c24995536255a1ca00.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-3018bd5c816a8e8263ef.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1fbd9d6a8cea24490aa4.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-39c34c458a5536d4d9b3.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ccc79a5f6936c32e3647.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-793a8fcd4cecd9db57ce.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f90603d13b3b2bbbc10c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-62111e132412b8d7f4ca.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-515cde5884420fad07e5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8977a9e49485e0b17022.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8d6573e23594986effbc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-cf6b4a2021da70bfc340.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-39a4f73641bff3314042.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-0e4cee76d29bdf1e24c1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-200c57120edf492d47fd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-478c7c5b7fe7890bb75a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ec0c3e52210f8dfeed79.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-09f3db6f0ad94917146d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-82ba8a2ef8300869c676.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-70bc0210247fd1668470.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-372c75ec0379d633fd89.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-88585a71abdb448d9a81.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-62f572ce8a01058d31cf.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9295e6c70a7090363e39.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1309e1e02c8236cd6e9a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-adc5420191dbbeaac75b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-73c898c14e0f35066be7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ccf7f80eaf3e926480e2.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d71f614b4df5f5757303.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-99c6659f7c95d9e7a3fd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-314b142a0f5692ff0e7b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-3b6791b4e670b54fb51b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c5b633702047ed0c844a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7708f7f1928137e8d10.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-9fd969f051fa8ee577d3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-dfadd744c0d4c046bc33.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d5af80ff9e9a633ad5ab.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-de2f7ccc53213ffb93f2.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9c7992ce5c30ebd6d84d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f2f5fd86d7b8b5dbbc6a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ddfde46bba691d4c9c99.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-52c7dac081ed23709c27.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-bfc0c8568c54f1a52064.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-a71ce5fd572b59f0dbd5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d2d4aef02c6326ad7cf6.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c3ed474a893a4f8ff81c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-31f2ea083c42e9099631.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ca06427e1a7716768228.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-03b207bb2d04b6a55b2b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-36b9b395185e5fb6b635.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4468bb71bebd2c6e7d84.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7a20a2ae0074936d6d5c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-fd83cdf9a29c7071f63c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-89c22b4952c48695f55b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-fd83cdf9a29c7071f63c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-7a20a2ae0074936d6d5c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4468bb71bebd2c6e7d84.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-36b9b395185e5fb6b635.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-03b207bb2d04b6a55b2b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ca06427e1a7716768228.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-31f2ea083c42e9099631.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c3ed474a893a4f8ff81c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d2d4aef02c6326ad7cf6.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a71ce5fd572b59f0dbd5.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-bfc0c8568c54f1a52064.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-52c7dac081ed23709c27.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ddfde46bba691d4c9c99.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-f2f5fd86d7b8b5dbbc6a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9c7992ce5c30ebd6d84d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-de2f7ccc53213ffb93f2.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d5af80ff9e9a633ad5ab.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-dfadd744c0d4c046bc33.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9fd969f051fa8ee577d3.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b7708f7f1928137e8d10.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c5b633702047ed0c844a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3b6791b4e670b54fb51b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-314b142a0f5692ff0e7b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-99c6659f7c95d9e7a3fd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d71f614b4df5f5757303.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ccf7f80eaf3e926480e2.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-73c898c14e0f35066be7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-adc5420191dbbeaac75b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1309e1e02c8236cd6e9a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9295e6c70a7090363e39.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-62f572ce8a01058d31cf.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-88585a71abdb448d9a81.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-372c75ec0379d633fd89.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-70bc0210247fd1668470.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-82ba8a2ef8300869c676.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-09f3db6f0ad94917146d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ec0c3e52210f8dfeed79.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-478c7c5b7fe7890bb75a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-200c57120edf492d47fd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-0e4cee76d29bdf1e24c1.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-39a4f73641bff3314042.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-cf6b4a2021da70bfc340.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8d6573e23594986effbc.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8977a9e49485e0b17022.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-515cde5884420fad07e5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-62111e132412b8d7f4ca.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-913c04981fd1dd4662d7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7137961436ca577ff04.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b921a754cfbf47c014da.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-e6b051ec29e939277f9a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3327926b5823ce21ab23.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4dd080134273683b311d.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-7d5a69cdf96d943c370b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ad01c1111f0e48f32c09.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7308c97dc81fa90fba47.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-41acf4358019a2b3565f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f6c1a2d9b88e3181ba21.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-495bf01d312868c7089a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-665824fbdeef184124a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2399de438e1fdafcac41.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-664651e1dd0b320b5fae.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-2640b51244adeff70c1b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7288205d0afc866f2d3d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-54e17ee113aa6b0ac746.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-af55efd5277b7e6e5d4b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-740cdb9f34aa375fc2f4.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f333e020354b6d58c80d.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c6bac5088f2615591ae9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-07942facb5705c98f38c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8363bdc009106614e8e0.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-efe8bf92d0cfcbc387e5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9a07ffaa99f9f308b436.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-597b2b89fb5e9aaacbbe.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-de879c4c90486cde5fc2.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7588ec3414e68f9797f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-839fc4ceea7d583afe77.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-fe6baeaae370e9f76b3d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d7c0f93acf98d13b49b8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b273a3db604a23ae6e50.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-45c9b2abbf9d39e5fef9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-38c32ca0f16ac920b0df.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c6bed051bd2cd4291f7b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1c7010a49b54bf6c0585.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-37c54c6ddef8a0a52293.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1e93bf62c62cf7af4556.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-7591a0d430a4bad51538.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-617c063d5c5c433f74c1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-43152e473c1adcbd6a5c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c6d44533d3b067d9738e.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8f9f880a3026c94e11ff.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d0c4b33c1d6d9008c0e0.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-867705f327ffce0fbc4a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3837c933065f07d640cc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-96ad8a53a1097a289353.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1052ee3e94abcc9f19fe.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-45687372a735e72b8e4c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-47043420299ce9672385.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1ff2ba191ffacb8fe896.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-63fd01d2ee859a6f00a3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-76208045a13c90130b1f.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-5be5e8cd467d123e3390.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-143bdcc36231399084d5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-6f388da1ce90432770a9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1f726fdc3180a3534322.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d4cb325d5f01b8b138c0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c2005d3c84888fed14de.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d279d70969db0f4e2fd9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c81cb1928f6420bb19c3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2a3f68880d7e1c8ccc69.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-10ea4f27e5110009d1bd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9c133af8b20d7edb5801.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-bd19bb123762a5e99677.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-dcb428706250cae9afff.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5d4f5fc7d72e1130f443.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ae32b5d20685e3bd1771.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c3dd8fa498d94068d97b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-35f290a256122d6e369a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-119261b0a7e2bcc499fc.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-dedf16dffd6171dc1017.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-eeb3d4568bad4a69c082.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-086b926fca5f11c52001.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1aa8b5a72503dc709604.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a3e0d68b7db46f6f855a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5d300c3e65460e3b5ae2.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-2e9e01694ef7788ff0e9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9f5a2c552ccd205a1432.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-cdc1d8e4d46920af107e.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b804800b347968ba99a7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4ad5d3cf306550a61479.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b6a24c35e3fbe96b4b36.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-26a617c7de95944e5178.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5903bce2443f5eb469a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1f35b62b18565b47bed7.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c8b6cf2a81433ac90f5f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-704e5e8a4d53fc1784a8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-47d402300d64506df0e7.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b8c0839080d1d01e0f11.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a878a45310cefd3e2aed.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-64e9c031778691f8349e.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-73e36ffa1ed778fc3048.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8ffde6957e5ff7751d1d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8c591123a743e76ccb50.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-e11c67f7d778017d0c86.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4534e8f8e5ae7a7270d1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-e11c67f7d778017d0c86.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8c591123a743e76ccb50.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8ffde6957e5ff7751d1d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-73e36ffa1ed778fc3048.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-64e9c031778691f8349e.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a878a45310cefd3e2aed.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b8c0839080d1d01e0f11.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-47d402300d64506df0e7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-704e5e8a4d53fc1784a8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c8b6cf2a81433ac90f5f.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1f35b62b18565b47bed7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5903bce2443f5eb469a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-26a617c7de95944e5178.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b6a24c35e3fbe96b4b36.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4ad5d3cf306550a61479.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b804800b347968ba99a7.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-cdc1d8e4d46920af107e.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9f5a2c552ccd205a1432.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2e9e01694ef7788ff0e9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-5d300c3e65460e3b5ae2.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a3e0d68b7db46f6f855a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1aa8b5a72503dc709604.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-086b926fca5f11c52001.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-eeb3d4568bad4a69c082.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-dedf16dffd6171dc1017.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-119261b0a7e2bcc499fc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-35f290a256122d6e369a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c3dd8fa498d94068d97b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ae32b5d20685e3bd1771.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5d4f5fc7d72e1130f443.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-dcb428706250cae9afff.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-bd19bb123762a5e99677.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9c133af8b20d7edb5801.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-10ea4f27e5110009d1bd.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-2a3f68880d7e1c8ccc69.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c81cb1928f6420bb19c3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d279d70969db0f4e2fd9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c2005d3c84888fed14de.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d4cb325d5f01b8b138c0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1f726fdc3180a3534322.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-6f388da1ce90432770a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-143bdcc36231399084d5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5be5e8cd467d123e3390.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-76208045a13c90130b1f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-63fd01d2ee859a6f00a3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1ff2ba191ffacb8fe896.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-47043420299ce9672385.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-45687372a735e72b8e4c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1052ee3e94abcc9f19fe.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-96ad8a53a1097a289353.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3837c933065f07d640cc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-867705f327ffce0fbc4a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d0c4b33c1d6d9008c0e0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8f9f880a3026c94e11ff.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c6d44533d3b067d9738e.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-43152e473c1adcbd6a5c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-617c063d5c5c433f74c1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7591a0d430a4bad51538.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1e93bf62c62cf7af4556.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-37c54c6ddef8a0a52293.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1c7010a49b54bf6c0585.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c6bed051bd2cd4291f7b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-38c32ca0f16ac920b0df.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-45c9b2abbf9d39e5fef9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b273a3db604a23ae6e50.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d7c0f93acf98d13b49b8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-fe6baeaae370e9f76b3d.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-839fc4ceea7d583afe77.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7588ec3414e68f9797f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-de879c4c90486cde5fc2.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-597b2b89fb5e9aaacbbe.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9a07ffaa99f9f308b436.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-efe8bf92d0cfcbc387e5.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8363bdc009106614e8e0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-07942facb5705c98f38c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c6bac5088f2615591ae9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-f333e020354b6d58c80d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-740cdb9f34aa375fc2f4.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-af55efd5277b7e6e5d4b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-54e17ee113aa6b0ac746.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7288205d0afc866f2d3d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2640b51244adeff70c1b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-664651e1dd0b320b5fae.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2399de438e1fdafcac41.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-665824fbdeef184124a9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-495bf01d312868c7089a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f6c1a2d9b88e3181ba21.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-41acf4358019a2b3565f.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-7308c97dc81fa90fba47.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ad01c1111f0e48f32c09.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7d5a69cdf96d943c370b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-4dd080134273683b311d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3327926b5823ce21ab23.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-e6b051ec29e939277f9a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b921a754cfbf47c014da.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7137961436ca577ff04.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-913c04981fd1dd4662d7.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-62111e132412b8d7f4ca.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-515cde5884420fad07e5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8977a9e49485e0b17022.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8d6573e23594986effbc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-cf6b4a2021da70bfc340.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-39a4f73641bff3314042.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-0e4cee76d29bdf1e24c1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-200c57120edf492d47fd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-478c7c5b7fe7890bb75a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ec0c3e52210f8dfeed79.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-09f3db6f0ad94917146d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-82ba8a2ef8300869c676.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-70bc0210247fd1668470.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-372c75ec0379d633fd89.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-88585a71abdb448d9a81.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-62f572ce8a01058d31cf.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9295e6c70a7090363e39.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-6d418b4b9231289dc429.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-021f99014759f45d0f47.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-95d06d90486b0e63df16.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f8d5ca36901d90caa1fe.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-fa3c13d6118763b42816.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-eaaf4ac92d15e63d1086.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-e49fd31f0a7d8f1c0964.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b4b7df949b8b467c9e5b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d96bf2292670d6da6bbc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ab64012085ebc7afc27f.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-39f8ab1889fcbdd2dede.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-671f540f5aceaaa6fc82.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b2a0a78d0c2859a8ff00.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-dd99bd7dde6943f23db9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-30a6239e6b6b2a56e528.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4d09dcf4371db1b1a9ab.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d74c1d359d068ec198b5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-0fae42c02b2c9e62c432.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ed074a572895eebc3d76.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-aa0f413eeb028d234290.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2555c995fabfced0df7a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-879dd93e066fab1d6a79.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-31f2ea083c42e9099631.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ca06427e1a7716768228.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-03b207bb2d04b6a55b2b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-36b9b395185e5fb6b635.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4468bb71bebd2c6e7d84.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7a20a2ae0074936d6d5c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-fd83cdf9a29c7071f63c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-89c22b4952c48695f55b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-fd83cdf9a29c7071f63c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-7a20a2ae0074936d6d5c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4468bb71bebd2c6e7d84.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-36b9b395185e5fb6b635.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-03b207bb2d04b6a55b2b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ca06427e1a7716768228.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-31f2ea083c42e9099631.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c3ed474a893a4f8ff81c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d2d4aef02c6326ad7cf6.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a71ce5fd572b59f0dbd5.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-bfc0c8568c54f1a52064.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-52c7dac081ed23709c27.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ddfde46bba691d4c9c99.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-f2f5fd86d7b8b5dbbc6a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9c7992ce5c30ebd6d84d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-de2f7ccc53213ffb93f2.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d5af80ff9e9a633ad5ab.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-dfadd744c0d4c046bc33.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9fd969f051fa8ee577d3.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b7708f7f1928137e8d10.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c5b633702047ed0c844a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3b6791b4e670b54fb51b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-314b142a0f5692ff0e7b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-99c6659f7c95d9e7a3fd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d71f614b4df5f5757303.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-ccf7f80eaf3e926480e2.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-73c898c14e0f35066be7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-adc5420191dbbeaac75b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1309e1e02c8236cd6e9a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9295e6c70a7090363e39.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-62f572ce8a01058d31cf.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-88585a71abdb448d9a81.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-372c75ec0379d633fd89.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-70bc0210247fd1668470.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-82ba8a2ef8300869c676.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-09f3db6f0ad94917146d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ec0c3e52210f8dfeed79.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-478c7c5b7fe7890bb75a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-200c57120edf492d47fd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-0e4cee76d29bdf1e24c1.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-39a4f73641bff3314042.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-cf6b4a2021da70bfc340.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8d6573e23594986effbc.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-8977a9e49485e0b17022.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-515cde5884420fad07e5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-62111e132412b8d7f4ca.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-913c04981fd1dd4662d7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7137961436ca577ff04.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b921a754cfbf47c014da.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-e6b051ec29e939277f9a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3327926b5823ce21ab23.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4dd080134273683b311d.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-7d5a69cdf96d943c370b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ad01c1111f0e48f32c09.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7308c97dc81fa90fba47.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-41acf4358019a2b3565f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f6c1a2d9b88e3181ba21.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-495bf01d312868c7089a.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-665824fbdeef184124a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2399de438e1fdafcac41.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-664651e1dd0b320b5fae.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-2640b51244adeff70c1b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-7288205d0afc866f2d3d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-54e17ee113aa6b0ac746.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-af55efd5277b7e6e5d4b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-740cdb9f34aa375fc2f4.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-f333e020354b6d58c80d.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c6bac5088f2615591ae9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-07942facb5705c98f38c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8363bdc009106614e8e0.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-efe8bf92d0cfcbc387e5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9a07ffaa99f9f308b436.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-597b2b89fb5e9aaacbbe.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-de879c4c90486cde5fc2.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b7588ec3414e68f9797f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-839fc4ceea7d583afe77.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-fe6baeaae370e9f76b3d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d7c0f93acf98d13b49b8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b273a3db604a23ae6e50.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-45c9b2abbf9d39e5fef9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-38c32ca0f16ac920b0df.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c6bed051bd2cd4291f7b.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1c7010a49b54bf6c0585.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-37c54c6ddef8a0a52293.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1e93bf62c62cf7af4556.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-7591a0d430a4bad51538.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-617c063d5c5c433f74c1.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-43152e473c1adcbd6a5c.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c6d44533d3b067d9738e.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8f9f880a3026c94e11ff.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d0c4b33c1d6d9008c0e0.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-867705f327ffce0fbc4a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-3837c933065f07d640cc.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-96ad8a53a1097a289353.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1052ee3e94abcc9f19fe.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-45687372a735e72b8e4c.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-47043420299ce9672385.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1ff2ba191ffacb8fe896.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-63fd01d2ee859a6f00a3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-76208045a13c90130b1f.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-5be5e8cd467d123e3390.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-143bdcc36231399084d5.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-6f388da1ce90432770a9.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1f726fdc3180a3534322.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-d4cb325d5f01b8b138c0.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c2005d3c84888fed14de.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-d279d70969db0f4e2fd9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-c81cb1928f6420bb19c3.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-2a3f68880d7e1c8ccc69.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-10ea4f27e5110009d1bd.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9c133af8b20d7edb5801.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-bd19bb123762a5e99677.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-dcb428706250cae9afff.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5d4f5fc7d72e1130f443.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-ae32b5d20685e3bd1771.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c3dd8fa498d94068d97b.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-35f290a256122d6e369a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-119261b0a7e2bcc499fc.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-dedf16dffd6171dc1017.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-eeb3d4568bad4a69c082.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-086b926fca5f11c52001.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-1aa8b5a72503dc709604.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a3e0d68b7db46f6f855a.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5d300c3e65460e3b5ae2.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-2e9e01694ef7788ff0e9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-9f5a2c552ccd205a1432.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-cdc1d8e4d46920af107e.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b804800b347968ba99a7.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-4ad5d3cf306550a61479.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-b6a24c35e3fbe96b4b36.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-26a617c7de95944e5178.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-5903bce2443f5eb469a9.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-1f35b62b18565b47bed7.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-c8b6cf2a81433ac90f5f.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-704e5e8a4d53fc1784a8.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-47d402300d64506df0e7.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-b8c0839080d1d01e0f11.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-a878a45310cefd3e2aed.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-64e9c031778691f8349e.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-73e36ffa1ed778fc3048.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8ffde6957e5ff7751d1d.png",
+        "durationMs": 17
+      },
+      {
+        "file": "frames/frame-8c591123a743e76ccb50.png",
+        "durationMs": 16
+      },
+      {
+        "file": "frames/frame-e11c67f7d778017d0c86.png",
+        "durationMs": 17
+      }
+    ]
+  },
+  "bodyMotion": {
+    "type": "whole-cat-vertical-translation",
+    "periodMs": 4800,
+    "rangePx": [
+      -2,
+      0
+    ],
+    "formula": "-2*(1-cos(2*pi*t/4800))/2",
+    "rotation": 0,
+    "scaling": 1
+  },
+  "blinking": {
+    "source": "new downward-gaze open and closed keys",
+    "engine": "RIFE 4.6",
+    "factor": 32,
+    "durationMs": 375,
+    "startsMs": [
+      1250,
+      6700
+    ],
+    "closeAtMs": 140,
+    "closedHoldMs": 17,
+    "independentOfBodyClock": true,
+    "eyeMask": "assets/strawberry-cat/work-preview-v3/keys/eye-mask.png",
+    "newOpenEndpointsExact": true
+  }
+}

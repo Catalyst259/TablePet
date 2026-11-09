@@ -11,6 +11,86 @@ namespace TablePet.App.Tests;
 [Collection("Native decoration windows")]
 public sealed class SpeechBubbleWindowTests
 {
+    [Theory]
+    [InlineData("工作呢，别打扰我", 1500)]
+    [InlineData("开始工作啦~", 4400)]
+    [InlineData("休息一下吧~", 4400)]
+    [InlineData("和我一起休息", 4400)]
+    public void WorkMessagesRenderWithinPetBoundsAndFollowTheirAnimation(string text, int duration)
+    {
+        WithWindows((owner, bubble) =>
+        {
+            bubble.Update(500, text, duration);
+            DrainDispatcher();
+            Assert.True(bubble.IsVisible);
+            Assert.Equal(text, ((SpeechBubbleVisual)bubble.Content).Text);
+            var full = Render(bubble);
+            Assert.True(full.Right - full.Left > 80);
+            Assert.InRange(full.Left, 1, 239);
+            Assert.InRange(full.Right, full.Left + 1, 238);
+            Assert.InRange(full.Top, 1, 239);
+            Assert.InRange(full.Bottom, full.Top + 1, 238);
+
+            bubble.Update(duration - 150, text, duration);
+            DrainDispatcher();
+            var fading = Render(bubble);
+            Assert.InRange(fading.Alpha, full.Alpha * 0.45, full.Alpha * 0.55);
+            bubble.Update(duration - 150, text, duration);
+            DrainDispatcher();
+            Assert.Equal(fading, Render(bubble));
+            bubble.Update(duration, text, duration);
+            Assert.False(bubble.IsVisible);
+        });
+    }
+
+    [Fact]
+    public void ChangingMessageAtTheSameTimeRedrawsAndLegacyMeowRestores()
+    {
+        WithWindows((owner, bubble) =>
+        {
+            bubble.Update(500);
+            DrainDispatcher();
+            var meow = Render(bubble);
+            bubble.Update(500, "工作呢，别打扰我", 1500);
+            DrainDispatcher();
+            var work = Render(bubble);
+            Assert.True(work.Left < meow.Left - 50);
+            Assert.True(work.Alpha > meow.Alpha);
+            bubble.Update(500);
+            DrainDispatcher();
+            Assert.Equal(meow, Render(bubble));
+            bubble.Update(500, "", 1500);
+            Assert.False(bubble.IsVisible);
+        });
+    }
+
+    [Theory]
+    [InlineData(120)]
+    [InlineData(240)]
+    [InlineData(480)]
+    public void LongMessageFitsAtEverySupportedPetSize(int size) => Sta.Run(() =>
+    {
+        var visual = new SpeechBubbleVisual();
+        visual.Measure(new Size(size, size));
+        visual.Arrange(new Rect(0, 0, size, size));
+        visual.UpdateLayout();
+        DrainDispatcher();
+        visual.Update(500, "工作呢，别打扰我", 1500);
+        var bitmap = new RenderTargetBitmap(size, size, 96, 96, PixelFormats.Pbgra32);
+        bitmap.Render(visual);
+        var pixels = new byte[size * size * 4];
+        bitmap.CopyPixels(pixels, size * 4, 0);
+        var visible = 0;
+        for (var y = 0; y < size; y++)
+            for (var x = 0; x < size; x++)
+            {
+                var alpha = pixels[(y * size + x) * 4 + 3];
+                if (x == 0 || y == 0 || x == size - 1 || y == size - 1) Assert.Equal(0, alpha);
+                if (alpha > 8) visible++;
+            }
+        Assert.True(visible > size * size * 0.05);
+    });
+
     [Fact]
     public void BubbleFollowsMouthTimingAndRendersOnlyInUpperRight()
     {
