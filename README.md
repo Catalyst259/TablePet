@@ -16,6 +16,8 @@
 
 ## 运行与构建
 
+日常使用可在 [0.5.0 骨骼版发布页](https://github.com/Catalyst259/TablePet/releases/tag/v0.5.0-skeletal) 下载 `TablePet.Skeletal-0.5.0-Setup.exe`，按中文向导安装；也可使用 ZIP 便携包。两种包都内置 .NET 运行时。安装、更新和卸载说明见 [安装说明](docs/INSTALLATION.md)。
+
 发布目录的 `TablePet.Skeletal.exe` 可直接运行。它使用单独的进程通信标识、开机启动项和 `%LocalAppData%/DesktopPet.Skeletal/` 设置目录，可与冻结的原版并存。
 
 使用 .NET SDK 10.0.403 构建，仓库已包含编译好的骨骼资源：

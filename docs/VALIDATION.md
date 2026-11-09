@@ -31,6 +31,8 @@
 
 ## 可复核文件与范围
 
+同版本另提供 `TablePet.Skeletal-0.5.0-Setup.exe`，131,352,233 字节。安装载荷与已发布 ZIP 的 22 个文件逐项 SHA-256 相同，包含相同的 11 个运行资源。已在本机临时目录执行静默安装、桌面快捷方式启动、运行中同版本覆盖更新、卸载和重装，验证旧骨骼资源清理、用户配置保留、仅清理自身开机启动项及拒绝原版目录。测试后恢复原有设置和正在运行的骨骼便携版。结果见 `reference/skeletal/installer-verification.json`；未逐页手动点击安装向导，也未新增另一台无开发环境电脑验收。
+
 源码仓库 `reference/skeletal/` 保存上述 WPF、独立 C#、完整播放、冷入口、体积、骨骼检查点和 Core 源码一致性记录；`reference/frozen-source-verification.json` 保存合并前旧工作副本的核验结果。该 9,364 文件快照包括 3,812 个未跟踪草稿，普通 `legacy` 分支克隆只有已提交内容，不能用它代替完整旧工作副本作该快照核验。基于已提交运行素材的画面比对和重新制作，可按根目录 README 使用 `../TablePet.Legacy`。`artifacts/skeletal-verification/` 的并排 PNG 左侧为原版、右侧为骨骼版。
 
 像素比较经过真实 WPF 解码和离屏合成。实时探针使用真实等待和模拟呈现时间，**没有测量 DWM／显示器实际刷新率**。多屏混合 DPI、真实锁屏／恢复及长时间桌面运行没有新增现场验收。程序和启动项使用独立的 Skeletal 标识，设置写入 `%LocalAppData%/DesktopPet.Skeletal/`，不会覆盖原版配置。
