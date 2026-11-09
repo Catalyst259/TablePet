@@ -1,0 +1,180 @@
+using TablePet.Core;
+using Xunit;
+
+namespace TablePet.Core.Tests;
+
+public sealed class AnimationPlayerTests
+{
+    private static AnimationClip Clip(bool loop = false) => new("example", new[]
+    {
+        new AnimationFrame("a.png", 100), new AnimationFrame("b.png", 200), new AnimationFrame("c.png", 100)
+    }, loop);
+
+    [Fact]
+    public void DelayedTimerSkipsToCorrectFrameAndCompletesOnlyOnce()
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        var completions = new List<AnimationCompleted>();
+        player.Completed += completions.Add;
+        player.Play(Clip());
+        clock.Advance(350);
+        player.Tick();
+        Assert.Equal("c.png", player.CurrentFrame!.File);
+        Assert.Equal(50, player.NextUpdateInMs);
+        clock.Advance(5000);
+        player.Tick();
+        player.Tick();
+        Assert.Single(completions);
+    }
+
+    [Fact]
+    public void LoopUsesElapsedModuloWithoutDispatchingAccumulatedFrames()
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        var changes = 0;
+        player.FrameChanged += _ => changes++;
+        player.Play(Clip(true));
+        clock.Advance(41050);
+        player.Tick();
+        Assert.Equal("b.png", player.CurrentFrame!.File);
+        Assert.Equal(2, changes);
+    }
+
+    [Fact]
+    public void PausingDoesNotConsumeTimelineTime()
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(Clip());
+        clock.Advance(150);
+        player.Tick();
+        player.Pause();
+        clock.Advance(10000);
+        player.Tick();
+        Assert.Equal("b.png", player.CurrentFrame!.File);
+        Assert.Equal(long.MaxValue, player.NextUpdateInMs);
+        player.Resume();
+        clock.Advance(149);
+        player.Tick();
+        Assert.Equal("b.png", player.CurrentFrame!.File);
+        clock.Advance(1);
+        player.Tick();
+        Assert.Equal("c.png", player.CurrentFrame!.File);
+    }
+
+    [Fact]
+    public void CompletionMayStartNewClipWithoutItBeingMarkedComplete()
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(Clip());
+        player.Completed += _ => player.Play(Clip(true));
+        clock.Advance(400);
+        player.Tick();
+        Assert.False(player.IsCompleted);
+        Assert.Equal("a.png", player.CurrentFrame!.File);
+        Assert.Equal(2, player.Token);
+    }
+
+    [Theory]
+    [InlineData(60)]
+    [InlineData(120)]
+    [InlineData(240)]
+    public void DenseTimelineUsesExactExclusiveBoundariesAcrossLongLoops(int sampleHz)
+    {
+        var frames = Enumerable.Range(0, sampleHz).Select(i => new AnimationFrame($"{i}.png",
+            (int)Math.Round((i + 1) * 1000d / sampleHz) - (int)Math.Round(i * 1000d / sampleHz))).ToArray();
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(new AnimationClip("dense", frames, true));
+        for (var ms = 0; ms < 1000; ms++)
+        {
+            clock.NowMilliseconds = 3600000 + ms;
+            player.Tick();
+            var end = 0;
+            var expected = 0;
+            while ((end += frames[expected].DurationMs) <= ms) expected++;
+            Assert.Equal(expected, player.FrameIndex);
+            Assert.Equal(end - ms, player.NextUpdateInMs);
+        }
+        clock.NowMilliseconds = 3601000;
+        player.Tick();
+        Assert.Equal(0, player.FrameIndex);
+        Assert.False(player.IsCompleted);
+    }
+
+    [Fact]
+    public void ContinuousRenderingStopsForStaticPausedAndFinishedClips()
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        Assert.False(player.NeedsContinuousRendering);
+        player.Play(new AnimationClip("idle", [new("idle.png", 1000)], true));
+        Assert.False(player.NeedsContinuousRendering);
+        player.Play(Clip());
+        Assert.True(player.NeedsContinuousRendering);
+        player.Pause();
+        Assert.False(player.NeedsContinuousRendering);
+        player.Resume();
+        Assert.True(player.NeedsContinuousRendering);
+        clock.Advance(400);
+        player.Tick();
+        Assert.False(player.NeedsContinuousRendering);
+    }
+
+    [Fact]
+    public void FrameObserverCanReplaceClipWithoutCompletingTheReplacement()
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(Clip());
+        player.FrameChanged += frame => { if (frame.File == "c.png") player.Play(Clip(true)); };
+        clock.Advance(1000);
+        player.Tick();
+        Assert.Equal("a.png", player.CurrentFrame!.File);
+        Assert.False(player.IsCompleted);
+    }
+
+    [Theory]
+    [InlineData(2)]
+    [InlineData(120)]
+    public void ReversingDenseLegacyFramesRetainsBothEndpointsAtNoMoreThanSixtySlotsPerSecond(int count)
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(new("dense", Enumerable.Range(0, count).Select(i => new AnimationFrame($"{i}.png", 4)).ToArray()));
+        clock.Advance((count - 1) * 4);
+        player.Tick();
+        var visible = player.CurrentFrame!.File;
+        player.ReverseToStart();
+        var reversed = player.CurrentClip!;
+        Assert.Equal(visible, reversed.Frames[0].File);
+        Assert.Equal("0.png", reversed.Frames[^1].File);
+        Assert.Null(reversed.SampleFps);
+        Assert.True(reversed.Frames.Count * 1000L <= reversed.DurationMs * 60);
+        Assert.True(reversed.Frames.Count <= count);
+        Assert.All(reversed.Frames, frame => Assert.True(frame.DurationMs >= 16));
+    }
+
+    [Theory]
+    [InlineData(200)]
+    [InlineData(600000)]
+    [InlineData(int.MaxValue)]
+    public void ALongHoldCannotHideShortLegacySlotsOrExpandTheReversalTimeline(int holdMs)
+    {
+        var clock = new FakeClock();
+        var player = new AnimationPlayer(clock);
+        player.Play(new("mixed", [new("rest.png", holdMs), new("mid.png", 4), new("visible.png", 4)]));
+        clock.Advance((long)holdMs + 4);
+        player.Tick();
+        player.ReverseToStart();
+        Assert.Equal("visible.png", player.CurrentClip!.Frames[0].File);
+        Assert.Equal("rest.png", player.CurrentClip.Frames[^1].File);
+        Assert.Null(player.CurrentClip.SampleFps);
+        Assert.Equal(3, player.CurrentClip.Frames.Count);
+        Assert.Equal((long)holdMs + 8, player.CurrentClip.DurationMs);
+        Assert.All(player.CurrentClip.Frames, frame => Assert.True(frame.DurationMs >= 16));
+    }
+}

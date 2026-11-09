@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-10",
+  "configuration": "Release win-x64 self-contained compressed single-file",
+  "buildPassed": true,
+  "buildWarnings": 0,
+  "coreTestsPassed": 246,
+  "appTestsPassed": 124,
+  "failedTests": 0,
+  "publishedAssetCheckExitCode": 0,
+  "assetCheckIncludes": "all 1685 logical poses, fallback.png, tray.ico",
+  "executableSha256": "eb080b336d8d6a4363bb340f9c6df930402223ddbf82efe43abe8de660dd39b6",
+  "buildLogSha256": "539595932af271643265db1389a4b73069b2b51fa8d59dd527012bb8cc21ad76",
+  "packageVerification": "package-verification.json"
+}
