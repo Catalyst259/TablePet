@@ -12,4 +12,4 @@
 
 从 Windows“设置 → 应用 → 安装的应用”找到“草莓猫桌宠 · 骨骼版”即可卸载。卸载移除本次安装的程序、快捷方式及指向本安装目录的开机启动项，保留个人配置、日志以及其他位置的便携版启动项。重新安装后如需开机启动，请在设置中关闭后重新开启。
 
-仍可下载 ZIP 便携包，完整解压后运行 `TablePet.Skeletal.exe`。Setup 和 ZIP 均提供 `.sha256` 校验文件，可用 PowerShell 的 `Get-FileHash -Algorithm SHA256 <文件路径>` 核对。
+仍可下载 ZIP 便携包，完整解压后运行 `TablePet.Skeletal.exe`。

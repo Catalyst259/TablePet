@@ -18,6 +18,8 @@ powershell -File tools/build-installer.ps1 `
 
 构建脚本先核对发布 ZIP 与其 `.sha256` 文件，再解压至独立制作目录，并将该目录作为 `PublishDir` 传给 Inno Setup。安装载荷完整取自该 ZIP，包括文档和图标；不会用当前工作目录的 README 或文档覆盖已发布内容。`-ZipPath` 和 `-OutputDirectory` 可选择其他输入包与输出目录。脚本不会覆盖已存在的同名 Setup。
 
+`.sha256` 文件用于本地构建与验证，不上传到 GitHub Releases。
+
 默认安装位置是 `%LocalAppData%\Programs\TablePet.Skeletal`，执行文件为 `TablePet.Skeletal.exe`，桌面和开始菜单快捷方式名为“草莓猫桌宠 · 骨骼版”。桌面快捷方式默认创建，可在向导中取消；安装完成页可选择启动程序。
 
 骨骼版使用独立且固定的 AppId `{E5578DE9-62E6-4E72-8DC8-B4ED2FAB57EE}`，支持同版本覆盖安装和后续升级。安装前会检查目标目录；存在原版 `TablePet.exe`、`TablePet.dll`，或目标属于原版默认/已注册安装位置时，会拒绝安装，避免共用 `Assets` 覆盖原版。静默安装和隐藏目录页的升级也执行此检查。
