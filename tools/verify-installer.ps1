@@ -5,9 +5,12 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $workspaceRoot = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
-$version = '0.5.0-skeletal'
-if (!$InstallerPath) { $InstallerPath = Join-Path $workspaceRoot 'dist/TablePet.Skeletal-0.5.0-Setup.exe' }
-if (!$ZipPath) { $ZipPath = Join-Path $workspaceRoot 'dist/TablePet.Skeletal-0.5.0-win-x64.zip' }
+[xml]$project = Get-Content -LiteralPath (Join-Path $workspaceRoot 'src/TablePet.App/TablePet.App.csproj') -Raw -Encoding UTF8
+$version = [string]$project.Project.PropertyGroup.Version
+if ($version -notmatch '^(\d+\.\d+\.\d+)-skeletal$') { throw 'Expected a skeletal x.y.z-skeletal application version.' }
+$numericVersion = $Matches[1]
+if (!$InstallerPath) { $InstallerPath = Join-Path $workspaceRoot "dist/TablePet.Skeletal-$numericVersion-Setup.exe" }
+if (!$ZipPath) { $ZipPath = Join-Path $workspaceRoot "dist/TablePet.Skeletal-$numericVersion-win-x64.zip" }
 if (!$ExtractorPath) { $ExtractorPath = Join-Path $workspaceRoot '.tools/inno-verify/innounp-2.71.2/innounp.exe' }
 foreach ($requiredPath in @($InstallerPath, $ZipPath, $ExtractorPath)) {
     if (!(Test-Path -LiteralPath $requiredPath -PathType Leaf)) { throw "Required file is missing: $requiredPath" }
@@ -88,6 +91,17 @@ $runtimeNames = @(
     'Assets/strawberry-cat/skeletal/work/work.bin',
     'Assets/strawberry-cat/skeletal/work/work.json'
 )
+$catalog = Get-Content -LiteralPath (Join-Path $workspaceRoot 'src/TablePet.Core/Companionship/companion-content.zh-CN.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+$memoryIds = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
+foreach ($memory in $catalog.memories) {
+    if ($memory.id -cnotmatch '^[a-z0-9_]+$' -or !$memoryIds.Add([string]$memory.id)) { throw 'Invalid or duplicate memory illustration ID.' }
+    $runtimeNames += "Assets/strawberry-cat/memories/$($memory.id).png"
+}
+if (!$memoryIds.Count) { throw 'Memory illustration catalog is empty.' }
+$expectedPayloadNames = @('TablePet.Skeletal.exe', 'TablePet.Skeletal.pdb', 'TablePet.Core.pdb', 'README.md', 'Start-Preview.cmd', 'Start-Preview.ps1') + $runtimeNames
+$expectedPayloadNames += @(Get-ChildItem -LiteralPath (Join-Path $workspaceRoot 'docs') -Filter '*.md' -File | ForEach-Object { 'docs/' + $_.Name })
+$expectedPayloadSet = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::Ordinal)
+foreach ($name in $expectedPayloadNames) { if (!$expectedPayloadSet.Add($name)) { throw "Duplicate expected package path: $name" } }
 $errors = New-Object 'System.Collections.Generic.List[string]'
 $verifiedFiles = New-Object 'System.Collections.Generic.List[object]'
 $settingsBefore = @()
@@ -101,9 +115,10 @@ $result = [ordered]@{
     zip = $ZipPath
     extractor = $ExtractorPath
     extractionDirectory = $extractDirectory
-    expectedPayloadSource = 'Published ZIP entries and their SHA-256 values only; no workspace document overrides'
-    expectedPayloadFiles = 22
-    expectedRuntimeAssets = 11
+    expectedPayloadSource = 'Expected bytes and SHA-256 values come only from the published ZIP; source catalog and package layout constrain filenames, never override document content'
+    expectedPayloadFiles = $expectedPayloadSet.Count
+    expectedRuntimeAssets = $runtimeNames.Count
+    expectedMemoryIllustrations = $memoryIds.Count
     actualInstallationExecuted = $false
     actualUninstallationExecuted = $false
     processScope = 'Existing TablePet and TablePet.Skeletal processes in the current desktop session'
@@ -113,6 +128,9 @@ try {
     $settingsBefore = @(
         Get-SettingsSnapshot (Join-Path $env:LOCALAPPDATA 'DesktopPet/settings.json')
         Get-SettingsSnapshot (Join-Path $env:LOCALAPPDATA 'DesktopPet.Skeletal/settings.json')
+        Get-SettingsSnapshot (Join-Path $env:LOCALAPPDATA 'DesktopPet.Skeletal/settings.json.bak')
+        Get-SettingsSnapshot (Join-Path $env:LOCALAPPDATA 'DesktopPet.Skeletal/companion-state.json')
+        Get-SettingsSnapshot (Join-Path $env:LOCALAPPDATA 'DesktopPet.Skeletal/companion-state.json.bak')
     )
     $beforeProcesses = @(Get-PetProcesses)
     $snapshotsReady = $true
@@ -150,13 +168,13 @@ try {
             $expected.Add($name, [pscustomobject]@{ bytes = $entry.Length; sha256 = $hash })
         }
     } finally { $zip.Dispose() }
-    if ($expected.Count -ne 22) { throw "Published ZIP must contain exactly 22 files; found $($expected.Count)." }
-    foreach ($required in @('TablePet.Skeletal.exe', 'README.md', 'Start-Preview.cmd', 'Start-Preview.ps1') + $runtimeNames) {
+    if (!$expectedPayloadSet.SetEquals([string[]]$expected.Keys)) { throw 'Published ZIP payload filenames differ from the expected application, launchers, docs and runtime assets.' }
+    foreach ($required in $expectedPayloadNames) {
         if (!$expected.ContainsKey($required)) { throw "Published ZIP is missing required file: $required" }
     }
     $assetNames = @($expected.Keys | Where-Object { $_.StartsWith('Assets/', [StringComparison]::Ordinal) })
-    if ($assetNames.Count -ne 11 -or @($assetNames | Where-Object { $runtimeNames -cnotcontains $_ }).Count -ne 0) {
-        throw 'Published ZIP does not contain exactly the 11 skeletal runtime asset files.'
+    if ($assetNames.Count -ne $runtimeNames.Count -or @($assetNames | Where-Object { $runtimeNames -cnotcontains $_ }).Count -ne 0) {
+        throw 'Published ZIP does not contain exactly the expected skeletal and memory runtime asset files.'
     }
     if (@($expected.Keys | Where-Object { $_ -match '(^|/)frames(/|$)' }).Count -gt 0) {
         throw 'Published ZIP contains a legacy raster-frame directory.'
@@ -199,7 +217,7 @@ try {
     $productVersion = (Get-Item -LiteralPath $executablePath).VersionInfo.ProductVersion
     if (($productVersion -split '\+')[0] -ne $version) { throw "Extracted application version differs: $productVersion" }
     $setupVersion = (Get-Item -LiteralPath $InstallerPath).VersionInfo.ProductVersion.Trim()
-    if (@($version, '0.5.0', '0.5.0.0') -notcontains $setupVersion) { throw "Installer product version differs: $setupVersion" }
+    if (@($version, $numericVersion, "$numericVersion.0") -notcontains $setupVersion) { throw "Installer product version differs: $setupVersion" }
     $result['applicationProductVersion'] = $productVersion
     $result['installerProductVersion'] = $setupVersion
     $result['deploymentLayout'] = 'Self-contained single-file TablePet.Skeletal.exe; byte-identical to the published ZIP'
@@ -242,11 +260,14 @@ try {
             $result['existingPetProcessesAfter'] = @(Get-PetProcesses)
         } catch { $errors.Add('State-preservation check failed: ' + $_.Exception.Message) }
     }
-    $result['passed'] = $errors.Count -eq 0 -and $snapshotsReady -and $verifiedFiles.Count -eq 22 -and $result.assetCheckExitCode -eq 0
+    $result['passed'] = $errors.Count -eq 0 -and $snapshotsReady -and $verifiedFiles.Count -eq $expectedPayloadSet.Count -and $result.assetCheckExitCode -eq 0
     $result['errors'] = $errors.ToArray()
     $json = $result | ConvertTo-Json -Depth 8
     Write-Utf8Lf (Join-Path $runDirectory 'summary.json') $json
     Write-Utf8Lf (Join-Path $reportRoot 'summary.json') $json
+    $releaseReportDirectory = Join-Path $workspaceRoot "artifacts/release-$numericVersion"
+    New-Item -ItemType Directory -Path $releaseReportDirectory -Force | Out-Null
+    Write-Utf8Lf (Join-Path $releaseReportDirectory 'installer-verification.json') $json
 }
 Write-Output $json
 if (!$result.passed) { throw "Installer verification failed. See $(Join-Path $runDirectory 'summary.json')." }

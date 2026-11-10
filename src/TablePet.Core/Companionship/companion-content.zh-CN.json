@@ -1,0 +1,702 @@
+{
+  "texts": [
+    {
+      "id": "greeting.new.01",
+      "scene": "daily_greeting",
+      "stage": "new",
+      "text": "喵，见面啦。",
+      "shortText": "喵，见面啦。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.new.02",
+      "scene": "daily_greeting",
+      "stage": "new",
+      "text": "今天也陪着你。",
+      "shortText": "今天也陪着你。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.new.03",
+      "scene": "daily_greeting",
+      "stage": "new",
+      "text": "喵，一起待一会儿吧。",
+      "shortText": "喵，一起待一会儿吧。",
+      "weight": 1
+    },
+    {
+      "id": "click.new.01",
+      "scene": "daily_click",
+      "stage": "new",
+      "text": "怎么啦？",
+      "shortText": "怎么啦？",
+      "weight": 1
+    },
+    {
+      "id": "click.new.02",
+      "scene": "daily_click",
+      "stage": "new",
+      "text": "是在叫我吗？",
+      "shortText": "是在叫我吗？",
+      "weight": 1
+    },
+    {
+      "id": "click.new.03",
+      "scene": "daily_click",
+      "stage": "new",
+      "text": "好舒服呀。",
+      "shortText": "好舒服呀。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.new.01",
+      "scene": "work_start",
+      "stage": "new",
+      "text": "开始啦，我也准备好了。",
+      "shortText": "开始啦，我也准备好了。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.new.02",
+      "scene": "work_start",
+      "stage": "new",
+      "text": "喵，一起开工啦。",
+      "shortText": "喵，一起开工啦。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.new.03",
+      "scene": "work_start",
+      "stage": "new",
+      "text": "我在旁边，开始吧。",
+      "shortText": "我在旁边，开始吧。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.new.01",
+      "scene": "work_break",
+      "stage": "new",
+      "text": "到休息时间啦。",
+      "shortText": "到休息时间啦。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.new.02",
+      "scene": "work_break",
+      "stage": "new",
+      "text": "到点啦，歇一会儿。",
+      "shortText": "到点啦，歇一会儿。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.new.03",
+      "scene": "work_break",
+      "stage": "new",
+      "text": "先休息一下吧。",
+      "shortText": "先休息一下吧。",
+      "weight": 1
+    },
+    {
+      "id": "rest.new.01",
+      "scene": "rest_click",
+      "stage": "new",
+      "text": "呼……先歇一会儿。",
+      "shortText": "呼……先歇一会儿。",
+      "weight": 1
+    },
+    {
+      "id": "rest.new.02",
+      "scene": "rest_click",
+      "stage": "new",
+      "text": "这会儿适合发呆。",
+      "shortText": "这会儿适合发呆。",
+      "weight": 1
+    },
+    {
+      "id": "rest.new.03",
+      "scene": "rest_click",
+      "stage": "new",
+      "text": "喵，我再眯一小会儿。",
+      "shortText": "喵，我再眯一小会儿。",
+      "weight": 1
+    },
+    {
+      "id": "return.new.01",
+      "scene": "return_greeting",
+      "stage": "new",
+      "text": "喵，又见面啦。",
+      "shortText": "喵，又见面啦。",
+      "weight": 1
+    },
+    {
+      "id": "return.new.02",
+      "scene": "return_greeting",
+      "stage": "new",
+      "text": "你来啦，一起待会儿。",
+      "shortText": "你来啦，一起待会儿。",
+      "weight": 1
+    },
+    {
+      "id": "return.new.03",
+      "scene": "return_greeting",
+      "stage": "new",
+      "text": "欢迎回来。",
+      "shortText": "欢迎回来。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.familiar.01",
+      "scene": "daily_greeting",
+      "stage": "familiar",
+      "text": "你来啦。",
+      "shortText": "你来啦。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.familiar.02",
+      "scene": "daily_greeting",
+      "stage": "familiar",
+      "text": "今天也一起待着呀。",
+      "shortText": "今天也一起待着呀。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.familiar.03",
+      "scene": "daily_greeting",
+      "stage": "familiar",
+      "text": "又见面啦。",
+      "shortText": "又见面啦。",
+      "weight": 1
+    },
+    {
+      "id": "click.familiar.01",
+      "scene": "daily_click",
+      "stage": "familiar",
+      "text": "又来摸我啦。",
+      "shortText": "又来摸我啦。",
+      "weight": 1
+    },
+    {
+      "id": "click.familiar.02",
+      "scene": "daily_click",
+      "stage": "familiar",
+      "text": "再摸一下嘛。",
+      "shortText": "再摸一下嘛。",
+      "weight": 1
+    },
+    {
+      "id": "click.familiar.03",
+      "scene": "daily_click",
+      "stage": "familiar",
+      "text": "好舒服，不想动了。",
+      "shortText": "好舒服，不想动了。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.familiar.01",
+      "scene": "work_start",
+      "stage": "familiar",
+      "text": "一起忙一小会儿吧。",
+      "shortText": "一起忙一小会儿吧。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.familiar.02",
+      "scene": "work_start",
+      "stage": "familiar",
+      "text": "我也准备好啦。",
+      "shortText": "我也准备好啦。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.familiar.03",
+      "scene": "work_start",
+      "stage": "familiar",
+      "text": "准备好啦，你慢慢来。",
+      "shortText": "准备好啦，你慢慢来。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.familiar.01",
+      "scene": "work_break",
+      "stage": "familiar",
+      "text": "一起歇会儿吧。",
+      "shortText": "一起歇会儿吧。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.familiar.02",
+      "scene": "work_break",
+      "stage": "familiar",
+      "text": "到点啦，放松一下。",
+      "shortText": "到点啦，放松一下。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.familiar.03",
+      "scene": "work_break",
+      "stage": "familiar",
+      "text": "我先眯一会儿。",
+      "shortText": "我先眯一会儿。",
+      "weight": 1
+    },
+    {
+      "id": "rest.familiar.01",
+      "scene": "rest_click",
+      "stage": "familiar",
+      "text": "呼，你也歇会儿。",
+      "shortText": "呼，你也歇会儿。",
+      "weight": 1
+    },
+    {
+      "id": "rest.familiar.02",
+      "scene": "rest_click",
+      "stage": "familiar",
+      "text": "发会儿呆也挺好。",
+      "shortText": "发会儿呆也挺好。",
+      "weight": 1
+    },
+    {
+      "id": "rest.familiar.03",
+      "scene": "rest_click",
+      "stage": "familiar",
+      "text": "先眯着，不着急。",
+      "shortText": "先眯着，不着急。",
+      "weight": 1
+    },
+    {
+      "id": "return.familiar.01",
+      "scene": "return_greeting",
+      "stage": "familiar",
+      "text": "你回来啦。",
+      "shortText": "你回来啦。",
+      "weight": 1
+    },
+    {
+      "id": "return.familiar.02",
+      "scene": "return_greeting",
+      "stage": "familiar",
+      "text": "好久不见呀。",
+      "shortText": "好久不见呀。",
+      "weight": 1
+    },
+    {
+      "id": "return.familiar.03",
+      "scene": "return_greeting",
+      "stage": "familiar",
+      "text": "又能一起待着啦。",
+      "shortText": "又能一起待着啦。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.close.01",
+      "scene": "daily_greeting",
+      "stage": "close",
+      "text": "你来啦，今天也一起待着。",
+      "shortText": "你来啦，今天也一起待着。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.close.02",
+      "scene": "daily_greeting",
+      "stage": "close",
+      "text": "喵，是你呀。",
+      "shortText": "喵，是你呀。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.close.03",
+      "scene": "daily_greeting",
+      "stage": "close",
+      "text": "今天也在你旁边。",
+      "shortText": "今天也在你旁边。",
+      "weight": 1
+    },
+    {
+      "id": "click.close.01",
+      "scene": "daily_click",
+      "stage": "close",
+      "text": "嗯，好舒服。",
+      "shortText": "嗯，好舒服。",
+      "weight": 1
+    },
+    {
+      "id": "click.close.02",
+      "scene": "daily_click",
+      "stage": "close",
+      "text": "我在这儿呢。",
+      "shortText": "我在这儿呢。",
+      "weight": 1
+    },
+    {
+      "id": "click.close.03",
+      "scene": "daily_click",
+      "stage": "close",
+      "text": "再摸摸我嘛。",
+      "shortText": "再摸摸我嘛。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.close.01",
+      "scene": "work_start",
+      "stage": "close",
+      "text": "开工啦，我陪着你。",
+      "shortText": "开工啦，我陪着你。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.close.02",
+      "scene": "work_start",
+      "stage": "close",
+      "text": "喵，我也开始忙啦。",
+      "shortText": "喵，我也开始忙啦。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.close.03",
+      "scene": "work_start",
+      "stage": "close",
+      "text": "你忙，我就在旁边。",
+      "shortText": "你忙，我就在旁边。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.close.01",
+      "scene": "work_break",
+      "stage": "close",
+      "text": "到点啦，休息一下。",
+      "shortText": "到点啦，休息一下。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.close.02",
+      "scene": "work_break",
+      "stage": "close",
+      "text": "陪我歇一会儿吧。",
+      "shortText": "陪我歇一会儿吧。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.close.03",
+      "scene": "work_break",
+      "stage": "close",
+      "text": "休息啦，我先躺会儿。",
+      "shortText": "休息啦，我先躺会儿。",
+      "weight": 1
+    },
+    {
+      "id": "rest.close.01",
+      "scene": "rest_click",
+      "stage": "close",
+      "text": "不急，陪你发会儿呆。",
+      "shortText": "不急，陪你发会儿呆。",
+      "weight": 1
+    },
+    {
+      "id": "rest.close.02",
+      "scene": "rest_click",
+      "stage": "close",
+      "text": "现在只想躺着。",
+      "shortText": "现在只想躺着。",
+      "weight": 1
+    },
+    {
+      "id": "rest.close.03",
+      "scene": "rest_click",
+      "stage": "close",
+      "text": "我再眯会儿，你也放松。",
+      "shortText": "我再眯会儿，你也放松。",
+      "weight": 1
+    },
+    {
+      "id": "return.close.01",
+      "scene": "return_greeting",
+      "stage": "close",
+      "text": "你回来啦，喵。",
+      "shortText": "你回来啦，喵。",
+      "weight": 1
+    },
+    {
+      "id": "return.close.02",
+      "scene": "return_greeting",
+      "stage": "close",
+      "text": "又能一起待一会儿啦。",
+      "shortText": "又能一起待一会儿啦。",
+      "weight": 1
+    },
+    {
+      "id": "return.close.03",
+      "scene": "return_greeting",
+      "stage": "close",
+      "text": "好久不见，见到你真好。",
+      "shortText": "好久不见，见到你真好。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.in_sync.01",
+      "scene": "daily_greeting",
+      "stage": "in_sync",
+      "text": "喵，你忙，我就在旁边。",
+      "shortText": "喵，你忙，我就在旁边。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.in_sync.02",
+      "scene": "daily_greeting",
+      "stage": "in_sync",
+      "text": "今天也陪着你。",
+      "shortText": "今天也陪着你。",
+      "weight": 1
+    },
+    {
+      "id": "greeting.in_sync.03",
+      "scene": "daily_greeting",
+      "stage": "in_sync",
+      "text": "看见你就开心。",
+      "shortText": "看见你就开心。",
+      "weight": 1
+    },
+    {
+      "id": "click.in_sync.01",
+      "scene": "daily_click",
+      "stage": "in_sync",
+      "text": "嗯，最喜欢这样了。",
+      "shortText": "嗯，最喜欢这样了。",
+      "weight": 1
+    },
+    {
+      "id": "click.in_sync.02",
+      "scene": "daily_click",
+      "stage": "in_sync",
+      "text": "再摸一会儿嘛。",
+      "shortText": "再摸一会儿嘛。",
+      "weight": 1
+    },
+    {
+      "id": "click.in_sync.03",
+      "scene": "daily_click",
+      "stage": "in_sync",
+      "text": "在你旁边真舒服。",
+      "shortText": "在你旁边真舒服。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.in_sync.01",
+      "scene": "work_start",
+      "stage": "in_sync",
+      "text": "老搭档，开工啦。",
+      "shortText": "老搭档，开工啦。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.in_sync.02",
+      "scene": "work_start",
+      "stage": "in_sync",
+      "text": "我们各忙各的，也挺好。",
+      "shortText": "我们各忙各的，也挺好。",
+      "weight": 1
+    },
+    {
+      "id": "work_start.in_sync.03",
+      "scene": "work_start",
+      "stage": "in_sync",
+      "text": "开工吧，我陪你。",
+      "shortText": "开工吧，我陪你。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.in_sync.01",
+      "scene": "work_break",
+      "stage": "in_sync",
+      "text": "到点啦，歇一小会儿。",
+      "shortText": "到点啦，歇一小会儿。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.in_sync.02",
+      "scene": "work_break",
+      "stage": "in_sync",
+      "text": "现在可以歇会儿啦。",
+      "shortText": "现在可以歇会儿啦。",
+      "weight": 1
+    },
+    {
+      "id": "work_break.in_sync.03",
+      "scene": "work_break",
+      "stage": "in_sync",
+      "text": "到点啦，一起休息。",
+      "shortText": "到点啦，一起休息。",
+      "weight": 1
+    },
+    {
+      "id": "rest.in_sync.01",
+      "scene": "rest_click",
+      "stage": "in_sync",
+      "text": "不急，这会儿不用忙。",
+      "shortText": "不急，这会儿不用忙。",
+      "weight": 1
+    },
+    {
+      "id": "rest.in_sync.02",
+      "scene": "rest_click",
+      "stage": "in_sync",
+      "text": "喵，安静待着也很好。",
+      "shortText": "喵，安静待着也很好。",
+      "weight": 1
+    },
+    {
+      "id": "rest.in_sync.03",
+      "scene": "rest_click",
+      "stage": "in_sync",
+      "text": "我再眯一小会儿。",
+      "shortText": "我再眯一小会儿。",
+      "weight": 1
+    },
+    {
+      "id": "return.in_sync.01",
+      "scene": "return_greeting",
+      "stage": "in_sync",
+      "text": "好久不见，见到你真好。",
+      "shortText": "好久不见，见到你真好。",
+      "weight": 1
+    },
+    {
+      "id": "return.in_sync.02",
+      "scene": "return_greeting",
+      "stage": "in_sync",
+      "text": "又见面啦，一起待着。",
+      "shortText": "又见面啦，一起待着。",
+      "weight": 1
+    },
+    {
+      "id": "return.in_sync.03",
+      "scene": "return_greeting",
+      "stage": "in_sync",
+      "text": "又能陪着你啦。",
+      "shortText": "又能陪着你啦。",
+      "weight": 1
+    },
+    {
+      "id": "milestone.first_day",
+      "scene": "milestone",
+      "stage": "any",
+      "text": "第一个相伴日，记下啦。",
+      "shortText": "第一个相伴日，记下啦。",
+      "weight": 1
+    },
+    {
+      "id": "milestone.familiar",
+      "scene": "milestone",
+      "stage": "any",
+      "text": "好像更熟悉你一点啦。",
+      "shortText": "好像更熟悉你一点啦。",
+      "weight": 1
+    },
+    {
+      "id": "milestone.close",
+      "scene": "milestone",
+      "stage": "any",
+      "text": "和你待着，越来越自在啦。",
+      "shortText": "和你待着，越来越自在啦。",
+      "weight": 1
+    },
+    {
+      "id": "milestone.in_sync",
+      "scene": "milestone",
+      "stage": "any",
+      "text": "已经习惯有你在啦。",
+      "shortText": "已经习惯有你在啦。",
+      "weight": 1
+    },
+    {
+      "id": "rest_short.greeting",
+      "scene": "rest_short",
+      "stage": "any",
+      "text": "喵，你也歇会儿。",
+      "shortText": "喵，你也歇会儿。",
+      "weight": 1
+    },
+    {
+      "id": "rest_short.return",
+      "scene": "rest_short",
+      "stage": "any",
+      "text": "又见面啦，一起歇会儿。",
+      "shortText": "又见面啦，一起歇会儿。",
+      "weight": 1
+    }
+  ],
+  "memories": [
+    {
+      "id": "first_day",
+      "unlockCondition": "首个日期累计有效相伴达到 1 分钟",
+      "title": "第一个相伴日",
+      "description": "从这一天起，我们开始记下桌边的日常。"
+    },
+    {
+      "id": "stage_familiar",
+      "unlockCondition": "首次同时达到 12 点与 3 个相伴日",
+      "title": "熟悉起来",
+      "description": "熟悉的招呼，留在了这个桌角。"
+    },
+    {
+      "id": "stage_close",
+      "unlockCondition": "首次同时达到 40 点与 8 个相伴日",
+      "title": "靠近一点",
+      "description": "同样的轻触，慢慢有了更亲近的回应。"
+    },
+    {
+      "id": "stage_in_sync",
+      "unlockCondition": "首次同时达到 100 点与 21 个相伴日",
+      "title": "不用多说",
+      "description": "一声喵，也能装下许多共同的日常。"
+    },
+    {
+      "id": "together_7_days",
+      "unlockCondition": "累计 7 个相伴日",
+      "title": "七个日常",
+      "description": "七个不同的日子，我们都在桌边。"
+    },
+    {
+      "id": "together_30_days",
+      "unlockCondition": "累计 30 个相伴日",
+      "title": "日子慢慢长",
+      "description": "三十个日常，慢慢留在了这里。"
+    },
+    {
+      "id": "together_60_days",
+      "unlockCondition": "累计 60 个相伴日",
+      "title": "六十个桌边日常",
+      "description": "不必天天见面，相伴的日子也在慢慢变多。"
+    },
+    {
+      "id": "first_work_completed",
+      "unlockCondition": "自然完成一轮工作，满足 10 分钟有效工作条件",
+      "title": "一起忙一会儿",
+      "description": "第一段被记下的工作计时，和小猫一起走过。"
+    },
+    {
+      "id": "first_break_completed",
+      "unlockCondition": "接在符合条件的工作之后，休息自然结束且满足 1 分钟有效休息",
+      "title": "一起歇一会儿",
+      "description": "这一轮的休息，也留在了我们的日常里。"
+    },
+    {
+      "id": "first_firefly_visit",
+      "unlockCondition": "萤火虫完整播放，满足主设计的全过程条件",
+      "title": "桌边微光",
+      "description": "一点小小的光，来到这次相伴的桌边。"
+    },
+    {
+      "id": "first_gentle_wake",
+      "unlockCondition": "自然睡眠后，被有效点击唤醒并开始回应",
+      "title": "睡醒见面",
+      "description": "小猫从一场小觉里醒来，回应了你的招呼。"
+    },
+    {
+      "id": "first_return",
+      "unlockCondition": "间隔至少 7 个当地日期后，重新有效相伴满 1 分钟",
+      "title": "又见面了",
+      "description": "隔了一段日子，熟悉的喵声还在。"
+    }
+  ]
+}

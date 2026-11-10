@@ -9,7 +9,7 @@
     <ApplicationIcon Condition="Exists('../../assets/strawberry-cat/tray.ico')">../../assets/strawberry-cat/tray.ico</ApplicationIcon>
     <AssemblyName>TablePet.Skeletal</AssemblyName>
     <RootNamespace>TablePet.App</RootNamespace>
-    <Version>0.5.0-skeletal</Version>
+    <Version>0.6.0-skeletal</Version>
     <Product>草莓猫桌宠 · 骨骼版</Product>
     <!-- WPF owns PerMonitorV2 via app.manifest; WinForms is used only for NotifyIcon. -->
     <NoWarn>$(NoWarn);WFO0003</NoWarn>
@@ -20,5 +20,6 @@
     <ProjectReference Include="../TablePet.Core/TablePet.Core.csproj" />
     <Content Include="../../assets/strawberry-cat/skeletal/**" Link="Assets/strawberry-cat/skeletal/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
     <Content Include="../../assets/strawberry-cat/*.json;../../assets/strawberry-cat/*.png;../../assets/strawberry-cat/*.ico" Link="Assets/strawberry-cat/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    <Content Include="../../assets/strawberry-cat/memories/*.png" Link="Assets/strawberry-cat/memories/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 </Project>

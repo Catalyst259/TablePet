@@ -27,9 +27,12 @@ public sealed partial class BehaviorController
 
     public BehaviorController(IClock clock, IReadOnlyDictionary<string, AnimationClip> clips,
         PetSettings? settings = null, Func<int, int, int>? randomBetween = null,
-        IEnumerable<IdleAction>? idleActions = null)
+        IEnumerable<IdleAction>? idleActions = null, Action<BehaviorFact>? factSink = null,
+        bool externalSpeechEnabled = false)
     {
         _clock = clock;
+        FactOccurred = factSink;
+        ExternalSpeechEnabled = externalSpeechEnabled;
         _clips = clips;
         Settings = settings ?? new PetSettings();
         Settings.EnsureValid();
@@ -115,6 +118,7 @@ public sealed partial class BehaviorController
         LastPetInteraction = _clock.NowMilliseconds;
         if (State == PetState.FallAsleep)
         {
+            if (reaction != ReactionKind.None) RememberInteraction();
             _reactionAfterWake = reaction;
             SetState(PetState.Wake);
             // Do not sample a later frame here: return from exactly the frame the user saw.
@@ -124,18 +128,21 @@ public sealed partial class BehaviorController
         }
         else if (State == PetState.Sleep)
         {
+            if (reaction != ReactionKind.None) RememberInteraction(fromNaturalSleep: true);
             _reactionAfterWake = reaction;
             SetState(PetState.Wake);
             if (!ReturnLoopToStart("sleep_to_wake")) Play("wake");
         }
         else if (State == PetState.Wake)
         {
+            if (reaction != ReactionKind.None) RememberInteraction();
             // Explicit input may upgrade a hover wake. Meow takes precedence over
             // a pending ordinary click, and later hover/click input cannot erase it.
             if (reaction > _reactionAfterWake) _reactionAfterWake = reaction;
         }
         else if (reaction != ReactionKind.None && State == PetState.Idle && _clock.NowMilliseconds >= ReactionCooldownUntil)
         {
+            RememberInteraction();
             if (Player.CurrentClip?.Name == "idle") BeginReaction(reaction);
             else if (_reactionAfterIdleAction == ReactionKind.None)
             {
@@ -153,6 +160,9 @@ public sealed partial class BehaviorController
     public void BeginDrag()
     {
         if (IsSuspended || IsDragging) return;
+        CancelPendingInteraction();
+        _restInteractionId = null;
+        FinishFireflyFact(invalidated: true);
         _reactionAfterIdleAction = ReactionKind.None;
         _reactionAfterWake = ReactionKind.None;
         IsDragging = true;
@@ -179,6 +189,12 @@ public sealed partial class BehaviorController
     public void SetSuspended(bool suspended)
     {
         if (IsSuspended == suspended) return;
+        if (suspended)
+        {
+            CancelPendingInteraction();
+            _restInteractionId = null;
+            FinishFireflyFact(invalidated: true);
+        }
         IsSuspended = suspended;
         if (WorkSessionActive)
         {
@@ -234,6 +250,10 @@ public sealed partial class BehaviorController
         var rescheduleBlink = Settings.BlinkMinMs != settings.BlinkMinMs || Settings.BlinkMaxMs != settings.BlinkMaxMs;
         var rescheduleCooldown = Settings.CooldownMs != settings.CooldownMs;
         var oldMode = Mode;
+        if (_workRoundId is not null && !_workRoundEnded && Settings.WorkDurationMs != settings.WorkDurationMs)
+            _workDurationChanged = true;
+        if (_breakId is not null && !_breakEnded && Settings.BreakDurationMs != settings.BreakDurationMs)
+            _breakDurationChanged = true;
         Settings = settings;
         ApplyWorkSettings(oldMode);
         if (rescheduleBlink) ScheduleBlink();
@@ -249,6 +269,7 @@ public sealed partial class BehaviorController
             || State != _expectedState || completion.ClipName != _expectedClip) return;
         if (WorkSessionActive && AutomaticActionsPaused && Mode == CompanionMode.Work) return;
         if (HandleWorkCompleted(completion)) return;
+        if (completion.ClipName == "firefly") FinishFireflyFact(invalidated: false);
         switch (State)
         {
             case PetState.Idle:
@@ -322,10 +343,12 @@ public sealed partial class BehaviorController
         _reactionAfterIdleAction = ReactionKind.None;
         _reactionAfterWake = ReactionKind.None;
         SetState(PetState.React);
+        var interactionId = CommitInteraction(BehaviorInteractionSource.Daily);
         if (reaction == ReactionKind.Meow && _canMeow)
         {
             ReactionPhase = ReactionPhase.Meow;
             Play("meow");
+            CueSpeech(BehaviorSpeechScene.DailyClick, "喵", (int)Math.Min(int.MaxValue, _clips["meow"].DurationMs), interactionId);
             return;
         }
         // Single clicks choose meow/wink equally; old packs use whichever safe
@@ -349,6 +372,8 @@ public sealed partial class BehaviorController
             ReactionPhase = ReactionPhase.Rise;
             Play("rise");
         }
+        CueSpeech(BehaviorSpeechScene.DailyClick, ReactionPhase == ReactionPhase.Meow ? "喵" : null,
+            (int)Math.Min(int.MaxValue, Player.CurrentClip!.DurationMs), interactionId);
     }
 
     private void BeginHold()
@@ -367,6 +392,7 @@ public sealed partial class BehaviorController
 
     private void EnterIdle()
     {
+        CancelPendingInteraction();
         _reactionAfterIdleAction = ReactionKind.None;
         _reactionAfterWake = ReactionKind.None;
         ReactionPhase = ReactionPhase.None;
@@ -390,7 +416,6 @@ public sealed partial class BehaviorController
         _expectedState = State;
         _expectedClip = clip.Name;
         _expectedToken = Player.Play(clip);
-        if (name == "meow") ShowSpeech("喵", (int)Math.Min(int.MaxValue, clip.DurationMs));
     }
 
     /// <summary>
@@ -463,7 +488,11 @@ public sealed partial class BehaviorController
             _ => ReactionPhase.None
         };
         // Keep the catalog firefly identity for paired overlay playback/cache.
-        if (selected.Clip == "firefly") Play("firefly");
+        if (selected.Clip == "firefly")
+        {
+            Play("firefly");
+            StartFireflyFact();
+        }
         else Play(selected.Clip, loop: false);
     }
 }

@@ -4,7 +4,7 @@
 
 后续功能与修复只在 `skeleton` 上迭代。`legacy` 和旧版本发布仅作历史归档；日常开发不需要保留旧工作副本。原本地未提交草稿与实验资料另存于工作目录之外，不参与构建和发布。
 
-保留全部 16 个动作片段、萤火虫装饰轨道、原始时间槽和交互行为，在运行时重建画面，替代整帧 PNG 序列。动画资源由 **211.58 MiB 降至 58.18 MiB，减少 72.50%**；包含 fallback、图标和清单的全部运行素材由 213.22 MiB 降至 59.83 MiB，减少 71.94%。
+保留全部 16 个动作片段、萤火虫装饰轨道、原始时间槽和交互行为，在运行时重建画面，替代整帧 PNG 序列。0.5.0 骨骼重写将动画资源由 **211.58 MiB 降至 58.18 MiB，减少 72.50%**；当时包含 fallback、图标和清单的基础运行素材由 213.22 MiB 降至 59.83 MiB，减少 71.94%。0.6.0 另外增加约 16 MiB 的 12 幅回忆静态插画，角色动画资源保持不变。
 
 这些减量指运行素材和发布包。为保留 `legacy`，Git 历史仍包含旧图片；本地未跟踪的制作草稿不会随分支推送，也不参与骨骼版发布。
 
@@ -18,7 +18,9 @@
 
 ## 运行与构建
 
-日常使用可在 [0.5.0 骨骼版发布页](https://github.com/Catalyst259/TablePet/releases/tag/v0.5.0-skeletal) 下载 `TablePet.Skeletal-0.5.0-Setup.exe`，按中文向导安装；也可使用 ZIP 便携包。两种包都内置 .NET 运行时。安装、更新和卸载说明见 [安装说明](docs/INSTALLATION.md)。
+0.6.0 加入渐进式陪伴成长：沿用所有骨骼动作，通过四个关系阶段、情境短句和 12 条带专属插画的永久回忆体现熟悉感。右键、托盘或设置中的“我们的日常”可查看记录。日常与工作均可成长，不扣分、不要求连续使用；成长与文字可分别关闭。详细规则见 [成长设计](docs/COMPANIONSHIP-DESIGN.md)、[内容表](docs/COMPANIONSHIP-CONTENT.md)、[回忆插画](docs/MEMORY-ILLUSTRATIONS.md) 和 [验收记录](docs/COMPANIONSHIP-VALIDATION.md)。
+
+日常使用可在 [0.6.0 骨骼版发布页](https://github.com/Catalyst259/TablePet/releases/tag/v0.6.0-skeletal) 下载 `TablePet.Skeletal-0.6.0-Setup.exe`，按中文向导安装；也可使用 ZIP 便携包。两种包都内置 .NET 运行时。安装、更新和卸载说明见 [安装说明](docs/INSTALLATION.md)。
 
 发布目录的 `TablePet.Skeletal.exe` 可直接运行。它使用单独的进程通信标识、开机启动项和 `%LocalAppData%/DesktopPet.Skeletal/` 设置目录，可与冻结的原版并存。
 
@@ -32,7 +34,7 @@ powershell -File tools/build-skeletal.ps1 -Test -Publish
 
 ```powershell
 # 不启动窗口或写入用户设置的素材检查
-.\dist\TablePet.Skeletal-0.5.0-win-x64\TablePet.Skeletal.exe --check-assets
+.\dist\TablePet.Skeletal-0.6.0-win-x64\TablePet.Skeletal.exe --check-assets
 ```
 
 只有重新制作资源或与逐帧原版比较时，才需要另取一个 `legacy` 参考目录。以下命令在当前 `skeleton` 工作目录运行：

@@ -1,6 +1,6 @@
 # 骨骼版 Windows 安装包
 
-`TablePet.Skeletal.iss` 使用 Inno Setup 6 构建中文、按当前用户安装的 Setup，不要求管理员权限。默认输入为已发布的 `dist/TablePet.Skeletal-0.5.0-win-x64.zip`，输出为 `dist/TablePet.Skeletal-0.5.0-Setup.exe`。
+`TablePet.Skeletal.iss` 使用 Inno Setup 6 构建中文、按当前用户安装的 Setup，不要求管理员权限。版本从应用项目读取；0.6.0 的默认输入为已验证的 `dist/TablePet.Skeletal-0.6.0-win-x64.zip`，输出为 `dist/TablePet.Skeletal-0.6.0-Setup.exe`。
 
 先安装 Inno Setup 6.5.0 或更新版本，然后在仓库根目录执行：
 

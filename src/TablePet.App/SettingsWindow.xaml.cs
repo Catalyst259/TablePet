@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Threading;
 using TablePet.App.Services;
 using TablePet.Core;
 
@@ -14,9 +15,13 @@ public partial class SettingsWindow : Window
     private bool _loading = true;
     private bool _applying;
     private bool _closed;
-    public SettingsWindow(SettingsService service, ImageSource preview, bool canWork = true)
+    private bool _modeAppliedBeforeClick;
+    private readonly Action? _openCompanion;
+    public event Action? WorkModeChosen;
+    public SettingsWindow(SettingsService service, ImageSource preview, bool canWork = true, Action? openCompanion = null)
     {
-        InitializeComponent(); _service = service; _canWork = canWork; Preview.Source = preview;
+        InitializeComponent(); _service = service; _canWork = canWork; _openCompanion = openCompanion; Preview.Source = preview;
+        OpenCompanionButton.IsEnabled = openCompanion is not null;
         LoadFields();
         _service.SaveFailed += OnSaveFailed;
         _service.Changed += OnSettingsChanged;
@@ -41,6 +46,8 @@ public partial class SettingsWindow : Window
         PetSize.Value = s.PetHeightDip; SizeLabel.Text = $"{s.PetHeightDip:0} DIP";
         AlwaysTop.IsChecked = s.Topmost; PassThrough.IsChecked = s.ClickThrough;
         Startup.IsChecked = s.StartWithWindows;
+        RecordCompanionship.IsChecked = s.CompanionshipEnabled;
+        CompanionText.IsChecked = s.CompanionTextEnabled;
         _loading = false;
     }
     private void LoadMode(CompanionMode mode)
@@ -61,7 +68,12 @@ public partial class SettingsWindow : Window
         // Tray mode changes must stay visible here. Refresh only mode, leaving
         // any text currently being edited intact until the user applies it.
         _loading = true;
-        try { LoadMode(settings.Mode); }
+        try
+        {
+            LoadMode(settings.Mode);
+            RecordCompanionship.IsChecked = settings.CompanionshipEnabled;
+            CompanionText.IsChecked = settings.CompanionTextEnabled;
+        }
         finally { _loading = false; }
     }
     private static string Seconds(int ms) => (ms / 1000d).ToString("0.###", CultureInfo.CurrentCulture);
@@ -73,7 +85,7 @@ public partial class SettingsWindow : Window
             throw new ArgumentException("请输入有效的非负数字。");
         return checked((int)Math.Round(number * factor));
     }
-    private bool Apply()
+    private bool Apply(Action? beforePublish = null)
     {
         if (_loading) return true;
         try
@@ -88,12 +100,14 @@ public partial class SettingsWindow : Window
                 BlinkMaxMs = Parse(BlinkMax, 1000), HoldMs = Parse(HoldSeconds, 1000),
                 CooldownMs = Parse(CooldownSeconds, 1000), HoverDwellMs = Parse(HoverMs, 1),
                 PetHeightDip = PetSize.Value, Topmost = AlwaysTop.IsChecked == true,
-                ClickThrough = PassThrough.IsChecked == true, StartWithWindows = Startup.IsChecked == true
+                ClickThrough = PassThrough.IsChecked == true, StartWithWindows = Startup.IsChecked == true,
+                CompanionshipEnabled = RecordCompanionship.IsChecked == true,
+                CompanionTextEnabled = CompanionText.IsChecked == true
             };
             updated.EnsureValid();
             if (updated.StartWithWindows != old.StartWithWindows) PlatformService.SetStartup(updated.StartWithWindows);
             _applying = true;
-            try { _service.Update(updated); }
+            try { beforePublish?.Invoke(); _service.Update(updated); }
             finally { _applying = false; }
             SizeLabel.Text = $"{updated.PetHeightDip:0} DIP";
             Feedback.Text = _canWork ? "已应用 · 设置会自动保存在这台电脑上。"
@@ -111,7 +125,22 @@ public partial class SettingsWindow : Window
     private void OnSaveFailed(string message) => Dispatcher.BeginInvoke(new Action(() =>
     { Feedback.Text = message; Feedback.Foreground = Brushes.IndianRed; }));
     private void Option_Changed(object sender, RoutedEventArgs e) => Apply();
-    private void Mode_Changed(object sender, RoutedEventArgs e) => Apply();
+    private void ApplyModeChoice() => Apply(
+        !_loading && _canWork && WorkMode.IsChecked == true ? () => WorkModeChosen?.Invoke() : null);
+    private void Mode_Checked(object sender, RoutedEventArgs e)
+    {
+        if (_loading) return;
+        // Direction-key selection can raise Checked without Click. Mouse selection raises both.
+        _modeAppliedBeforeClick = true;
+        Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() => _modeAppliedBeforeClick = false));
+        ApplyModeChoice();
+    }
+    private void Mode_Click(object sender, RoutedEventArgs e)
+    {
+        if (_modeAppliedBeforeClick) { _modeAppliedBeforeClick = false; return; }
+        ApplyModeChoice();
+    }
+    private void Companion_Click(object sender, RoutedEventArgs e) => _openCompanion?.Invoke();
     private void Number_Changed(object sender, RoutedEventArgs e) => Apply();
     private void Size_Changed(object sender, RoutedPropertyChangedEventArgs<double> e) => Apply();
     private void Done_Click(object sender, RoutedEventArgs e) { if (Apply()) Close(); }

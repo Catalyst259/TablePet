@@ -85,10 +85,16 @@ public sealed partial class BehaviorController
             {
                 _workExitDueAt = null;
                 WorkPhase = WorkPhase.Working;
+                // Returning before the visual exit may resume the same animation,
+                // but the cancelled round must never later become a completed one.
+                if (_workRoundEnded) StartWorkRoundFact();
             }
             return;
         }
         if (!WorkSessionActive) return;
+        EndWorkRoundFact(WorkEndReason.UserCancelled);
+        EndBreakFact(WorkEndReason.UserCancelled);
+        _restInteractionId = null;
         _leaveWork = true;
         // An explicit return to daily mode may finish its transition even when
         // automatic actions are paused; daily pause never freezes manual input.
@@ -111,6 +117,7 @@ public sealed partial class BehaviorController
     private void RequestWorkStart()
     {
         _leaveWork = false;
+        CancelPendingInteraction();
         _reactionAfterIdleAction = _reactionAfterWake = ReactionKind.None;
         if (State is PetState.Sleep or PetState.FallAsleep)
             BeginWorkWake(WorkPhase.WakingForWork);
@@ -126,11 +133,15 @@ public sealed partial class BehaviorController
     private void StartWorkAnnouncement()
     {
         if (_leaveWork || Mode != CompanionMode.Work) { CompleteWorkToDaily(); return; }
+        // A completion callback can run before TickWorkMode observes the deadline.
+        // Settle the previous break before clearing its clock for the new round.
+        if (_breakStartedAt is not null)
+            EndBreakFact(BreakRemainingMs == 0 ? WorkEndReason.DeadlineReached : WorkEndReason.UserCancelled);
         _breakStartedAt = null;
         _workExitDueAt = null;
         _exitToDaily = false;
         WorkPlay(WorkPhase.AnnouncingWork, "meow", PetState.React, ReactionPhase.Meow);
-        ShowSpeech("开始工作啦~", (int)Math.Min(int.MaxValue, _clips["meow"].DurationMs));
+        CueSpeech(BehaviorSpeechScene.WorkStart, "开始工作啦~", (int)Math.Min(int.MaxValue, _clips["meow"].DurationMs));
     }
 
     private void WorkPlay(WorkPhase phase, string name, PetState state = PetState.Work,
@@ -168,8 +179,15 @@ public sealed partial class BehaviorController
         if (!WorkSessionActive) return false;
         if (WorkPhase == WorkPhase.WaitingForIdle) return false;
         var now = WorkNow;
+        // The break deadline is a fact even when a click's wake/yawn is still
+        // finishing; the animation may continue without extending this round.
+        if (_breakStartedAt is not null && BreakRemainingMs == 0)
+            EndBreakFact(WorkEndReason.DeadlineReached);
         if (WorkPhase == WorkPhase.Working && now >= _workStartedAt + Settings.WorkDurationMs)
+        {
+            EndWorkRoundFact(WorkEndReason.DeadlineReached);
             RequestWorkExit();
+        }
         else if (WorkPhase == WorkPhase.WaitingForBlink && now >= _workExitDueAt)
             StartWorkExit();
         else if (WorkPhase == WorkPhase.Resting && BreakRemainingMs == 0)
@@ -205,12 +223,14 @@ public sealed partial class BehaviorController
         if (reaction == ReactionKind.None || WorkFrozen || _leaveWork) return;
         if (WorkPhase is WorkPhase.Resting or WorkPhase.FallingAsleep)
         {
+            _restInteractionId = CommitInteraction(BehaviorInteractionSource.Rest);
             BeginWorkWake(WorkPhase.RestWake);
             return;
         }
         if (WorkPhase is WorkPhase.RestWake or WorkPhase.RestYawn or WorkPhase.FallingAsleep
             or WorkPhase.AnnouncingBreak or WorkPhase.WakeForNextWork or WorkPhase.LeavingWake) return;
-        ShowSpeech("工作呢，别打扰我");
+        var interactionId = CommitInteraction(BehaviorInteractionSource.Working);
+        CueSpeech(BehaviorSpeechScene.WorkingClick, "工作呢，别打扰我", 2400, interactionId);
     }
 
     private bool HandleWorkCompleted(AnimationCompleted completion)
@@ -225,7 +245,12 @@ public sealed partial class BehaviorController
             case WorkPhase.Entering:
                 _workStartedAt = WorkNow;
                 WorkPlay(WorkPhase.Working, "work_loop", loop: true);
-                if (_leaveWork) RequestWorkExit();
+                StartWorkRoundFact();
+                if (_leaveWork)
+                {
+                    EndWorkRoundFact(WorkEndReason.UserCancelled);
+                    RequestWorkExit();
+                }
                 break;
             case WorkPhase.Exiting:
                 if (_leaveWork) CompleteWorkToDaily();
@@ -233,7 +258,7 @@ public sealed partial class BehaviorController
                 else
                 {
                     WorkPlay(WorkPhase.AnnouncingBreak, "wink", PetState.React, ReactionPhase.Wink);
-                    ShowSpeech("休息一下吧~", (int)Math.Min(int.MaxValue, _clips["wink"].DurationMs));
+                    CueSpeech(BehaviorSpeechScene.WorkBreak, "休息一下吧~", (int)Math.Min(int.MaxValue, _clips["wink"].DurationMs), _workRoundId);
                 }
                 break;
             case WorkPhase.AnnouncingBreak:
@@ -245,8 +270,10 @@ public sealed partial class BehaviorController
                 else if (_breakStartedAt is not null && BreakRemainingMs == 0) BeginWorkWake(WorkPhase.WakeForNextWork);
                 else
                 {
+                    var firstSleep = _breakStartedAt is null;
                     _breakStartedAt ??= WorkNow;
                     WorkPlay(WorkPhase.Resting, "sleep_loop", PetState.Sleep, loop: true);
+                    if (firstSleep) StartBreakFact();
                 }
                 break;
             case WorkPhase.WakingForWork:
@@ -262,7 +289,8 @@ public sealed partial class BehaviorController
                 else if (WorkPhase == WorkPhase.RestWake)
                 {
                     WorkPlay(WorkPhase.RestYawn, "yawn", PetState.React);
-                    ShowSpeech("和我一起休息", (int)Math.Min(int.MaxValue, _clips["yawn"].DurationMs));
+                    CueSpeech(BehaviorSpeechScene.RestClick, "和我一起休息", (int)Math.Min(int.MaxValue, _clips["yawn"].DurationMs), _restInteractionId);
+                    _restInteractionId = null;
                 }
                 else StartWorkAnnouncement();
                 break;
@@ -277,6 +305,9 @@ public sealed partial class BehaviorController
 
     private void CompleteWorkToDaily()
     {
+        EndWorkRoundFact(WorkEndReason.UserCancelled);
+        EndBreakFact(WorkEndReason.UserCancelled);
+        _restInteractionId = null;
         if (_workPausedAt is not null)
         {
             ShiftWorkClocks(_clock.NowMilliseconds - _workPausedAt.Value);
@@ -323,6 +354,7 @@ public sealed partial class BehaviorController
     {
         _workPhaseStartedAt += delta;
         _workStartedAt += delta;
+        _workFactStartedAt += delta;
         if (_breakStartedAt is { } start) _breakStartedAt = start + delta;
         if (_workExitDueAt is { } exit) _workExitDueAt = exit + delta;
         _speechStartedAt += delta;

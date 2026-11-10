@@ -1,7 +1,7 @@
 ﻿; Independent per-user installation of the skeletal edition. This AppId must
 ; remain stable for same-version reinstalls and future skeletal upgrades.
 #ifndef AppVersion
-  #define AppVersion "0.5.0"
+  #define AppVersion "0.6.0"
 #endif
 #ifndef PublishDir
   #define PublishDir SourcePath + "..\dist\TablePet.Skeletal-" + AppVersion + "-win-x64"

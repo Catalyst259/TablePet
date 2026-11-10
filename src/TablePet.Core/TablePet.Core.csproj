@@ -5,4 +5,9 @@
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Companionship/companion-content.zh-CN.json"
+                      WithCulture="false"
+                      LogicalName="TablePet.Core.Companionship.companion-content.zh-CN.json" />
+  </ItemGroup>
 </Project>

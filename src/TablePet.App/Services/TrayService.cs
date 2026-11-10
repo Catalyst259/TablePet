@@ -17,7 +17,8 @@ public sealed record TrayActions(
     Action? MenuOpened = null,
     Action? MenuClosed = null,
     Action? DailyMode = null,
-    Action? WorkMode = null);
+    Action? WorkMode = null,
+    Action? Companion = null);
 
 /// <summary>Uses the standard Windows notification area and its native accessible menu.</summary>
 public sealed class TrayService : IDisposable
@@ -43,6 +44,7 @@ public sealed class TrayService : IDisposable
         _menu = new Forms.ContextMenuStrip();
         _visibility = AddItem("隐藏桌宠", actions.ShowHide);
         AddItem("设置…", actions.Settings);
+        if (actions.Companion is { } companion) AddItem("我们的日常…", companion);
         _menu.Items.Add(new Forms.ToolStripSeparator());
         if (actions.DailyMode is { } daily) _dailyMode = AddItem("日常陪伴", daily);
         if (actions.WorkMode is { } work) _workMode = AddItem("工作模式", work);

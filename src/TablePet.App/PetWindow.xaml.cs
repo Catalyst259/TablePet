@@ -19,6 +19,10 @@ public partial class PetWindow : Window
     private readonly DispatcherTimer _timer;
     private TrayService? _tray;
     private SettingsWindow? _settingsWindow;
+    private CompanionWindow? _companionWindow;
+    private CompanionSession? _companion;
+    private readonly bool _companionUpgrade;
+    private readonly List<BehaviorFact> _initialFacts = [];
     private SleepIndicatorWindow? _sleepIndicator;
     private SpeechBubbleWindow? _speechBubble;
     private FireflyWindow? _firefly;
@@ -31,13 +35,18 @@ public partial class PetWindow : Window
     private string _frame = "";
     private PetSettings _applied;
 
-    public PetWindow(SettingsService settings, AssetCatalog assets)
+    public PetWindow(SettingsService settings, AssetCatalog assets, string? companionStatePath = null)
     {
         InitializeComponent();
         _settings = settings; _assets = assets; _applied = settings.Current;
         var clock = new StopwatchClock();
-        _behavior = new BehaviorController(clock, assets.Clips, settings.Current, idleActions: assets.IdleActions);
+        _behavior = new BehaviorController(clock, assets.Clips, settings.Current, idleActions: assets.IdleActions,
+            factSink: _initialFacts.Add, externalSpeechEnabled: true);
+        _behavior.FactOccurred -= _initialFacts.Add;
         _behavior.StateChanged += state => ErrorLogger.Write($"状态：{state}");
+        _companion = new CompanionSession(clock, _behavior, settings.Current, CompanionContext, companionStatePath);
+        _companionUpgrade = File.Exists(settings.SettingsPath) && _companion.State.RecordingStartedAtUtc is null;
+        _companion.PresentationChanged += UpdateRenderingSubscription;
         _interaction = new InteractionService(clock, settings.Current,
             SystemParameters.MinimumHorizontalDragDistance, SystemParameters.MinimumVerticalDragDistance,
             System.Windows.Forms.SystemInformation.DoubleClickTime,
@@ -64,6 +73,7 @@ public partial class PetWindow : Window
         _platform.DisplayChanged += () => { if (!_pointerHeld) _interaction.Cancel(); UpdateBusy(); ResetBaseline(); SavePosition(); SyncDecorations(); };
         LocationChanged += (_, _) => SyncDecorations();
         SizeChanged += (_, _) => SyncDecorations();
+        StateChanged += (_, _) => _companion?.SynchronizeContext();
         Closing += (_, e) => { if (!_closing) { e.Cancel = true; ToggleVisible(); } };
     }
 
@@ -78,9 +88,12 @@ public partial class PetWindow : Window
             () => _settings.Update(_settings.Current with { Topmost = !_settings.Current.Topmost }),
             () => _settings.Update(_settings.Current with { ClickThrough = !_settings.Current.ClickThrough }),
             RestorePosition, Quit, () => SetMenuOpen(true), () => SetMenuOpen(false),
-            () => SetMode(CompanionMode.Daily), () => SetMode(CompanionMode.Work)),
+            () => SetMode(CompanionMode.Daily), () => SetMode(CompanionMode.Work), OpenCompanion),
             Path.Combine(AppContext.BaseDirectory, "Assets", "strawberry-cat", "tray.ico"));
         UpdateTray(); _timer.Start(); UpdateRenderingSubscription();
+        _companion?.SynchronizeContext();
+        foreach (var fact in _initialFacts) _companion?.HandleFact(fact);
+        _initialFacts.Clear();
         if (_settings.LastError is { } error) _tray.ShowMessage(error);
         if (_assets.IsFallback) _tray.ShowMessage("动画素材暂不可用，已显示原型图。请检查 Assets 文件夹。");
         else if (_settings.Current.Mode == CompanionMode.Work && !_behavior.CanWork)
@@ -90,6 +103,7 @@ public partial class PetWindow : Window
     private void Tick()
     {
         if (!_ready || _hidden || _systemPaused) return;
+        _companion?.Tick();
         if (PlatformService.TryGetCursorPhysical(out var pointer))
         {
             _lastPointer = pointer;
@@ -122,6 +136,7 @@ public partial class PetWindow : Window
     }
     private void UpdateRenderingSubscription()
     {
+        _companion?.UpdatePresentation();
         UpdateWorkScene();
         UpdateSleepIndicator();
         UpdateSpeechBubble();
@@ -150,7 +165,7 @@ public partial class PetWindow : Window
         _sleepIndicator ??= new SleepIndicatorWindow(this);
         _sleepIndicator.Update(SleepDecorationTime(_behavior.Player));
     }
-    private bool IsSpeechBubbleActive => _behavior.SpeechText is not null;
+    private bool IsSpeechBubbleActive => _companion?.Speech.SpeechText is not null;
 
     private void UpdateSpeechBubble()
     {
@@ -160,7 +175,8 @@ public partial class PetWindow : Window
             return;
         }
         _speechBubble ??= new SpeechBubbleWindow(this);
-        _speechBubble.Update(_behavior.SpeechElapsedMs, _behavior.SpeechText!, _behavior.SpeechDurationMs);
+        var speech = _companion!.Speech;
+        _speechBubble.Update(speech.SpeechElapsedMs, speech.SpeechText!, speech.SpeechDurationMs);
     }
 
     private void UpdateWorkScene()
@@ -242,6 +258,7 @@ public partial class PetWindow : Window
         var signal = cancel ? _interaction.Cancel() : _interaction.PointerUp(dip.X, dip.Y, Hit(pointer));
         Handle(signal);
         if (_behavior.IsDragging) _behavior.EndDrag();
+        _companion?.SynchronizeContext();
         if (IsMouseCaptured) ReleaseMouseCapture();
         UpdateBusy(); _platform.KeepVisible(); SavePosition(); ResetBaseline();
         UpdateRenderingSubscription();
@@ -253,6 +270,7 @@ public partial class PetWindow : Window
         if (signal.HasFlag(InteractionSignal.Hover)) _behavior.Hover();
         if (signal.HasFlag(InteractionSignal.DoubleClick)) _behavior.DoubleClick();
         if (signal.HasFlag(InteractionSignal.Click)) _behavior.Click();
+        if (signal != InteractionSignal.None) _companion?.SynchronizeContext();
         UpdateBusy();
         UpdateRenderingSubscription();
     }
@@ -278,7 +296,15 @@ public partial class PetWindow : Window
         var dip = PointerDip(pointer);
         _interaction.ResetBaseline(dip.X, dip.Y, Hit(pointer));
     }
-    private void UpdateBusy() => _behavior.SetInputBusy(_pointerHeld || _interaction.HasPendingClick || _menuOpen || _settingsWindow is not null);
+    private void UpdateBusy() => _behavior.SetInputBusy(_pointerHeld || _interaction.HasPendingClick || _menuOpen || _settingsWindow is not null || _companionWindow is not null);
+    private CompanionHostContext CompanionContext() => new(
+        _ready && !_closing && !_hidden && IsVisible && WindowState != WindowState.Minimized,
+        !_systemPaused, _behavior.IsDragging,
+        _autoPaused && _behavior.Mode == CompanionMode.Work,
+        _menuOpen || _settingsWindow is not null || _companionWindow is not null,
+        !_autoPaused && !_pointerHeld && !(_interaction?.HasPendingClick ?? false)
+            && _behavior.State == PetState.Idle && _behavior.Player.CurrentClip?.Name == "idle",
+        _behavior.Mode == CompanionMode.Work, Height, AllowMilestone: !_autoPaused);
     private void SetMenuOpen(bool open)
     {
         _menuOpen = open;
@@ -291,7 +317,9 @@ public partial class PetWindow : Window
         // Saving a position must not restart deadlines, cancel input, or re-decode images.
         if (settings with { Position = null } == _applied with { Position = null }) { _applied = settings; return; }
         if (_pointerHeld) EndPointer(cancel: true);
+        _companion?.ApplySettings(settings);
         _behavior.ApplySettings(settings);
+        _companion?.SynchronizeContext();
         Height = settings.PetHeightDip; Width = Height * _assets.CanvasWidth / _assets.CanvasHeight;
         Topmost = settings.Topmost;
         if (_ready)
@@ -307,7 +335,12 @@ public partial class PetWindow : Window
     private void SavePosition()
     { if (_ready) _settings.Update(_settings.Current with { Position = _platform.CapturePlacement() }); }
     private void TogglePause()
-    { _autoPaused = !_autoPaused; _interaction.Cancel(); _behavior.SetAutomaticActionsPaused(_autoPaused); UpdateBusy(); ResetBaseline(); UpdateTray(); UpdateRenderingSubscription(); }
+    {
+        _autoPaused = !_autoPaused; _interaction.Cancel(); _behavior.SetAutomaticActionsPaused(_autoPaused);
+        _companion?.SynchronizeContext();
+        if (!_autoPaused && _behavior.Mode == CompanionMode.Work) _companion?.Activate();
+        UpdateBusy(); ResetBaseline(); UpdateTray(); UpdateRenderingSubscription();
+    }
     private void SetMode(CompanionMode mode)
     {
         if (mode == CompanionMode.Work && !_behavior.CanWork)
@@ -316,6 +349,7 @@ public partial class PetWindow : Window
             return;
         }
         _interaction.Cancel();
+        if (mode == CompanionMode.Work) _companion?.PrepareManualWorkStart();
         _settings.Update(_settings.Current with { Mode = mode }, saveImmediately: true);
         UpdateBusy(); ResetBaseline(); UpdateRenderingSubscription();
     }
@@ -324,6 +358,7 @@ public partial class PetWindow : Window
         _hidden = !_hidden;
         UpdateSuspension();
         if (_hidden) Hide(); else { Show(); _platform.KeepVisible(); ResetBaseline(); }
+        _companion?.SynchronizeContext();
         UpdateSleepIndicator();
         UpdateSpeechBubble();
         UpdateTray();
@@ -331,6 +366,8 @@ public partial class PetWindow : Window
     private void UpdateSuspension()
     {
         var suspend = _hidden || _systemPaused;
+        _companion?.SynchronizeContext();
+        if (suspend) _companion?.Checkpoint();
         _behavior.SetSuspended(suspend);
         if (suspend) { EndPointer(cancel: true); _interaction.Cancel(); _timer.Stop(); }
         if (!suspend) { UpdateBusy(); ResetBaseline(); _timer.Start(); }
@@ -350,10 +387,30 @@ public partial class PetWindow : Window
             if (_settingsWindow.WindowState == WindowState.Minimized) _settingsWindow.WindowState = WindowState.Normal;
             _settingsWindow.Activate(); return;
         }
-        _settingsWindow = new SettingsWindow(_settings, _assets.Image(_assets.Clips["idle"].Frames[0].File), _behavior.CanWork);
+        _settingsWindow = new SettingsWindow(_settings, _assets.Image(_assets.Clips["idle"].Frames[0].File), _behavior.CanWork, OpenCompanion);
+        _settingsWindow.WorkModeChosen += () => _companion?.PrepareManualWorkStart();
         UpdateBusy(); ResetBaseline();
         _settingsWindow.Closed += (_, _) => { _settingsWindow = null; UpdateBusy(); ResetBaseline(); _settings.Flush(); };
         _settingsWindow.Show();
+    }
+    public void OpenCompanion()
+    {
+        if (_companion is null || _closing) return;
+        EndPointer(cancel: true); _interaction.Cancel();
+        _companion.Activate();
+        if (_companionWindow is not null)
+        {
+            if (_companionWindow.WindowState == WindowState.Minimized) _companionWindow.WindowState = WindowState.Normal;
+            _companionWindow.Activate(); return;
+        }
+        _companionWindow = new CompanionWindow(_companion, _settings,
+            _assets.Image(_assets.Clips["idle"].Frames[0].File), _companionUpgrade);
+        UpdateBusy();
+        _companionWindow.Closed += (_, _) =>
+        {
+            _companionWindow = null; UpdateBusy(); ResetBaseline(); _companion?.Checkpoint();
+        };
+        _companionWindow.Show();
     }
     private void OpenMenu()
     {
@@ -368,6 +425,7 @@ public partial class PetWindow : Window
         AddMode("日常陪伴", CompanionMode.Daily); AddMode("工作模式", CompanionMode.Work);
         menu.Items.Add(new Separator());
         Add("设置…", OpenSettings);
+        Add("我们的日常…", OpenCompanion);
         Add(_settings.Current.Mode == CompanionMode.Work
             ? (_autoPaused ? "继续工作／休息计时" : "暂停工作／休息计时")
             : (_autoPaused ? "恢复自动动作" : "暂停自动动作"), TogglePause);
@@ -381,6 +439,12 @@ public partial class PetWindow : Window
     public void Quit()
     {
         if (_closing) return;
+        _companionWindow?.Close();
+        if (_companion is not null)
+        {
+            _companion.PresentationChanged -= UpdateRenderingSubscription;
+            _companion.Dispose();
+        }
         _closing = true; _timer.Stop(); UpdateRenderingSubscription(); EndPointer(cancel: true); SavePosition();
         _sleepIndicator?.Close(); _sleepIndicator = null;
         _speechBubble?.Close(); _speechBubble = null;

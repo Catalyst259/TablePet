@@ -30,6 +30,8 @@ public sealed record PetSettings
     public bool Topmost { get; init; } = true;
     public bool ClickThrough { get; init; }
     public bool StartWithWindows { get; init; }
+    public bool CompanionshipEnabled { get; init; } = true;
+    public bool CompanionTextEnabled { get; init; } = true;
     public WindowPlacement? Position { get; init; }
 
     public IReadOnlyList<string> Validate()
