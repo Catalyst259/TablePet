@@ -17,6 +17,9 @@ public partial class SettingsWindow : Window
     private bool _closed;
     private bool _modeAppliedBeforeClick;
     private readonly Action? _openCompanion;
+    private static readonly (int Work, int Break)[] WorkPresets =
+        [(25 * 60000, 5 * 60000), (50 * 60000, 10 * 60000), (45 * 60000, 15 * 60000)];
+    private static readonly int[] SleepPresets = [60000, 5 * 60000, 15 * 60000];
     public event Action? WorkModeChosen;
     public SettingsWindow(SettingsService service, ImageSource preview, bool canWork = true, Action? openCompanion = null)
     {
@@ -25,6 +28,14 @@ public partial class SettingsWindow : Window
         LoadFields();
         _service.SaveFailed += OnSaveFailed;
         _service.Changed += OnSettingsChanged;
+        Loaded += (_, _) =>
+        {
+            var area = SystemParameters.WorkArea;
+            MinWidth = Math.Min(460, area.Width); MinHeight = Math.Min(480, area.Height);
+            Width = Math.Min(Width, area.Width); Height = Math.Min(Height, area.Height);
+            Left = Math.Clamp(Left, area.Left, Math.Max(area.Left, area.Right - Width));
+            Top = Math.Clamp(Top, area.Top, Math.Max(area.Top, area.Bottom - Height));
+        };
         Closed += (_, _) =>
         {
             _closed = true;
@@ -39,15 +50,18 @@ public partial class SettingsWindow : Window
         LoadMode(s.Mode);
         WorkMinutes.Text = Minutes(s.WorkDurationMs);
         BreakMinutes.Text = Minutes(s.BreakDurationMs);
+        var workPreset = Array.FindIndex(WorkPresets, preset => preset.Work == s.WorkDurationMs && preset.Break == s.BreakDurationMs);
+        WorkPreset.SelectedIndex = workPreset < 0 ? WorkPresets.Length : workPreset;
         AutoSleep.IsChecked = s.AutoSleep;
-        SleepSeconds.Text = Seconds(s.SleepAfterMs); BlinkMin.Text = Seconds(s.BlinkMinMs);
-        BlinkMax.Text = Seconds(s.BlinkMaxMs); HoldSeconds.Text = Seconds(s.HoldMs);
-        CooldownSeconds.Text = Seconds(s.CooldownMs); HoverMs.Text = s.HoverDwellMs.ToString();
-        PetSize.Value = s.PetHeightDip; SizeLabel.Text = $"{s.PetHeightDip:0} DIP";
+        SleepSeconds.Text = Seconds(s.SleepAfterMs);
+        var sleepPreset = Array.IndexOf(SleepPresets, s.SleepAfterMs);
+        SleepPreset.SelectedIndex = sleepPreset < 0 ? SleepPresets.Length : sleepPreset;
+        PetSize.Value = s.PetHeightDip; SizeLabel.Text = SizeText(s.PetHeightDip);
         AlwaysTop.IsChecked = s.Topmost; PassThrough.IsChecked = s.ClickThrough;
         Startup.IsChecked = s.StartWithWindows;
         RecordCompanionship.IsChecked = s.CompanionshipEnabled;
         CompanionText.IsChecked = s.CompanionTextEnabled;
+        UpdateSections();
         _loading = false;
     }
     private void LoadMode(CompanionMode mode)
@@ -73,32 +87,39 @@ public partial class SettingsWindow : Window
             LoadMode(settings.Mode);
             RecordCompanionship.IsChecked = settings.CompanionshipEnabled;
             CompanionText.IsChecked = settings.CompanionTextEnabled;
+            UpdateSections();
         }
         finally { _loading = false; }
     }
     private static string Seconds(int ms) => (ms / 1000d).ToString("0.###", CultureInfo.CurrentCulture);
+    private static string SizeText(double height) => $"{height / 240:0%}";
     // Preserve even a millisecond duration when a user simply opens and closes settings.
     private static string Minutes(int ms) => (ms / 60000d).ToString("0.########", CultureInfo.CurrentCulture);
-    private static int Parse(TextBox box, double factor)
+    private static int Parse(TextBox box, double factor, string label, int maximum)
     {
-        if (!double.TryParse(box.Text, out var number) || !double.IsFinite(number) || number * factor > int.MaxValue || number * factor < 0)
-            throw new ArgumentException("请输入有效的非负数字。");
-        return checked((int)Math.Round(number * factor));
+        if (!double.TryParse(box.Text, out var number) || !double.IsFinite(number)
+            || number * factor > maximum || number * factor < 0.5)
+            throw new ArgumentException($"{label}请输入大于 0、且不超过 {maximum / factor:0} 的数字。");
+        return (int)Math.Round(number * factor);
     }
-    private bool Apply(Action? beforePublish = null)
+    private bool Apply(Action? beforePublish = null, bool applyWorkDuration = false, bool applySleepDelay = false)
     {
         if (_loading) return true;
         try
         {
             var old = _service.Current;
+            var workMode = _canWork && WorkMode.IsChecked == true;
+            // Hidden timing fields never block unrelated choices. Keep the stored values
+            // until their mode is selected or the user explicitly edits that duration.
+            var saveWork = workMode || applyWorkDuration;
+            var saveSleep = (!workMode && AutoSleep.IsChecked == true) || applySleepDelay;
             var updated = old with
             {
-                Mode = _canWork && WorkMode.IsChecked == true ? CompanionMode.Work : CompanionMode.Daily,
-                WorkDurationMs = Parse(WorkMinutes, 60000), BreakDurationMs = Parse(BreakMinutes, 60000),
+                Mode = workMode ? CompanionMode.Work : CompanionMode.Daily,
+                WorkDurationMs = saveWork ? Parse(WorkMinutes, 60000, "工作分钟数", 28800000) : old.WorkDurationMs,
+                BreakDurationMs = saveWork ? Parse(BreakMinutes, 60000, "休息分钟数", 28800000) : old.BreakDurationMs,
                 AutoSleep = AutoSleep.IsChecked == true,
-                SleepAfterMs = Parse(SleepSeconds, 1000), BlinkMinMs = Parse(BlinkMin, 1000),
-                BlinkMaxMs = Parse(BlinkMax, 1000), HoldMs = Parse(HoldSeconds, 1000),
-                CooldownMs = Parse(CooldownSeconds, 1000), HoverDwellMs = Parse(HoverMs, 1),
+                SleepAfterMs = saveSleep ? Parse(SleepSeconds, 1000, "入睡等待秒数", 604800000) : old.SleepAfterMs,
                 PetHeightDip = PetSize.Value, Topmost = AlwaysTop.IsChecked == true,
                 ClickThrough = PassThrough.IsChecked == true, StartWithWindows = Startup.IsChecked == true,
                 CompanionshipEnabled = RecordCompanionship.IsChecked == true,
@@ -109,8 +130,9 @@ public partial class SettingsWindow : Window
             _applying = true;
             try { beforePublish?.Invoke(); _service.Update(updated); }
             finally { _applying = false; }
-            SizeLabel.Text = $"{updated.PetHeightDip:0} DIP";
-            Feedback.Text = _canWork ? "已应用 · 设置会自动保存在这台电脑上。"
+            SizeLabel.Text = SizeText(updated.PetHeightDip);
+            UpdateSections();
+            Feedback.Text = _canWork ? "已应用 · 设置会自动保存。"
                 : "已应用日常陪伴 · 工作模式素材不完整。";
             Feedback.Foreground = new SolidColorBrush(Color.FromRgb(104, 124, 100));
             return true;
@@ -124,7 +146,11 @@ public partial class SettingsWindow : Window
     }
     private void OnSaveFailed(string message) => Dispatcher.BeginInvoke(new Action(() =>
     { Feedback.Text = message; Feedback.Foreground = Brushes.IndianRed; }));
-    private void Option_Changed(object sender, RoutedEventArgs e) => Apply();
+    private void Option_Changed(object sender, RoutedEventArgs e)
+    {
+        UpdateSections();
+        Apply();
+    }
     private void ApplyModeChoice() => Apply(
         !_loading && _canWork && WorkMode.IsChecked == true ? () => WorkModeChosen?.Invoke() : null);
     private void Mode_Checked(object sender, RoutedEventArgs e)
@@ -133,6 +159,7 @@ public partial class SettingsWindow : Window
         // Direction-key selection can raise Checked without Click. Mouse selection raises both.
         _modeAppliedBeforeClick = true;
         Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() => _modeAppliedBeforeClick = false));
+        UpdateSections();
         ApplyModeChoice();
     }
     private void Mode_Click(object sender, RoutedEventArgs e)
@@ -141,7 +168,47 @@ public partial class SettingsWindow : Window
         ApplyModeChoice();
     }
     private void Companion_Click(object sender, RoutedEventArgs e) => _openCompanion?.Invoke();
-    private void Number_Changed(object sender, RoutedEventArgs e) => Apply();
+    private void Number_Changed(object sender, RoutedEventArgs e) => Apply(
+        applyWorkDuration: ReferenceEquals(sender, WorkMinutes) || ReferenceEquals(sender, BreakMinutes),
+        applySleepDelay: ReferenceEquals(sender, SleepSeconds));
+    private void WorkPreset_Changed(object sender, SelectionChangedEventArgs e)
+    {
+        if (_loading) return;
+        if (WorkPreset.SelectedIndex >= 0 && WorkPreset.SelectedIndex < WorkPresets.Length)
+        {
+            var preset = WorkPresets[WorkPreset.SelectedIndex];
+            _loading = true;
+            try { WorkMinutes.Text = Minutes(preset.Work); BreakMinutes.Text = Minutes(preset.Break); }
+            finally { _loading = false; }
+            Apply(applyWorkDuration: true);
+        }
+        UpdateSections();
+    }
+    private void SleepPreset_Changed(object sender, SelectionChangedEventArgs e)
+    {
+        if (_loading) return;
+        if (SleepPreset.SelectedIndex >= 0 && SleepPreset.SelectedIndex < SleepPresets.Length)
+        {
+            _loading = true;
+            try { SleepSeconds.Text = Seconds(SleepPresets[SleepPreset.SelectedIndex]); }
+            finally { _loading = false; }
+            Apply(applySleepDelay: true);
+        }
+        UpdateSections();
+    }
+    private void UpdateSections()
+    {
+        var workMode = _canWork && WorkMode.IsChecked == true;
+        DailyOptions.Visibility = workMode ? Visibility.Collapsed : Visibility.Visible;
+        WorkOptions.Visibility = workMode ? Visibility.Visible : Visibility.Collapsed;
+        SleepOptions.Visibility = AutoSleep.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+        CustomWork.Visibility = WorkPreset.SelectedIndex == WorkPresets.Length ? Visibility.Visible : Visibility.Collapsed;
+        CustomSleep.Visibility = SleepPreset.SelectedIndex == SleepPresets.Length ? Visibility.Visible : Visibility.Collapsed;
+        CompanionText.IsEnabled = RecordCompanionship.IsChecked == true;
+        TextPreferenceHint.Text = RecordCompanionship.IsChecked == true
+            ? "关闭后仍可成长，工作和休息提醒照常显示。"
+            : "开启成长记录后可显示短句，基础工作和休息提醒不受影响。";
+    }
     private void Size_Changed(object sender, RoutedPropertyChangedEventArgs<double> e) => Apply();
     private void Done_Click(object sender, RoutedEventArgs e) { if (Apply()) Close(); }
     private void Reset_Click(object sender, RoutedEventArgs e)

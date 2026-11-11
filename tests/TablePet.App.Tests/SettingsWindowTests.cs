@@ -89,6 +89,110 @@ public sealed class SettingsWindowTests
     });
 
     [Fact]
+    public void ChangingDisplayOptionsPreservesAdvancedTimingPreferences() => Sta.Run(() =>
+    {
+        using var directory = new TestDirectory();
+        using var service = new SettingsService(directory.FilePath("settings.json"));
+        var original = new PetSettings
+        {
+            BlinkMinMs = 4321, BlinkMaxMs = 9876, HoldMs = 1234,
+            CooldownMs = 567, HoverDwellMs = 234, SleepAfterMs = 76543,
+            WorkDurationMs = 1234567, BreakDurationMs = 76543
+        };
+        service.Update(original, saveImmediately: true);
+        var window = new SettingsWindow(service, new DrawingImage());
+        try
+        {
+            var topmost = (CheckBox)window.FindName("AlwaysTop");
+            topmost.IsChecked = false;
+            topmost.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            Assert.Equal(original with { Topmost = false }, service.Current);
+            Assert.True(service.Flush());
+            using var restarted = new SettingsService(service.SettingsPath);
+            Assert.Equal(service.Current, restarted.Load());
+        }
+        finally { window.Close(); }
+    });
+
+    [Theory]
+    [InlineData(CompanionMode.Work, "WorkPreset")]
+    [InlineData(CompanionMode.Daily, "SleepPreset")]
+    public void ChoosingAPresetSavesItsTimingAndKeepsOtherPreferences(CompanionMode mode, string presetName) => Sta.Run(() =>
+    {
+        using var directory = new TestDirectory();
+        using var service = new SettingsService(directory.FilePath("settings.json"));
+        var original = new PetSettings
+        {
+            Mode = mode, WorkDurationMs = 1234567, BreakDurationMs = 76543, SleepAfterMs = 76543
+        };
+        service.Update(original, saveImmediately: true);
+        var window = new SettingsWindow(service, new DrawingImage());
+        try
+        {
+            ((ComboBox)window.FindName(presetName)).SelectedIndex = 1;
+            var expected = mode == CompanionMode.Work
+                ? original with { WorkDurationMs = 50 * 60000, BreakDurationMs = 10 * 60000 }
+                : original with { SleepAfterMs = 5 * 60000 };
+            Assert.Equal(expected, service.Current);
+            Assert.True(service.Flush());
+            using var restarted = new SettingsService(service.SettingsPath);
+            Assert.Equal(expected, restarted.Load());
+        }
+        finally { window.Close(); }
+    });
+
+    [Theory]
+    [InlineData(CompanionMode.Work, "WorkPreset")]
+    [InlineData(CompanionMode.Daily, "SleepPreset")]
+    public void ChoosingCustomOnlyOpensTheEditorWithoutChangingSavedTimings(CompanionMode mode, string presetName) => Sta.Run(() =>
+    {
+        using var directory = new TestDirectory();
+        using var service = new SettingsService(directory.FilePath("settings.json"));
+        var original = new PetSettings { Mode = mode };
+        service.Update(original, saveImmediately: true);
+        var window = new SettingsWindow(service, new DrawingImage());
+        try
+        {
+            var updates = 0;
+            service.Changed += _ => updates++;
+            ((ComboBox)window.FindName(presetName)).SelectedIndex = 3;
+            Assert.Equal(original, service.Current);
+            Assert.Equal(0, updates);
+        }
+        finally { window.Close(); }
+    });
+
+    [Theory]
+    [InlineData(CompanionMode.Daily)]
+    [InlineData(CompanionMode.Work)]
+    public void HiddenTimingEditsDoNotBlockOtherSettingsOrOverwriteSavedDurations(CompanionMode mode) => Sta.Run(() =>
+    {
+        using var directory = new TestDirectory();
+        using var service = new SettingsService(directory.FilePath("settings.json"));
+        var original = new PetSettings
+        {
+            Mode = mode, WorkDurationMs = 1234567, BreakDurationMs = 76543, SleepAfterMs = 76543
+        };
+        service.Update(original, saveImmediately: true);
+        var window = new SettingsWindow(service, new DrawingImage());
+        try
+        {
+            if (mode == CompanionMode.Daily)
+            {
+                ((TextBox)window.FindName("WorkMinutes")).Text = "unfinished";
+                ((TextBox)window.FindName("BreakMinutes")).Text = "unfinished";
+            }
+            else ((TextBox)window.FindName("SleepSeconds")).Text = "unfinished";
+
+            var topmost = (CheckBox)window.FindName("AlwaysTop");
+            topmost.IsChecked = false;
+            topmost.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            Assert.Equal(original with { Topmost = false }, service.Current);
+        }
+        finally { window.Close(); }
+    });
+
+    [Fact]
     public void ExternalWorkModeChangeKeepsPendingTextAndDoneDoesNotSwitchBackToDaily() => Sta.Run(() =>
     {
         using var directory = new TestDirectory();

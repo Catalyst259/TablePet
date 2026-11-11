@@ -68,19 +68,36 @@ public partial class CompanionWindow : Window
         StageProgress.Value = CompanionshipRules.ProgressToNextStage(state) * 100;
         ProgressDescription.Text = unavailable ? "原文件会保留，恢复后可以继续记录。"
             : state.Stage == "in_sync" ? "日常还在继续。" : "自然相伴，会慢慢熟悉。";
+        ProgressDescription.Visibility = unavailable || state.Stage == "in_sync" ? Visibility.Visible : Visibility.Collapsed;
         ScoreDetail.Text = unavailable ? "读取记录后显示成长详情。" : $"熟悉度 {state.TotalPoints} · 已相伴 {state.CompanionDays} 天";
         var rank = CompanionshipRules.StageRank(state.Stage);
+        for (var i = 0; i < StageTrail.Children.Count; i++)
+        {
+            var step = (Border)StageTrail.Children[i];
+            var label = (TextBlock)step.Child;
+            var current = i == rank;
+            var name = StageLabel(CompanionshipRules.Stages[i].Id);
+            label.Text = name + (current ? " · 当前" : "");
+            label.FontWeight = current ? FontWeights.SemiBold : FontWeights.Normal;
+            label.Foreground = Brush(current ? "#FFFFFF" : "#705D68");
+            step.Background = current ? Brush("#89516B") : Brushes.Transparent;
+            AutomationProperties.SetName(step, name + (current ? "，当前阶段" : i < rank ? "，已达成" : ""));
+        }
         if (!unavailable && rank < 3)
         {
             var next = CompanionshipRules.Stages[rank + 1];
             NextRequirement.Text = $"到“{StageLabel(next.Id)}”需要 {next.Points} 熟悉度和 {next.Days} 个相伴日。";
         }
         else NextRequirement.Text = "";
+        NextRequirement.Visibility = string.IsNullOrEmpty(NextRequirement.Text) ? Visibility.Collapsed : Visibility.Visible;
         AutomationProperties.SetHelpText(StageProgress, NextRequirement.Text);
         DisabledNotice.Visibility = !_settings.Current.CompanionshipEnabled ? Visibility.Visible : Visibility.Collapsed;
         RecordingDate.Text = state.RecordingStartedLocalDate is { } date ? $"记录开始于 {date}" : "";
         EmptyNotice.Visibility = state.Memories.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+        EmptyCard.Visibility = EmptyNotice.Visibility;
         EmptyNotice.Text = unavailable ? "相伴记录暂时读不到，你可以重试读取。" : "和小猫打个招呼，日常会慢慢记在这里。";
+        MemoryCount.Text = $"{state.Memories.Count} 段回忆";
+        MemoryCount.Visibility = unavailable || state.Memories.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
         RefreshStatus();
 
         var signature = string.Join("|", state.Memories.OrderByDescending(m => m.Sequence).Select(m => $"{m.Id}:{m.IsRead}"));
@@ -93,18 +110,25 @@ public partial class CompanionWindow : Window
             if (definition is null) continue;
             var card = new Border
             {
-                Background = (Brush)new BrushConverter().ConvertFromString(memory.IsRead ? "#FFFFFF" : "#F8ECEF")!,
-                BorderBrush = (Brush)new BrushConverter().ConvertFromString("#E2D7DB")!, BorderThickness = new Thickness(1),
-                CornerRadius = new CornerRadius(12), Padding = new Thickness(14), Margin = new Thickness(0, 0, 0, 10)
+                Background = Brush(memory.IsRead ? "#FFFFFF" : "#F8ECEF"),
+                BorderBrush = Brush("#EADDE2"), BorderThickness = new Thickness(1),
+                CornerRadius = new CornerRadius(12), Padding = new Thickness(14), Margin = new Thickness(0, 0, 0, 12)
             };
             var body = new StackPanel();
-            body.Children.Add(new TextBlock { Text = memory.LocalDate, FontSize = 12, Foreground = (Brush)new BrushConverter().ConvertFromString("#705D68")! });
             body.Children.Add(new TextBlock
             {
                 Text = definition.Title + (memory.IsRead ? "" : "  · 新"), FontSize = 16,
-                FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 5, 0, 6), TextWrapping = TextWrapping.Wrap
+                FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 0, 0, 6), TextWrapping = TextWrapping.Wrap
             });
-            body.Children.Add(new TextBlock { Text = definition.Description, TextWrapping = TextWrapping.Wrap, FontSize = 14 });
+            body.Children.Add(new TextBlock
+            {
+                Text = definition.Description, TextWrapping = TextWrapping.Wrap, FontSize = 14,
+                Foreground = Brush("#705D68"), LineHeight = 22
+            });
+            body.Children.Add(new TextBlock
+            {
+                Text = memory.LocalDate, FontSize = 12, Foreground = Brush("#705D68"), Margin = new Thickness(0, 8, 0, 0)
+            });
             var illustration = CompanionMemoryIllustrations.Default.Find(memory.Id);
             if (illustration is not null)
             {
@@ -129,6 +153,8 @@ public partial class CompanionWindow : Window
         }
         QueueMarkVisible();
     }
+
+    private static Brush Brush(string color) => (Brush)new BrushConverter().ConvertFromString(color)!;
 
     private void RefreshStatus()
     {

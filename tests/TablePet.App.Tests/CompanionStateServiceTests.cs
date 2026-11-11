@@ -165,6 +165,32 @@ public sealed class CompanionStateServiceTests
     }
 
     [Theory]
+    [InlineData("broken-primary")]
+    [InlineData("{}")]
+    public async Task BrokenPrimaryWithoutBackupPausesRecordingAndPreservesTheOriginal(string brokenPrimary)
+    {
+        using var directory = new TestDirectory();
+        var path = directory.FilePath("companion-state.json");
+        File.WriteAllText(path, brokenPrimary);
+        var original = File.ReadAllBytes(path);
+        var service = new CompanionStateService(path);
+
+        var state = service.Load();
+
+        Assert.False(service.CanWrite);
+        Assert.False(service.UnsupportedVersion);
+        Assert.NotNull(service.LastError);
+        Assert.Null(service.RecoveryNotice);
+        Assert.Empty(state.Days);
+        Assert.False(await service.SaveAsync(QualifiedState(4)));
+        Assert.Equal(original, File.ReadAllBytes(path));
+        Assert.False(File.Exists(service.BackupPath));
+        var preserved = Assert.Single(Directory.GetFiles(directory.Root, "companion-state.json.invalid-*.bak"));
+        Assert.Equal(original, File.ReadAllBytes(preserved));
+        Assert.False(File.Exists(path + ".tmp"));
+    }
+
+    [Theory]
     [InlineData("{\"schemaVersion\":2,\"rulesVersion\":1,\"days\":[]}")]
     [InlineData("{\"schemaVersion\":1,\"rulesVersion\":2,\"memories\":{}}")]
     [InlineData("{\"schemaVersion\":99,\"rulesVersion\":1}")]
@@ -184,29 +210,31 @@ public sealed class CompanionStateServiceTests
         Assert.Throws<InvalidOperationException>(() => service.StartNewRecord());
     }
 
-    [Fact]
-    public async Task InvalidPrimaryAndBackupBlockWritesUntilAnExplicitRestart()
+    [Theory]
+    [InlineData("broken-primary", "broken-backup")]
+    [InlineData("{}", "[]")]
+    public async Task InvalidPrimaryAndBackupBlockWritesUntilAnExplicitRestart(string brokenPrimary, string brokenBackup)
     {
         using var directory = new TestDirectory();
         var path = directory.FilePath("companion-state.json");
-        File.WriteAllText(path, "broken-primary");
-        File.WriteAllText(path + ".bak", "broken-backup");
+        File.WriteAllText(path, brokenPrimary);
+        File.WriteAllText(path + ".bak", brokenBackup);
         var service = new CompanionStateService(path);
         service.Load();
         Assert.False(service.CanWrite);
         Assert.False(service.UnsupportedVersion);
         Assert.NotNull(service.LastError);
         Assert.False(await service.SaveAsync(QualifiedState(4)));
-        Assert.Equal("broken-primary", File.ReadAllText(path));
-        Assert.Equal("broken-backup", File.ReadAllText(path + ".bak"));
+        Assert.Equal(brokenPrimary, File.ReadAllText(path));
+        Assert.Equal(brokenBackup, File.ReadAllText(path + ".bak"));
         var newState = service.StartNewRecord();
         Assert.True(service.CanWrite);
         Assert.Empty(newState.Memories);
         Assert.Empty(newState.Days);
         Assert.False(File.Exists(path + ".bak"));
         var preserved = Directory.GetFiles(directory.Root, "*.restart-*.bak").Select(File.ReadAllText).ToArray();
-        Assert.Contains("broken-primary", preserved);
-        Assert.Contains("broken-backup", preserved);
+        Assert.Contains(brokenPrimary, preserved);
+        Assert.Contains(brokenBackup, preserved);
         Assert.Empty(new CompanionStateService(path).Load().Days);
     }
 

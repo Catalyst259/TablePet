@@ -246,7 +246,7 @@ public sealed class CompanionStateService
         lock (_gate) return _writer ?? Task.CompletedTask;
     }
 
-    private static bool IsStorageError(Exception error) => error is IOException or UnauthorizedAccessException
+    private static bool IsStorageError(Exception error) => error is IOException or InvalidDataException or UnauthorizedAccessException
         or JsonException or ArgumentException or NotSupportedException;
     private static void NotifySafely(Action action)
     {
