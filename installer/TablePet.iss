@@ -89,7 +89,8 @@ end;
 
 function IsCurrentProductDirectory(const Target: String): Boolean;
 var
-  RegisteredPath, ProductVersion: String;
+  RegisteredPath: String;
+  VersionMS, VersionLS: Cardinal;
 begin
   Result := False;
   if RegQueryStringValue(HKCU, CurrentUninstallKey, 'Inno Setup: App Path', RegisteredPath) then
@@ -103,8 +104,10 @@ begin
   if not FileExists(AddBackslash(Target) + 'Assets\strawberry-cat\skeletal\pack.json') then Exit;
   if FileExists(AddBackslash(Target) + 'TablePet.exe') then
   begin
-    if GetStringFileInfo(AddBackslash(Target) + 'TablePet.exe', 'ProductVersion', ProductVersion) then
-      Result := Pos('-skeletal', Lowercase(ProductVersion)) > 0;
+    { VersionMS contains major/minor. The current product starts at 0.5;
+      historical 0.4 executables are rejected even if a pack was copied in. }
+    if GetVersionNumbers(AddBackslash(Target) + 'TablePet.exe', VersionMS, VersionLS) then
+      Result := VersionMS >= $00000005;
     Exit;
   end;
   Result := FileExists(AddBackslash(Target) + 'TablePet.Skeletal.exe');

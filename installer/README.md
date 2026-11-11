@@ -22,7 +22,7 @@ powershell -File tools/build-installer.ps1 `
 
 全新安装默认位于 `%LocalAppData%\Programs\TablePet`，执行文件为 `TablePet.exe`，安装界面、桌面和开始菜单快捷方式均使用“TablePet”。桌面快捷方式默认创建，可在向导中取消；安装完成页可选择启动程序。已有注册安装沿用原目录，重命名不会搬动安装目录或个人数据。
 
-继续使用原骨骼版的 AppId `{E5578DE9-62E6-4E72-8DC8-B4ED2FAB57EE}`，支持同版本覆盖安装和后续升级。安装前会检查目标目录：历史版本注册目录、含 `TablePet.dll` 的目录，以及无法确认属于当前产品的 `TablePet.exe` 均会被拒绝。当前 AppId 的注册目录、或同时带有骨骼资源包和当前版本标识的便携程序可以正常重装；空的新默认目录不会因名称与历史版本相同而被拒绝。静默安装和隐藏目录页的升级也执行此检查。
+继续使用原骨骼版的 AppId `{E5578DE9-62E6-4E72-8DC8-B4ED2FAB57EE}`，支持同版本覆盖安装和后续升级。安装前会检查目标目录：历史版本注册目录、含 `TablePet.dll` 的目录，以及无法确认属于当前产品的 `TablePet.exe` 均会被拒绝。当前 AppId 的注册目录，或同时带有骨骼资源包且执行文件数字版本至少为 0.5.0 的便携程序可以正常重装；空的新默认目录不会因名称与历史版本相同而被拒绝。静默安装和隐藏目录页的升级也执行此检查。
 
 覆盖安装前，沿用 `Local\TablePet.Skeletal.Exit` 请求当前程序正常退出，并等待其 `Local\TablePet.Skeletal.StrawberryCat` 互斥量释放，兼容尚未改名的版本且不触碰历史版本进程。旧骨骼资源清理仅限安装目录中的 `Assets\strawberry-cat\skeletal`，同时移除同目录的旧 `TablePet.Skeletal.exe` 和符号文件。旧“草莓猫桌宠 · 骨骼版”快捷方式只在目标确实指向本次安装目录的新旧程序时清理，指向其他目录的快捷方式会保留。
 
