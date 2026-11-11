@@ -8,7 +8,7 @@
 
 `FireflyRenderer` 不依赖 Node、Sharp、源仓库或源图片。其不可变贴图数组占用 23,741,648 字节；另外有约 2 MiB 身体权重表、姿态参数、对象开销和临时输出。原 `AssetCatalog` 的 128 MiB 图像缓存预算不包含这些不可变数据。渲染调用不复用可变输出，不同线程可同时调用。
 
-编译脚本只读取单独的 `legacy` 参考目录；所有准备脚本在当前 `skeleton` 工作目录的 `artifacts/firefly-authoring` 副本内执行。此目录是制作缓存，不参与打包。按根目录 README 获取 `../TablePet.Legacy` 后，在 `skeleton` 工作目录运行：
+编译脚本只读取单独的 `legacy` 参考目录；所有准备脚本在当前 `skeleton` 工作目录的 `artifacts/firefly-authoring` 副本内执行。此目录是制作缓存，不参与打包。按 [开发说明](DEVELOPMENT.md) 获取 `../TablePet.Legacy` 后，在 `skeleton` 工作目录运行：
 
 ```powershell
 npm ci

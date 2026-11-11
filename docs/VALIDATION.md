@@ -35,7 +35,7 @@
 
 ## 复核入口
 
-- 完整 WPF 比对：按根目录 [README](../README.md) 临时获取 `legacy` 参考目录后运行 `TablePet.PlaybackProbe`。
+- 完整 WPF 比对：按 [开发说明](DEVELOPMENT.md) 临时获取 `legacy` 参考目录后运行 `TablePet.PlaybackProbe`。
 - 萤火虫逐槽基准：[reference/firefly-expected.json](../reference/firefly-expected.json)，由 `TablePet.FireflyProbe` 读取。
 - 资源编译摘要：[verification.json](../assets/strawberry-cat/skeletal/legacy/verification.json)，记录重建数量、完整性与检查点优化结果。
 - 当前陪伴功能与界面：[陪伴验收摘要](COMPANIONSHIP-VALIDATION.md)。

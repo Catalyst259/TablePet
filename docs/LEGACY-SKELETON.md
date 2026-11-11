@@ -44,7 +44,7 @@ The Python compiler performs a compressed round trip and an exact RGBA reconstru
 
 Build-time dependencies are pinned in `tools/compile-legacy-requirements.txt`. They are not needed by the distributed app.
 
-The implementation now lives on this repository's `skeleton` branch; the original raster baseline remains on `legacy` at `426f160`. Follow the root README to clone `legacy` into `../TablePet.Legacy`, then run these commands from the `skeleton` checkout. Generated reports stay in the local ignored `artifacts/` directory.
+The implementation lives on this repository's `skeleton` branch; the original raster baseline remains on `legacy` at `426f160`. Follow the [development guide](DEVELOPMENT.md) to clone `legacy` into `../TablePet.Legacy`, then run these commands from the `skeleton` checkout. Generated reports stay in the local ignored `artifacts/` directory.
 
 ```powershell
 npm run assets:compile -- ../TablePet.Legacy

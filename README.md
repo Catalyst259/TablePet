@@ -1,81 +1,51 @@
 # TablePet
 
-从 TablePet 0.4.0 重写的 Windows WPF 桌宠。本仓库的 `skeleton` 分支维护骨骼版；`legacy` 分支保留原 `main` 的逐帧版本及历史，基线提交为 `426f160`。骨骼版曾在独立仓库制作，现在已合并回同一仓库。
+一只住在 Windows 桌面上的草莓猫。
 
-后续功能与修复只在 `skeleton` 上迭代。`legacy` 和旧版本发布仅作历史归档；日常开发不需要保留旧工作副本。原本地未提交草稿与实验资料另存于工作目录之外，不参与构建和发布。
+<img src="assets/strawberry-cat/fallback.png" width="200" alt="头顶草莓和甜筒的灰白色小猫" />
 
-保留全部 16 个动作片段、萤火虫装饰轨道、原始时间槽和交互行为，在运行时重建画面，替代整帧 PNG 序列。0.5.0 骨骼重写将动画资源由 **211.58 MiB 降至 58.18 MiB，减少 72.50%**；当时包含 fallback、图标和清单的基础运行素材由 213.22 MiB 降至 59.83 MiB，减少 71.94%。0.6.0 另外增加约 16 MiB 的 12 幅回忆静态插画，角色动画资源保持不变。
+闲下来时逗逗它，忙的时候让它陪你工作。它会打哈欠、打盹，偶尔和萤火虫玩一会儿。
 
-这些减量指运行素材和发布包。`skeleton` 已从 2026 年 11 月 12 日的精简起点继续开发，旧逐帧历史保留在 `legacy` 和历史标签中；本地制作草稿不参与推送或发布。
+[下载 Windows 版](https://github.com/Catalyst259/TablePet/releases/latest) · [使用说明](docs/SETTINGS.md)
 
-## 获取源码
+## 和小猫相处
 
-日常开发使用以下命令，只获取当前开发分支及其后续历史：
+- **点点它。** 单击、双击都能互动；拖动可以换个位置，右键打开菜单。
+- **一起工作，也一起休息。** 工作模式默认是 25 分钟工作、5 分钟休息，到点会提醒你。时长可以在设置里调整。
+- **慢慢熟悉起来。** 相处久了，关系会从初见走到熟悉、亲近和默契，小猫的回应也会跟着变化。
+- **留下共同的日常。** 第一次一起工作、一次睡醒见面，都可能留下一条回忆。在“我们的日常”里可以回看相伴天数和 12 条带插画的回忆。
+
+不用每天打卡，离开一段时间也不会扣熟悉度。成长记录保存在本机；想安静待着时，可以在设置里关闭陪伴文字或成长记录。
+
+## 下载和使用
+
+适用于 **Windows x64**。在 [Releases](https://github.com/Catalyst259/TablePet/releases/latest) 下载名字以 `-Setup.exe` 结尾的安装包，按提示安装即可，已自带 .NET 运行时。也可以选择 ZIP 便携包，完整解压后运行里面的桌宠程序。
+
+打开后，右键小猫就能切换日常／工作模式、进入设置，或打开“我们的日常”。托盘菜单里也有这些入口。
+
+目前发布的 0.6.0 文件名仍带 `.Skeletal` 后缀；源码中的程序名称已统一为 TablePet。更新和卸载的具体说明见 [安装说明](docs/INSTALLATION.md)。
+
+## 源码和构建
+
+项目使用 C# / WPF，当前开发分支是 `skeleton`。建议这样克隆，避免顺带下载旧版素材归档：
 
 ```powershell
 git clone --single-branch --branch skeleton --no-tags https://github.com/Catalyst259/TablePet.git TablePet
 cd TablePet
 ```
 
-当前分支包含构建所需的源码、骨骼资源、回忆插画与测试基准。普通的全仓库克隆仍会获取归档分支；上述命令可避免下载早期逐帧素材。
-
-整理前的完整提交链保存在 `archive/skeleton-before-cleanup-20261112` 标签，历史 Release 标签及附件仍可使用。已有旧历史的开发副本建议保存未提交改动后，在新目录按上述命令重新克隆；后续改动只提交到新的 `skeleton`，避免合并旧开发分支而重新引入归档历史。
-
-## 渲染方式
-
-- 萤火虫：移植已批准的身体、肩部、前臂、爪、眼球与高光控制；少量纹理和骨骼姿态在 C# 中合成。飞虫使用小尺寸旋转附件，独立定位、透明度和遮挡。
-- 工作模式：一张基础猫贴图、局部眼睛表情修正及独立电脑前景。原有根骨骼呼吸位移、进出场淡化继续由同一个行为时钟驱动。
-- 其余动作：拟合头、身体、双耳、双眼、口鼻、尾巴和双爪的二维骨骼，逆向蒙皮后叠加无损修正数据。旧 AI 补帧会改变毛发、表情和透明边缘，这些不能由少量刚性骨骼表达的内容需要保留。
-
-这是**骨骼和贴图驱动、带无损修正的混合实现**。不是所有动作都能仅靠几张贴图和骨骼曲线保持原版像素；精确度优先于进一步丢弃纹理。无需在运行时解压或写出完整 PNG 序列，也不依赖 Python、Node.js、RIFE 或 `legacy` 参考目录。
-
-## 运行与构建
-
-0.6.0 加入渐进式陪伴成长：沿用所有骨骼动作，通过四个关系阶段、情境短句和 12 条带专属插画的永久回忆体现熟悉感。右键、托盘或设置中的“我们的日常”可查看记录。日常与工作均可成长，不扣分、不要求连续使用；成长与文字可分别关闭。详细规则见 [成长设计](docs/COMPANIONSHIP-DESIGN.md)、[内容表](docs/COMPANIONSHIP-CONTENT.md)、[回忆插画](docs/MEMORY-ILLUSTRATIONS.md) 和 [验收记录](docs/COMPANIONSHIP-VALIDATION.md)。
-
-当前构建统一使用 `TablePet` 名称：安装包为 `TablePet-0.6.0-Setup.exe`，便携包为 `TablePet-0.6.0-win-x64.zip`。两种包都内置 .NET 运行时。已有的 [0.6.0 历史发布页](https://github.com/Catalyst259/TablePet/releases/tag/v0.6.0-skeletal) 保留发布当时的旧文件名；更名不改写历史标签。安装、更新和卸载说明见 [安装说明](docs/INSTALLATION.md)。
-
-发布目录的 `TablePet.exe` 可直接运行。安装程序和快捷方式也显示为 `TablePet`。为延续已有设置、成长记录和覆盖升级，内部安装身份、进程通信标识、开机启动项和 `%LocalAppData%/DesktopPet.Skeletal/` 数据目录保持兼容；它们与冻结的逐帧原版独立。
-
-使用 .NET SDK 10.0.403 构建，仓库已包含编译好的骨骼资源：
+在 Windows 上安装 .NET SDK 10.0.403，然后运行：
 
 ```powershell
 powershell -File tools/build-skeletal.ps1 -Test -Publish
 ```
 
-可用 `-DotnetPath <dotnet.exe>` 指定 SDK，或运行 `tools/setup-dotnet.ps1` 在本仓库安装 SDK。发布包自带 .NET，不要求使用者安装开发环境。
+生成的程序和便携包在 `dist/`。只想编译和跑测试，可以去掉 `-Publish`。也可以用 [SDK 安装脚本](tools/setup-dotnet.ps1) 准备开发环境；制作安装包见 [安装器说明](installer/README.md)。
 
-```powershell
-# 不启动窗口或写入用户设置的素材检查
-.\dist\TablePet-0.6.0-win-x64\TablePet.exe --check-assets
-```
+仓库里已经带有编译好的动画资源。需要修改动画、重建素材或查找旧版本时，见 [开发说明](docs/DEVELOPMENT.md)。
 
-只有重新制作资源或与逐帧原版比较时，才需要另取一个 `legacy` 参考目录。以下命令在当前 `skeleton` 工作目录运行：
+## 更多说明
 
-```powershell
-git clone --depth 1 --single-branch --branch legacy https://github.com/Catalyst259/TablePet.git ../TablePet.Legacy
-
-# 对逐帧基线作实际 WPF 逐像素、时序、缓存与缩放验证
-dotnet run --project tests/TablePet.PlaybackProbe -c Release -- --verify-skeletal `
-  ../TablePet.Legacy/assets/strawberry-cat ./assets/strawberry-cat ./artifacts/skeletal-verification
-```
-
-详细动作来源见 [动画盘点](docs/ANIMATION-AUDIT.md)。逐帧原图、旧预览和制作历史统一保留在 `legacy`，当前分支只保存骨骼运行资源、回忆插画及必要的测试基准。
-
-## 验证记录
-
-验收摘要见 [骨骼重写验收](docs/VALIDATION.md) 与 [陪伴功能验收](docs/COMPANIONSHIP-VALIDATION.md)，测试基准说明见 [reference](reference/README.md)。详细诊断、截图和工作副本快照写入本地 `artifacts/`，不参与提交；重新运行测试可以生成新的结果。原生桌面上的多屏、混合 DPI、锁屏/恢复及长时间使用，仍需要对应环境验收；离屏像素与计时测试不代表显示器实际呈现帧率。
-
-## 重新编译骨骼资源
-
-日常构建不需要此步骤。需要从逐帧原图重新制作时，先按上文获取 `../TablePet.Legacy`，再在当前 `skeleton` 工作目录安装 Node.js 依赖及 Python 制作工具。制作脚本只读取参考目录，输出位于当前工作目录；运行时不需要这些工具。
-
-```powershell
-npm ci
-python -m venv .tools/rig-python
-.tools/rig-python/Scripts/python.exe -m pip install -r tools/rig-requirements.txt
-npm run assets:compile -- ../TablePet.Legacy
-npm run assets:size -- ../TablePet.Legacy
-```
-
-编译先拟合骨骼并生成无损残差，再以 Brotli 11 重压并逐块验证；14 个跨动作共享姿态及 9 个动作入口提升为独立检查点，避免反向播放和冷启动时反复重算。已提交的原图和制作历史保留在 `legacy` 分支，无须重新加入 `skeleton` 的文件树；本地未跟踪草稿继续作为本地资料保留。
+- [设置与操作](docs/SETTINGS.md)
+- [成长和回忆规则](docs/COMPANIONSHIP-DESIGN.md)
+- [回忆插画](docs/MEMORY-ILLUSTRATIONS.md)

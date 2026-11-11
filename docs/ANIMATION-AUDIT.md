@@ -2,7 +2,7 @@
 
 Read-only source: the archived `legacy` branch at `426f160`, inspected 2026-11-09. All source paths below refer to that archive. The authoritative reference is the current `assets/strawberry-cat/manifest.json`, not candidate previews or an earlier release. No source scripts were executed: some apparently read-only rig initializers write diagnostic images.
 
-This is a historical audit of that pre-rewrite checkout. After integration, the same repository's `legacy` branch preserves the committed baseline at `426f160`, and `skeleton` holds the rewrite. Use a separate `../TablePet.Legacy` checkout for reproduction, as described in the root README; the absolute path above now hosts the integrated repository and is no longer an unchanged frozen working directory. Untracked local drafts from the original snapshot are not part of the `legacy` commit.
+This is a historical audit of that pre-rewrite checkout. The repository's `legacy` branch preserves the committed baseline at `426f160`, and `skeleton` holds the rewrite. Use a separate `../TablePet.Legacy` checkout for reproduction, as described in the [development guide](DEVELOPMENT.md). Untracked local drafts from the original snapshot are not part of the `legacy` commit.
 
 ## Current runtime inventory
 
