@@ -7,7 +7,7 @@ $productVersion = [string]$project.Project.PropertyGroup.Version
 if ($productVersion -notmatch '^(\d+\.\d+\.\d+)-skeletal$') { throw 'Expected a skeletal x.y.z-skeletal application version.' }
 $version = $Matches[1]
 if ($Publish) {
-    $output = Join-Path $workspaceRoot "dist/TablePet.Skeletal-$version-win-x64"
+    $output = Join-Path $workspaceRoot "dist/TablePet-$version-win-x64"
     $zip = $output + '.zip'
     # A fresh output prevents stale preview files from leaking into a release.
     if ((Test-Path -LiteralPath $output) -or (Test-Path -LiteralPath $zip)) {
@@ -37,7 +37,7 @@ if ($Publish) {
     Get-ChildItem -LiteralPath docs -Filter '*.md' -File | Copy-Item -Destination $docsOutput -Force
     Copy-Item -LiteralPath tools/launch-preview.cmd -Destination (Join-Path $output 'Start-Preview.cmd') -Force
     Copy-Item -LiteralPath tools/launch-preview.ps1 -Destination (Join-Path $output 'Start-Preview.ps1') -Force
-    $check = Start-Process -FilePath (Join-Path $output 'TablePet.Skeletal.exe') -ArgumentList '--check-assets' -WindowStyle Hidden -Wait -PassThru
+    $check = Start-Process -FilePath (Join-Path $output 'TablePet.exe') -ArgumentList '--check-assets' -WindowStyle Hidden -Wait -PassThru
     if ($check.ExitCode -ne 0) { throw "Published asset check failed: $($check.ExitCode)" }
     Compress-Archive -Path (Join-Path $output '*') -DestinationPath $zip
     $hash = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()

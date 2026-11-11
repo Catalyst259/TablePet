@@ -5,7 +5,7 @@ $workspaceRoot = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 $productVersion = [string]$project.Project.PropertyGroup.Version
 if ($productVersion -notmatch '^(\d+\.\d+\.\d+)-skeletal$') { throw 'Expected a skeletal x.y.z-skeletal application version.' }
 $version = $Matches[1]
-$published = Join-Path $workspaceRoot "dist/TablePet.Skeletal-$version-win-x64"
+$published = Join-Path $workspaceRoot "dist/TablePet-$version-win-x64"
 $zipPath = $published + '.zip'
 $expectedZipHash = ((Get-Content -LiteralPath ($zipPath + '.sha256') -Raw).Trim() -split '\s+')[0]
 $zipHash = (Get-FileHash -LiteralPath $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -32,7 +32,7 @@ foreach ($memory in $catalog.memories) {
     $runtimeNames += "Assets/strawberry-cat/memories/$($memory.id).png"
 }
 if (!$memoryIds.Count) { throw 'Memory illustration catalog is empty.' }
-$expectedPayloadNames = @('TablePet.Skeletal.exe', 'TablePet.Skeletal.pdb', 'TablePet.Core.pdb', 'README.md', 'Start-Preview.cmd', 'Start-Preview.ps1') + $runtimeNames
+$expectedPayloadNames = @('TablePet.exe', 'TablePet.pdb', 'TablePet.Core.pdb', 'README.md', 'Start-Preview.cmd', 'Start-Preview.ps1') + $runtimeNames
 $expectedPayloadNames += @(Get-ChildItem -LiteralPath (Join-Path $workspaceRoot 'docs') -Filter '*.md' -File | ForEach-Object { 'docs/' + $_.Name })
 $expectedPayload = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::Ordinal)
 foreach ($name in $expectedPayloadNames) { if (!$expectedPayload.Add($name)) { throw "Duplicate expected package path: $name" } }
@@ -79,7 +79,7 @@ try {
 if (!$expectedPayload.SetEquals([string[]]$files.file)) { throw 'ZIP payload coverage mismatch.' }
 $publishedNames = @(Get-ChildItem -LiteralPath $published -Recurse -File | ForEach-Object { $_.FullName.Substring($prefix.Length).Replace([char]92, [char]47) })
 if (!$expectedPayload.SetEquals([string[]]$publishedNames)) { throw 'Publish directory contains missing or unexpected files.' }
-$exeVersion = (Get-Item -LiteralPath (Join-Path $published 'TablePet.Skeletal.exe')).VersionInfo.ProductVersion
+$exeVersion = (Get-Item -LiteralPath (Join-Path $published 'TablePet.exe')).VersionInfo.ProductVersion
 if (($exeVersion -split '\+')[0] -ne $productVersion) { throw "Published executable version differs: $exeVersion" }
 $result = [ordered]@{
     passed = $true

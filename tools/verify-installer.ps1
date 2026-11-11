@@ -9,8 +9,8 @@ $workspaceRoot = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 $version = [string]$project.Project.PropertyGroup.Version
 if ($version -notmatch '^(\d+\.\d+\.\d+)-skeletal$') { throw 'Expected a skeletal x.y.z-skeletal application version.' }
 $numericVersion = $Matches[1]
-if (!$InstallerPath) { $InstallerPath = Join-Path $workspaceRoot "dist/TablePet.Skeletal-$numericVersion-Setup.exe" }
-if (!$ZipPath) { $ZipPath = Join-Path $workspaceRoot "dist/TablePet.Skeletal-$numericVersion-win-x64.zip" }
+if (!$InstallerPath) { $InstallerPath = Join-Path $workspaceRoot "dist/TablePet-$numericVersion-Setup.exe" }
+if (!$ZipPath) { $ZipPath = Join-Path $workspaceRoot "dist/TablePet-$numericVersion-win-x64.zip" }
 if (!$ExtractorPath) { $ExtractorPath = Join-Path $workspaceRoot '.tools/inno-verify/innounp-2.71.2/innounp.exe' }
 foreach ($requiredPath in @($InstallerPath, $ZipPath, $ExtractorPath)) {
     if (!(Test-Path -LiteralPath $requiredPath -PathType Leaf)) { throw "Required file is missing: $requiredPath" }
@@ -98,7 +98,7 @@ foreach ($memory in $catalog.memories) {
     $runtimeNames += "Assets/strawberry-cat/memories/$($memory.id).png"
 }
 if (!$memoryIds.Count) { throw 'Memory illustration catalog is empty.' }
-$expectedPayloadNames = @('TablePet.Skeletal.exe', 'TablePet.Skeletal.pdb', 'TablePet.Core.pdb', 'README.md', 'Start-Preview.cmd', 'Start-Preview.ps1') + $runtimeNames
+$expectedPayloadNames = @('TablePet.exe', 'TablePet.pdb', 'TablePet.Core.pdb', 'README.md', 'Start-Preview.cmd', 'Start-Preview.ps1') + $runtimeNames
 $expectedPayloadNames += @(Get-ChildItem -LiteralPath (Join-Path $workspaceRoot 'docs') -Filter '*.md' -File | ForEach-Object { 'docs/' + $_.Name })
 $expectedPayloadSet = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::Ordinal)
 foreach ($name in $expectedPayloadNames) { if (!$expectedPayloadSet.Add($name)) { throw "Duplicate expected package path: $name" } }
@@ -213,14 +213,14 @@ try {
     $result['allPayloadFilesMatchPublishedZip'] = $true
     $result['containsFrameSequencePngs'] = $false
 
-    $executablePath = Join-Path $payloadRoot 'TablePet.Skeletal.exe'
+    $executablePath = Join-Path $payloadRoot 'TablePet.exe'
     $productVersion = (Get-Item -LiteralPath $executablePath).VersionInfo.ProductVersion
     if (($productVersion -split '\+')[0] -ne $version) { throw "Extracted application version differs: $productVersion" }
     $setupVersion = (Get-Item -LiteralPath $InstallerPath).VersionInfo.ProductVersion.Trim()
     if (@($version, $numericVersion, "$numericVersion.0") -notcontains $setupVersion) { throw "Installer product version differs: $setupVersion" }
     $result['applicationProductVersion'] = $productVersion
     $result['installerProductVersion'] = $setupVersion
-    $result['deploymentLayout'] = 'Self-contained single-file TablePet.Skeletal.exe; byte-identical to the published ZIP'
+    $result['deploymentLayout'] = 'Self-contained single-file TablePet.exe; byte-identical to the published ZIP'
 
     # This flag exits before any settings, windows, tray icons or instance signals.
     # The setup program and uninstaller are never started by this script.

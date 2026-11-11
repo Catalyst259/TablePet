@@ -44,6 +44,7 @@ public partial class App : System.Windows.Application
         }
         catch (Exception error) { ErrorLogger.Write("预览目录无效。", error); Shutdown(2); return; }
         var instanceSuffix = dataLocation.InstanceSuffix;
+        // Keep the established identity so renamed and older builds share one instance and upgrade signals.
         _showSettings = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\TablePet.Skeletal.ShowSettings" + instanceSuffix);
         _exitRequested = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\TablePet.Skeletal.Exit" + instanceSuffix);
         _singleInstance = new Mutex(true, @"Local\TablePet.Skeletal.StrawberryCat" + instanceSuffix, out var isFirst);
@@ -68,7 +69,7 @@ public partial class App : System.Windows.Application
         catch (Exception error)
         {
             ErrorLogger.Write("应用启动失败。", error);
-            MessageBox.Show("草莓猫未能启动：\n" + error.Message, "草莓猫", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("TablePet 未能启动：\n" + error.Message, "TablePet", MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
         }
     }

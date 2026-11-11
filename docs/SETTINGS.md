@@ -1,6 +1,6 @@
 # 草莓猫桌宠配置说明
 
-骨骼版将当前用户的设置保存到 `%LocalAppData%\DesktopPet.Skeletal\settings.json`，与原版独立。设置窗口提供日常调整入口；动画姿态顺序和时间槽存放在角色素材的 `manifest.json` 中，两者独立管理。
+TablePet 将当前用户的设置保存到 `%LocalAppData%\DesktopPet.Skeletal\settings.json`，与历史逐帧版独立。程序更名为 `TablePet.exe` 后继续使用这个数据目录，已有设置和成长记录无需迁移。设置窗口提供日常调整入口；动画姿态顺序和时间槽存放在角色素材的 `manifest.json` 中，两者独立管理。
 
 默认使用“日常陪伴”，可在设置、猫咪右键菜单或托盘选择“工作模式”。模式和时长会保存，缺少新字段时保持日常陪伴。
 
@@ -85,7 +85,7 @@ JSON 字段采用下表中的名称。时间统一以毫秒保存；设置页面
 
 ## 自启动与托盘开关
 
-自启动通过当前用户注册表项 `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` 中名为 `TablePet` 的值实现，不需要管理员权限。只有在设置页改变自启动选项时才更新此项；手工修改 JSON 不会自动安装或移除启动项。移动应用文件夹后，如仍需要自启动，应在新位置运行应用并重新关闭、开启该选项。
+自启动通过当前用户注册表项 `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` 中的兼容值 `TablePet.Skeletal` 实现，不需要管理员权限。内部值名保留，新程序路径为 `TablePet.exe`。只有在设置页改变自启动选项时才设置或移除此项；更名安装时也会迁移已启用且精确指向同一安装目录旧程序的路径，不会自动开启启动。手工修改 JSON 不会安装或移除启动项。移动应用文件夹后，如仍需要自启动，应在新位置运行应用并重新关闭、开启该选项。
 
 模式选择会持久化。暂停和“显示／隐藏”是当前运行会话的控制状态，不写入上述 JSON。日常模式的“暂停自动动作”让当前动作自然收尾，不再安排新的待机动作或入睡，点击互动仍可用；工作模式的“暂停工作／休息计时”则立即冻结动画、气泡与当前轮次计时，继续后接着运行。
 
@@ -102,8 +102,8 @@ JSON 字段采用下表中的名称。时间统一以毫秒保存；设置页面
 开发验收可使用独立目录，例如：
 
 ```powershell
-.\TablePet.Skeletal.exe --data-dir C:\Temp\TablePet-Preview --companion
-.\TablePet.Skeletal.exe --data-dir C:\Temp\TablePet-Preview --quit
+.\TablePet.exe --data-dir C:\Temp\TablePet-Preview --companion
+.\TablePet.exe --data-dir C:\Temp\TablePet-Preview --quit
 ```
 
 `--data-dir` 将设置、相伴存档和单实例通信隔离；`--companion` 首次启动时打开面板。该参数用于本地验收，不隔离公共错误日志或 Windows 登录自启动注册表项；预览时不要修改自启动选项。

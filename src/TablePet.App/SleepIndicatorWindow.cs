@@ -19,7 +19,7 @@ public sealed class SleepIndicatorWindow : Window
     {
         _pet = pet;
         Owner = pet;
-        Title = "草莓猫睡眠装饰";
+        Title = "TablePet · 睡眠装饰";
         WindowStyle = WindowStyle.None;
         AllowsTransparency = true;
         Background = Brushes.Transparent;

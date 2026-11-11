@@ -7,6 +7,7 @@ namespace TablePet.App.Services;
 /// <summary>Uses the same normalized directory for storage and single-instance signals.</summary>
 internal sealed record ApplicationDataLocation(string DirectoryPath, string InstanceSuffix)
 {
+    // The public executable is TablePet.exe; existing data stays here across the rename.
     internal static string DefaultDirectory => Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DesktopPet.Skeletal");
 

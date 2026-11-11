@@ -24,7 +24,7 @@ public sealed class FireflyWindow : Window
         _relativeBounds = new Rect(decoration.OffsetX / assets.CanvasWidth, decoration.OffsetY / assets.CanvasHeight,
             decoration.CanvasWidth / assets.CanvasWidth, decoration.CanvasHeight / assets.CanvasHeight);
         Owner = pet;
-        Title = "草莓猫萤火虫";
+        Title = "TablePet · 萤火虫";
         WindowStyle = WindowStyle.None;
         AllowsTransparency = true;
         Background = Brushes.Transparent;

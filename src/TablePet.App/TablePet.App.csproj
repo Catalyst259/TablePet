@@ -7,10 +7,10 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon Condition="Exists('../../assets/strawberry-cat/tray.ico')">../../assets/strawberry-cat/tray.ico</ApplicationIcon>
-    <AssemblyName>TablePet.Skeletal</AssemblyName>
+    <AssemblyName>TablePet</AssemblyName>
     <RootNamespace>TablePet.App</RootNamespace>
     <Version>0.6.0-skeletal</Version>
-    <Product>草莓猫桌宠 · 骨骼版</Product>
+    <Product>TablePet</Product>
     <!-- WPF owns PerMonitorV2 via app.manifest; WinForms is used only for NotifyIcon. -->
     <NoWarn>$(NoWarn);WFO0003</NoWarn>
     <Description>本地运行的草莓猫 Windows 桌面宠物</Description>

@@ -1,4 +1,4 @@
-# TablePet 骨骼重写版
+# TablePet
 
 从 TablePet 0.4.0 重写的 Windows WPF 桌宠。本仓库的 `skeleton` 分支维护骨骼版；`legacy` 分支保留原 `main` 的逐帧版本及历史，基线提交为 `426f160`。骨骼版曾在独立仓库制作，现在已合并回同一仓库。
 
@@ -20,9 +20,9 @@
 
 0.6.0 加入渐进式陪伴成长：沿用所有骨骼动作，通过四个关系阶段、情境短句和 12 条带专属插画的永久回忆体现熟悉感。右键、托盘或设置中的“我们的日常”可查看记录。日常与工作均可成长，不扣分、不要求连续使用；成长与文字可分别关闭。详细规则见 [成长设计](docs/COMPANIONSHIP-DESIGN.md)、[内容表](docs/COMPANIONSHIP-CONTENT.md)、[回忆插画](docs/MEMORY-ILLUSTRATIONS.md) 和 [验收记录](docs/COMPANIONSHIP-VALIDATION.md)。
 
-日常使用可在 [0.6.0 骨骼版发布页](https://github.com/Catalyst259/TablePet/releases/tag/v0.6.0-skeletal) 下载 `TablePet.Skeletal-0.6.0-Setup.exe`，按中文向导安装；也可使用 ZIP 便携包。两种包都内置 .NET 运行时。安装、更新和卸载说明见 [安装说明](docs/INSTALLATION.md)。
+当前构建统一使用 `TablePet` 名称：安装包为 `TablePet-0.6.0-Setup.exe`，便携包为 `TablePet-0.6.0-win-x64.zip`。两种包都内置 .NET 运行时。已有的 [0.6.0 历史发布页](https://github.com/Catalyst259/TablePet/releases/tag/v0.6.0-skeletal) 保留发布当时的旧文件名；更名不改写历史标签。安装、更新和卸载说明见 [安装说明](docs/INSTALLATION.md)。
 
-发布目录的 `TablePet.Skeletal.exe` 可直接运行。它使用单独的进程通信标识、开机启动项和 `%LocalAppData%/DesktopPet.Skeletal/` 设置目录，可与冻结的原版并存。
+发布目录的 `TablePet.exe` 可直接运行。安装程序和快捷方式也显示为 `TablePet`。为延续已有设置、成长记录和覆盖升级，内部安装身份、进程通信标识、开机启动项和 `%LocalAppData%/DesktopPet.Skeletal/` 数据目录保持兼容；它们与冻结的逐帧原版独立。
 
 使用 .NET SDK 10.0.403 构建，仓库已包含编译好的骨骼资源：
 
@@ -34,7 +34,7 @@ powershell -File tools/build-skeletal.ps1 -Test -Publish
 
 ```powershell
 # 不启动窗口或写入用户设置的素材检查
-.\dist\TablePet.Skeletal-0.6.0-win-x64\TablePet.Skeletal.exe --check-assets
+.\dist\TablePet-0.6.0-win-x64\TablePet.exe --check-assets
 ```
 
 只有重新制作资源或与逐帧原版比较时，才需要另取一个 `legacy` 参考目录。以下命令在当前 `skeleton` 工作目录运行：

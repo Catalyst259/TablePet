@@ -16,7 +16,7 @@ public sealed class SpeechBubbleWindow : Window
     {
         _pet = pet;
         Owner = pet;
-        Title = "草莓猫回应气泡";
+        Title = "TablePet · 回应气泡";
         WindowStyle = WindowStyle.None;
         AllowsTransparency = true;
         Background = Brushes.Transparent;

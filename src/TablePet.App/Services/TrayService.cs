@@ -61,7 +61,7 @@ public sealed class TrayService : IDisposable
         _icon = new Forms.NotifyIcon
         {
             Icon = _ownedIcon,
-            Text = "草莓猫 · TablePet",
+            Text = "TablePet",
             ContextMenuStrip = _menu,
             Visible = true
         };
@@ -78,13 +78,13 @@ public sealed class TrayService : IDisposable
         if (_workMode is not null) { _workMode.Checked = working; _workMode.Enabled = canWork; }
         _topmost.Checked = topmost;
         _clickThrough.Checked = clickThrough;
-        _icon.Text = "草莓猫 · " + (working ? "工作模式" : "日常陪伴") + (paused ? "（已暂停）" : "") + (!visible ? "（已隐藏）" : "");
+        _icon.Text = "TablePet · " + (working ? "工作模式" : "日常陪伴") + (paused ? "（已暂停）" : "") + (!visible ? "（已隐藏）" : "");
     }
 
     public void ShowMessage(string message)
     {
         if (_disposed) return;
-        _icon.ShowBalloonTip(4000, "草莓猫 · TablePet", message, Forms.ToolTipIcon.Info);
+        _icon.ShowBalloonTip(4000, "TablePet", message, Forms.ToolTipIcon.Info);
     }
 
     private Forms.ToolStripMenuItem AddItem(string text, Action action)
