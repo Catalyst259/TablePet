@@ -1,0 +1,102 @@
+{
+  "complete": true,
+  "allDecodedRgbaExact": true,
+  "poses": 708,
+  "originalPngBytes": 129520749,
+  "archiveBytes": 56266293,
+  "metadataBytes": 530921,
+  "elapsedSeconds": 240.44,
+  "clips": [
+    {
+      "clip": "idle",
+      "newPoses": 1,
+      "originalBytes": 194975,
+      "archiveBytes": 125944
+    },
+    {
+      "clip": "blink",
+      "newPoses": 17,
+      "originalBytes": 2996320,
+      "archiveBytes": 1928200
+    },
+    {
+      "clip": "fall_asleep",
+      "newPoses": 104,
+      "originalBytes": 19779151,
+      "archiveBytes": 9568136
+    },
+    {
+      "clip": "sleep_loop",
+      "newPoses": 156,
+      "originalBytes": 27751710,
+      "archiveBytes": 7590287
+    },
+    {
+      "clip": "wake",
+      "newPoses": 48,
+      "originalBytes": 9123222,
+      "archiveBytes": 4668192
+    },
+    {
+      "clip": "rise",
+      "newPoses": 47,
+      "originalBytes": 8974665,
+      "archiveBytes": 4873486
+    },
+    {
+      "clip": "hold",
+      "newPoses": 0,
+      "originalBytes": 0,
+      "archiveBytes": 0
+    },
+    {
+      "clip": "settle",
+      "newPoses": 57,
+      "originalBytes": 10705300,
+      "archiveBytes": 5966881
+    },
+    {
+      "clip": "yawn",
+      "newPoses": 168,
+      "originalBytes": 30078855,
+      "archiveBytes": 11415550
+    },
+    {
+      "clip": "wink",
+      "newPoses": 68,
+      "originalBytes": 12234372,
+      "archiveBytes": 6271502
+    },
+    {
+      "clip": "meow",
+      "newPoses": 42,
+      "originalBytes": 7682179,
+      "archiveBytes": 3611709
+    }
+  ],
+  "kinds": {
+    "checkpoint": 80,
+    "skinned": 628,
+    "alias": 0
+  },
+  "maxDependencyDepth": 12,
+  "recompression": {
+    "blocks": 709,
+    "originalBytes": 64898638,
+    "recompressedBytes": 55478493,
+    "savedBytes": 9420145,
+    "quality": 11,
+    "workers": 2,
+    "elapsedSeconds": 452.35,
+    "allDecodedBlocksExact": true
+  },
+  "seekOptimization": {
+    "promotedPoses": 23,
+    "archiveBytesBefore": 55478493,
+    "archiveBytesAfter": 56266293,
+    "allPosesComparedToOriginalPng": true,
+    "checkedPoses": 708,
+    "timelineUnchanged": true,
+    "elapsedSeconds": 208.384
+  }
+}

@@ -1,0 +1,79 @@
+# Animation audit of the frozen TablePet runtime
+
+Read-only source: the archived `legacy` branch at `426f160`, inspected 2026-11-09. All source paths below refer to that archive. The authoritative reference is the current `assets/strawberry-cat/manifest.json`, not candidate previews or an earlier release. No source scripts were executed: some apparently read-only rig initializers write diagnostic images.
+
+This is a historical audit of that pre-rewrite checkout. After integration, the same repository's `legacy` branch preserves the committed baseline at `426f160`, and `skeleton` holds the rewrite. Use a separate `../TablePet.Legacy` checkout for reproduction, as described in the root README; the absolute path above now hosts the integrated repository and is no longer an unchanged frozen working directory. Untracked local drafts from the original snapshot are not part of the `legacy` commit.
+
+## Current runtime inventory
+
+The manifest references **1,685 distinct PNG paths, 221,854,869 bytes (211.58 MiB)** across 16 character/prop clips and one synchronized decoration track. Per-clip sizes below overlap where clips share a PNG; do not sum them to obtain the total. The archived project's `frames/**` build glob also copied older PNGs; those sequences are absent from the current `skeleton` file tree.
+
+| Clip | Slots | Distinct PNG paths | Duration, ms | PNG bytes |
+|---|---:|---:|---:|---:|
+| idle | 1 | 1 | 1000 | 194975 |
+| blink | 23 | 18 | 375 | 3191295 |
+| fall_asleep | 105 | 105 | 1750 | 19974126 |
+| sleep_loop | 216 | 157 | 3600 | 27928785 |
+| wake | 63 | 63 | 1050 | 11974715 |
+| rise | 48 | 48 | 800 | 9169640 |
+| hold | 1 | 1 | 1000 | 204786 |
+| settle | 60 | 60 | 1000 | 11275887 |
+| yawn | 264 | 169 | 4400 | 30273830 |
+| wink | 90 | 69 | 1500 | 12429347 |
+| meow | 84 | 43 | 1400 | 7877154 |
+| firefly, cat | 600 | 496 | 10000 | 83085069 |
+| work_enter | 24 | 19 | 400 | 3672709 |
+| work_loop | 576 | 23 | 9600 | 4333025 |
+| work_exit | 24 | 19 | 400 | 3672709 |
+| work_props | 1 | 1 | 17 | 52866 |
+| firefly, decoration | 600 | 441 | 10000 | 1770684 |
+
+All moving tracks have the approved 60 Hz timeline. Preserve the actual slot durations and final endpoints, not merely an approximate frame rate. The `sampling.statistics` block is historical and does not reflect all current work-mode additions; the figures above were recalculated from actual references and filesystem sizes.
+
+## Recoverable procedural skeleton: firefly
+
+The largest clip already has a complete source rig, baked into PNGs only for the old runtime. Source modules are under `assets/strawberry-cat/sources/firefly-v3/`:
+
+- `body.cjs`: head transform, weighted body warp, original left paw rigid joint, forearm affine deformation, underbody contour morph, mouth patch, planted right paw restoration, compositing.
+- `body-mask.cjs`: original paw extraction from a fixed SVG mask.
+- `eyes-rig.cjs`: binocular pupil and reflection transforms, iris masks, head-space transforms; `eyes-geometry.cjs` supplies geometry fitting helpers; `eyes/geometry.json` is the frozen measured calibration.
+- `choreography.cjs`: all 10-second body, gaze and flight curves; 60 Hz output with a 480 Hz damped gaze curve sampled by Hermite interpolation.
+- `sources/{firefly,iris,pupils,right-corrected,swat-anatomy-reference,underbody,up-larger,prepare-mouth}.png`: source textures. `up-reference.png` is in the provenance inventory but is not used by the renderer.
+- Shared base texture: `frames/fall_asleep-00.png`.
+
+`tools/build-firefly.cjs:createRenderer` is the authoritative compositor. The unchanged approved copies are in `reference/firefly-v3/approved/`; portable runtime copies differ only in source path substitutions. `reference/firefly-v3-runtime.json`, `reference/firefly-v3/frame-pool.json` and `source-inventory.json` provide slot mappings and hashes.
+
+Exact compositor order: render torso/mouth/forearm → overlay eyes on `body.background` → restore the original foreground paw once. At zero prepare/paw/mouth and zero gaze engagement, return the exact shared idle bytes. Head pivot `(232,400)`, maximum rotation `-0.028 rad`, translation `(-2.5,-4)`. Left paw rest center `(160,440)`, peak center `(105,390)`, rotation `π/3`, scale always 1. Preserve the contour morph and foreground restore; a simple whole-body rotation does not reproduce this artwork.
+
+Fly layer is 640×640, offset `(-64,-100)` relative to the 512×512 cat. It uses Sharp/Lanczos resizing, Sharp rotation, exact integer rounding, a `.92 + .08*sin(t*2π*.85)` opacity pulse, and rear-emergence alpha masking by the rendered cat. Exact cross-language migration must match these sampling/rounding rules or retain a small correction layer. Flight angle is deliberately not used as sprite rotation: rotation is `-24° → 43°` according to departure smoothstep.
+
+The rig's `createBodyRig()` and `buildMask()` write diagnostic PNG/JSON files. Run only in the independent rewrite copy, or remove diagnostic output there. Eye creation uses precomputed geometry but still fits one pupil at a fixed center; bake those derived arrays once to avoid expensive runtime setup and numerical drift.
+
+## Other clips and source poses
+
+Most earlier clips were generated by RIFE 4.6, then corrected and resampled. There is no original bone track to recover for these clips. A low-dimensional mesh or bone approximation alone cannot reproduce all RIFE-created texture and alpha pixels exactly.
+
+| Family | Authoring source and selected poses | Important behavior |
+|---|---|---|
+| blink | `tools/touchup-blink.cjs`; `frames/fall_asleep-00.png`, original `frames/blink-01.png` through `blink-04.png`; five-way RIFE subdivisions | 375 ms. Original closed interval 155–245 ms. Use current 23 slots for exact 60 Hz playback. |
+| fall_asleep / wake | `tools/build-motion-v2.cjs`; `keyframes-v2/sleep/{01,02,03,04,05,08}.png` plus idle | Key times 0,250,550,850,1150,1450,1750 ms; monotone Hermite phase. Wake reuses the same dense interpolation in reverse at 1050 ms, but samples distinct phases; retain union of referenced phases. |
+| rise / settle / hold | same builder; `keyframes-v2/rise/{04,05,06}.png`, `keyframes-v2/half-rise.png`, `keyframes-v2/settle/{01,02}.png`, original blink poses | Rise times 0,50,100,140,250,390,540,800 ms. Settle times 0,160,320,620,800,1000 ms. Hold shares exact rise endpoint. |
+| sleep_loop | `tools/touchup-sleep.cjs`, `tools/sleep-endpoint.cjs`, `keyframes-v4/sleep/recipe.json`, `inhale-master.png`, asleep endpoint | 3600 ms cosine loop; only 25% of the generated inhale is used. RIFE factor 1024; first 16 phases have premultiplied endpoint correction. Forepaws grounded. |
+| yawn | authoritative `reference/yawn-repair/runtime.json` selects **yawn-v2**, not v3 | Seven poses: idle, `keyframes-yawn-v2/yawn-{half,low,closed}.png`, `keyframes-v7/yawn/yawn-{start,middle,peak}.png`. Phase knots `(0,0),(560,3),(2240,6),(2800,6),(3900,3),(4400,0)`; corrected opaque interior. The current `build-yawn.cjs` is a v3 candidate builder and must not silently replace selected v2. |
+| wink | `reference/idle-v9-fluid-selection.json`, `reference/idle-v9-approved-keys.json`, `tools/build-wink-candidate.cjs`, `tools/wink-endpoint.cjs` | V9 exact artwork, eight pose transitions: idle→prepare→half→low→peak→reopening→linger→relax→idle. Knots 0,140,245,335,440,790,900,1120,1290,1500 ms. Peak hold 350 ms. PCHIP timing, residual endpoint correction, 8 refinement divisions and eyelid-distance sampling. |
+| meow | `reference/meow-v3-selection.json`, `tools/build-meow.cjs`; `sources/meow-v2/prepare.png`, `peak-lift.png` | 1400 ms out-and-back, phase knots `(0,0),(240,1),(700,1.35),(1160,1),(1400,0)`. Premultiplied interpolation of corrected RIFE phases. No whole-body hop; paws remain fixed. |
+| work | `reference/work-artwork-selection.json` selects artwork v3/transition v1; `tools/install-work-assets.cjs`, `tools/build-work-preview-v3.cjs`, `tools/build-work-gaze-transition.cjs` | Runtime has focused base + small eye-only RIFE patches. Loop 9600 ms, blinks start 1250/6700 ms. Enter/exit 400 ms, 24 slots sampled from 33 gaze poses. Props static and separate. |
+
+Work breathing is **already procedural in the app**: `src/TablePet.Core/WorkMode.cs` uses `cos(2π*t/4800)-1` source pixels and `WorkScenePresentation` applies it as a rigid Y transform, independent of the foreground prop. Props opacity uses quintic smoothstep during enter/exit. Retain that behavior; do not bake breathing into the focused images or apply it twice.
+
+Sleep Z and speech bubbles are already vector UI effects synchronized to presentation time. Preserve them and their dragging/pause synchronization; they do not account for the PNG bloat.
+
+## Migration and fidelity criteria
+
+1. Use the frozen manifest as the clip/timing/state-machine reference. Do not promote local candidate folders.
+2. Restore firefly source rig as runtime articulation. Bake only source textures, masks, derived eye arrays and calibration; evaluate existing approved trajectories.
+3. For older RIFE clips, use original pose textures plus bone/mesh prediction and a lossless residual channel if exact RGBA preservation is required. Residual reconstruction is byte-domain addition with explicit clamp/rounding; it must not become an undocumented near-match claim.
+4. Share common base pixels, eye-only patches, reused phases, idle/asleep/hold endpoints and reverse transitions. Package only resources used by the new manifest.
+5. Validate every original slot against reconstructed premultiplied display pixels and preserve loop boundaries, alpha, decoration synchronization, file/pose identity assumptions and real-time interaction behavior. Report any nonzero error separately; a single attractive preview is not evidence of full equivalence.
+
+Residual/compression feasibility measurements are tracked separately; no reduction estimate is asserted before measuring the actual data.

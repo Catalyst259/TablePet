@@ -1,0 +1,69 @@
+{
+  "tool": "image_gen__imagegen",
+  "mode": "built-in",
+  "generatedOn": "2026-11-10",
+  "reference": "../fallback.png",
+  "promptSet": "prompts.json",
+  "files": [
+    {
+      "id": "first_day",
+      "output": "first_day.png",
+      "sha256": "902b26e6835079cd9a2f3bb40a98ae7f5ac13a4fb8917aea9b34012a106b6933"
+    },
+    {
+      "id": "stage_familiar",
+      "output": "stage_familiar.png",
+      "sha256": "ba2ee0774267838cc0450dde5e10529c8151be48b9a929d2c870550b910fde89"
+    },
+    {
+      "id": "stage_close",
+      "output": "stage_close.png",
+      "sha256": "3fcbc765b2a5c78bc17ea351bc5a59f78e86bb02dedf730db70804c41aaf5ade"
+    },
+    {
+      "id": "stage_in_sync",
+      "output": "stage_in_sync.png",
+      "sha256": "153fe9ed55f58544b96b9a0cc1adb8510335cd4fb2ec8b1cc8ab5dba0634b1a3"
+    },
+    {
+      "id": "together_7_days",
+      "output": "together_7_days.png",
+      "sha256": "4644d3bf09cde9f68139bb8a0d300c28679680dfe8c2f97282e5d281043a6211"
+    },
+    {
+      "id": "together_30_days",
+      "output": "together_30_days.png",
+      "sha256": "a6d273ae20f8443acc87338810805fc173f6e302f9c9a03ef7cabd2a9c5dd03a"
+    },
+    {
+      "id": "together_60_days",
+      "output": "together_60_days.png",
+      "sha256": "386cbce2fd70a2f43e131f184f33ec3d8266429cafa78e732bb9945404edab96"
+    },
+    {
+      "id": "first_work_completed",
+      "output": "first_work_completed.png",
+      "sha256": "42f866a40015e91c7610434b76b76d07f19f403c7b5322a6c8af845cc51bd6c7"
+    },
+    {
+      "id": "first_break_completed",
+      "output": "first_break_completed.png",
+      "sha256": "946d83ed10893077888e192b0f2e02f8596789e9891bad0bfa465b821c08164b"
+    },
+    {
+      "id": "first_firefly_visit",
+      "output": "first_firefly_visit.png",
+      "sha256": "751ca9219b31ff82070d0106d537908c52c6e64a45af8be9f93d8262a2504c15"
+    },
+    {
+      "id": "first_gentle_wake",
+      "output": "first_gentle_wake.png",
+      "sha256": "4e0403268f288c77985e61c77e5b64eb812f61cd2a1de17bfda63fadd196fb47"
+    },
+    {
+      "id": "first_return",
+      "output": "first_return.png",
+      "sha256": "848ee00862e11af9cf62d129cdea57aa23a5752889c3169e2c9e418c83448ab1"
+    }
+  ]
+}

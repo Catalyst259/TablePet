@@ -1,0 +1,13 @@
+{
+  "name": "tablepet-skeletal-tools",
+  "private": true,
+  "version": "0.5.0-skeletal",
+  "scripts": {
+    "assets:compile": "node tools/compile-skeletal.cjs",
+    "assets:size": "node tools/report-size.cjs",
+    "source:verify": "node tools/frozen-source.cjs verify"
+  },
+  "devDependencies": {
+    "sharp": "0.35.5"
+  }
+}

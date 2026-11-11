@@ -1,0 +1,28 @@
+.tools/
+**/bin/
+**/obj/
+**/TestResults/
+dist/
+artifacts/
+.vs/
+*.user
+*.suo
+node_modules/
+__pycache__/
+*.pyc
+TablePet-*-source.zip
+TablePet-*-source.zip.sha256
+*.sha256
+
+# Publish acceptance summaries and test baselines, not generated reports.
+/reference/*
+!/reference/README.md
+!/reference/firefly-expected.json
+
+# Pre-skeletal artwork is archived on legacy.
+/assets/strawberry-cat/frames/
+/assets/strawberry-cat/sources/
+/assets/strawberry-cat/previews/
+/assets/strawberry-cat/keyframes*/
+/assets/strawberry-cat/work-preview*/
+/assets/strawberry-cat/work-transition*/
