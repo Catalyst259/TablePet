@@ -7,68 +7,63 @@
   "files": [
     {
       "id": "first_day",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-c23a9ecd-444e-45c6-8062-5acd3f7228e4.png",
-      "output": "first_day.png"
+      "output": "first_day.png",
+      "sha256": "902b26e6835079cd9a2f3bb40a98ae7f5ac13a4fb8917aea9b34012a106b6933"
     },
     {
       "id": "stage_familiar",
-      "source": "C:/Users/33776/.codex/generated_images/01a1c440-eb43-7920-aa50-33997da76d53/exec-7797410b-c9a8-48db-94d6-f955515def2b.png",
       "output": "stage_familiar.png",
-      "previousSource": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-bbd17eb8-a1b7-47d4-b230-af7e54f4421b.png"
+      "sha256": "ba2ee0774267838cc0450dde5e10529c8151be48b9a929d2c870550b910fde89"
     },
     {
       "id": "stage_close",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-8a594e59-0b6d-457b-ad85-aab188f30509.png",
       "output": "stage_close.png",
-      "previousSource": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-47018006-a17b-4f7f-8d9e-6d192f681eb6.png"
+      "sha256": "3fcbc765b2a5c78bc17ea351bc5a59f78e86bb02dedf730db70804c41aaf5ade"
     },
     {
       "id": "stage_in_sync",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-a06b5872-1991-47ba-a48d-de39fde45ea3.png",
-      "output": "stage_in_sync.png"
+      "output": "stage_in_sync.png",
+      "sha256": "153fe9ed55f58544b96b9a0cc1adb8510335cd4fb2ec8b1cc8ab5dba0634b1a3"
     },
     {
       "id": "together_7_days",
-      "source": "C:/Users/33776/.codex/generated_images/01a1c440-eb43-7920-aa50-33997da76d53/exec-6fe047c0-002d-47d7-b2be-742437fb3831.png",
       "output": "together_7_days.png",
-      "previousSource": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-f47809a0-f6a2-4e42-9704-cb9e7d430638.png"
+      "sha256": "4644d3bf09cde9f68139bb8a0d300c28679680dfe8c2f97282e5d281043a6211"
     },
     {
       "id": "together_30_days",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-0dec4385-3925-42ac-9eb5-cf004b744ed6.png",
-      "output": "together_30_days.png"
+      "output": "together_30_days.png",
+      "sha256": "a6d273ae20f8443acc87338810805fc173f6e302f9c9a03ef7cabd2a9c5dd03a"
     },
     {
       "id": "together_60_days",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-5242a1e1-aa3a-4d85-b3f5-97daaaf00e4a.png",
-      "output": "together_60_days.png"
+      "output": "together_60_days.png",
+      "sha256": "386cbce2fd70a2f43e131f184f33ec3d8266429cafa78e732bb9945404edab96"
     },
     {
       "id": "first_work_completed",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-4fc523d8-cb1b-4e0f-846e-582191e4068d.png",
-      "output": "first_work_completed.png"
+      "output": "first_work_completed.png",
+      "sha256": "42f866a40015e91c7610434b76b76d07f19f403c7b5322a6c8af845cc51bd6c7"
     },
     {
       "id": "first_break_completed",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-a5110093-fe2c-4ad8-b405-e9f9c410f6c3.png",
-      "output": "first_break_completed.png"
+      "output": "first_break_completed.png",
+      "sha256": "946d83ed10893077888e192b0f2e02f8596789e9891bad0bfa465b821c08164b"
     },
     {
       "id": "first_firefly_visit",
-      "source": "C:/Users/33776/.codex/generated_images/01a1c440-eb43-7920-aa50-33997da76d53/exec-3c7cc1bc-eeeb-4391-8a59-7deaa25ace24.png",
       "output": "first_firefly_visit.png",
-      "previousSource": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-43350dab-21c5-4503-967a-664f873bb743.png"
+      "sha256": "751ca9219b31ff82070d0106d537908c52c6e64a45af8be9f93d8262a2504c15"
     },
     {
       "id": "first_gentle_wake",
-      "source": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-1ac782bd-416f-4fac-9af6-606a410f1ac1.png",
-      "output": "first_gentle_wake.png"
+      "output": "first_gentle_wake.png",
+      "sha256": "4e0403268f288c77985e61c77e5b64eb812f61cd2a1de17bfda63fadd196fb47"
     },
     {
       "id": "first_return",
-      "source": "C:/Users/33776/.codex/generated_images/01a1c440-eb43-7920-aa50-33997da76d53/exec-81ced32b-1fe7-40ac-a9fe-2ef1528365c1.png",
       "output": "first_return.png",
-      "previousSource": "C:\\Users\\33776\\.codex\\generated_images\\01a1c440-eb43-7920-aa50-33997da76d53\\exec-1fb66047-115b-4ba8-a5a3-2b3ed0caec1a.png"
+      "sha256": "848ee00862e11af9cf62d129cdea57aa23a5752889c3169e2c9e418c83448ab1"
     }
   ]
 }

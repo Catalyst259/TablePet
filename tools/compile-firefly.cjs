@@ -58,6 +58,7 @@ async function main(){
  await fs.mkdir(path.join(repo,'reference'),{recursive:true});await fs.writeFile(path.join(repo,'reference/firefly-expected.json'),JSON.stringify(expected));
  let sourceBytes=0;for(const file of Object.keys(files))sourceBytes+=(await fs.stat(path.join(original,'assets/strawberry-cat',file))).size;
  const report={frames:frames.length,spriteAttachments:sprites.length,rawTextureBytes:offset,textureBytes:compressed.length,jsonBytes:(await fs.stat(path.join(output,'firefly.json'))).size,sourceFiles:Object.keys(files).length,sourceBytes,sourceRigExact:true};
- await fs.writeFile(path.join(repo,'reference/firefly-compilation.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
+ const reportDirectory=path.join(repo,'artifacts/asset-compilation');await fs.mkdir(reportDirectory,{recursive:true});
+ await fs.writeFile(path.join(reportDirectory,'firefly.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

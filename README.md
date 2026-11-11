@@ -47,11 +47,11 @@ dotnet run --project tests/TablePet.PlaybackProbe -c Release -- --verify-skeleta
   ../TablePet.Legacy/assets/strawberry-cat ./assets/strawberry-cat ./artifacts/skeletal-verification
 ```
 
-详细动作来源见 [动画盘点](docs/ANIMATION-AUDIT.md)。`reference/frozen-source.json` 和对应核验报告保留独立重写时的历史快照：9,364 个文件中包括 3,812 个未跟踪的本地草稿。普通 `legacy` 克隆不包含这些草稿，不能宣称通过该完整快照核验；只有保留完整旧工作副本备份时，才可运行 `node tools/frozen-source.cjs verify <完整备份目录>`。当前 `skeleton` 工作目录不是这份历史快照。
+详细动作来源见 [动画盘点](docs/ANIMATION-AUDIT.md)。逐帧原图、旧预览和制作历史统一保留在 `legacy`，当前分支只保存骨骼运行资源、回忆插画及必要的测试基准。
 
 ## 验证记录
 
-全量验收与包体实测记录在 `reference/skeletal/`。原生桌面上的多屏、混合 DPI、锁屏/恢复及长时间使用，仍需要对应环境验收；离屏像素与计时测试不代表显示器实际呈现帧率。
+验收摘要见 [骨骼重写验收](docs/VALIDATION.md) 与 [陪伴功能验收](docs/COMPANIONSHIP-VALIDATION.md)，测试基准说明见 [reference](reference/README.md)。详细诊断、截图和工作副本快照写入本地 `artifacts/`，不参与提交；重新运行测试可以生成新的结果。原生桌面上的多屏、混合 DPI、锁屏/恢复及长时间使用，仍需要对应环境验收；离屏像素与计时测试不代表显示器实际呈现帧率。
 
 ## 重新编译骨骼资源
 

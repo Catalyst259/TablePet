@@ -17,7 +17,7 @@ async function main() {
     const bytes = await fs.readFile(path.join(source,name));
     files.push({file:name,bytes:bytes.length,sha256:digest(bytes)});
   }
-  const file = path.join(repo,'reference','frozen-source.json');
+  const file = path.join(repo,'artifacts','frozen-source','snapshot.json');
   if (mode === 'snapshot') {
     try { await fs.access(file); throw Error('Frozen source snapshot already exists'); }
     catch (e) { if (e.code !== 'ENOENT') throw e; }
@@ -27,7 +27,7 @@ async function main() {
     const baseline = JSON.parse(await fs.readFile(file,'utf8'));
     if (JSON.stringify(baseline.files) !== JSON.stringify(files)) throw Error('Original checkout differs from frozen snapshot');
     const report = {files:files.length,bytes:files.reduce((sum,f)=>sum+f.bytes,0),exact:true,source};
-    await fs.writeFile(path.join(repo,'reference','frozen-source-verification.json'),JSON.stringify(report,null,2)+'\n');
+    await fs.writeFile(path.join(path.dirname(file),'verification.json'),JSON.stringify(report,null,2)+'\n');
   }
   console.log(JSON.stringify({mode,files:files.length,bytes:files.reduce((sum,f)=>sum+f.bytes,0)}));
 }

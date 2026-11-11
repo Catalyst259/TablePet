@@ -1,12 +1,12 @@
 # Animation audit of the frozen TablePet runtime
 
-Read-only source: `C:\Users\33776\Documents\ChatGPT\TablePet`, inspected 2026-11-09. The authoritative reference is the current `assets/strawberry-cat/manifest.json`, not candidate previews or an earlier release. No source scripts were executed: some apparently read-only rig initializers write diagnostic images.
+Read-only source: the archived `legacy` branch at `426f160`, inspected 2026-11-09. All source paths below refer to that archive. The authoritative reference is the current `assets/strawberry-cat/manifest.json`, not candidate previews or an earlier release. No source scripts were executed: some apparently read-only rig initializers write diagnostic images.
 
 This is a historical audit of that pre-rewrite checkout. After integration, the same repository's `legacy` branch preserves the committed baseline at `426f160`, and `skeleton` holds the rewrite. Use a separate `../TablePet.Legacy` checkout for reproduction, as described in the root README; the absolute path above now hosts the integrated repository and is no longer an unchanged frozen working directory. Untracked local drafts from the original snapshot are not part of the `legacy` commit.
 
 ## Current runtime inventory
 
-The manifest references **1,685 distinct PNG paths, 221,854,869 bytes (211.58 MiB)** across 16 character/prop clips and one synchronized decoration track. Per-clip sizes below overlap where clips share a PNG; do not sum them to obtain the total. Older PNGs copied by the current project's `frames/**` build glob are additional avoidable package weight.
+The manifest references **1,685 distinct PNG paths, 221,854,869 bytes (211.58 MiB)** across 16 character/prop clips and one synchronized decoration track. Per-clip sizes below overlap where clips share a PNG; do not sum them to obtain the total. The archived project's `frames/**` build glob also copied older PNGs; those sequences are absent from the current `skeleton` file tree.
 
 | Clip | Slots | Distinct PNG paths | Duration, ms | PNG bytes |
 |---|---:|---:|---:|---:|

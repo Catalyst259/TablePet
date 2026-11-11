@@ -14,7 +14,7 @@ The compiler subtracts the predicted RGBA from the frozen target modulo 256. Its
 
 At most twelve dependent skinned poses follow an independent checkpoint. The final pack has 80 checkpoint textures and 628 skinned residual poses, covering 708 original PNG paths. A checkpoint is explicitly a raster pose; it is not counted as a successful skeletal approximation. Shared filenames and phase reuse remain shared, including the shared idle/asleep/hold endpoints and reverse wake motion.
 
-Fourteen cross-clip junctions and nine cold entry poses were promoted from the initial 57 checkpoints after real-time playback exposed repeated dependency reconstruction in reverse wake and cold fall-asleep motion. The conversion adds only 787,800 compressed bytes and leaves every decoded pixel and timeline slot unchanged. Each dynamic clip's fourth distinct pose (the first beyond the three WPF-warmed images) is independently decodable. The original fitted bones for these promoted poses remain reviewable in `reference/skeletal/checkpoint-promotions.json`. This avoids reserving unrelated entry poses in the 24 MiB dynamic LRU, which reduced its useful working set during diagnosis.
+Fourteen cross-clip junctions and nine cold entry poses were promoted from the initial 57 checkpoints after real-time playback exposed repeated dependency reconstruction in reverse wake and cold fall-asleep motion. The conversion adds only 787,800 compressed bytes and leaves every decoded pixel and timeline slot unchanged. Each dynamic clip's fourth distinct pose (the first beyond the three WPF-warmed images) is independently decodable. The compiler records the original fitted bones in its local `checkpoint-promotions.json` output for review. This avoids reserving unrelated entry poses in the 24 MiB dynamic LRU, which reduced its useful working set during diagnosis.
 
 ## Measured first build
 
@@ -30,27 +30,27 @@ Thus residuals account for 87.6% of the initial archive. The mean alpha-weighted
 
 ## Runtime memory and performance
 
-The final quality-11 archive, including the 23 seek/entry checkpoints, is 56,266,293 bytes, plus 530,921 bytes of metadata (56.15% smaller than this legacy subset's PNGs). It comprises 246,406 bytes of binding, 9,309,576 bytes of checkpoints and 46,710,311 bytes of residuals. Residuals therefore remain 83.02% of this subset's archive. The full package size and final playback measurements are recorded separately in `reference/skeletal/`; the quality-9 table above is preserved as the initial baseline.
+The final quality-11 archive, including the 23 seek/entry checkpoints, is 56,266,293 bytes, plus 530,921 bytes of metadata (56.15% smaller than this legacy subset's PNGs). It comprises 246,406 bytes of binding, 9,309,576 bytes of checkpoints and 46,710,311 bytes of residuals. Residuals therefore remain 83.02% of this subset's archive. The full package size and final playback measurements are summarized in [the acceptance record](VALIDATION.md); the quality-9 table above is preserved as the initial baseline.
 
 `LegacyRenderer` keeps the compressed archive on disk and reads individual blocks at their recorded offsets. The decoded pose LRU is bounded to 24 MiB; the fixed vertex binding occupies 3 MiB. Temporary decode buffers, metadata and caller-owned output arrays are additional allocations. The renderer serializes cache/seek operations with a lock so two background prefetch workers cannot corrupt dependencies. Every returned raster is a fresh array, preventing callers from mutating cached poses.
 
 A conservative transparent-canvas optimization bounds all bone displacements over the canvas corners. It skips only pixels that provably cannot sample a nonzero source byte, including hidden RGB. Two disjoint row partitions evaluate the integer skin in parallel without changing output ordering or allocating another canvas. These optimizations passed the full raw hash comparison again.
 
-The historical quality-9 Release probe measured 708 sequential renders in 6.85 seconds, median 7.97 ms and p95 9.87 ms per pose. Random-seek p95 was 105.9 ms because a cold seek may reconstruct up to twelve predecessors. These are initial isolated CPU decode measurements, not final playback or display-frame-rate guarantees. Final reports are `reference/skeletal/legacy-runtime-verification.json` and `playback-skeletal-60hz.json`; the application's entry-frame warming and background prefetch remain necessary.
+The historical quality-9 Release probe measured 708 sequential renders in 6.85 seconds, median 7.97 ms and p95 9.87 ms per pose. Random-seek p95 was 105.9 ms because a cold seek may reconstruct up to twelve predecessors. These are initial isolated CPU decode measurements, not final playback or display-frame-rate guarantees. Final acceptance results are summarized in [VALIDATION.md](VALIDATION.md); the application's entry-frame warming and background prefetch remain necessary.
 
 ## Verification and reproduction
 
-The Python compiler performs a compressed round trip and an exact RGBA reconstruction check for every pose. The independently implemented C# renderer additionally validates archive, block and final pose SHA-256 values. The probe checks all 708 poses, shuffled seeks, two-worker access, cache bounds and mutation isolation. Final results are in `reference/skeletal/legacy-runtime-verification.json`; source-side build statistics are in `assets/strawberry-cat/skeletal/legacy/verification.json`.
+The Python compiler performs a compressed round trip and an exact RGBA reconstruction check for every pose. The independently implemented C# renderer additionally validates archive, block and final pose SHA-256 values. The probe checks all 708 poses, shuffled seeks, two-worker access, cache bounds and mutation isolation. Final results are summarized in [VALIDATION.md](VALIDATION.md); source-side build statistics are in `assets/strawberry-cat/skeletal/legacy/verification.json`.
 
 Build-time dependencies are pinned in `tools/compile-legacy-requirements.txt`. They are not needed by the distributed app.
 
-The implementation now lives on this repository's `skeleton` branch; the original raster baseline remains on `legacy` at `426f160`. Follow the root README to clone `legacy` into `../TablePet.Legacy`, then run these commands from the `skeleton` checkout. Existing verification records retain their historical absolute paths from the independent rewrite workspace.
+The implementation now lives on this repository's `skeleton` branch; the original raster baseline remains on `legacy` at `426f160`. Follow the root README to clone `legacy` into `../TablePet.Legacy`, then run these commands from the `skeleton` checkout. Generated reports stay in the local ignored `artifacts/` directory.
 
 ```powershell
 npm run assets:compile -- ../TablePet.Legacy
 
 dotnet run --project tools/compile-legacy-probe/LegacyProbe.csproj -c Release -- `
-  assets/strawberry-cat reference/skeletal/legacy-runtime-verification.json
+  assets/strawberry-cat artifacts/skeletal-verification/legacy-runtime-verification.json
 ```
 
 The compiler rejects an output directory inside the frozen source repository. The runtime does not require that repository, Python, OpenCV, Brotli's Python package or the original PNG sequence.

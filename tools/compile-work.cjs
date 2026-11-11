@@ -89,8 +89,9 @@ async function compile(sourceRepo) {
     runtimeBytes:binary.length+metadata.length,reductionPercent:100*(1-(binary.length+metadata.length)/sourceBytes),
     transformPreserved:'WorkScenePresentation continues applying the original cat root breathing and stationary prop opacity; the local face attachment is reconstructed losslessly.',
     sourceInventory:inventory};
-  await fs.mkdir(path.join(repo,'reference/skeletal'),{recursive:true});
-  await fs.writeFile(path.join(repo,'reference/skeletal/work-verification.json'),JSON.stringify(report,null,2)+'\n');
+  const reportDirectory=path.join(repo,'artifacts/asset-compilation');
+  await fs.mkdir(reportDirectory,{recursive:true});
+  await fs.writeFile(path.join(reportDirectory,'work.json'),JSON.stringify(report,null,2)+'\n');
   console.log(JSON.stringify({...report,sourceInventory:undefined},null,2));
   return report;
 }

@@ -89,6 +89,6 @@ for (var index = 0; index < 600; index++)
 }
 times.Sort();
 var report = new { checkedFrames = 1200, concurrentFrames = 384, checks, mismatches, residentTextureBytes = renderer.ResidentTextureBytes, elapsedSeconds = total.Elapsed.TotalSeconds, p50Milliseconds = times[300], p95Milliseconds = times[570] };
-File.WriteAllText(Path.Combine(root, "reference/firefly-csharp-verification.json"), JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));
+File.WriteAllText(Path.Combine(output, "verification.json"), JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));
 Console.WriteLine($"Firefly: {1200 - mismatches.Count}/1200 exact, {total.Elapsed.TotalSeconds:F1}s; p95 paired render {times[570]:F1}ms");
 return mismatches.Count == 0 ? 0 : 1;

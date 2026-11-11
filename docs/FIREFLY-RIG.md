@@ -16,4 +16,4 @@ node tools/compile-firefly.cjs ../TablePet.Legacy
 dotnet run --project tests/TablePet.FireflyProbe -c Release -- .
 ```
 
-独立探针覆盖 600 个猫时间槽和 600 个装饰时间槽，与冻结 PNG 的完整 RGBA SHA-256 比较，全部相等；另验证 384 次并发渲染、输出缓冲区隔离、索引边界以及截断、摘要错误、尺寸错误和非法姿态档案的拒绝。结果在 `reference/firefly-csharp-verification.json`，制作体积记录在 `reference/firefly-compilation.json`。这些是实际 CPU 渲染测试，不代表显示器帧率验收。
+独立探针覆盖 600 个猫时间槽和 600 个装饰时间槽，与冻结 PNG 的完整 RGBA SHA-256 比较，全部相等；另验证 384 次并发渲染、输出缓冲区隔离、索引边界以及截断、摘要错误、尺寸错误和非法姿态档案的拒绝。测试基准保存在 `reference/firefly-expected.json`；重新运行生成的报告在 `artifacts/firefly-csharp/verification.json`，制作体积报告在 `artifacts/asset-compilation/firefly.json`。这些是实际 CPU 渲染测试，不代表显示器帧率验收。

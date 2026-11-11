@@ -21,7 +21,8 @@ async function main(){
     const rewritten=(await fs.stat(path.join(repo,'dist/TablePet.Skeletal-0.5.0-win-x64.zip'))).size;
     report.selfContainedZip={originalBytes:previous,rewrittenBytes:rewritten,reductionPercent:100*(1-rewritten/previous),note:'Both include the Windows x64 .NET runtime. New runtime bundle additionally uses standard single-file compression.'};
   }catch(e){if(e.code!=='ENOENT')throw e;}
-  await fs.mkdir(path.join(repo,'reference/skeletal'),{recursive:true});
-  await fs.writeFile(path.join(repo,'reference/skeletal/size-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+  const reportDirectory=path.join(repo,'artifacts/asset-compilation');
+  await fs.mkdir(reportDirectory,{recursive:true});
+  await fs.writeFile(path.join(reportDirectory,'size-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});
